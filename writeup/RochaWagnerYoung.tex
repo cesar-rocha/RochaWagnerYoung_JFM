@@ -82,12 +82,10 @@
 \section{Introduction}
 
 % 1) The mesoscale energy conundrum: a recalcitrant problem
-Because geostrophic turbulence encumbers the flow of energy from forcing to
-dissipative scales, fluxing energy back towards larger scales, poorly constrained
-ageostrophic motions must play an important
-role in closing the oceanic energy budget \citep{ferrari_wunsch2009}. Existing
-studies suggest a panoply of mechanisms to account for the required forward
- flow of energy. These include
+Because geostrophic turbulence restricts the flow of energy from forcing to
+dissipative scales, fluxing energy back towards larger scales, the closing the
+oceanic energy budget is an obscure problem. Existing studies suggest a panoply
+of mechanisms to account for the required forward flow of energy. These include
 (but are not limited to) surface and
 benthic boundary turbulence and wave generation by geostrophic eddies sloshing
 over bottom topography \citep[see ][their figure 1, and references therein]{nagai_etal2015}.
@@ -212,8 +210,8 @@ wave flux of kinetic energy density $\half|\phi|^2$, where $f_0\lambda^2\grad\Th
 velocity of hydrostratic NIWs, which can be quickly verified under the plane-wave
 assumption $\Theta = kx + ly$.
 
-The unforced and inviscid NIW-QG model \eqref{macroturb}-\eqref{waves} conserves
-NIW kinetic energy
+With simple boundary conditions, e.g., periodic or no normal flux, the NIW-QG
+model \eqref{macroturb}-\eqref{waves} conserves NIW kinetic energy
 \beq
 \label{action}
 K_w \defn \half \la |\phi|^2 \ra\com
@@ -240,10 +238,16 @@ Finally, we form an equation for the QG kinetic energy, $K_e$: $\la\psi\times
 \eqref{macroturb}\ra$ in combination with \eqref{qgpv}, \eqref{action_density},
 and \eqref{waves} gives
 \beq
+\label{Ke}
 \frac{\dd}{\dd t}\underbrace{\la\half |\grad \psi|^2\ra}_{\defn K_e} =
  - \Gamma \com
 \eeq
-thus proving the conservation of energy $E = K_e + P_w $. Above, $\Gamma =
+thus proving the conservation of energy
+\beq
+\label{E}
+E \defn K_e + P_w\per
+\eeq
+In \eqref{Ke}, $\Gamma =
 \Gamma_r + \Gamma_a$ is the energy conversion between QG kinetic energy and
 wave potential energy.
 The term $\Gamma_r$   stems from refraction and is easy to
