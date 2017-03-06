@@ -82,9 +82,9 @@
 \section{Introduction}
 
 % 1) The mesoscale energy conundrum: a recalcitrant problem
-Because geostrophic turbulence restricts the flow of energy from forcing to
-dissipative scales, fluxing energy back towards larger scales, the closing the
-oceanic energy budget is an obscure problem. Existing studies suggest a panoply
+Geostrophic turbulence transfers energy towards larger scales,
+obscuring the flow of energy from forcing to dissipative scales.
+Existing studies suggest a panoply
 of mechanisms to account for the required forward flow of energy. These include
 (but are not limited to) surface and
 benthic boundary turbulence and wave generation by geostrophic eddies sloshing
@@ -264,7 +264,7 @@ The variance production of passive scalar gradient, $\la |\grad c|^2\ra$, is
 $\la\lap c \sJ(\psi,c)\ra$. Analogously,
 $\Gamma_a$ is the source of NIW potential energy due to geostrophic
 stirring.  After multiple
-integration by parts, we rewrite this term:
+integration by parts, we rewrite this term as
 \beq
 \label{gradphi}
   \Gamma_r =
@@ -288,7 +288,7 @@ where $\Sf$ is the symmetric part of the geostrophic velocity gradient matrix,
 whose sum of the elements squared (the Frobenius norm) is commonly defined as the
 square of the QG rate of strain. Geostrophic straining enhances existing gradients
 of $\phi$, thereby generating wave potential energy, $P_w$. When the QG flow has a scale much larger than
-the NIW field (the WKB limit), this distortion of $\phi$ is akin to the wave-capture
+the NIW field, this distortion of $\phi$ is akin to the wave-capture
 mechanism of \cite{buhler_mcintyre2005}.
 
 %An important caveat to this analogy is that the NIW amplitude $\phi$ is dynamically active.
@@ -517,7 +517,7 @@ q = \nabla \psi + \left(\tfrac{f_0^2}{N^2}\psi_z\right)_z + \beta y +
     2 |\nabla M_z|^2 - M_{zz}^\star\nabla M - M_{zz}\nabla M^\star\right)\per
 \eeq
 Thus the NIWs actively evolve, feedbacking onto the QG flow.
-The model of \cite{xie_vanneste2015}, with the potential vorticy that includes
+The model of \cite{xie_vanneste2015}, with the potential vorticity that includes
 wave terms, generalizes early ideas introduced by
  \cite{buhler_mcintyre1998}  to a setup that avoids spatial scale separation between
  geostrophic flow and waves, but restricts attention to near-inertial frequencies.
@@ -657,21 +657,21 @@ From \eqref{q_qw}, the `wave-induced' streamfunction $\psiw$ is quadratic in $\p
 \eeq
 where $\lap^{-1}$ is the inverse of the Laplacian: $\lap^{-1}\lap f = f $.
 
-Together, equations \eqref{waves2}-\eqref{psiw} explicitly show the non-linear
+Together, equations \eqref{waves2}-\eqref{psiw} show the non-linear
 nature of the wave equation in this coupled QG-NIW model. In particular, the
 non-linear wave dynamics is cubic in wave amplitude.  Dropping these cubic
 wave terms yields a quasi-linear (QL) QG-NIW system. This
 QL system conserves the energy
 \beq
-E_{ql} = \la\half|\grad\psi^q|^2\ra + \la\grad\psi^q\cdot\grad\psi^w\ra +
+E_{ql} \defn \la\half|\grad\psi^q|^2\ra + \la\grad\psi^q\cdot\grad\psi^w\ra +
           \la\tfrac{\lambda^2}{4}|\grad\phi|^2\ra\per
 \eeq
 Note that   E = $E_{ql} + \la\half|\grad\psi^w|^2\ra$. Thus, the QL approximation
-yields an intermediate model between the uncoupled QG-YBJ model ($\psi^w=0$)
+is an intermediate model between the uncoupled QG-YBJ model ($\psi^w=0$)
 and the non-linear coupled QG-NIW model.
 
-To gain insight into the
-non-linear wave effects, we consider linearized equations about the exact solution:
+To  study the non-linear wave effects, we linearize the QG-NIW equations  about
+ the exact solution
 $\phi = \Phi = \text{constant}$ and $\psi = 0$, so that $q=0$. The QGPV
 equation \eqref{macroturb} linearized about this state is trivial: $q_t =
 \lap\psiq_t = 0$, hence $\lap\psiq$ remains zero. Also,
