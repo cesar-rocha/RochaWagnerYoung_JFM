@@ -24,12 +24,16 @@
 % our packages
 
 
-\shorttitle{ Extraction of  energy from barotropic turbulence by near-inertial waves}
+%\shorttitle{ Extraction of  energy from barotropic turbulence by near-inertial waves}
+\shorttitle{Near-inertial waves extract energy from barotropic turbulence}
+
 \shortauthor{Cesar B. Rocha, Gregory L. Wagner, and William R Young}
 
-\title{Extraction of energy from barotropic turbulence by near-inertial waves:
-        freely-evolving flow}
+%\title{Extraction of energy from barotropic turbulence by near-inertial waves:
+%        freely-evolving flow}
 
+\title{Near-inertial waves extract energy from barotropic turbulence:
+              freely-evolving flow}
 \author{Cesar B. Rocha\aff{1}
   \corresp{\email{crocha@ucsd.edu}},
   Gregory L. Wagner\aff{2}
@@ -82,8 +86,8 @@
 \section{Introduction}
 
 % 1) The mesoscale energy conundrum: a recalcitrant problem
-Geostrophic turbulence transfers energy towards larger scales,
-obscuring the flow of energy from forcing to dissipative scales.
+The closing of the ocean's energy budget remains obscure, largely because
+geostrophic turbulence transfers energy towards large scales.
 Existing studies suggest a panoply
 of mechanisms to account for the required forward flow of energy. These include
 (but are not limited to) surface and
@@ -93,8 +97,8 @@ But roughly half of the energy flux out of the ocean mesoscales remains unaccoun
 
 % 2) Stimulated imbalance: a newish mechanism
 Recent studies suggest that the interaction
-between geostrophic flows with externally-forced (windy) internal waves provides
-a significant sink of mesoscale eddy energy
+between geostrophic flows with externally-forced (windy) internal waves serves
+as a major sink of mesoscale energy en route to viscous dissipation
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016}.
 The emphasis on interactions of geostrophic flow with windy internal waves ---
 here denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
@@ -116,14 +120,13 @@ ocean and in the interior \citep[e.g., ][]{xie_vanneste2015}.
 % 3) A minimal model of stimulated imbalance
 We here study the interaction between macroturbulence and internal waves using a
 simple model that contains stimulated imbalance. This minimal model is a special
-family of solutions of the \cite{xie_vanneste2015} that couples the evolution of
+family of solutions of the \cite{xie_vanneste2015} equations, which couples the evolution of
 the back-rotated velocity of near-inertial waves to quasigeostrophic flow. The
 focus on QG-NIW interactions is justified:  geostrophic eddies account for the
 bulk of the ocean's eddy kinetic energy \cite[$90\%$,][]{ferrari_wunsch2009} and
 near-inertial waves contain most of the oceanic high-frequency variability
-\citep{alford_etal2016}. The use of a minimal QG-NIW coupled model allows us to
-understand and characterize the physics of stimulated imbalance associated
-with vertical vorticity and lateral strain.
+\citep{alford_etal2016}. The minimal QG-NIW coupled model transparently reveals
+the physics of stimulated imbalance associated with vertical vorticity and lateral strain.
 
 \section{The physics of NIW energy extraction from a barotropic QG flow}
 
@@ -174,11 +177,12 @@ determine the flow: $\psi=\psi(x,y,t; q, \phi)$. Besides advection and refractio
 by the QG flow, these QG-NIW interactions imply a positive finite-amplitude
 frequency shift (Appendix A).
 
-The wave equation \eqref{waves} is similar to the $1\half$ layer, reduced gravity
+The wave equation \eqref{waves} is similar to the reduced gravity
 Young \& Ben Jelloul model derived by  \cite{danioux_etal2015}. Without advection,
 \eqref{waves} is analogous to Schrodinger's equation
-\citep[e.g.,][ pg. 51]{landau_lifshitz2013}, with the vorticity mimicking the
-potential and the dispersivity playing the role of Planck's constant
+\citep[e.g.,][ pg. 51]{landau_lifshitz2013}, with the vorticity playing the role
+of the
+potential and the dispersivity mimicking Planck's constant
 \citep{danioux_etal2015}.
 
 \subsection{Quadratic invariants and energy conversion}
@@ -322,7 +326,7 @@ imparted by wind into the NIW field \citep[e.g., ][]{alford2001}. Without furthe
 assumptions, it is unclear if the effect of refraction is sign definite. If the
 NIWs have initial larger scales than the geostrophic field, then refraction
 generates eddy-scale perturbations, implying a reduction of lateral coherence
-($\Pi > 0$). It remains unclear if this transfer can be parameterized as a linear
+($\Pi > 0$). But it remains unclear if this transfer can be parameterized as a linear
 damping.
 
 \subsection{Relevant parameters}
@@ -401,7 +405,7 @@ $\kappa$. The dipole is the first eigensolution, with eigenvalue $\kappa R \appr
 solution of \eqref{macroturb}. This is the case when a uniform $\phi$ is used as
 initial condition (Sections 3 and 4). Dipole images, an artefact of periodization,
 cause a small zonal drift of the dipole. This effect is negligible in our
-examples below because the dipole is confined to a region much smaller than
+examples below because the dipole is confined to a region much smaller than the
 domain size $L$: $R/L = 0.1$.
 
 While we perform the calculations with dimensional variables, we non-dimensionalize
@@ -524,9 +528,8 @@ wave terms, generalizes early ideas introduced by
 Using standard perturbation theory, \cite{wagner_young2016} contemporarily
 recovered and extended this coupled NIW-QG system.
 
-The special family of barotropic, f-plane QG flow, and uniform background
-stratification, single vertical mode NIW
-solutions $M_z = \phi(x,y)\ee^{\ii m z}$
+The special family of solutions with barotropic, f-plane QG flow, uniform background
+stratification, single vertical mode NIW, $M_z = \phi(x,y)\ee^{\ii m z}$,
 yields the reduced set of equations \eqref{macroturb}-\eqref{waves} used
 in this paper.
 
@@ -641,8 +644,7 @@ With the \eqref{q_qw} decomposition, the QGPV equation \eqref{macroturb} becomes
 \lap\psiq_t + \sJ(\psiq+\psiw,\lap\psiq) = 0\per
 \eeq
 In other words, the relative vorticity of the `vorticity-induced' flow changes
-due to advection by the total flow $\psiq+\psiw$. The wave amplitude $\phi$ can
-be rewritten as
+due to advection by the total flow $\psiq+\psiw$. The wave equation satisfies m
 \beq
 \label{waves2}
 \underbrace{\left(\p_t - \tfrac{\ii}{2} f_0\lambda^2\lap\right)\phi}_{\text{Lin.
@@ -674,7 +676,7 @@ To  study the non-linear wave effects, we linearize the QG-NIW equations  about
  the exact solution
 $\phi = \Phi = \text{constant}$ and $\psi = 0$, so that $q=0$. The QGPV
 equation \eqref{macroturb} linearized about this state is trivial: $q_t =
-\lap\psiq_t = 0$, hence $\lap\psiq$ remains zero. Also,
+\lap\psiq_t = 0$, thus $\lap\psiq$ remains zero. Also,
 \beq
 \label{lin_q}
 \lap\psiw = -\tfrac{\Phi}{2f_0}\lap\half(\phi + \phis)\com
