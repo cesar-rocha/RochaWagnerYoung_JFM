@@ -21,7 +21,7 @@ N = 0.01
 L = 2*np.pi*200e3
 λz = 280
 m = 2*np.pi/λz
-nu4, nu4w = 5e7, 5e6 # hyperviscosity
+nu4, nu4w = 5e7, 5e7 # hyperviscosity
 
 # initial conditions
 Ue = 1.e-1
