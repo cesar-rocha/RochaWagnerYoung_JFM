@@ -40,12 +40,12 @@ alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
 dt = .0025*Te
-tmax = 10*Te
+tmax = 20*Te
 
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,use_filter=False,
-                U =-Ue, tdiags=10,save_to_disk=True)
+                U =-Ue, tdiags=10,save_to_disk=True, path="outputs/LambDipole")
 
 # initial conditions
 q = ic.LambDipole(model, U=Ue,R = 2*np.pi/ke)
