@@ -17,16 +17,16 @@ plt.close('all')
 # parameters
 nx = 512
 f0 = 1.e-4
-N = 0.01
+N = 0.005
 L = 2*np.pi*200e3
-λz = 280
+λz = 325
 m = 2*np.pi/λz
 nu4, nu4w = 5e7, 5e7 # hyperviscosity
 
 # initial conditions
-Ue = 1.e-1
-Uw = 3*Ue
-ke = 10*(2*np.pi/L)
+Ue = 5.e-2
+Uw = 10*Ue
+ke = 15*(2*np.pi/L)
 Le = 2*np.pi/ke
 
 # relevant parameters
@@ -40,12 +40,13 @@ alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
 dt = .0025*Te
-tmax = 10*Te
+tmax = 15*Te
 
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,use_filter=False,
-                U =-Ue, tdiags=10,save_to_disk=True)
+                U =-Ue, tdiags=10,
+                save_to_disk=True,tsave_snapshots=20, path="output/LambdDipole")
 
 # initial conditions
 q = ic.LambDipole(model, U=Ue,R = 2*np.pi/ke)
