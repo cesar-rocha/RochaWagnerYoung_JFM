@@ -1,5 +1,5 @@
 """
-    Plots figure 2: energy time series, budgets,
+    Plots figure 1: energy time series, budgets,
                     wave-vorticity correlation
                     of the Lamb-Chapygin dipole solution.
 """
