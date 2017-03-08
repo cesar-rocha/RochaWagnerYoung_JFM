@@ -116,7 +116,7 @@ But roughly half of the energy flux out of the ocean mesoscales remains unaccoun
 
 % 2) Stimulated imbalance: a newish mechanism
 Recent studies suggest that the interaction
-between geostrophic flows with externally-forced (windy) internal waves serves
+of geostrophic flows with externally-forced (windy) internal waves serves
 as a major sink of mesoscale energy en route to viscous dissipation
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016}.
 The emphasis on interactions of geostrophic flow with windy internal waves ---
@@ -189,15 +189,16 @@ Similarly to the \cite{young_benjelloul1997} model, the NIW amplitude $\phi$
 evolves through wave dispersion --- the last term in \eqref{waves} --- and
 advection and refraction by the QG flow --- the second and third terms in
 \eqref{waves}. But the wave equation \eqref{waves} is non-linear owing to the
-quadratic wave terms in the \textit{inversion} relation \eqref{qgpv}. The
+quadratic wave terms in the \textit{inversion} relation \eqref{qgpv}. In other
+words, the
 \cite{young_benjelloul1997} NIW model is purely kinematic: the QG flow evolves as
 if there were no waves and set an inhomonegeous medium in which NIWs propagate.
-The \cite{xie_vanneste2015} model is dynamic because both $q$ and $\psi$
+But the \cite{xie_vanneste2015} model is dynamic because both $q$ and $\phi$
 determine the flow: $\psi=\psi(x,y,t; q, \phi)$. Besides advection and refraction
 by the QG flow, these QG-NIW interactions imply a positive finite-amplitude
 frequency shift (Appendix A).
 
-The wave equation \eqref{waves} is similar to the reduced gravity
+The wave equation \eqref{waves} is similar to the reduced-gravity
 Young \& Ben Jelloul model derived by  \cite{danioux_etal2015}. Without advection,
 \eqref{waves} is analogous to Schrodinger's equation
 \citep[e.g.,][ pg. 51]{landau_lifshitz2013}, with the vorticity playing the role
@@ -247,7 +248,7 @@ $\mathcal{A}$:
 \la\, f \ra \defn \frac{1}{\mathcal{A}}\iint\limits_{\mathcal{A}} f \,\dd x \dd y\per
 \eeq
 
-Also from \eqref{waves}, we form an equation for the NIW potential energy:
+Also from \eqref{waves}, we form an equation for the wave potential energy:
 $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 \eqref{waves}^\star\ra$ yields
 \beq
@@ -312,7 +313,8 @@ where $\Sf$ is the symmetric part of the geostrophic velocity gradient matrix,
 \eeq
 whose sum of the elements squared (the Frobenius norm) is commonly defined as the
 square of the QG rate of strain. Geostrophic straining enhances existing gradients
-of $\phi$, thereby generating wave potential energy, $P_w$. When the QG flow has a scale much larger than
+of $\phi$, thereby generating wave potential energy, $P_w$. When the QG flow has
+a lateral scale much larger than
 the NIW field, this distortion of $\phi$ is akin to the wave-capture
 mechanism of \cite{buhler_mcintyre2005}.
 
@@ -330,9 +332,12 @@ satisfies
 \label{phi_ave}
 \frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra = 0\per
 \eeq
-Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have $\la|\phi|^2\ra
-= |\la\phi\ra|^2 +
-\la|\phi'|^2\ra = 2(K_w^c + K_w^i)$.
+Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have
+\beq
+\half\la|\phi|^2\ra
+= \underbrace{\half|\la\phi\ra|^2}_{\defn K^c_w} +
+\underbrace{\half\la|\phi'|^2\ra}_{\defn K^i_w}\com
+\eeq
 Thus, the kinetic energy of horizontally incoherent ($\phi'$) and coherent
 ($\la\phi\ra$) NIW amplitude satisfy
 \beq
@@ -373,7 +378,8 @@ described by \eqref{macroturb}-\eqref{waves}. First, the `wave amplitude'
 \alpha \defn \underbrace{\frac{U_e k_e}{f_0}}_{\defn Ro} \times
 \underbrace{\left(\frac{U_w}{U_e}\right)^2}_{\defn \ep^2}\com
 \eeq
-scales the contribution of the NIW terms to the QGPV.
+measures the strenght of the waves compared to the geostrophic flow and scales
+the contribution of the NIW terms to the QGPV.
 Second, the `wave dispersivity,'
 \beq
 \label{hslash}
@@ -391,7 +397,7 @@ and dispersivity: the scales deloveped by the NIW amplitude field $\phi$ and the
 
 \subsection{Summary}
 We can summarize the physics of stimulated imbalance considering an initial value
-problem that idealizes the oceanographic `after-storm' context: stormy winds impart momentum
+problem that idealizes the oceanographic `post-storm' context: stormy winds impart momentum
 into the ocean, thereby generating near-inertial oscillations with a lateral
 decorrelation scale larger than the mesoscale eddies. The after-storm evolution
 of an initially large-scale coherent inertial oscillation is described by
@@ -459,25 +465,26 @@ r \defn \frac{\left\la |\phi'|^2\,\lap\psi\right\ra}{
 
 \begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{figs/fig1.png}
-\caption{Statistics for Lamb-Chaplygin dipole solution with $\hslash \approx 1$
+\includegraphics[width=.925\textwidth]{figs/fig1.png}
+\caption{Snapshots of the Lamb-Chaplygin dipole solution with $\hslash \approx 1$
         and $\alpha \approx 3.75$. Colors represent wave kinetic energy density,
          $|\phi'|^2/U_w^2$.
-        Lines represent potential vorticity contours, $q\times U_e k_e = [
-        -1.5,-0.5,1.5,0.5]$, with dashed lines showing negative values.}
+        Contours represent potential vorticity, $q\times U_e k_e = [
+        -1.5,-0.5,1.5,0.5]$, with dashed lines showing negative values.
+        These plots only show the central $\tfrac{1}{5}\times\tfrac{1}{5}$
+        subdomain.}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=1.\textwidth]{figs/fig2.pdf}
-\caption{Statistics for Lamb-Chaplygin dipole solution with $\hslash \approx 1$
+\caption{Statistics of the Lamb-Chaplygin dipole solution with $\hslash \approx 1$
         and $\alpha \approx 3.75$. (a) Energy change about initial condition.
         (b) Wave potential energy budget \eqref{Pw}. (c) Incoherent wave kinetic
         energy budget \eqref{Kiw}. (d) Coeficient of correlation between
         incoherent wave
         kinetic energy and relative vorticity \eqref{corr_r}.
-        Only the central $\tfrac{1}{5}\times\tfrac{1}{5}$ reguib of the domain
-        is shown.}
+        }
 \end{figure}
 
 \section{Decaying Macroturbulence}
@@ -504,7 +511,7 @@ $U_e^2/2$ determines the constant C:
 \label{ke_init}
 \sum_{k,l} \underbrace{|k|^2 |\hat{\psi}|^2}_{\defn \cK_e} = \tfrac{1}{2}U_e^2\per
 \eeq
-The kinetic energy spectrum $\cK_e$ peaks at energy-containing scale $k_e^{-1}$.
+The kinetic energy spectrum $\cK_e$ peaks at the energy-containing scale $k_e^{-1}$.
 At scales smaller than $k_e^{-1}$, $\cK_e$ has a linear dependence in $|k|$,
 whereas it decays as $|k|^{-3}$ at scales larger than $k_e^{-1}$. This red spectrum
 ensures insignificant energy dissipation by the biharmonic viscosity added to
@@ -781,6 +788,29 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
 \citep[details in][]{kassam_trefethen2005}.
 
 \subsection{Parameters}
+
+\begin{table}
+ \begin{center}
+   \caption{Description of parameters of Lamb-Chaplygin simulation.}
+   \label{parameters_lamb}
+   \begin{tabular}{ c | c | c }
+     \hline
+      Parameter & Description & Value\\
+      \hline
+      $\mathsf{N}$   & Number of modes &  512 \\
+      $L_d$ & Domain size & $2\pi\times 200$ km \\
+      $2\pi k_e^{-1}$ & Dipole radius & $L/15 \approx 84$ km \\
+      $U_e$ & Dipole strength & $5\times 10^{-2}$ m s$^{-1}$ \\
+      $U_w$ & NIW speed & $5\times 10^{-1}$ m s$^{-1}$ \\
+      $N_0$ & Buoyancy frequency & $5 \times 10^{-3}$ s$^{-1}$\\
+      $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
+      $2\pi$m$^{-1}$ & NIW vertical wavelength & $325$ m \\
+      $\nu_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$ m$^4$ s$^{-1}$\\
+      $\nu_w$ & NIW biharmonic viscosity & $ 5 \times 10^{7}$ m$^4$ s$^{-1}$\\
+   \end{tabular}
+ \end{center}
+\end{table}
+
 
 %\begin{table}
 %  \begin{center}
