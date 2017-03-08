@@ -1,5 +1,7 @@
 """
-    Plots figure 1.
+    Plots figure 2: energy time series, budgets,
+                    wave-vorticity correlation
+                    of the Lamb-Chapygin dipole solution.
 """
 
 import h5py
