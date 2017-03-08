@@ -87,3 +87,4 @@ for fni in files:
 fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.85, 0.21, 0.0275, 0.55])
 fig.colorbar(im, cax=cbar_ax,label=r"Wave kinetic energy density $[|\phi|^2/U_w^2]$")
+plt.savefig(patho+"fig1.pdf", bbox_inches='tight')
