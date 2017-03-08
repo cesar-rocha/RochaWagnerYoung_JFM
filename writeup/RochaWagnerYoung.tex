@@ -16,12 +16,29 @@
 \newtheorem{corollary}{Corollary}
 
 % our colors
-\usepackage{xcolor}
+\usepackage[usenames,dvipsnames]{xcolor}
 \colorlet{cesar}{red}
 \colorlet{greg}{green}
 \colorlet{bill}{blue}
 
 % our packages
+\usepackage{showlabels}
+
+% hyperref
+\usepackage{hyperref}
+\hypersetup{
+        %draft,
+        breaklinks=true,
+        colorlinks=true,
+        linkcolor=blue,
+        citecolor=Purple,
+        urlcolor=Purple,
+        pdfstartview={FitH},
+        pdfview={FitH 0},
+        pdfauthor={Cesar B. Rocha},
+        pdftitle={NIWs extract energy from barotropic turbulence},
+ }
+
 
 
 %\shorttitle{ Extraction of  energy from barotropic turbulence by near-inertial waves}
@@ -73,6 +90,8 @@
 %\newcommand{\tfrac}{\frac}
 %\newcommand{\eqref}{\ref}
 
+
+
 \maketitle
 
 \begin{abstract}
@@ -120,13 +139,14 @@ ocean and in the interior \citep[e.g., ][]{xie_vanneste2015}.
 % 3) A minimal model of stimulated imbalance
 We here study the interaction between macroturbulence and internal waves using a
 simple model that contains stimulated imbalance. This minimal model is a special
-family of solutions of the \cite{xie_vanneste2015} equations, which couple the evolution of
-the back-rotated velocity of near-inertial waves to quasigeostrophic flow. The
+family of solutions of the \cite{xie_vanneste2015} equations, which couple the
+evolution of near-inertial back-rotated velocity with quasigeostrophic flow. The
 focus on QG-NIW interactions is justified:  geostrophic eddies account for the
 bulk of the ocean's eddy kinetic energy \cite[$90\%$,][]{ferrari_wunsch2009} and
 near-inertial waves contain most of the oceanic high-frequency variability
 \citep{alford_etal2016}. The minimal QG-NIW coupled model transparently reveals
 the physics of stimulated imbalance associated with vertical vorticity and lateral strain.
+
 
 \section{The physics of NIW energy extraction from a barotropic QG flow}
 
@@ -135,7 +155,7 @@ the physics of stimulated imbalance associated with vertical vorticity and later
 With barotropic quasigeostrophic flow, $\psi=\psi(x,y,t)$,
 uniform background buoyancy frequency $N_0$, and
 single-mode NIW vertical structure, $\ee^{\ii m z}$, the \cite{xie_vanneste2015}
-QG-NIW coupled model reduces to
+QG-NIW coupled model (Appendix A) reduces to
 \beq
 \label{macroturb}
 q_t + \sJ(\psi,q) = 0\com
@@ -157,12 +177,12 @@ $(u_e, v_e) = (-\psi_y, \psi_x)$; and
 with NIW velocity
 \beq
 \label{niw_velocity}
-u_w+\ii v_w  = \phi(x,y,t)\,\ee^{\ii (m z - f_0 t)}\per
+u_w+\ii v_w  =\ee^{\ii (m z - f_0 t)} \phi(x,y,t)\per
 \eeq
 Above,
 $\phi$ is the back-rotated NIW
 velocity, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal laplacian,
-$J(f,g)=f_x g_y - f_y g_x$ is the horizontal Jacobian, and
+$\sJ(f,g)=f_x g_y - f_y g_x$ is the horizontal Jacobian, and
 $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale.
 
 Similarly to the \cite{young_benjelloul1997} model, the NIW amplitude $\phi$
@@ -214,7 +234,7 @@ wave flux of kinetic energy density $\half|\phi|^2$, where $f_0\lambda^2\grad\Th
 velocity of hydrostratic NIWs, which can be quickly verified under the plane-wave
 assumption $\Theta = kx + ly$.
 
-With simple boundary conditions, e.g., periodic or no normal flux, the NIW-QG
+With simple boundary conditions, e.g., periodic or no normal flux, the QG-NIW
 model \eqref{macroturb}-\eqref{waves} conserves NIW kinetic energy
 \beq
 \label{action}
@@ -244,15 +264,16 @@ and \eqref{waves} gives
 \beq
 \label{Ke}
 \frac{\dd}{\dd t}\underbrace{\la\half |\grad \psi|^2\ra}_{\defn K_e} =
- - \Gamma \com
+ - (\Gamma_r + \Gamma_a) \com
 \eeq
-thus proving the conservation of the energy
+thus proving that the QG-NIW model \eqref{macroturb}-\eqref{waves} conserves
+the coupled energy
 \beq
 \label{E}
 E \defn K_e + P_w\per
 \eeq
-In \eqref{Ke}, $\Gamma =
-\Gamma_r + \Gamma_a$ is the energy conversion between QG kinetic energy and
+In \eqref{Ke},
+$\Gamma_r + \Gamma_a$ is the energy conversion between QG kinetic energy and
 wave potential energy.
 The term $\Gamma_r$   stems from refraction and is easy to
 interpret: the convergence, $\nabla\cdot\Ff_w < 0$, of the wave flux of NIW kinetic energy density
@@ -313,7 +334,16 @@ Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have $\la|\phi|^2\ra
 = |\la\phi\ra|^2 +
 \la|\phi'|^2\ra = 2(K_w^c + K_w^i)$.
 Thus, the kinetic energy of horizontally incoherent ($\phi'$) and coherent
-($\la\phi\ra$) NIW amplitude satisfy $\dot{K}_w^i = \Pi$ and $\dot{K}_w^c = -\Pi$,
+($\la\phi\ra$) NIW amplitude satisfy
+\beq
+\label{Kiw}
+\dot{K}_w^i = \Pi\com
+\eeq
+and
+\beq
+\label{Kcw}
+\dot{K}_w^c = -\Pi\com
+\eeq
 with the kinetic energy transfer
 \beq
 \label{Pi}
@@ -417,8 +447,26 @@ perfectly  coherent) near-inertial oscillation with speed $U_w$:
 \phi(x,y,t=0) = \tfrac{1 + \ii}{\sqrt{2}}\, U_w\per
 \eeq
 
+\subsection{Solution for $\hslash \approx 1$ and $\alpha \approx 3.75$}
 
-%\subsection{A wave packet}
+The wave concentration in anticylones is quantified by the correlation coefficient
+\citep[e.g., ][]{danioux_etal2015}
+\beq
+\label{C}
+r \defn \frac{\left\la \lap\psi\,|\phi'|^2\right\ra}{\left\la (\lap \psi)^2
+\right\ra^{1/2}\left\la |\phi'|^4\right\ra^{1/2}}\per
+\eeq
+
+\begin{figure}
+\centering
+\includegraphics[width=1.\textwidth]{figs/fig1.pdf}
+\caption{Statistics for Lamb-Chaplygin dipole solution with $\hslash \approx 1$
+        and $\alpha \approx 3.75$. (a) Energy change about initial condition.
+        (b) Wave potential energy budget \eqref{Pw}. (c) Incoherent wave kinetic
+        energy budget \eqref{Kiw}. (d) Coeficient of correlation between
+        incoherent wave kinetic energy and relative vorticity \eqref{C}.}
+\end{figure}
+
 
 \section{Decaying Macroturbulence}
 
@@ -432,8 +480,8 @@ In other words, we first integrate the initial condition
 \chi_{k,l}\right)
 \eeq
 with waveless QG dynamics before introducing waves at $t\times U_e k_e = 0$.
-In \ref{psi_init}, $\chi$ is a random $[0, 2\pi)$ phase prescribed at every wavevector
-$(k,l)$ and $|\hat\psi|$ is the isotropic spectrum
+In \ref{psi_init}, $\chi_{k,l}$ is a random phase, uniformly distributed on $[0, 2\pi)$,
+ and $|\hat\psi|$ is the isotropic spectrum
 \beq
 \label{psih_mag}
 |\hat{\psi}| = C \times \big\{|k|\,[1 + (|k|/k_e)^4]\big\}^{-1/2}\com
@@ -450,7 +498,7 @@ whereas it decays as $|k|^{-3}$ at scales larger than $k_e^{-1}$. This red spect
 ensures insignificant energy dissipation by the biharmonic viscosity added to
  \eqref{macroturb} to absorb the forward cascade of enstrophy (Appendix B).
 
- The evolution of the initial condition \eqref{psi_init} constrained by the inviscid
+ The evolution of a random initial condition constrained by the inviscid
  dynamics \eqref{macroturb} has been well studied, beginning with \cite{fornberg1977}.
  Stirring of vorticity $\lap \psi$ by the flow $\psi$ transfers enstrophy towards
  small scales; energy flows to large
@@ -496,7 +544,7 @@ on a strongly stratified upper-ocean $N_0/f_0 = 100$ yields a dispersivity
 \section{Details of the QG-NIW model}
 
 \subsection{The \cite{xie_vanneste2015} model}
-\cite{xie_vanneste2015} derive the NIW-QG model using a variational formulation
+\cite{xie_vanneste2015} derive the QG-NIW model using a variational formulation
 of the generalized Lagrangian mean (GLM) framework with Whitham averaging.
 Following \cite{young_benjelloul1997}, Xie \& Vanneste write the
 NIW velocity in complex form
@@ -526,10 +574,10 @@ wave terms, generalizes early ideas introduced by
  \cite{buhler_mcintyre1998}  to a setup that avoids spatial scale separation between
  geostrophic flow and waves, but restricts attention to near-inertial frequencies.
 Using standard perturbation theory, \cite{wagner_young2016} contemporarily
-recovered and extended this coupled NIW-QG system.
+recovered and extended this coupled QG-NIW system.
 
 The special family of solutions with barotropic, f-plane QG flow, uniform background
-stratification, single vertical mode NIW, $M_z = \phi(x,y)\ee^{\ii m z}$,
+stratification, and single vertical mode NIW, $M_z = \ee^{\ii m z}\phi(x,y)$,
 yields the reduced set of equations \eqref{macroturb}-\eqref{waves} used
 in this paper.
 
@@ -632,7 +680,7 @@ in this paper.
 
 \subsection{Wave self-interaction and frequency shift}
 To gain further insight into the dynamics, we decompose the balanced flow
-into `vorticity-induced' and `wave-induced' fields, $\psi = \psiq + \psiw$, with
+into `vorticity-induced' and `wave-induced' fields, $\psi = \psiq + \psiw$, where
 \beq
 \label{q_qw}
     \lap\psiq = q\com\qquad\text{and}\qquad \lap\psiw =-\frac{1}{4f_0}\lap|\phi|^2
@@ -644,7 +692,7 @@ With the \eqref{q_qw} decomposition, the QGPV equation \eqref{macroturb} becomes
 \lap\psiq_t + \sJ(\psiq+\psiw,\lap\psiq) = 0\per
 \eeq
 In other words, the relative vorticity of the `vorticity-induced' flow changes
-due to advection by the total flow $\psiq+\psiw$. The wave equation satisfies m
+due to advection by the total flow $\psiq+\psiw$. The wave equation satisfies
 \beq
 \label{waves2}
 \underbrace{\left(\p_t - \tfrac{\ii}{2} f_0\lambda^2\lap\right)\phi}_{\text{Lin.
@@ -708,7 +756,7 @@ and we conclude that the wave self-interaction shifts the frequency by
 \section{Details of the initial value problems}
 
 \subsection{Numerical methods}
-We solve the NIW-QG system \eqref{macroturb}-\eqref{waves} using a standard
+We solve the QG-NIW system \eqref{macroturb}-\eqref{waves} using a standard
 collocation Fourier spectral method.
 In the pseudo-spectral spirit, we evaluate  the quadratic non-linearities in
 physical space, and transform the product into Fourier space. For small-scale
