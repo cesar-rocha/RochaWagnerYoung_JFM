@@ -28,9 +28,13 @@ def save_parameters(model):
     h5file.close()
 
 
-def plot_fig_label(ax, xc=.95, yc=0.075 ,label="a"):
+def plot_fig_label(ax, xc=.95, yc=0.075 ,label="a",boxstyle='circle',
+                        facecolor='white',edgecolor=None,color=None,alpha=1.):
     """ Plot label numbering for multi-panel figures """
-    plt.text(0.95, 0.1,label,
+    plt.text(xc, yc,label,
                 horizontalalignment='center',
                 verticalalignment='center',
-                transform = ax.transAxes,bbox=dict(boxstyle='circle',facecolor='white'))
+                transform = ax.transAxes,bbox=dict(boxstyle=boxstyle,
+                                                    facecolor=facecolor,
+                                                    edgecolor=edgecolor,
+                                                    alpha=alpha))
