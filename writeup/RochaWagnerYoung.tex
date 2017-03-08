@@ -452,21 +452,33 @@ perfectly  coherent) near-inertial oscillation with speed $U_w$:
 The wave concentration in anticylones is quantified by the correlation coefficient
 \citep[e.g., ][]{danioux_etal2015}
 \beq
-\label{C}
-r \defn \frac{\left\la \lap\psi\,|\phi'|^2\right\ra}{\left\la (\lap \psi)^2
-\right\ra^{1/2}\left\la |\phi'|^4\right\ra^{1/2}}\per
+\label{corr_r}
+r \defn \frac{\left\la |\phi'|^2\,\lap\psi\right\ra}{
+\left\la |\phi'|^4\right\ra^{1/2} \left\la (\lap \psi)^2\right\ra^{1/2}}\per
 \eeq
 
 \begin{figure}
 \centering
-\includegraphics[width=1.\textwidth]{figs/fig1.pdf}
+\includegraphics[width=.9\textwidth]{figs/fig1.png}
+\caption{Statistics for Lamb-Chaplygin dipole solution with $\hslash \approx 1$
+        and $\alpha \approx 3.75$. Colors represent wave kinetic energy density,
+         $|\phi'|^2/U_w^2$.
+        Lines represent potential vorticity contours, $q\times U_e k_e = [
+        -1.5,-0.5,1.5,0.5]$, with dashed lines showing negative values.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.\textwidth]{figs/fig2.pdf}
 \caption{Statistics for Lamb-Chaplygin dipole solution with $\hslash \approx 1$
         and $\alpha \approx 3.75$. (a) Energy change about initial condition.
         (b) Wave potential energy budget \eqref{Pw}. (c) Incoherent wave kinetic
         energy budget \eqref{Kiw}. (d) Coeficient of correlation between
-        incoherent wave kinetic energy and relative vorticity \eqref{C}.}
+        incoherent wave
+        kinetic energy and relative vorticity \eqref{corr_r}.
+        Only the central $\tfrac{1}{5}\times\tfrac{1}{5}$ reguib of the domain
+        is shown.}
 \end{figure}
-
 
 \section{Decaying Macroturbulence}
 
@@ -480,7 +492,7 @@ In other words, we first integrate the initial condition
 \chi_{k,l}\right)
 \eeq
 with waveless QG dynamics before introducing waves at $t\times U_e k_e = 0$.
-In \ref{psi_init}, $\chi_{k,l}$ is a random phase, uniformly distributed on $[0, 2\pi)$,
+In \ref{psi_init}, $\chi_{k,l}$ is a random phase uniformly distributed on $[0, 2\pi)$,
  and $|\hat\psi|$ is the isotropic spectrum
 \beq
 \label{psih_mag}
