@@ -98,4 +98,4 @@ plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
 plt.ylim(-0.8,0.8)
 plot_fig_label(ax, label="d")
 
-plt.savefig(patho+"fig1.pdf", bbox_inches='tight')
+plt.savefig(patho+"fig2.pdf", bbox_inches='tight')
