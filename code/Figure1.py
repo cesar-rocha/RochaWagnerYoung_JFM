@@ -1,5 +1,5 @@
 """
-    Plots figure 2: snapshots vorticity and near-inertial
+    Plots figure 1: snapshots vorticity and near-inertial
                     kinetic energy density of the Lamb-Chapygin dipole solution.
 """
 
@@ -27,8 +27,12 @@ x, y = setup['grid/x'][:]*ke/(2*np.pi), setup['grid/y'][:]*ke/(2*np.pi)
 x -= x.mean()
 y -= y.mean()
 
-files = ['000000000016667.h5', '000000001333333.h5',
+#files = ['000000000016667.h5', '000000001333333.h5',
+#            '000000002666667.h5', '000000008000000.h5']
+
+files = ['000000000016667.h5', '000000000900000.h5',
             '000000002666667.h5', '000000008000000.h5']
+
 
 def plot_snapshot(fig, snap, panel = 1):
     """ Plot snapshot of vorticity and
