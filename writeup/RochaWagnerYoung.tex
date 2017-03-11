@@ -124,12 +124,12 @@ here denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
 \cite{wagner_young2016} we define
 \textit{stimulated imbalance} as wave-mean interactions that transfer energy from
 geostrophic motions (the `mean flow') to existing internal
-waves. This definition constrats with the nomenclarute recently employed by
+waves. This definition contrasts with the nomenclature recently employed by
 \cite{barkan_etal2016}, who term stimulated imbalance a process by which
 internal waves trigger a forward cascade from mesoscale to submesoscale (but
 subinertial) flows.} ---
-contrasts with energy loss via spontaneous emission --- a process by which
-internal waves are emitted during geostrophic adjustment
+contrasts with energy loss via spontaneous emission --- a process
+by which internal waves are emitted during geostrophic adjustment
 \citep[e.g., ][]{shakespeare_hogg2017}. While spontaneous emission is localized
 at sharp fronts (large Rossby number, $\Ro\gtrsim 1$) in the surface boundary
 layer \citep[e.g., ][]{shakespeare_hogg2017}, stimulated imbalance operates at
@@ -137,10 +137,11 @@ the small Rossby-number ($\Ro\ll 1$), quasi-geostrophic regime, both in the uppe
 ocean and in the interior \citep[e.g., ][]{xie_vanneste2015}.
 
 % 3) A minimal model of stimulated imbalance
-We here study the interaction between macroturbulence and internal waves using a
+With the goal of understanding the physical mechanisms of energy extraction from
+barotropic flow by existing internal waves, we here analyze a
 simple model that contains stimulated imbalance. This minimal model is a special
 family of solutions of the \cite{xie_vanneste2015} equations, which couple the
-evolution of near-inertial back-rotated velocity with quasigeostrophic flow. The
+evolution of near-inertial waves (NIWs) with quasigeostrophic (QG) flow. The
 focus on QG-NIW interactions is justified:  geostrophic eddies account for the
 bulk of the ocean's eddy kinetic energy \cite[$90\%$,][]{ferrari_wunsch2009} and
 near-inertial waves contain most of the oceanic high-frequency variability
@@ -182,8 +183,9 @@ u_w+\ii v_w  =\ee^{\ii (m z - f_0 t)} \phi(x,y,t)\per
 Above,
 $\phi$ is the back-rotated NIW
 velocity, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal laplacian,
-$\sJ(f,g)=f_x g_y - f_y g_x$ is the horizontal Jacobian, and
-$\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale.
+$\sJ(f,g)=f_x g_y - f_y g_x$ is the horizontal Jacobian,
+$\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale and
+the superscript star $^\star$ denotes complex conjugation.
 
 Similarly to the \cite{young_benjelloul1997} model, the NIW amplitude $\phi$
 evolves through wave dispersion --- the last term in \eqref{waves} --- and
@@ -192,7 +194,7 @@ advection and refraction by the QG flow --- the second and third terms in
 quadratic wave terms in the \textit{inversion} relation \eqref{qgpv}. In other
 words, the
 \cite{young_benjelloul1997} NIW model is purely kinematic: the QG flow evolves as
-if there were no waves and set an inhomonegeous medium in which NIWs propagate.
+if there were no waves and set an inhomogeneous medium in which NIWs propagate.
 But the \cite{xie_vanneste2015} model is dynamic because both $q$ and $\phi$
 determine the flow: $\psi=\psi(x,y,t; q, \phi)$. Besides advection and refraction
 by the QG flow, these QG-NIW interactions imply a positive finite-amplitude
@@ -201,9 +203,9 @@ frequency shift (Appendix A).
 The wave equation \eqref{waves} is similar to the reduced-gravity
 Young \& Ben Jelloul model derived by  \cite{danioux_etal2015}. Without advection,
 \eqref{waves} is analogous to Schrodinger's equation
-\citep[e.g.,][ pg. 51]{landau_lifshitz2013}, with the vorticity playing the role
-of the
-potential and the dispersivity mimicking Planck's constant
+\citep[e.g.,][ pg. 51]{landau_lifshitz2013}, with the vorticity, $\lap\psi$,
+playing the role of the
+potential and the dispersivity, $f_0\lambda^2$, mimicking Planck's constant
 \citep{danioux_etal2015}.
 
 \subsection{Quadratic invariants and energy conversion}
@@ -232,14 +234,14 @@ f_0 \lambda^2\grad\Theta \times
 The expression on the right of \eqref{Fw2} makes it explicit that $\Ff_w$ is a
 wave flux of kinetic energy density $\half|\phi|^2$, where $f_0\lambda^2\grad\Theta
 = \tfrac{N^2_0}{f_0 m^2}\grad\Theta$ is the generalized group
-velocity of hydrostratic NIWs, which can be quickly verified under the plane-wave
+velocity of hydrostatic NIWs, which can be quickly verified under the plane-wave
 assumption $\Theta = kx + ly$.
 
 With simple boundary conditions, e.g., periodic or no normal flux, the QG-NIW
 model \eqref{macroturb}-\eqref{waves} conserves NIW kinetic energy
 \beq
 \label{action}
-K_w \defn \half \la |\phi|^2 \ra\com
+\frac{\dd}{\dd t} \underbrace{\half \la |\phi|^2 \ra}_{\defn K_w}\com
 \eeq
 where angle brackets, $\la \,\,\ra$, represent average over the domain of area
 $\mathcal{A}$:
@@ -253,15 +255,15 @@ $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 \eqref{waves}^\star\ra$ yields
 \beq
 \label{Pw}
-\frac{\dd}{\dd t}\underbrace{\la\tfrac{\lambda^2}{4}|\grad \phi|^2\ra}_{P_w} =
+\frac{\dd}{\dd t}\underbrace{\la\tfrac{\lambda^2}{4}|\grad \phi|^2\ra}_{\defn P_w} =
 \underbrace{\tfrac{1}{f_0}\Big\la\half\lap\psi\diver\Ff_w
 \Big\ra}_{\defn\Gamma_{r}} +
 \underbrace{\tfrac{\lambda^2}{2}\, \Big\la\half\left[\lap\phis\sJ(\psi,\phi)
 + \lap\phi\sJ(\psi,\phis)\right]\Big\ra}_{\defn\Gamma_a}\per
 \eeq
 Finally, we form an equation for the QG kinetic energy, $K_e$: $\la\psi\times
-\eqref{macroturb}\ra$ in combination with \eqref{qgpv}, \eqref{action_density},
-and \eqref{waves} gives
+\eqref{macroturb}\ra$, with \eqref{qgpv}, \eqref{action_density},
+\eqref{waves}, and multipliple integration by parts, give
 \beq
 \label{Ke}
 \frac{\dd}{\dd t}\underbrace{\la\half |\grad \psi|^2\ra}_{\defn K_e} =
@@ -284,11 +286,12 @@ energy, $P_w$.
 The term $\Gamma_a$ stems from advection and is similar to the source
 of variance of a trace gradient subject to lateral stirring,
 \beq
+\label{c_t}
 c_t + \sJ(\psi,c) = 0.
 \eeq
-The variance production of passive scalar gradient, $\la |\grad c|^2\ra$, is
-$\la\lap c \sJ(\psi,c)\ra$. Analogously,
-$\Gamma_a$ is the source of NIW potential energy due to geostrophic
+From \eqref{c_t}, we deduce that $\la\lap c \sJ(\psi,c)\ra$ is the
+variance production of passive scalar gradient, $\la |\grad c|^2\ra$.
+Analogously, $\Gamma_a$ is the source of wave potential energy due to geostrophic
 stirring.  After multiple
 integration by parts, we rewrite this term as
 \beq
@@ -312,7 +315,7 @@ where $\Sf$ is the symmetric part of the geostrophic velocity gradient matrix,
 \end{bmatrix}\,\com
 \eeq
 whose sum of the elements squared (the Frobenius norm) is commonly defined as the
-square of the QG rate of strain. Geostrophic straining enhances existing gradients
+square of the QG rate of strain. Hence, geostrophic straining enhances existing gradients
 of $\phi$, thereby generating wave potential energy, $P_w$. When the QG flow has
 a lateral scale much larger than
 the NIW field, this distortion of $\phi$ is akin to the wave-capture
@@ -376,9 +379,9 @@ described by \eqref{macroturb}-\eqref{waves}. First, the `wave amplitude'
 \beq
 \label{alpha}
 \alpha \defn \underbrace{\frac{U_e k_e}{f_0}}_{\defn Ro} \times
-\underbrace{\left(\frac{U_w}{U_e}\right)^2}_{\defn \ep^2}\com
+{\left(\frac{U_w}{U_e}\right)^2}\com
 \eeq
-measures the strenght of the waves compared to the geostrophic flow and scales
+measures the strength of the waves compared to the geostrophic flow and scales
 the contribution of the NIW terms to the QGPV.
 Second, the `wave dispersivity,'
 \beq
@@ -391,7 +394,7 @@ effects of advection and refraction.
 Also, the two conversion terms, $\Gamma_r$ and $\Gamma_a$,
 scale with the same non-dimensional parameter $\alpha\times \hslash$. But this
 does not imply that the energy conversion scales linearly with both wave amplitude
-and dispersivity: the scales deloveped by the NIW amplitude field $\phi$ and the
+and dispersivity: the scales developed by the NIW amplitude field $\phi$ and the
  correlations in $\Gamma$ depend on $\alpha$ and $\hslash$
 
 
@@ -409,7 +412,7 @@ of NIWs --- and wave dispersion counteracts this unsmoothing effect.
 The explicit expression for energy
 conversion on the right of \eqref{Pw} enlightens the physics of  the problem.
 Refraction causes a convergence of NIW kinetic energy density in anticyclones.
-And advection strains the NIW field, enhancing the gradients of $\phi$. Both
+And advection strains the NIW field, enhancing gradients of $\phi$. Both
 processes generate NIW potential energy at the expenses of geostrophic kinetic
 energy, thus motivating the nomenclature `refraction sink' ($-\Gamma_r$) and
 `advection sink' ($-\Gamma_a$)  of QG kinetic energy.
@@ -439,10 +442,7 @@ function of first kind. The matching condition at $r=R$, $J_1(\kappa R)=0$, dete
 $\kappa$. The dipole is the first eigensolution, with eigenvalue $\kappa R \approx
 3.8287$.  If the wave QGPV is zero, then the dipole \eqref{lambd_q} is a
 solution of \eqref{macroturb}. This is the case when a uniform $\phi$ is used as
-initial condition (Sections 3 and 4). Dipole images, an artefact of periodization,
-cause a small zonal drift of the dipole. This effect is negligible in our
-examples below because the dipole is confined to a region much smaller than the
-domain size $L$: $R/L = 0.1$.
+initial condition (Sections 3 and 4).
 
 While we perform the calculations with dimensional variables, we non-dimensionalize
 the results for clarity. For the dipole \eqref{lambd_q}, we use  $U_e = U$ and
@@ -453,35 +453,99 @@ perfectly  coherent) near-inertial oscillation with speed $U_w$:
 \phi(x,y,t=0) = \tfrac{1 + \ii}{\sqrt{2}}\, U_w\per
 \eeq
 
-\subsection{Solution for $\hslash \approx 1$ and $\alpha \approx 3.75$}
+\subsection{Parameter inspired by the Ocean Storms Experiment}
+The Lamb-Chaplygin dipole provides a compact and weak vortex flow. Inspired by
+the Ocean Storms Experiments \citep{dasaro1995}, we choose $U_e =
+5\times 10^{-2}$ m s$^{-1}$, $R = 2\pi/k_e = 84$ km, and $f_0= 10^{-4}$ s$^{-1}$
+($\sim 45^\circ$N), which gives $\Ro \approx 3.75\times 10^{-2}$. Strong storm
+over weak mesoscale flow generates strong near-inertial currents \citep{dasaro1995}.
+Choosing $U_w = 10\times U_e = 10^{-1}$m s$^{-1}$ yields a wave amplitude
+$\alpha\approx 3.75$. A NIW with a typical vertical wavelength, $2\pi/m = 325$ m,
+on a moderately-stratified upper-ocean, $N= 50 \times f_0 = 5\times 10^{-3}$
+s$^{-1}$, yields a moderate dispersivity  $\hslash \approx 1$.
 
-The wave concentration in anticylones is quantified by the correlation coefficient
-\citep[e.g., ][]{danioux_etal2015}
+\subsection{Solution for $\hslash \approx 1$ and $\alpha \approx 3.75$}
+We solve the QG-NIW system \eqref{macroturb}-\eqref{waves} subject to the
+initial conditions \eqref{lambd_q} and \eqref{NIO} and the parameters inspired
+by the Ocean Storms Experiment. We integrate the solutions numerically
+ for $30$ eddy-turnover time units,
+$30\times (U_e k_e)^{-1}\approx 90$ days, on a
+doubly periodic domain using standard Fourier pseudo-spectral methods (Appendix B).
+Dipole images, an artifact of periodization,
+cause a small zonal drift of the dipole. To render this effects negligible, we
+choose a domain size much larger than the dipole's radius, $R/L \approx 0.06$.
+Table B.1 provides a full description of solution parameters.
+
+
+Because the initial NIW wave amplitude is laterally uniform, refraction dominates
+the initial evolution of the solution.
+Indeed, the solution presents a dramatic wave concentration
+in the anticyclone and wave expulsion from the cyclone in the first couple of
+eddy turnover time units, $(U_e k_e)^{-1}$. After $5 \times (U_e k_e)^{-1}$, there
+is a threefold modulation of the wave kinetic energy density on eddy scales
+(Figure \ref{snaps_lamb}). The  correlation coefficient
 \beq
 \label{corr_r}
 r \defn \frac{\left\la |\phi'|^2\,\lap\psi\right\ra}{
-\left\la |\phi'|^4\right\ra^{1/2} \left\la (\lap \psi)^2\right\ra^{1/2}}\per
+\left\la |\phi'|^4\right\ra^{1/2} \left\la (\lap \psi)^2\right\ra^{1/2}}\com
 \eeq
+quantifies the wave concentration in regions positive or negative vorticity.
+Negative correlation, $r<0$, indicates wave concentration in anticyclones
+\citep{danioux_etal2015}. Starting form the uniform wave initial condition,
+vorticity and incoherent wave kinetic energy density
+quickly becomes negatively correlation ($r=-0.75$ at $t\times U_e k_e$ = 2;
+Figure \ref{stats_lamb}d). This initial wave focusing in anticyclones is associated
+with a rapid increase in incoherent wave kinetic energy (Figure \ref{stats_lamb}c)
+and generation of wave potential energy (Figure \ref{stats_lamb}b). The gain of
+wave potential energy, ininitially dominated by the conversion due to refraction
+, $\Gamma_r$,
+ occurs at the expenses of quasigeostrophic kinetic energy
+(Figure \ref{stats_lamb}a):
+the dipole's kinetic energy decays by about 20$\%$ in two eddy-turnover time units.
+The strong wave concentration in the negative vorticity region, and the accompanying
+energy loss, weakens the anticyclone.  This asymmetry tilts the dipole and
+the self-induced velocity no longer matches the zonal upstream uniform flow:
+the dipole starts to drift downstream at $t\times U_e k_e \approx 5$.
+
+% Now comment on the advection conversion (and wave dispersion)...
+The eddy-scale gradients in wave amplitude, which are created by refraction,
+ allow for the other mechanisms in the wave equation \eqref{waves} to become
+ important. Linear dispersion radiates waves, with horizontal scales comparable
+ to $k_e^{-1}$, from the dipole. And geostrophic advection starts to enhance
+ the refraction-created gradients. As a consequence of these two processes becoming
+ important, the correlation $r$ decreases.
+
+The advective conversion, $\Gamma_a$, kicks
+off at $t\times U_e k_e \approx 4$ (Figure \ref{stats_lamb}b), and takes over
+the $\Gamma$ in few eddy-turnover time units. Contemporarily, the wave-induced
+quasigeostrophic flow strains the anticyclone, which develops a filamentary structure.
+Because most of the advective energy conversion occurs in the anticyclone, the
+correlation $r$ decreases further, becoming positive at $t\times U_e k_e \approx 7$,
+and $\Gamma_r$ becomes weakly negative.
+
 
 \begin{figure}
+\label{snaps_lamb}
 \centering
 \includegraphics[width=.925\textwidth]{figs/fig1.png}
 \caption{Snapshots of the Lamb-Chaplygin dipole solution with $\hslash \approx 1$
         and $\alpha \approx 3.75$. Colors represent wave kinetic energy density,
          $|\phi'|^2/U_w^2$.
-        Contours represent potential vorticity, $q\times U_e k_e = [
+        Contours represent potential vorticity, $q / (U_e k_e) = [
         -1.5,-0.5,1.5,0.5]$, with dashed lines showing negative values.
-        These plots only show the central $\tfrac{1}{5}\times\tfrac{1}{5}$
-        subdomain.}
+        These plots only show the central $(1/5)^2$
+        of the simulation domain. (The supplemental material contains a video
+        of the simulation.)}
 \end{figure}
 
 \begin{figure}
+\label{stats_lamb}
 \centering
 \includegraphics[width=1.\textwidth]{figs/fig2.pdf}
 \caption{Statistics of the Lamb-Chaplygin dipole solution with $\hslash \approx 1$
         and $\alpha \approx 3.75$. (a) Energy change about initial condition.
         (b) Wave potential energy budget \eqref{Pw}. (c) Incoherent wave kinetic
-        energy budget \eqref{Kiw}. (d) Coeficient of correlation between
+        energy budget \eqref{Kiw}. (d) Coefficient of correlation between
         incoherent wave
         kinetic energy and relative vorticity \eqref{corr_r}.
         }
@@ -512,7 +576,7 @@ $U_e^2/2$ determines the constant C:
 \sum_{k,l} \underbrace{|k|^2 |\hat{\psi}|^2}_{\defn \cK_e} = \tfrac{1}{2}U_e^2\per
 \eeq
 The kinetic energy spectrum $\cK_e$ peaks at the energy-containing scale $k_e^{-1}$.
-At scales smaller than $k_e^{-1}$, $\cK_e$ has a linear dependence in $|k|$,
+At scales smaller than $k_e^{-1}$, $\cK_e$ has a linear dependence on $|k|$,
 whereas it decays as $|k|^{-3}$ at scales larger than $k_e^{-1}$. This red spectrum
 ensures insignificant energy dissipation by the biharmonic viscosity added to
  \eqref{macroturb} to absorb the forward cascade of enstrophy (Appendix B).
@@ -529,7 +593,7 @@ ensures insignificant energy dissipation by the biharmonic viscosity added to
 
  We add a perfectly coherent near-inertial oscillation \eqref{NIO} to the mature
  barotropic turbulence at $t \times U_e k_e = 0$. For all parameters considered
- in the remaing of this paper, there are no qualitative long-term differences
+ in the remaining of this paper, there are no qualitative long-term differences
  between the solutions described below and results from introducing the waves
  at $t\times U_e k_e = -20$.
 
@@ -571,7 +635,7 @@ NIW velocity in complex form
 u_w + \ii v_w = M_z \ee^{-\ii f_0 t}\per
 \eeq
 Their derivation recovers the wave equation that governs the
-evolution of the NIW complex amplitude $M_z$
+evolution of the NIW complex amplitude $M_z$,
 \beq
 M_{zzt} + \p_z \sJ(\psi,M_{z}) + \tfrac{\ii}{2}\left[\left(\frac{N^2}{f_0}+\psi_{zz}
 \right)\lap M - 2 \nabla\psi_z\cdot\nabla M_z + M_{zz}(\lap\psi + 2 \beta y) \right] = 0 \com
@@ -587,7 +651,7 @@ q = \nabla \psi + \left(\tfrac{f_0^2}{N^2}\psi_z\right)_z + \beta y +
     \tfrac{\ii}{2 f_0}\sJ(M_z^\star,M_z) + \tfrac{1}{4f_0}\left(
     2 |\nabla M_z|^2 - M_{zz}^\star\nabla M - M_{zz}\nabla M^\star\right)\per
 \eeq
-Thus the NIWs actively evolve, feedbacking onto the QG flow.
+Hence, NIWs actively evolve, affecting the QG flow.
 The model of \cite{xie_vanneste2015}, with the potential vorticity that includes
 wave terms, generalizes early ideas introduced by
  \cite{buhler_mcintyre1998}  to a setup that avoids spatial scale separation between
@@ -596,106 +660,9 @@ Using standard perturbation theory, \cite{wagner_young2016} contemporarily
 recovered and extended this coupled QG-NIW system.
 
 The special family of solutions with barotropic, f-plane QG flow, uniform background
-stratification, and single vertical mode NIW, $M_z = \ee^{\ii m z}\phi(x,y)$,
+stratification, and single vertical mode NIW, $M_z = \phi(x,y)\ee^{\ii m z}$,
 yields the reduced set of equations \eqref{macroturb}-\eqref{waves} used
 in this paper.
-
-
-% \subsection{Energy conservation}
-% We obtain the energy conservation for the minimal QG-NIW model by inserting
-% the barotropic flow $\psi$, uniform stratification, and single-vertical mode
-% solution into the conservation laws derived by \cite{xie_vanneste2015} and
-% \cite{wagner_young2016}. Alternatively, we can deduce these conservation alaws
-% from the model equations \eqref{macroturb}-\eqref{waves}. Throughout we
-% use --- sometimes relentlessly --- integration by parts and
-% assume no normal flux or periodic boundary conditions.
-
-% First, we form an equation for the NIW kinetic energy density: $\phis\times
-% \eqref{waves} + \phi\times\eqref{waves}^\star$ yields \eqref{action_density}.
-% Averaging this density equation gives the conservation of NIW kinetic energy
-% $K_w = \half \la|\phi|^2\ra$, with the horizontal average of the domain of area
-% $\mathcal{A}$:
-% \beq
-% \label{average}
-% \la\, f \ra \defn \frac{1}{\mathcal{A}}\iint\limits_{\mathcal{A}} f \,\dd x \dd y\per
-% \eeq
-% More generally, NIW action is conserved in the QG-NIW model
-% \citep[e.g., ][]{wagner_young2016}, but in the $f-$plane reduced set
-% \eqref{macroturb}-\eqref{waves}, the difference between $K_w$ and NIW action is
-% a mere constant $f_0$. We can re-write the expression for the wave flux of kinetic
-% energy density using the polar representation $\phi = |\phi|\ee^{\ii\Theta}$
-% \citep[e.g., ][]{klein_etal2004}:
-% \beq
-% \label{Fw2}
-% \Ff_w =\tfrac{\ii}{4}f_0\lambda^2\left(\phi\grad\phis-\phis\grad\phi\right) =
-% f_0 \lambda^2\grad\Theta \times
-% \half |\phi|^2\per
-% \eeq
-% The expression on the right of \eqref{Fw2} makes it explicit that $\Ff_w$ is a
-% wave flux of kinetic energy density $\half|\phi|^2$, where $f_0\lambda^2\grad\Theta
-% = \tfrac{N^2_0}{f_0 m^2}\grad\Theta$ is the generalized group
-% velocity of hydrostratic NIWs, which can be quickly verified under the plane-wave
-% assumption $\Theta = kx + ly$.
-%
-% Next, we form an equation for the NIW potential energy $P_w$:
-% $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
-% \eqref{waves}^\star\ra$ yields
-% \beq
-% \label{Pw}
-% \dot{P}_w = \underbrace{\tfrac{1}{f_0}\Big\la\half\lap\psi\diver\Ff_w
-% \Big\ra}_{\Gamma_{r}} +
-% \underbrace{\tfrac{\lambda^2}{2}\, \Big\la\half\left[\lap\phis\sJ(\psi,\phi)
-% + \lap\phi\sJ(\psi,\phis)\right]\Big\ra}_{\Gamma_a}\per
-% \eeq
-% Finally, we form an equation for the QG kinetic energy $K_e$: $\la\psi\times
-% \eqref{macroturb}\ra$ in combination with \eqref{qgpv}, \eqref{action_density},
-% and \eqref{waves} yields $\dot{K}_e = - (\Gamma_r + \Gamma_a)$, thus proving the
-% conservation of energy $E = K_e + P_w $.
-%
-% \subsection{Energy conversion}
-% Neither term of the energy conversion $\Gamma = \Gamma_r + \Gamma_a$ is sign
-% definite. However, the bulk of the conversion is positive ($K_e \to P_w$) in all
-% numerical simulations. The first term is the easiest to interpret:
-% refraction of NIWs by the QG vorticity causes a convergence of NIW kinetic energy
-% density ($\diver\Ff_w<0$) in regions of negative vorticity ($\lap\psi<0$), thus
-% $\Gamma_r > 0$. To interpret the second term $\Gamma_a$, we consider the equation
-% of a passive scalar c:
-% \beq
-% \label{passive}
-% c_t + \sJ(\psi,c) = 0\per
-% \eeq
-% To form an equation for the variance of the passive scalar gradient, we perform
-% an operation analogous to that used in deriving the equation for $P_w$: $ \la\lap
-% c \times \eqref{passive}\ra$ yields
-% \begin{align}
-% \label{gradc}
-%     \p_t\la|\grad c|^2\ra &= \la\lap c \sJ(\psi, c)\ra\nonumber\\
-%                                   & =
-%     \left\la
-%     \begin{bmatrix}
-%     c_x & c_y
-%     \end{bmatrix}
-%     \Sf
-%   \begin{bmatrix}
-%     c_x \\  c_y
-%     \end{bmatrix}\right\ra\com
-% \end{align}
-% where $\Sf$ is the symmetric part of the geostrophic velocity gradient matrix,
-% \beq
-% \Sf \defn
-% \begin{bmatrix}
-%     -\psi_{xy} & \half(\psi_{xx} - \psi_{yy})\\
-%     \half(\psi_{xx}-\psi_{yy}) & \psi_{xy}
-% \end{bmatrix}\,\com
-% \eeq
-% whose sum of the elements squared (the Frobenius norm) is commonly defined as the
-% square of the QG rate of strain. In general, given an initial gradient $\grad c$,
-% QG straining enhances $|\grad c|$: $\la \lap c \sJ(\psi,c) \ra$ represents the
-% variance production of passive scalar gradient $\la |\grad c|^2\ra$. Analogously,
-% $\Gamma_a$ is the source of NIW potential energy $P_w$ due to geostrophic
-% straining. An important caveat to this analogy is that the NIW amplitude $\phi$
-% is dynamically active.
-
 
 \subsection{Wave self-interaction and frequency shift}
 To gain further insight into the dynamics, we decompose the balanced flow
@@ -774,16 +741,61 @@ and we conclude that the wave self-interaction shifts the frequency by
 
 \section{Details of the initial value problems}
 
+\subsection{Small-scale dissipation}
+To absorb the forward cascade of enstrophy, we add a biharmonic viscosity to the
+potential vorticity equation \eqref{macroturb}
+\beq
+-\nu_e \lap^2 q\com
+\eeq
+where $\lap^2 = (\p_x^2+\p_y^2)^2$.
+Similarly, to prevent the development of very small scales, which may violate the
+near-inertial approximation, we add a biharmonic viscosity in the wave equation
+\eqref{waves}
+\beq
+-\nu_w \lap^2 \phi\per
+\eeq
+
+We find that this choice of small-scale dissipation is sufficient
+to extend the spectral resolution compared to Laplacian viscosity, while minimizing
+obscure physical effects associated with higher-order hyperviscosities or spectral
+filters \citep{mcwilliams1984}.
+In practice, we choose the hyperviscous coefficients that place the 35$\%$ highest
+modes in the dissipation range, so that aliased wavenumbers are strongly damped.
+
+These hyperviscous terms add small dissipation to the energy equations in
+Section 2. The wave kinetic energy dissipation added to \eqref{action} is
+\beq
+\label{ep_phi}
+\varepsilon_\phi \defn -\nu_w\la|\lap\phi|^2\ra\per
+\eeq
+The kinetic energy dissipation \eqref{ep_phi} is associated only with the incoherent
+wave field, $\phi'$, since $\lap\la\phi\ra = 0$. Hyperviscosity also dissipates
+wave potential energy: the dissipation added to \eqref{Pw} is
+\beq
+\label{chi_phi}
+\chi_\phi \defn -\nu_w\tfrac{\lambda^2}{2}\la |\grad \lap\phi|^2 \ra \per
+\eeq
+Similarly, the QG kinetic energy dissipation added to \eqref{Ke} is
+\beq
+\label{ep_q}
+\varepsilon_q \defn -\nu_e \la q^2 \ra\com
+\eeq
+and the dissipation added to the potential enstrophy equation is
+\beq
+\label{chi_q}
+\chi_q \defn -\nu_e \la (\lap q)^2 \ra\per
+\eeq
+In all solutions of initial value problems reported in this paper, the dissipative
+terms \eqref{ep_phi}, \eqref{chi_phi}, and \eqref{ep_q} account for less than
+$1\%$ of the energy tendencies.
+
+
 \subsection{Numerical methods}
 We solve the QG-NIW system \eqref{macroturb}-\eqref{waves} using a standard
 collocation Fourier spectral method.
 In the pseudo-spectral spirit, we evaluate  the quadratic non-linearities in
-physical space, and transform the product into Fourier space. For small-scale
-dissipation, we use biharmonic viscosity. We find that this choice, originally
-used in \cite{mcwilliams1984}, is sufficient
-to extend the spectral resolution compared to Laplacian viscosity.
-We make sure the 35$\%$ highest modes fall in the dissipation range, so that alised
-wavenumbers are strongly damped. We time march the spectral equations
+physical space, and transform the product into Fourier space. We time march the
+spectral equations
 using an exponential time differencing method with a fourth order Runge-Kutta scheme
 \citep[details in][]{kassam_trefethen2005}.
 
@@ -802,6 +814,7 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
       $2\pi k_e^{-1}$ & Dipole radius & $L/15 \approx 84$ km \\
       $U_e$ & Dipole strength & $5\times 10^{-2}$ m s$^{-1}$ \\
       $U_w$ & NIW speed & $5\times 10^{-1}$ m s$^{-1}$ \\
+      $(U_e k_e)^{-1}$ & Eddy turnover timescale & $\approx 3$ days\\
       $N_0$ & Buoyancy frequency & $5 \times 10^{-3}$ s$^{-1}$\\
       $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
       $2\pi$m$^{-1}$ & NIW vertical wavelength & $325$ m \\
