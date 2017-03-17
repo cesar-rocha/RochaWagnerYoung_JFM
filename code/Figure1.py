@@ -12,7 +12,7 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/lambdipole/"
+pathi = "outputs/lambdipole_new/"
 patho = "../writeup/figs/"
 
 ## get params

@@ -20,16 +20,16 @@ from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho = "outputs/lambdipole_small_dt"
+patho = "outputs/lambdipole_double"
 
 # parameters
-nx = 512
+nx = 512*2
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
 λz = 325
 m = 2*np.pi/λz
-nu4, nu4w = 5e7, 5e7 # hyperviscosity
+nu4, nu4w = 5e8, 5e8 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
@@ -47,7 +47,7 @@ Ro = Ue*ke/f0
 alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
-dt = .0025*Te/5
+dt = .0025*Te/4
 tmax = 30*Te
 
 ## setup model class

@@ -1,5 +1,5 @@
 """
-    Plots figure 1: energy time series, budgets,
+    Plots figure 2: energy time series, budgets,
                     wave-vorticity correlation
                     of the Lamb-Chapygin dipole solution.
 """
@@ -12,7 +12,7 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/lambdipole/"
+pathi = "outputs/lambdipole_new/"
 patho = "../writeup/figs/"
 
 params = h5py.File(pathi+"parameters.h5","r")
