@@ -20,10 +20,10 @@ from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho = "outputs/lambdipole_double"
+patho = "outputs/lambdipole"
 
 # parameters
-nx = 512*2
+nx = 512
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
@@ -47,7 +47,7 @@ Ro = Ue*ke/f0
 alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
-dt = .0025*Te/4
+dt = .0025*Te
 tmax = 30*Te
 
 ## setup model class
