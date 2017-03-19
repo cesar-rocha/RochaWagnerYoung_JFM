@@ -12,7 +12,7 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/lambdipole_new/"
+pathi = "outputs/lambdipole/"
 patho = "../writeup/figs/"
 
 params = h5py.File(pathi+"parameters.h5","r")
