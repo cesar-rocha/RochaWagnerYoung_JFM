@@ -20,7 +20,7 @@ from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho = "outputs/lambdipole"
+patho = "outputs/lambdipole_new"
 
 # parameters
 nx = 512
@@ -29,7 +29,7 @@ N = 0.005
 L = 2*np.pi*200e3
 λz = 325
 m = 2*np.pi/λz
-nu4, nu4w = 5e8, 5e8 # hyperviscosity
+nu4, nu4w = 5e7, 5e7 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
