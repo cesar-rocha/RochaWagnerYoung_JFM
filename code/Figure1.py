@@ -12,7 +12,7 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/lambdipole_new/"
+pathi = "outputs/lambdipole/"
 patho = "../writeup/figs/"
 
 ## get params
@@ -76,7 +76,7 @@ def plot_snapshot(fig, snap, panel = 1):
     return pc
 
 cphi = np.arange(0.,5.,0.1)
-cq   = np.arange(-1.5,2.,1.)
+cq   = np.array([-2.,-1.5,-1.,-.5,0.5,1.,1.5,2.])
 
 xlim = [-3,3]
 fig = plt.figure(figsize=(7.,6.5))
