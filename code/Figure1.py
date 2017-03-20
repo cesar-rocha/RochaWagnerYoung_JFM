@@ -70,7 +70,7 @@ def plot_snapshot(fig, snap, panel = 1):
     else:
         pass
 
-    plot_fig_label(ax, xc =0.775, yc=0.945, label= r"$t \times U_e k_e$ = "+
+    plot_fig_label(ax, xc =0.775, yc=1.03, label= r"$t \times U_e k_e$ = "+
                     str(int(round(t))), facecolor="1.0",boxstyle=None,alpha=0.)
 
     return pc
