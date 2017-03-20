@@ -72,8 +72,8 @@ fno = "../writeup/table1.tex"
 caption = "The time-integrated budget of wave potential energy and quasigeostrophic\
                 kinetic energy of the Lamb-Chaplygin dipole expirement. \label{table1}"
 ascii.write(data, output=fno, Writer=ascii.Latex, names=['$\dot{P}_w$ budget',
-                    'Rel. contribution ($\int!\dot{P}_w \dd t/\Delta P_w dt$)','$\dot{K}_e$ budget',
-                    'Rel. contribution ($\int!\dot{K}_e \dd t/\Delta K_e$)'],
+                    'Rel. contribution ($\int\dot{P}_w \dd t/\Delta P_w dt$)','$\dot{K}_e$ budget',
+                    'Rel. contribution ($\int\dot{K}_e \dd t/\Delta K_e$)'],
                     overwrite=True, caption=caption,
                     latexdict={'preamble': r'\begin{center}',
                        'tablefoot': r'\end{center}',

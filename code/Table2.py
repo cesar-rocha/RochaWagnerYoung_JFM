@@ -72,8 +72,8 @@ fno = "../writeup/table2.tex"
 caption = "The time-integrated budget of wave potential energy and quasigeostrophic\
                 kinetic energy of the decaying turbulence dipole expirement. \label{table2}"
 ascii.write(data, output=fno, Writer=ascii.Latex, names=['$\dot{P}_w$ budget',
-                    'Rel. contribution ($\int!\dot{P}_w \dd t/\Delta P_w dt$)','$\dot{K}_e$ budget',
-                    'Rel. contribution ($\int!\dot{K}_e \dd t/\Delta K_e$)'],
+                    'Rel. contribution ($\int\dot{P}_w \dd t/\Delta P_w dt$)','$\dot{K}_e$ budget',
+                    'Rel. contribution ($\int\dot{K}_e \dd t/\Delta K_e$)'],
                     overwrite=True, caption=caption,
                     latexdict={'preamble': r'\begin{center}',
                        'tablefoot': r'\end{center}',
