@@ -49,8 +49,6 @@ hslash = h/(Ue/ke)
 Ro = Ue*ke/f0
 alpha = Ro*( (Uw/Ue)**2 )
 
-
-
 #
 # First run the QG model to 20 eddy-turnover time units
 #
