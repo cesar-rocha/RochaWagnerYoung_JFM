@@ -20,7 +20,7 @@ from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho = "outputs/lambdipole"
+patho = "outputs/lambdipole_new"
 
 # parameters
 nx = 512
@@ -53,7 +53,7 @@ tmax = 30*Te
 ## setup model class
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                nu4=nu4,nu4w=nu4w,use_filter=False,
+                nu4=nu4,nu4w=nu4w,nu=0,nuw=0, mu=0,muw=0,use_filter=False,
                 U =-Ue, tdiags=10,
                 save_to_disk=True,tsave_snapshots=25, path=patho)
 
