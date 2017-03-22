@@ -160,7 +160,7 @@ def SaveParams(model,patho,m=2*np.pi/400):
 
 
 if __name__ ==  "__main__":
-    wavelength = np.arange(100,300,100)
+    wavelength = np.arange(100,1100,100)
     pool = multiprocessing.Pool(processes=wavelength.size)
     pool.map(Run_CoupledModel_Dispersivity, wavelength)
     pool.close()
