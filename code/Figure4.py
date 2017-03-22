@@ -98,7 +98,7 @@ p1 = ax.plot(time/Te,conc_niw,linewidth=lw,alpha=alp,label='NIW concentration, $
 plt.ylabel(r"Wave-vorticity correlation [r]")
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-plt.ylim(-0.8,0.8)
+plt.ylim(-0.8,0.3)
 plot_fig_label(ax, label="d")
 
 plt.savefig(patho+"fig4.pdf", bbox_inches='tight')
