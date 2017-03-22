@@ -72,17 +72,12 @@ q = qinit['q']
 
 # qg-niw simulatin parameters
 
-def Run_CoupledMode_Dispersivity(lambdaz=400):
+def Run_CoupledModel_Dispersivity(lambdaz=400):
 
     """ Run the model given vertical wavelength m, which the dispersivity, and
         fixed initial NIW velocity """
 
     m = 2*np.pi/lambdaz
-    lam2 = (N/f0/m)**2
-    h = f0*lam2
-    hslash = h/(Ue/ke)
-    alpha = Ro*( (Uw/Ue)**2 )
-
     patho_qgniw = "outputs/decaying_turbulence/uw01/lambdaz"+str(lambdaz)+"/"
 
     dt = .0025*Te
@@ -94,27 +89,22 @@ def Run_CoupledMode_Dispersivity(lambdaz=400):
                     U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw)
 
     ## initial conditions
-    model.set_q(qgmodel.q)
+    model.set_q(q)
     phi = (np.ones_like(q) + 1j)*Uw/np.sqrt(2)
     model.set_phi(phi)
 
     # save parameters
-    SaveParams(model=model,patho=patho_qgniw)
+    SaveParams(model=model,patho=patho_qgniw,m=m)
 
     # run the model
     model.run()
 
-def Run_CoupledMode_Amplitude(Uw=0.05):
+def Run_CoupledModel_Amplitude(Uw=0.05):
 
     """ Run the model given vertical wavelength m, which the dispersivity, and
         fixed initial NIW velocity """
 
     m = 2*np.pi/400
-    lam2 = (N/f0/m)**2
-    h = f0*lam2
-    hslash = h/(Ue/ke)
-    alpha = Ro*( (Uw/Ue)**2 )
-
     patho_qgniw = "outputs/decaying_turbulence/lambdaz400/uw"+str(round(Uw*100))+"/"
 
     dt = .0025*Te
@@ -131,15 +121,23 @@ def Run_CoupledMode_Amplitude(Uw=0.05):
     model.set_phi(phi)
 
     # save parameters
-    SaveParams(model=model,patho=patho_qgniw)
+    SaveParams(model=model,patho=patho_qgniw,m=m)
 
     # run the model
     model.run()
 
 
-def SaveParams(model,patho):
+def SaveParams(model,patho,m=2*np.pi/400):
 
-    ## save parameter
+    # dimensional parameters
+    lam2 = (N/f0/m)**2
+    h = f0*lam2
+
+    # nondimensional parameters
+    hslash = h/(Ue/ke)
+    alpha = Ro*( (Uw/Ue)**2 )
+
+    ## save parameters
     fno = patho+"parameters.h5"
     h5file = h5py.File(fno, 'w')
 
@@ -162,9 +160,9 @@ def SaveParams(model,patho):
 
 
 if __name__ ==  "__main__":
-    wavelength = np.arange(100,1100,100)
+    wavelength = np.arange(100,300,100)
     pool = multiprocessing.Pool(processes=wavelength.size)
-    pool.map(Run_CoupledMode_Dispersivity, wavelength)
+    pool.map(Run_CoupledModel_Dispersivity, wavelength)
     pool.close()
     pool.join()
 
