@@ -24,7 +24,7 @@ from niwqg import InitialConditions as ic
 plt.close('all')
 
 patho_qg = "outputs/decaying_turbulence/qg_initial_condition"
-patho_qgniw = "outputs/decaying_turbulence/coupled_new"
+patho_qgniw = "outputs/decaying_turbulence/coupled_new3"
 
 # parameters
 nx = 512
@@ -33,7 +33,7 @@ N = 0.005
 L = 2*np.pi*200e3
 λz = 400
 m = 2*np.pi/λz
-nu4, nu4w = 5e7, 5e7 # hyperviscosity
+nu4, nu4w = 5e7, 1e7 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
@@ -48,8 +48,6 @@ h = f0*lam2
 hslash = h/(Ue/ke)
 Ro = Ue*ke/f0
 alpha = Ro*( (Uw/Ue)**2 )
-
-
 
 #
 # First run the QG model to 20 eddy-turnover time units
@@ -81,9 +79,8 @@ tmax = 60*Te
 
 model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                nu4=nu4,nu4w=nu4w,nu=0, nuw=0,use_filter=False,
-                U =-Ue, tdiags=10,
-                save_to_disk=True,tsave_snapshots=25, path=patho_qgniw)
+                nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
+                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw)
 
 ## initial conditions
 model.set_q(qgmodel.q)
