@@ -72,13 +72,13 @@ q = qinit['q']
 
 # qg-niw simulatin parameters
 
-def Run_CoupledModel_Dispersivity(lambdaz=400):
+def Run_CoupledModel(lambdaz=400, Uw = 0.1):
 
     """ Run the model given vertical wavelength m, which the dispersivity, and
         fixed initial NIW velocity """
 
     m = 2*np.pi/lambdaz
-    patho_qgniw = "outputs/decaying_turbulence/uw01/lambdaz"+str(lambdaz)+"/"
+    patho_qgniw = "outputs/decaying_turbulence/Uw"+str(round(Uw*100))+"/lambdaz"+str(lambdaz)+"/"
 
     dt = .0025*Te
     tmax = 60*Te
@@ -94,40 +94,12 @@ def Run_CoupledModel_Dispersivity(lambdaz=400):
     model.set_phi(phi)
 
     # save parameters
-    SaveParams(model=model,patho=patho_qgniw,m=m)
+    SaveParams(model=model,patho=patho_qgniw,m=m, Uw=Uw)
 
     # run the model
     model.run()
 
-def Run_CoupledModel_Amplitude(Uw=0.05):
-
-    """ Run the model given vertical wavelength m, which the dispersivity, and
-        fixed initial NIW velocity """
-
-    m = 2*np.pi/400
-    patho_qgniw = "outputs/decaying_turbulence/lambdaz400/uw"+str(round(Uw*100))+"/"
-
-    dt = .0025*Te
-    tmax = 60*Te
-
-    model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
-                    m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                    nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-                    U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw)
-
-    ## initial conditions
-    model.set_q(q)
-    phi = (np.ones_like(q) + 1j)*Uw/np.sqrt(2)
-    model.set_phi(phi)
-
-    # save parameters
-    SaveParams(model=model,patho=patho_qgniw,m=m)
-
-    # run the model
-    model.run()
-
-
-def SaveParams(model,patho,m=2*np.pi/400):
+def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
 
     # dimensional parameters
     lam2 = (N/f0/m)**2
@@ -158,15 +130,12 @@ def SaveParams(model,patho,m=2*np.pi/400):
 
     h5file.close()
 
-
 if __name__ ==  "__main__":
     wavelength = np.arange(100,1100,100)
-    pool = multiprocessing.Pool(processes=wavelength.size)
-    pool.map(Run_CoupledModel_Dispersivity, wavelength)
+    #wavelength = [100,200]
+    uw = np.array([0.01,0.05,0.1,0.2])
+    #uw = [0.05,0.1]
+    pool = multiprocessing.Pool(processes=4)
+    pool.starmap(Run_CoupledModel, zip(wavelength,uw))
     pool.close()
     pool.join()
-
-    # pool = multiprocessing.Pool(processes=2)
-    # pool.map(Run_CoupledMode_Amplitude, [0.05,0.1])
-    # pool.close()
-    # pool.join()
