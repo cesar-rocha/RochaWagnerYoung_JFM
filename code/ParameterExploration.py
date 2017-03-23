@@ -131,9 +131,10 @@ def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
     h5file.close()
 
 if __name__ ==  "__main__":
-    #wavelength = np.arange(100,1100,100)
-    wavelength = [100,200]
-    uw = [0.05,0.1]
+    wavelength = np.arange(100,1100,100)
+    #wavelength = [100,200]
+    uw = np.array([0.01,0.05,0.1,0.2])
+    #uw = [0.05,0.1]
     pool = multiprocessing.Pool(processes=4)
     pool.starmap(Run_CoupledModel, zip(wavelength,uw))
     pool.close()
