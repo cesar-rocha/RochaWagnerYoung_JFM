@@ -24,7 +24,7 @@ from niwqg import InitialConditions as ic
 plt.close('all')
 
 patho_qg = "outputs/decaying_turbulence/qg_initial_condition"
-patho_qgniw = "outputs/decaying_turbulence/coupled_new3"
+patho_qgniw = "outputs/decaying_turbulence/coupled"
 
 # parameters
 nx = 512
@@ -33,7 +33,7 @@ N = 0.005
 L = 2*np.pi*200e3
 λz = 400
 m = 2*np.pi/λz
-nu4, nu4w = 5e7, 1e7 # hyperviscosity
+nu4, nu4w = 5e7, 1e6 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
@@ -61,7 +61,7 @@ qgmodel = QGModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 twrite=int(0.1*Te/dt),
                 nu4=nu4, use_filter=False,
                 U =-Ue, tdiags=1,
-                save_to_disk=True,tsave_snapshots=25, path=patho_qg)
+                save_to_disk=True,tsave_snapshots=25, path=patho_qg,use_fftw=True)
 
 # initial conditions
 q = ic.McWilliams1984(qgmodel, E=(Ue**2)/2,k0=ke)
@@ -80,7 +80,7 @@ tmax = 60*Te
 model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw)
+                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True)
 
 ## initial conditions
 model.set_q(qgmodel.q)
@@ -94,7 +94,7 @@ stop = timeit.default_timer()
 print("Time elapsed: %3.2f seconds" %(stop - start))
 
 ## save parameter
-fno = patho_qgniw[:-7]+"/parameters.h5"
+fno = patho_qgniw+"/parameters.h5"
 h5file = h5py.File(fno, 'w')
 
 h5file.create_dataset("dimensional/Ue", data=(Ue))

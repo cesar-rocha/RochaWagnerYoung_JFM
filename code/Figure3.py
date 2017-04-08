@@ -12,11 +12,11 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/decaying_turbulence/coupled/"
+pathi = "outputs/decaying_turbulence/coupled_new7/"
 patho = "../writeup/figs/"
 
 ## get params
-params = h5py.File(pathi[:-8]+"parameters.h5","r")
+params = h5py.File(pathi+"parameters.h5","r")
 Ue, ke = params['dimensional/Ue'][()], params['dimensional/ke'][()]
 Te = params['dimensional/Te'][()]
 Uw = params['dimensional/Uw'][()]
