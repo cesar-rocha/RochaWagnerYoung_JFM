@@ -15,7 +15,7 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/decaying_turbulence/coupled_new7/"
+pathi = "outputs/decaying_turbulence/coupled/"
 patho = "../writeup/figs/"
 
 params = h5py.File(pathi+"parameters.h5","r")

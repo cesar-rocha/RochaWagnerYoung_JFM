@@ -24,7 +24,7 @@ from niwqg import InitialConditions as ic
 plt.close('all')
 
 patho_qg = "outputs/decaying_turbulence/qg_initial_condition"
-patho_qgniw = "outputs/decaying_turbulence/coupled"
+patho_qgniw = "outputs/decaying_turbulence/coupled_new"
 
 # parameters
 nx = 512
@@ -33,7 +33,7 @@ N = 0.005
 L = 2*np.pi*200e3
 λz = 400
 m = 2*np.pi/λz
-nu4, nu4w = 5e7, 1e6 # hyperviscosity
+nu4, nu4w = 2.5e7, 4.25e6 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
