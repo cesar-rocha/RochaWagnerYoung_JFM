@@ -15,7 +15,7 @@ plt.close('all')
 pathi = "outputs/decaying_turbulence/coupled/"
 patho = "../writeup/figs/"
 
-params = h5py.File(pathi[:-8]+"parameters.h5","r")
+params = h5py.File(pathi+"parameters.h5","r")
 diags = h5py.File(pathi+"diagnostics.h5")
 
 ## get params

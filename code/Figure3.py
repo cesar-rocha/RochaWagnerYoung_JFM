@@ -16,7 +16,7 @@ pathi = "outputs/decaying_turbulence/coupled/"
 patho = "../writeup/figs/"
 
 ## get params
-params = h5py.File(pathi[:-8]+"parameters.h5","r")
+params = h5py.File(pathi+"parameters.h5","r")
 Ue, ke = params['dimensional/Ue'][()], params['dimensional/ke'][()]
 Te = params['dimensional/Te'][()]
 Uw = params['dimensional/Uw'][()]
@@ -30,8 +30,8 @@ x, y = setup['grid/x'][:]*ke/(2*np.pi), setup['grid/y'][:]*ke/(2*np.pi)
 #files = ['000000000016667.h5', '000000001333333.h5',
 #            '000000002666667.h5', '000000008000000.h5']
 
-files = ['000000001000000.h5', '000000004000000.h5', '000000000200000.h5']
-files = ['000000000225000.h5', '000000000650000.h5', '000000001375000.h5']
+files = ['000000001000000.h5', '000000004000000.h5', '000000020000000.h5']
+#files = ['000000000225000.h5', '000000000650000.h5', '000000001375000.h5']
 
 def plot_snapshot(fig, snap, panel = 1):
     """ Plot snapshot of vorticity and
