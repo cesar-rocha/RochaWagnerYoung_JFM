@@ -12,7 +12,7 @@ from Utils import *
 
 #plt.rcParams["font.family"] = "sans-serif"
 #plt.rcParams["font.sans-serif"] = "Times"
-#plt.rcParams["font.serif"] = "Times"
+#%plt.rcParams["font.serif"] = "Times"
 #plt.rcParams["font.weight"] = "medium"
 
 plt.close('all')
