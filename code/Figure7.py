@@ -12,10 +12,10 @@ from Utils import *
 
 plt.close('all')
 
-path = "outputs/decaying_turbulence/Uw0.1/lambdaz"
+path = "outputs/decaying_turbulence/coupled_new/Uw10/lambdaz"
 patho = "../writeup/figs/"
 
-for lambdaz in [300,400,500,600,700,800]:
+for lambdaz in [198.75, 400.0]:
 
     pathi = path+str(lambdaz)+"/"
     params = h5py.File(pathi+"parameters.h5","r")
@@ -127,4 +127,4 @@ plt.ylabel(r"Energy change $\left[\int \dot K_e \mathrm{d}t\,\,/\,\,\Delta K_e\r
 plt.legend(loc=(0.05,1.05),ncol=3)
 plot_fig_label(ax, label="b")
 plt.xlabel(r"Dispersivity $[\hslash = f_0 \lambda^2 \times k_e/U_e]$")
-plt.savefig(patho+"fig7.pdf", bbox_inches='tight')
+plt.savefig(patho+"fig6.pdf", bbox_inches='tight')

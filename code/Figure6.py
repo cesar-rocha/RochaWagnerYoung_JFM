@@ -12,10 +12,10 @@ from Utils import *
 
 plt.close('all')
 
-path = "outputs/decaying_turbulence/Uw0.1/lambdaz"
+path = "outputs/decaying_turbulence/coupled_new/Uw10/lambdaz"
 patho = "../writeup/figs/"
 
-for lambdaz in [200,500,600,800]:
+for lambdaz in [198.75, 400.0]:
 
     pathi = path+str(lambdaz)+"/"
     params = h5py.File(pathi+"parameters.h5","r")
@@ -84,13 +84,13 @@ tmax = time[-1]
 ax = fig.add_subplot(221)
 
 for i in range(hslash.size):
-    p = plt.plot(time/Te,dPw[:,i],label="$\hslash = $"+str(round(hslash[i]*10)/10),\
+    p = plt.plot(time/Te,dPw[:,i],label="$\hslash = $"+str(round(hslash[i]*100)/100),\
                     linewidth=lw,alpha=alp)
     color = p[0].get_color()
     plt.plot(time/Te,dKe[:,i],'--',color=color,linewidth=lw,alpha=alp)
 
 plt.xticks([])
-plt.ylim(-0.25,0.25)
+plt.ylim(-0.315,0.315)
 plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
 plt.legend(loc=(0.4,1.1),ncol=5)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
@@ -121,7 +121,7 @@ plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
 plt.ylabel(r'Power $[\Gamma_a \times {2 k_e}/{U_e} ]$')
 plot_fig_label(ax, label="d")
 plt.xlabel(r"Time [$t \times U_e k_e$]")
-plt.savefig(patho+"fig6.pdf", bbox_inches='tight')
+plt.savefig(patho+"fig5.pdf", bbox_inches='tight')
 
 
 #
