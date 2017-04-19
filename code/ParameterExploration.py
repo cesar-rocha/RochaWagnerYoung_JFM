@@ -79,10 +79,10 @@ def Run_CoupledModel(lambdaz=400):
 
     Uw = 0.1
     m = 2*np.pi/lambdaz
-    patho_qgniw = "outputs/decaying_turbulence/coupled_new/Uw"+str(round(Uw*100))+"/lambdaz"+str(lambdaz)+"/"
+    patho_qgniw = "outputs/decaying_turbulence/coupled_new/Uw"+str(round(Uw*10)/10)+"/lambdaz"+str(lambdaz)+"/"
     #patho_qgniw = "outputs/decaying_turbulence/filter/Uw0.1/lambdaz"+str(lambdaz)+"/"
     
-    dt = .0025*Te
+    dt = .0025*Te/4
     tmax = 60*Te
 
     model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
@@ -133,12 +133,9 @@ def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
     h5file.close()
 
 if __name__ ==  "__main__":
-    vertical_wavelength = np.array([198.75,400,795])  
-    pool = multiprocessing.Pool(processes=4)
+    vertical_wavelength = np.array([198.75,397.5,794.8])  
+    pool = multiprocessing.Pool(processes=3)
     pool.starmap(Run_CoupledModel, zip(vertical_wavelength))
     pool.close()
     pool.join()
-
-
-
 

@@ -16,14 +16,14 @@ import numpy as np
 import h5py
 
 from niwqg import CoupledModel as CoupledModel
-from niwqg import UnCoupledModel as UncoupledModel
+from niwqg import UnCoupledModel as UnCoupledModel
 from niwqg import YBJModel as YBJcoupledModel
 from niwqg import QGModel as QGModel
 from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho_qg = "outputs/decaying_turbulence/uncoupled/qg_initial_condition"
+patho_qg = "outputs/decaying_turbulence/qg_initial_condition_for_uncoupled"
 #patho_qgniw = "outputs/decaying_turbulence/coupled"
 patho_qgniw = "outputs/decaying_turbulence/uncoupled"
 
@@ -35,7 +35,7 @@ L = 2*np.pi*200e3
 
 #λz = 198.75  # hslash = 0.25
 λz = 400  # hslash = 1
-#λz = 795  # hslash = 4
+#λz = 794.8  # hslash = 4
 
 m = 2*np.pi/λz
 nu4, nu4w = 3.5e7, 4.25e6 # hyperviscosity
@@ -59,21 +59,20 @@ alpha = Ro*( (Uw/Ue)**2 )
 #
 
 # qg simulation parameters
-dt = .01*Te
-tmax = 20*Te
-
-qgmodel = QGModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
-                twrite=int(0.1*Te/dt),
-                nu4=nu4, use_filter=False,
-                U =-Ue, tdiags=1,
-                save_to_disk=True,tsave_snapshots=25, path=patho_qg,use_fftw=True,
-                fftw_nthreads=3)
-
-# initial conditions
-q = ic.McWilliams1984(qgmodel, E=(Ue**2)/2,k0=ke)
-qgmodel.set_q(q)
-
-qgmodel.run()
+#dt = .01*Te
+#tmax = 20*Te
+#
+#qgmodel = QGModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
+#                twrite=int(0.1*Te/dt),
+#                nu4=nu4, use_filter=False,
+#                U =-Ue, tdiags=1,
+#                save_to_disk=True,tsave_snapshots=25, path=patho_qg,)#use_fftw=True, fftw_nthreads=3)
+#
+## initial conditions
+#q = ic.McWilliams1984(qgmodel, E=(Ue**2)/2,k0=ke)
+#qgmodel.set_q(q)
+#
+#qgmodel.run()
 
 #
 # Now run the QG-NIW model
@@ -88,14 +87,17 @@ tmax = 60*Te
 #                nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
 #                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True)
 
-model = UncoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
+model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True,
-                fftw_nthreads=3)
+                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,)# use_fftw=True,fftw_nthreads=3)
 
 ## initial conditions
-model.set_q(qgmodel.q)
+qinit = np.load("q_init_512.npz")
+q = qinit['q']
+
+#model.set_q(qgmodel.q)
+model.set_q(q)
 phi = (np.ones_like(q) + 1j)*Uw/np.sqrt(2)
 model.set_phi(phi)
 
