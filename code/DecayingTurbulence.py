@@ -25,7 +25,7 @@ plt.close('all')
 
 patho_qg = "outputs/decaying_turbulence/qg_initial_condition_for_uncoupled"
 #patho_qgniw = "outputs/decaying_turbulence/coupled"
-patho_qgniw = "outputs/decaying_turbulence/uncoupled"
+patho_qgniw = "outputs/decaying_turbulence/uncoupled_new"
 
 # parameters
 nx = 512
@@ -87,7 +87,7 @@ tmax = 60*Te
 #                nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
 #                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True)
 
-model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
+model = UnCoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
                 U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,)# use_fftw=True,fftw_nthreads=3)
