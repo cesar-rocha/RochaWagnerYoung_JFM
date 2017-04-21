@@ -31,7 +31,7 @@ nx = 512
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
-nu4, nu4w = 5e7, 5e6 # hyperviscosity
+nu4, nu4w = 3.5e7, 4.25e6 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
@@ -79,15 +79,15 @@ def Run_CoupledModel(lambdaz=400):
 
     Uw = 0.1
     m = 2*np.pi/lambdaz
-    #patho_qgniw = "outputs/decaying_turbulence/filter/Uw"+str(round(Uw*100))+"/lambdaz"+str(lambdaz)+"/"
-    patho_qgniw = "outputs/decaying_turbulence/filter/Uw0.1/lambdaz"+str(lambdaz)+"/"
+    patho_qgniw = "outputs/decaying_turbulence/coupled_new/Uw"+str(round(Uw*100))+"/lambdaz"+str(lambdaz)+"/"
+    #patho_qgniw = "outputs/decaying_turbulence/filter/Uw0.1/lambdaz"+str(lambdaz)+"/"
     
     dt = .0025*Te
     tmax = 60*Te
 
     model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                     m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                    nu4=nu4*0,nu4w=nu4w*0,nu=0, nuw=0, mu=0, muw=0, use_filter=True,
+                    nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
                     U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,use_fftw=True)
 
     ## initial conditions
@@ -133,14 +133,9 @@ def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
     h5file.close()
 
 if __name__ ==  "__main__":
-    #wavelength = np.arange(100,1100,100)
-    wavelength = np.array([250,400,800.])
-    #uw = np.array([0.01,0.05,0.1,0.2])
-    #uw = [0.05,0.1]
-    #uw = [0.1]
+    vertical_wavelength = np.array([198.75,400,795])  
     pool = multiprocessing.Pool(processes=4)
-    #pool.starmap(Run_CoupledModel, zip(wavelength,uw))
-    pool.starmap(Run_CoupledModel, zip(wavelength))
+    pool.starmap(Run_CoupledModel, zip(vertical_wavelength))
     pool.close()
     pool.join()
 

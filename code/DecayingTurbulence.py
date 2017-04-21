@@ -23,17 +23,22 @@ from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho_qg = "outputs/decaying_turbulence/qg_initial_condition"
-patho_qgniw = "outputs/decaying_turbulence/coupled_new"
+patho_qg = "outputs/decaying_turbulence/uncoupled/qg_initial_condition"
+#patho_qgniw = "outputs/decaying_turbulence/coupled"
+patho_qgniw = "outputs/decaying_turbulence/uncoupled"
 
 # parameters
 nx = 512
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
-λz = 400
+
+#λz = 198.75  # hslash = 0.25
+λz = 400  # hslash = 1
+#λz = 795  # hslash = 4
+
 m = 2*np.pi/λz
-nu4, nu4w = 2.5e7, 4.25e6 # hyperviscosity
+nu4, nu4w = 3.5e7, 4.25e6 # hyperviscosity
 
 # initial conditions
 Ue = 5.e-2
@@ -61,7 +66,8 @@ qgmodel = QGModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 twrite=int(0.1*Te/dt),
                 nu4=nu4, use_filter=False,
                 U =-Ue, tdiags=1,
-                save_to_disk=True,tsave_snapshots=25, path=patho_qg,use_fftw=True)
+                save_to_disk=True,tsave_snapshots=25, path=patho_qg,use_fftw=True,
+                fftw_nthreads=3)
 
 # initial conditions
 q = ic.McWilliams1984(qgmodel, E=(Ue**2)/2,k0=ke)
@@ -77,10 +83,16 @@ qgmodel.run()
 dt = .0025*Te
 tmax = 60*Te
 
-model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
+#model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
+#                m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
+#                nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
+#                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True)
+
+model = UncoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True)
+                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True,
+                fftw_nthreads=3)
 
 ## initial conditions
 model.set_q(qgmodel.q)
