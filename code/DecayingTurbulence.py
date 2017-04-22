@@ -16,16 +16,13 @@ import numpy as np
 import h5py
 
 from niwqg import CoupledModel as CoupledModel
-from niwqg import UnCoupledModel as UnCoupledModel
-from niwqg import YBJModel as YBJcoupledModel
 from niwqg import QGModel as QGModel
 from niwqg import InitialConditions as ic
 
 plt.close('all')
 
 patho_qg = "outputs/decaying_turbulence/qg_initial_condition_for_uncoupled"
-#patho_qgniw = "outputs/decaying_turbulence/coupled"
-patho_qgniw = "outputs/decaying_turbulence/uncoupled_new"
+patho = "outputs/decaying_turbulence/reference/"
 
 # parameters
 nx = 512
@@ -54,6 +51,7 @@ hslash = h/(Ue/ke)
 Ro = Ue*ke/f0
 alpha = Ro*( (Uw/Ue)**2 )
 
+
 #
 # First run the QG model to 20 eddy-turnover time units
 #
@@ -74,43 +72,49 @@ alpha = Ro*( (Uw/Ue)**2 )
 #
 #qgmodel.run()
 
-#
-# Now run the QG-NIW model
-#
-
-# qg-niw simulatin parameters
 dt = .0025*Te
-tmax = 60*Te
+tmax = 100*Te
 
-#model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
-#                m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-#                nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-#                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw, use_fftw=True)
 
-model = UnCoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
+#
+# setup model classes
+#
+
+coupledmodel = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                 nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,)# use_fftw=True,fftw_nthreads=3)
+                U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho+"coupled/",)
 
-## initial conditions
+coupledmodel.logger.info(" ")
+
+#
+# initial conditions
+#
 qinit = np.load("q_init_512.npz")
 q = qinit['q']
+phi = (np.ones_like(q) + 1j)*Uw/np.sqrt(2)
 
 #model.set_q(qgmodel.q)
-model.set_q(q)
-phi = (np.ones_like(q) + 1j)*Uw/np.sqrt(2)
-model.set_phi(phi)
+coupledmodel.set_q(q)
+coupledmodel.set_phi(phi)
 
+#
 # run the model
-model.run()
+#
+
+coupledmodel.logger.info(" Running coupled model")
+coupledmodel.run()
+
 
 stop = timeit.default_timer()
 print("Time elapsed: %3.2f seconds" %(stop - start))
 
-## save parameter
-fno = patho_qgniw+"/parameters.h5"
-h5file = h5py.File(fno, 'w')
 
+#
+# save parameters
+#
+fno = patho+"parameters.h5"
+h5file = h5py.File(fno, 'w')
 h5file.create_dataset("dimensional/Ue", data=(Ue))
 h5file.create_dataset("dimensional/Uw", data=(Uw))
 h5file.create_dataset("dimensional/ke", data=(ke))
@@ -125,5 +129,5 @@ h5file.create_dataset("nondimensional/nx", data=(nx))
 h5file.create_dataset("nondimensional/alpha", data=(alpha))
 h5file.create_dataset("nondimensional/hslash", data=(hslash))
 h5file.create_dataset("nondimensional/Ro", data=(Ro))
-
 h5file.close()
+
