@@ -112,7 +112,7 @@
 \section{Introduction}
 
 % 1) The mesoscale energy conundrum: a recalcitrant problem
-Geostrophic turbulence, a main paradigm of oceanic mesoscales,
+Geostrophic turbulence, a main paradigm for mesoscale flows,
 transfers energy towards large scales, thereby obstructing
 the flow of energy from forcing to dissipative scales.
 Existing studies advance a panoply
@@ -129,16 +129,15 @@ Recent research has suggested that the interaction
 of geostrophic flows with externally-forced internal waves serves
 as a major sink of mesoscale energy en route to viscous dissipation
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016}.
-The emphasis on interactions of geostrophic flow with existing internal waves ---
+The emphasis on interactions of geostrophic flow with existing internal waves---
 here denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
 \cite{wagner_young2016}, we define
 \textit{stimulated imbalance} as wave-mean interactions that transfer energy from
 geostrophic motions (the mean flow) to existing internal
-waves. This definition contrasts with the nomenclature recently employed by
+waves. This definition contrasts with the nomenclature employed by
 \cite{barkan_etal2016}, who term stimulated imbalance a process by which
-internal waves trigger a forward cascade from mesoscale to submesoscale (but
-subinertial) flows.} ---
-contrasts with energy loss via spontaneous emission --- a process
+internal waves trigger a forward cascade from mesoscale to submesoscale subinertial flows.}---
+contrasts with energy loss via spontaneous emission---a process
 by which internal waves are emitted during geostrophic adjustment
 \citep[e.g., ][]{shakespeare_hogg2017}. While spontaneous emission is localized
 at sharp fronts (large Rossby number, $\Ro\gtrsim 1$) in the surface boundary
@@ -156,7 +155,7 @@ focus on this specific class of wave-mean interactions is justified:  geostrophi
 eddies account for the bulk of the oceanic eddy kinetic energy \cite[$90\%$,][]{ferrari_wunsch2009} and
 near-inertial waves contain most of the oceanic high-frequency variability
 \citep{alford_etal2016}. The minimal coupled model \eqref{macroturb}-\eqref{waves}
-transparently reveals the physics of quasi-inviscid stimulated imbalance associated
+reveals the physics of quasi-inviscid stimulated imbalance associated
 with vertical vorticity and lateral strain.
 
 \section{The physics of NIW energy extraction from a barotropic QG flow}
@@ -196,8 +195,8 @@ The near-inertial back-rotated velocity, $\phi$, is governed by
 \eeq
 where $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale.
 Similarly to the \cite{young_benjelloul1997} model, the wave velocity, $\phi$,
-evolves through dispersion --- the last term in \eqref{waves} --- and
-advection and refraction by the geostrophic flow --- the second and third terms in
+evolves through dispersion ---the last term in \eqref{waves}---and
+advection and refraction by the geostrophic flow---the second and third terms in
 \eqref{waves}. But the wave equation \eqref{waves} is non-linear owing to the
 quadratic wave terms in the quasigeostrophic potential vorticity \eqref{qgpv}. In other
 words, the
@@ -221,10 +220,11 @@ The terms on the right of
 \eqref{macroturb}  and \eqref{waves}, $D_q$ and $D_\phi$,  represent small-scale dissipation. The
 introduction of these terms likely breaks the asymptotic ordering of the \cite{xie_vanneste2015}
 model. But small-scale dissipation is necessary to absorb the forward transfers
-of potential enstrophy and wave kinetic and potential energies in numerical simulations.
+of potential enstrophy and wave kinetic and potential energies in the numerical
+simulations reported below.
 We find that biharmonic diffusion, e.g.,
 \beq
-D_q = -\nu_e \lap^2 q\com
+D_q = -\kappa_e \lap^2 q\com
 \eeq
 is sufficient to extend the spectral resolution compared to Laplacian diffusion, while avoiding
 obscure physical effects of higher-order diffusion or spectral
@@ -244,7 +244,7 @@ f_0\lambda^2\left(
 \per
 \eeq
 Locally, $\half |\phi|^2$ changes due to divergences of the geostrophic
-and wave fluxes and dissipation --- the second, third, and fourth terms in
+and wave fluxes and dissipation---the second, third, and fourth terms in
 \eqref{action_density}. The wave flux  $\Ff_w$ is analogous to the probability
 current density of quantum mechanics \citep[e.g., ][pg. 57]{landau_lifshitz2013}.
  Using the polar representation
@@ -279,7 +279,7 @@ Also in \eqref{action}, $\varepsilon_\phi$ is the rate of dissipation of wave ki
 \eqref{macroturb}-\eqref{waves} conserves wave kinetic energy, $K_w$
 \citep{xie_vanneste2015}.
 
-Also from \eqref{waves}, we form an equation for the wave potential energy:
+Also from \eqref{waves}, we deduce an equation for the wave potential energy:
 $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 \eqref{waves}^\star\ra$ yields
 \begin{align}
@@ -301,7 +301,7 @@ Finally, we form an equation for the geostrophic kinetic energy, $K_e$: $-\la\ps
  - (\Gamma_r + \Gamma_a) + \Xi +  \varepsilon_q \com
 \eeq
 where $\Xi$ is a source of geostrophic kinetic energy due to
-wave dissipation and $\varepsilon_q$ is the rate of dissipation of quasigeostrophic
+wave dissipation and $\varepsilon_q$ is the rate of dissipation of geostrophic
 kinetic energy (see appendix B for explicit expressions). In the inviscid limit,
 $\Xi\to 0$ and $\varepsilon_q \to 0$, the coupled model
   \eqref{macroturb}-\eqref{waves} conserves the energy \citep{xie_vanneste2015}
@@ -346,29 +346,30 @@ where $\Sf$ is the symmetric part of the geostrophic velocity gradient matrix,
     \half(\psi_{xx}-\psi_{yy}) & \psi_{xy}
 \end{bmatrix}\,\com
 \eeq
-whose sum of the elements squared (the Frobenius norm) is commonly defined as the
-square of the geostrophic rate of strain. Hence, geostrophic straining enhances existing gradients
+whose sum of the elements squared (the Frobenius norm) is the
+square of the geostrophic rate of strain. Hence, geostrophic straining enhances gradients
 of $\phi$, thereby generating wave potential energy, $P_w$. When the geostrophic flow has
 a lateral scale much larger than
 the waves, this distortion of $\phi$ is akin to the wave capture
 mechanism of \cite{buhler_mcintyre2005}.
 
 The \cite{young_benjelloul1997} equation with barotropic geostrophic flow
-also satisfies the potential energy equation \eqref{Pw}. But the standard Young
+also satisfies the potential energy equation \eqref{Pw}. But
+\cite{young_benjelloul1997} and subsequent studies overlooked the wave potential
+energy power integral, \eqref{Pw}, or its generalization to baroclinic quasigeostrophic flow.
+Of course, the standard Young
 \& Ben Jelloul wave equation is uncoupled from the quasigeostrophic potential
-vorticity equation, hence the potential energy gain is not matched by a
-decrease in quasigeostrophic kinetic energy.  \cite{young_benjelloul1997} and
- subsequent studies overlooked the wave potential energy power integral,
-\eqref{Pw}, or its generalization to baroclinic quasigeostrophic flow.
+vorticity equation, hence an increase in wave potential energy is not matched by a
+decrease in geostrophic kinetic energy.
 
 \subsection{Averaged equations and loss of coherence}
 The domain-averaged potential vorticity $\la q \ra$ is invariant as a consequence of
-the material invariance of $q$ --- or the invariance of the average of each
+the material invariance of $q$, or the invariance of the average of each
 individual term in \eqref{qgpv}. The spatially-averaged (coherent) wave amplitude
 satisfies
 \beq
 \label{phi_ave}
-\frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra = -\nu_w
+\frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra = -\kappa_w
 \lap^2 \la\phi\ra\per
 \eeq
 Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have
@@ -458,11 +459,11 @@ field emergent from random initial conditions (Section 4).
 
 \section{The Lamb-Chaplygin dipole}
 As a preamble to our discussion of the QG-NIW energy transfers in freely-evolving
-turbulence, we consider a simpler example in which the quasigeostrophic flow
+turbulence, we consider a simpler example in which the initial quasigeostrophic flow
 is given the the Lamb-Chaplygin dipole. This dipole is an exact solution of the Euler
 equations on an infinite two-dimensional plane where the vorticity is confined
-to a circle of radius $R$ \cite[][]{meleshko_vanheijst1994}. The solution, steady on a frame moving at uniform zonal
-velocity $U_e$, is
+to a circle of radius $R$ \cite[][]{meleshko_vanheijst1994}. The solution, steady on
+a frame moving at uniform zonal velocity $U_e$, is
 \beq
 \label{lambd_q}
   \lap\psi =
@@ -476,11 +477,11 @@ where $r^2 = (x-x_c)^2+(y-y_c)^2$ is the radial distance about the dipole's cent
 $(x_c,y_c)$, $\tan \theta = (y-y_c)/(x-x_c)$, and $J_n$ is the n'th order Bessel
 function of first kind. The matching condition at $r=R$, $J_1(\kappa R)=0$, determines
 $\kappa$. The dipole is the first eigensolution, with eigenvalue $\kappa R \approx
-3.8287$.  If the wave QGPV is zero, then the dipole \eqref{lambd_q} is a
+3.8287$.  If the wave potential vorticity is zero, then the dipole \eqref{lambd_q} is a
 solution of \eqref{macroturb}. This is the case when a uniform $\phi$ is used as
 initial condition (Sections 3 and 4).
 
-As for the initial wave velocity, we consider a uniform (i.e.,
+The initial wave velocity is given by a uniform (i.e.,
 perfectly  coherent) near-inertial oscillation with speed $U_w$:
 \beq
 \label{NIO}
@@ -504,9 +505,9 @@ initial conditions \eqref{lambd_q} and \eqref{NIO} and the parameters inspired
 by the Ocean Storms Experiment. We integrate the solutions numerically
  for $30$ eddy-turnover time units,
 $30\times (U_e k_e)^{-1}\approx 90$ days, on a
-doubly periodic domain using standard Fourier pseudo-spectral methods (Appendix B).
+doubly periodic domain using standard Fourier pseudo-spectral methods (detail in appendix B).
 Dipole images, artifacts of periodization,
-cause a small zonal drift of the dipole. To render these effects negligible, we
+cause a small zonal drift of the dipole. To render this drift negligible, we
 choose a domain size much larger than the dipole's radius, $R/L \approx 0.06$.
 Table B.1 provides a full description of solution parameters.
 
@@ -522,8 +523,8 @@ is a threefold modulation of the wave kinetic energy density on eddy scales
 r \defn \frac{\left\la |\phi'|^2\,\lap\psi\right\ra}{
 \left\la |\phi'|^4\right\ra^{1/2} \left\la (\lap \psi)^2\right\ra^{1/2}}\com
 \eeq
-quantifies the wave concentration in regions positive or negative vorticity.
-Negative correlation, $r<0$, indicates wave concentration in anticyclones
+quantifies the wave concentration in regions positive or negative vorticity;
+negative correlation, $r<0$, indicates wave concentration in anticyclones
 \citep{danioux_etal2015}. Starting form the uniform wave initial condition,
 vorticity and incoherent wave kinetic energy density
 quickly becomes negatively correlated ($r=-0.75$ at $t\times U_e k_e$ = 2;
@@ -532,11 +533,11 @@ with a rapid increase in incoherent wave kinetic energy (Figure \ref{stats_lamb}
 and generation of wave potential energy (Figure \ref{stats_lamb}b). The gain of
 wave potential energy, ininitially dominated by the conversion due to refraction,
 $\Gamma_r$,
- occurs at the expenses of quasigeostrophic kinetic energy
+ occurs at the expenses of geostrophic kinetic energy
 (Figure \ref{stats_lamb}a):
 the dipole's kinetic energy decays by about 20$\%$ in two eddy-turnover time units.
 The strong wave concentration in the negative vorticity region, and the accompanying
-energy loss, weakens the anticyclone.  This asymmetry in wave concentration
+geostrophic energy loss, weakens the anticyclone.  This asymmetry in wave concentration
 tilts the dipole and the vortex self-induced zonal velocity no longer matches the
 downstream uniform flow: the dipole starts to drift upstream at $t\times U_e
 k_e \approx 5$.
@@ -590,7 +591,7 @@ The energy conversion nearly halts at $t\times U_e k_e \approx 20$.
 Because the advective conversion, $\Gamma_a$, remains positive for the duration
 of the simulation, $\Gamma_a$ accounts for the bulk conversion of energy from
 geostrophic flow to waves. Indeed, the time-integrated $\Gamma_a$ represents $77.5\%$
-of total geostrophic kinetic energy change (Table \ref{table1}). The time-integrated
+of total geostrophic kinetic energy change (Table \ref{table1}); the time-integrated
 refraction conversion, $\Gamma_r$, represents $22.7\%$ of the geostrophic kinetic
 energy changes. And direct dissipation and wave-dissipation source
 (Appendix B) account for the residual changes ($<1\%$).
@@ -678,7 +679,7 @@ with \cite{fornberg1977}.
  \begin{figure}
  \label{stats_turb_various}
  \centering
- \includegraphics[width=1.\textwidth]{figs/fig6.pdf}
+ \includegraphics[width=1.\textwidth]{figs/fig5.pdf}
  \caption{Statistics of the decaying turbulence solution with $\alpha \approx 1$ and
          different dispersivities, $\hslash$. (a) Energy change about initial condition.
          (b) Coefficient of correlation between
@@ -690,15 +691,16 @@ with \cite{fornberg1977}.
          }
  \end{figure}
 
- \begin{figure}
- \label{bulk_stats_turb_various}
- \centering
- \includegraphics[width=1.\textwidth]{figs/fig7.pdf}
- \caption{Energy budgets of the decaying turbulence solution $\alpha \approx 1$ and
-         different dispersivities, $\hslash$. (a) Wave potential energy budget.
-         (b) Geostrophic kinetic energy budget.
-         }
- \end{figure}
+ % \begin{figure}
+ % \label{bulk_stats_turb_various}
+ % \centering
+ % \includegraphics[width=1.\textwidth]{figs/fig7.pdf}
+ % \caption{Energy budgets of the decaying turbulence solution $\alpha \approx 1$ and
+ %         different dispersivities, $\hslash$. (a) Wave potential energy budget.
+ %         (b) Geostrophic kinetic energy budget.
+ %         }
+ % \end{figure}
+
 
 \subsection{Parameters for strong mid-latitude macroturbulence}
 
@@ -786,6 +788,18 @@ NIWs have initial larger scales than the geostrophic field, then refraction
 generates eddy-scale perturbations, implying a reduction of lateral coherence
 ($\Pi > 0$). But it remains unclear if this transfer can be parameterized as a linear
 damping.
+
+
+%
+% Acknowledgements
+%
+\vspace{1.cm}
+This study was supported by the National Aeronautics and Space Administration
+and the National Science Foundation financially via grants NNX16AO5OH and NSFXXX.
+
+%
+% Appendix
+%
 
 \appendix
 
@@ -914,45 +928,45 @@ and we conclude that the wave self-interaction shifts the frequency by
 To absorb the forward cascade of enstrophy, we add a biharmonic viscosity to the
 potential vorticity equation \eqref{macroturb}
 \beq
-D_q = -\nu_e \lap^2 q\com
+D_q = -\kappa_e \lap^2 q\com
 \eeq
 where $\lap^2 = (\p_x^2+\p_y^2)^2$.
 Similarly, to prevent the development of very small scales, which may violate the
 near-inertial approximation, we add a biharmonic viscosity in the wave equation
 \eqref{waves}
 \beq
-D_\phi = -\nu_w \lap^2 \phi\per
+D_\phi = -\kappa_w \lap^2 \phi\per
 \eeq
 
 The hyperviscous terms add small dissipation to the energy equations in
 Section 2. The wave kinetic energy dissipation added to \eqref{action} is
 \beq
 \label{ep_phi}
-\varepsilon_\phi \defn -\nu_w\la|\lap\phi|^2\ra\per
+\varepsilon_\phi \defn -\kappa_w\la|\lap\phi|^2\ra\per
 \eeq
 The kinetic energy dissipation \eqref{ep_phi} is associated only with the incoherent
 wave field, $\phi'$, since $\lap\la\phi\ra = 0$. Hyperviscosity also dissipates
 wave potential energy: the dissipation added to \eqref{Pw} is
 \beq
 \label{chi_phi}
-\chi_\phi \defn -\nu_w\tfrac{\lambda^2}{2}\la |\grad \lap\phi|^2 \ra \per
+\chi_\phi \defn -\kappa_w\tfrac{\lambda^2}{2}\la |\grad \lap\phi|^2 \ra \per
 \eeq
 Similarly, the geostrophic kinetic energy dissipation added to \eqref{Ke} is
 \beq
 \label{ep_q}
-\varepsilon_q \defn \nu_e \la \psi \lap q\ra = \nu_e \la q \lap^2\psi\ra \com
+\varepsilon_q \defn \kappa_e \la \psi \lap q\ra = \kappa_e \la q \lap^2\psi\ra \com
 \eeq
 and the dissipation added to the potential enstrophy equation is
 \beq
 \label{chi_q}
-\chi_q \defn -\nu_e \la (\lap q)^2 \ra\per
+\chi_q \defn -\kappa_e \la (\lap q)^2 \ra\per
 \eeq
 Wave dissipation also adds two extra terms to the geostrophic kinetic energy budget:
 \beq
 \label{xi}
-\Xi = \underbrace{\tfrac{\nu_w}{2 f_0}\left\la \lap\psi \half \left(\phis \lap^2\phi + \phi
+\Xi = \underbrace{\tfrac{\kappa_w}{2 f_0}\left\la \lap\psi \half \left(\phis \lap^2\phi + \phi
 \lap^2 \phis \right) \right\ra}_{\Xi_r} +
-\underbrace{\tfrac{\nu_w}{f_0}\left\la \tfrac{\ii}{2}\psi\left[\sJ(\phis,\lap^2\phi)-
+\underbrace{\tfrac{\kappa_w}{f_0}\left\la \tfrac{\ii}{2}\psi\left[\sJ(\phis,\lap^2\phi)-
 \sJ(\phi,\lap^2\phis)\right]\right\ra}_{\Xi_a}\per
 \eeq
 The term $\Xi_r$ is easy to interpret: dissipation of wave kinetic energy,
@@ -994,8 +1008,8 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
       $N_0$ & Buoyancy frequency & $5 \times 10^{-3}$ & s$^{-1}$\\
       $f_0$ & Colioris frequency & 10$^{-4}$ & s$^{-1}$\\
       $2\pi$m$^{-1}$ & NIW vertical wavelength &  $325$ & m \\
-      $\nu_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$  & m$^4$ s$^{-1}$\\
-      $\nu_w$ & NIW biharmonic viscosity & $ 5 \times 10^{7}$ & m$^4$ s$^{-1}$\\
+      $\kappa_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$  & m$^4$ s$^{-1}$\\
+      $\kappa_w$ & NIW biharmonic viscosity & $ 5 \times 10^{7}$ & m$^4$ s$^{-1}$\\
    \end{tabular}
  \end{center}
 \end{table}
@@ -1015,8 +1029,8 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
 %       $N_0$ & Buoyancy frequency & 10$^{-2}$ s$^{-1}$\\
 %       $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
 %       $2\pi$m$^{-1}$ & NIW vertical wavelength & $222 - 888$ m \\
-%       $\nu_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$ m$^4$ s$^{-1}$\\
-%       $\nu_w$ & NIW biharmonic viscosity & $ 1 \times 10^{6}$ m$^4$ s$^{-1}$\\
+%       $\kappa_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$ m$^4$ s$^{-1}$\\
+%       $\kappa_w$ & NIW biharmonic viscosity & $ 1 \times 10^{6}$ m$^4$ s$^{-1}$\\
 %    \end{tabular}
 %  \end{center}
 %\end{table}
