@@ -1,12 +1,12 @@
 """"
-    Plots figure 6: energy budgets for decaying turbulence
-                    with alpha=0.1 and various dispersivities.
+    Plots figure 5: energy time series, budgets,
+                    wave-vorticity correlation
+                    for varying dispersivities.
 """
 
 import h5py
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import integrate
 
 from Utils import *
 
@@ -39,8 +39,6 @@ for lambdaz in [198.75, 400.0]:
     iKE_niw = diags['ike_niw'][:]
     ep_phi = diags['ep_phi'][:]
     ep_psi = diags['ep_psi'][:]
-    x1 = diags['xi_r'][:]
-    x2 = diags['xi_a'][:]
     chi_q =  diags['chi_q'][:]
     chi_phi =  diags['chi_phi'][:]
     conc_niw =  diags['conc_niw'][:]
@@ -52,79 +50,100 @@ for lambdaz in [198.75, 400.0]:
     dKE = np.gradient(KE_qg,dt)
     diKE_niw = np.gradient(iKE_niw,dt)
 
-    #res_ke = dKE-(-g1-g2+ep_psi)
-    #res_pe = dPE-g1-g2-chi_phi
-
-    ## calculate relative contribution
-    KE, PE = KE_qg[-1]-KE_qg[0], PE_niw[-1]-PE_niw[0]
-
-    G1, G2 = integrate.simps(y=g1[:],x=time[:]),  integrate.simps(y=g2[:],x=time[:])
-    X1 = -integrate.simps(y=x1[:],x=time[:])
-    X2 = -integrate.simps(y=x2[:],x=time[:])
-    G1_Pw, G2_Pw = G1/PE, G2/PE
-    G1_Ke, G2_Ke, X1_Ke, X2_Ke = G1/KE, G2/KE, X1/KE, X2/KE
-    G_Ke = G1_Ke+G2_Ke
-    CHI_Pw = integrate.simps(y=chi_phi[:],x=time[:])/PE
-    EP_Ke = -integrate.simps(y=ep_psi[:],x=time[:])/KE
-
-    RES_PE = 1-(G1_Pw+G2_Pw+CHI_Pw)
-    RES_KE = 1+(G1_Ke+G2_Ke+X1_Ke+X2_Ke+EP_Ke)
-
+    res_ke = dKE-(-g1-g2+ep_psi)
+    res_pe = dPE-g1-g2-chi_phi
 
     # arrays
     try:
-        g1_ke, g2_ke = np.hstack([g1_ke,G1_Ke]), np.hstack([g2_ke,G2_Ke])
-        x1_ke, x2_ke = np.hstack([x1_ke,X1_Ke]), np.hstack([x2_ke,X2_Ke])
-        ep_ke = np.hstack([ep_ke,EP_Ke])
-        res_ke = np.hstack([res_ke,RES_KE])
+        dKe = np.concatenate([dKe, (KE_qg[...,np.newaxis]-KE_qg[0])/KE_qg[0]],axis=1)
+        dPw = np.concatenate([dPw, (PE_niw[...,np.newaxis]-PE_niw[0])/KE_qg[0]],axis=1)
         hslash = np.hstack([hslash, params['nondimensional/hslash'][()]])
-
-        g1_pw, g2_pw = np.hstack([g1_pw,G1_Pw]), np.hstack([g2_pw,G2_Pw])
-        chi_pw = np.hstack([chi_pw,CHI_Pw])
-        res_pw = np.hstack([res_pw,RES_PE])
+        Conc = np.concatenate([Conc, conc_niw[...,np.newaxis]],axis=1)
+        Skew = np.concatenate([Skew, skew[...,np.newaxis]],axis=1)
+        G1 = np.concatenate([G1, g1[...,np.newaxis]],axis=1)
+        G2 = np.concatenate([G2, g2[...,np.newaxis]],axis=1)
+        CHI_PHI = np.concatenate([CHI_PHI, chi_phi[...,np.newaxis]],axis=1)
+        EP_PHI = np.concatenate([EP_PHI, ep_phi[...,np.newaxis]],axis=1)
     except:
+        dKe = (KE_qg[...,np.newaxis]-KE_qg[0])/KE_qg[0]
+        dPw = (PE_niw[...,np.newaxis]-PE_niw[0])/KE_qg[0]
         hslash = np.array(params['nondimensional/hslash'][()])
-        g1_ke, g2_ke = G1_Ke, G2_Ke
-        x1_ke, x2_ke = X1_Ke, X2_Ke
-        ep_ke = EP_Ke
-        res_ke = RES_KE
-
-        g1_pw, g2_pw = G1_Pw, G2_Pw
-        chi_pw = CHI_Pw
-        res_pw = RES_PE
+        Conc = conc_niw[...,np.newaxis]
+        Skew = skew[...,np.newaxis]
+        G1 = g1[...,np.newaxis]
+        G2 = g2[...,np.newaxis]
+        CHI_PHI = chi_phi[...,np.newaxis]
+        EP_PHI = ep_phi[...,np.newaxis]
 
 # ## plotting
-fig = plt.figure(figsize=(8.5,3.))
+fig = plt.figure(figsize=(8.5,6.))
 lw, alp = 3.,.5
 KE0 = KE_qg[0]
 tmax = time[-1]
 
+ax = fig.add_subplot(221)
 
-ax = fig.add_subplot(121)
+for i in range(hslash.size):
+    p = plt.plot(time/Te,dPw[:,i],label="$\hslash = $"+str(round(hslash[i]*100)/100),\
+                    linewidth=lw,alpha=alp)
+    color = p[0].get_color()
+    plt.plot(time/Te,dKe[:,i],'--',color=color,linewidth=lw,alpha=alp)
 
-plt.plot(hslash,g1_pw,'o-',label=r"$\Gamma_r$")
-plt.plot(hslash,g2_pw,'o-',label=r"$\Gamma_a$")
-plt.plot(hslash,chi_pw,'o-',label=r"$\chi_\phi$")
-plt.plot(hslash,g1_pw+g2_pw+chi_pw,'o-',label=r"Sum")
-
-plot_fig_label(ax, label="a")
-plt.xlabel(r"Dispersivity $[\hslash = f_0 \lambda^2 \times k_e/U_e]$")
-plt.ylabel(r"Energy change $\left[\int \dot P_w \mathrm{d}t\,\,/\,\,\Delta P_w\right]$")
-plt.legend(loc=(-.075,1.05),ncol=4)
-
+plt.xticks([])
+plt.ylim(-0.315,0.315)
+plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
+plt.legend(loc=(0.4,1.1),ncol=5)
+plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
 fig.subplots_adjust(wspace=.4)
+plot_fig_label(ax, label="a")
 
-ax = fig.add_subplot(122)
+#
+ax = fig.add_subplot(222)
 
-plt.plot(hslash,g1_ke,'o-',label=r"$\Gamma_r$")
-plt.plot(hslash,g2_ke,'o-',label=r"$\Gamma_a$")
-plt.plot(hslash,x1_ke,'o-',label=r"$\Xi_r$")
-plt.plot(hslash,x2_ke,'o-',label=r"$\Xi_a$")
-plt.plot(hslash,ep_ke,'o-',label=r"$\epsilon_\psi$")
-plt.plot(hslash,g1_ke+g2_ke+x1_ke+x2_ke+ep_ke,'o-',label=r"Sum")
-plt.ylabel(r"Energy change $\left[\int \dot K_e \mathrm{d}t\,\,/\,\,\Delta K_e\right]$")
-
-plt.legend(loc=(0.05,1.05),ncol=3)
+plt.xticks([])
+#plt.ylim(-0.005,0.0125)
+plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.plot(time/Te,Conc,label=r'$\Pi$',linewidth=lw,alpha=alp)
+plt.ylabel(r"Wave-vorticity correlation [r]")
 plot_fig_label(ax, label="b")
-plt.xlabel(r"Dispersivity $[\hslash = f_0 \lambda^2 \times k_e/U_e]$")
-plt.savefig(patho+"fig6.pdf", bbox_inches='tight')
+
+ax = fig.add_subplot(223)
+plt.plot(time/Te,Te*G1/KE_qg[0],label=r'$\Pi$',linewidth=lw,alpha=alp)
+#plt.ylim(-0.005,0.0125)
+plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.ylabel(r'Power $[\Gamma_r \times {2 k_e}/{U_e} ]$')
+plot_fig_label(ax, label="c")
+plt.xlabel(r"Time [$t \times U_e k_e$]")
+
+ax = fig.add_subplot(224)
+plt.plot(time/Te,Te*G2/KE_qg[0],label=r'$\Pi$',linewidth=lw,alpha=alp)
+plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.ylabel(r'Power $[\Gamma_a \times {2 k_e}/{U_e} ]$')
+plot_fig_label(ax, label="d")
+plt.xlabel(r"Time [$t \times U_e k_e$]")
+plt.savefig(patho+"fig5.pdf", bbox_inches='tight')
+
+
+#
+# ax = fig.add_subplot(223)
+# plt.plot(time/Te,Te*pi/KE0,label=r'$\Pi$',linewidth=lw,alpha=alp)
+# plt.plot(time/Te,Te*ep_psi/KE0,label=r'$\epsilon_\phi$',linewidth=lw,alpha=alp)
+# plt.plot(time/Te,Te*(pi+ep_phi)/KE0,label=r'$\Pi+\epsilon_\phi$',linewidth=lw,alpha=alp)
+# plt.plot(time/Te,Te*diKE_niw/KE0,'k--',label=r'$\dot K_w^i$'
+#                 ,linewidth=lw,alpha=alp)
+# plt.xlabel(r"Time [$t \times U_e k_e$]")
+# plt.ylabel(r'Power $[\dot E \times {2 k_e}/{U_e} ]$')
+# plt.legend(loc=1,ncol=2)
+# plot_fig_label(ax, label="c")
+#
+# fig.subplots_adjust(hspace=.125)
+#
+# ax = fig.add_subplot(224)
+# p1 = ax.plot(time/Te,conc_niw,linewidth=lw,alpha=alp,label='NIW concentration, $C$')
+# plt.ylabel(r"Wave-vorticity correlation [r]")
+# plt.xlabel(r"Time [$t \times U_e k_e$]")
+# plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+# plt.ylim(-0.8,0.3)
+# plot_fig_label(ax, label="d")
+
+#plt.savefig(patho+"fig5.pdf", bbox_inches='tight')

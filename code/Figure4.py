@@ -12,10 +12,10 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/decaying_turbulence/coupled/"
+pathi = "outputs/decaying_turbulence/reference/coupled/"
 patho = "../writeup/figs/"
 
-params = h5py.File(pathi+"parameters.h5","r")
+params = h5py.File(pathi+"../parameters.h5","r")
 diags = h5py.File(pathi+"diagnostics.h5")
 
 ## get params
@@ -60,7 +60,7 @@ ax = fig.add_subplot(221)
 plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$K_e$",linewidth=lw,alpha=alp)
 plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$P_w$',linewidth=lw,alpha=alp)
 plt.xticks([])
-plt.ylim(-0.2,0.2)
+plt.ylim(-0.32,0.32)
 plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
 plt.legend(loc=3)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
@@ -98,7 +98,7 @@ p1 = ax.plot(time/Te,conc_niw,linewidth=lw,alpha=alp,label='NIW concentration, $
 plt.ylabel(r"Wave-vorticity correlation [r]")
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-plt.ylim(-0.8,0.3)
+plt.ylim(-0.8,0.4)
 plot_fig_label(ax, label="d")
 
 plt.savefig(patho+"fig4.pdf", bbox_inches='tight')

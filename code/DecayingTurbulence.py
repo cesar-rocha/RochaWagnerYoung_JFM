@@ -73,8 +73,7 @@ alpha = Ro*( (Uw/Ue)**2 )
 #qgmodel.run()
 
 dt = .0025*Te
-tmax = 100*Te
-
+tmax = 150*Te
 
 #
 # setup model classes

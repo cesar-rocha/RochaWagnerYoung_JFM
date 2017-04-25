@@ -17,8 +17,6 @@ import h5py
 import multiprocessing
 
 from niwqg import CoupledModel as CoupledModel
-from niwqg import UnCoupledModel as UncoupledModel
-from niwqg import YBJModel as YBJcoupledModel
 from niwqg import QGModel as QGModel
 from niwqg import InitialConditions as ic
 
@@ -43,26 +41,6 @@ Le = np.sqrt(2)*np.pi/ke
 Te = (Ue*ke)**-1 # eddy turn-over time scale
 Ro = Ue*ke/f0
 
-#
-# First run the QG model to 20 eddy-turnover time units
-#
-
-# qg simulation parameters
-# dt = .01*Te
-# tmax = 20*Te
-
-# qgmodel = QGModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
-#                 twrite=int(0.1*Te/dt),
-#                 nu4=nu4, use_filter=False,
-#                 U =-Ue, tdiags=1,
-#                 save_to_disk=True,tsave_snapshots=25, path=patho_qg)
-
-# initial conditions
-#q = ic.McWilliams1984(qgmodel, E=(Ue**2)/2,k0=ke)
-#qgmodel.set_q(q)
-
-#qgmodel.run()
-
 qinit = np.load("q_init_512.npz")
 q = qinit['q']
 
@@ -71,7 +49,6 @@ q = qinit['q']
 #
 
 # qg-niw simulatin parameters
-
 def Run_CoupledModel(lambdaz=400):
 
     """ Run the model given vertical wavelength m, which the dispersivity, and
@@ -79,16 +56,16 @@ def Run_CoupledModel(lambdaz=400):
 
     Uw = 0.1
     m = 2*np.pi/lambdaz
-    patho_qgniw = "outputs/decaying_turbulence/coupled_new/Uw"+str(round(Uw*10)/10)+"/lambdaz"+str(lambdaz)+"/"
-    #patho_qgniw = "outputs/decaying_turbulence/filter/Uw0.1/lambdaz"+str(lambdaz)+"/"
+    patho = "outputs/decaying_turbulence/parameter_exploration_new/"
+    patho_qgniw = patho+"Uw"+str(round(Uw*10)/10)+"/lambdaz"+str(lambdaz)+"/"
     
-    dt = .0025*Te/4
-    tmax = 60*Te
+    dt = .0025*Te
+    tmax = 150*Te
 
     model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                     m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
                     nu4=nu4,nu4w=nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
-                    U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,use_fftw=True)
+                    U =-Ue, tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,)
 
     ## initial conditions
     model.set_q(q)
@@ -133,9 +110,11 @@ def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
     h5file.close()
 
 if __name__ ==  "__main__":
-    vertical_wavelength = np.array([198.75,397.5,794.8])  
+    #vertical_wavelength = np.array([198.75,397.5,794.8])  
+    vertical_wavelength = np.array([397.5/np.sqrt(2),397.5,397.5*np.sqrt(2)])  
     pool = multiprocessing.Pool(processes=3)
     pool.starmap(Run_CoupledModel, zip(vertical_wavelength))
     pool.close()
     pool.join()
+
 
