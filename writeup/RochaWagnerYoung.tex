@@ -369,7 +369,7 @@ individual term in \eqref{qgpv}. The spatially-averaged (coherent) wave amplitud
 satisfies
 \beq
 \label{phi_ave}
-\frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra = -\kappa_w
+\frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra = -\nu_w
 \lap^2 \la\phi\ra\per
 \eeq
 Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have
@@ -692,7 +692,7 @@ with \cite{fornberg1977}.
  \begin{figure}
  \label{stats_turb_various}
  \centering
- \includegraphics[width=1.\textwidth]{figs/fig6.pdf}
+ \includegraphics[width=1.\textwidth]{figs/fig5.pdf}
  \caption{Statistics of the decaying turbulence solution with $\alpha \approx 1$ and
          different dispersivities, $\hslash$. (a) Energy change about initial condition.
          (b) Coefficient of correlation between
@@ -938,7 +938,7 @@ and we conclude that the wave self-interaction shifts the frequency by
 \section{Details of the initial value problems}
 
 \subsection{Small-scale dissipation}
-To absorb the forward cascade of enstrophy, we add a biharmonic viscosity to the
+To absorb the forward cascade of enstrophy, we add a biharmonic diffusivity to the
 potential vorticity equation \eqref{macroturb}
 \beq
 D_q = -\kappa_e \lap^2 q\com
@@ -948,21 +948,21 @@ Similarly, to prevent the development of very small scales, which may violate th
 near-inertial approximation, we add a biharmonic viscosity in the wave equation
 \eqref{waves}
 \beq
-D_\phi = -\kappa_w \lap^2 \phi\per
+D_\phi = -\nu_w \lap^2 \phi\per
 \eeq
 
 The hyperviscous terms add small dissipation to the energy equations in
 Section 2. The wave kinetic energy dissipation added to \eqref{action} is
 \beq
 \label{ep_phi}
-\varepsilon_\phi \defn -\kappa_w\la|\lap\phi|^2\ra\per
+\varepsilon_\phi \defn -\nu_w\la|\lap\phi|^2\ra\per
 \eeq
 The kinetic energy dissipation \eqref{ep_phi} is associated only with the incoherent
 wave field, $\phi'$, since $\lap\la\phi\ra = 0$. Hyperviscosity also dissipates
 wave potential energy: the dissipation added to \eqref{Pw} is
 \beq
 \label{chi_phi}
-\chi_\phi \defn -\kappa_w\tfrac{\lambda^2}{2}\la |\grad \lap\phi|^2 \ra \per
+\chi_\phi \defn -\nu_w\tfrac{\lambda^2}{2}\la |\grad \lap\phi|^2 \ra \per
 \eeq
 Similarly, the geostrophic kinetic energy dissipation added to \eqref{Ke} is
 \beq
@@ -977,9 +977,9 @@ and the dissipation added to the potential enstrophy equation is
 Wave dissipation also adds two extra terms to the geostrophic kinetic energy budget:
 \beq
 \label{xi}
-\Xi = \underbrace{\tfrac{\kappa_w}{2 f_0}\left\la \lap\psi \half \left(\phis \lap^2\phi + \phi
+\Xi = \underbrace{\tfrac{\nu_w}{2 f_0}\left\la \lap\psi \half \left(\phis \lap^2\phi + \phi
 \lap^2 \phis \right) \right\ra}_{\Xi_r} +
-\underbrace{\tfrac{\kappa_w}{f_0}\left\la \tfrac{\ii}{2}\psi\left[\sJ(\phis,\lap^2\phi)-
+\underbrace{\tfrac{\nu_w}{f_0}\left\la \tfrac{\ii}{2}\psi\left[\sJ(\phis,\lap^2\phi)-
 \sJ(\phi,\lap^2\phis)\right]\right\ra}_{\Xi_a}\per
 \eeq
 The term $\Xi_r$ is easy to interpret: dissipation of wave kinetic energy,
@@ -1021,8 +1021,8 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
       $N_0$ & Buoyancy frequency & $5 \times 10^{-3}$ & s$^{-1}$\\
       $f_0$ & Colioris frequency & 10$^{-4}$ & s$^{-1}$\\
       $2\pi$m$^{-1}$ & NIW vertical wavelength &  $325$ & m \\
-      $\kappa_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$  & m$^4$ s$^{-1}$\\
-      $\kappa_w$ & NIW biharmonic viscosity & $ 5 \times 10^{7}$ & m$^4$ s$^{-1}$\\
+      $\kappa_e$ & QGPV biharmonic diffusivity & $5\times 10^{7}$  & m$^4$ s$^{-1}$\\
+      $\nu_w$ & NIW biharmonic viscosity & $ 5 \times 10^{7}$ & m$^4$ s$^{-1}$\\
    \end{tabular}
  \end{center}
 \end{table}
@@ -1043,7 +1043,7 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
 %       $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
 %       $2\pi$m$^{-1}$ & NIW vertical wavelength & $222 - 888$ m \\
 %       $\kappa_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$ m$^4$ s$^{-1}$\\
-%       $\kappa_w$ & NIW biharmonic viscosity & $ 1 \times 10^{6}$ m$^4$ s$^{-1}$\\
+%       $\nu_w$ & NIW biharmonic viscosity & $ 1 \times 10^{6}$ m$^4$ s$^{-1}$\\
 %    \end{tabular}
 %  \end{center}
 %\end{table}
