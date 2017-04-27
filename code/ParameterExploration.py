@@ -59,7 +59,7 @@ def Run_CoupledModel(lambdaz=400):
     patho = "outputs/decaying_turbulence/parameter_exploration_new/"
     patho_qgniw = patho+"Uw"+str(round(Uw*10)/10)+"/lambdaz"+str(lambdaz)+"/"
     
-    dt = .0025*Te
+    dt = .0025*Te/2
     tmax = 150*Te
 
     model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
@@ -111,7 +111,8 @@ def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
 
 if __name__ ==  "__main__":
     #vertical_wavelength = np.array([198.75,397.5,794.8])  
-    vertical_wavelength = np.array([397.5/np.sqrt(2),397.5,397.5*np.sqrt(2)])  
+    #vertical_wavelength = np.array([397.5/np.sqrt(2),397.5,397.5*np.sqrt(2)])  
+    vertical_wavelength = np.array([397.5*np.sqrt(2)])  
     pool = multiprocessing.Pool(processes=3)
     pool.starmap(Run_CoupledModel, zip(vertical_wavelength))
     pool.close()
