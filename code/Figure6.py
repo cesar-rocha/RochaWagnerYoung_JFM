@@ -12,10 +12,13 @@ from Utils import *
 
 plt.close('all')
 
-path = "outputs/decaying_turbulence/coupled_new/Uw10/lambdaz"
+#path = "outputs/decaying_turbulence/coupled_new/Uw10/lambdaz"
+path = "outputs/decaying_turbulence/parameter_exploration_new/Uw0.1/lambdaz"
 patho = "../writeup/figs/"
 
-for lambdaz in [198.75, 400.0]:
+#for lambdaz in [198.75, 400.0]:
+for lambdaz in [281.074945522, 397.5]:
+
 
     pathi = path+str(lambdaz)+"/"
     params = h5py.File(pathi+"parameters.h5","r")
@@ -90,7 +93,7 @@ for i in range(hslash.size):
     plt.plot(time/Te,dKe[:,i],'--',color=color,linewidth=lw,alpha=alp)
 
 plt.xticks([])
-plt.ylim(-0.315,0.315)
+plt.ylim(-0.45,0.45)
 plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
 plt.legend(loc=(0.4,1.1),ncol=5)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
