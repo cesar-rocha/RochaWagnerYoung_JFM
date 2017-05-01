@@ -17,8 +17,8 @@ path = "outputs/decaying_turbulence/parameter_exploration_new/Uw0.1/lambdaz"
 patho = "../writeup/figs/"
 
 #for lambdaz in [198.75, 400.0]:
-for lambdaz in [281.074945522, 397.5]:
-
+for lambdaz in [562.149891043]:
+#for lambdaz in [281.074945522, 397.5]:
 
     pathi = path+str(lambdaz)+"/"
     params = h5py.File(pathi+"parameters.h5","r")

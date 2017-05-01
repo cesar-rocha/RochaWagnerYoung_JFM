@@ -56,15 +56,25 @@ def Run_CoupledModel(lambdaz=400):
 
     Uw = 0.1
     m = 2*np.pi/lambdaz
-    patho = "outputs/decaying_turbulence/parameter_exploration_new/"
+    patho = "outputs/decaying_turbulence/parameter_exploration_newest/"
     patho_qgniw = patho+"Uw"+str(round(Uw*10)/10)+"/lambdaz"+str(lambdaz)+"/"
     
     dt = .0025*Te/2
     tmax = 150*Te
 
+
+    # choose nu4w based on vertical wavelength
+    if lambdaz<=400:
+        nu4w_ = nu4w
+    elif lambdaz<=600:
+        nu4w_ = 5*nu4w
+    elif lambdaz<=800:
+        nu4w_ = 10*nu4w
+
+
     model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                     m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                    nu4=nu4,nu4w=5*nu4w,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
+                    nu4=nu4,nu4w=nu4w_,nu=0, nuw=0, mu=0, muw=0, use_filter=False,
                     U = 0., tdiags=10, save_to_disk=True,tsave_snapshots=25, path=patho_qgniw,)
 
     ## initial conditions
@@ -111,9 +121,9 @@ def SaveParams(model,patho,m=2*np.pi/400, Uw=0.1):
 
 if __name__ ==  "__main__":
     #vertical_wavelength = np.array([198.75,397.5,794.8])  
-    #vertical_wavelength = np.array([397.5/np.sqrt(2),397.5,397.5*np.sqrt(2)])  
-    vertical_wavelength = np.array([397.5*np.sqrt(2)])  
-    pool = multiprocessing.Pool(processes=3)
+    vertical_wavelength = np.array([397.5/2.,397.5/np.sqrt(2),397.5,397.5*np.sqrt(2),397.5*2.])  
+    #vertical_wavelength = np.array([397.5*np.sqrt(2)])  
+    pool = multiprocessing.Pool(processes=5)
     pool.starmap(Run_CoupledModel, zip(vertical_wavelength))
     pool.close()
     pool.join()
