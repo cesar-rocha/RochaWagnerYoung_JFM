@@ -112,16 +112,17 @@
 \section{Introduction}
 
 % 1) The mesoscale energy conundrum: a recalcitrant problem
-Geostrophic turbulence, a main paradigm for mesoscale flows,
-transfers energy towards large scales, thereby obstructing
-the flow of energy from forcing to dissipative scales.
-Existing studies advance a panoply
-of ageostrophic mechanisms to account for the required forward flow of energy.
+Geostrophic turbulence, a main paradigm of ocean mesoscale flows,
+transfers energy towards large scales. The energy flux out of the mesoscales
+en route to viscous dissipation must, therefore, include higher-order, ageostrophic dynamics
+\citep[e.g.,][]{mcwilliams2016}.
+Indeed, existing studies advance a panoply of mechanisms to account for the required
+forward flow of energy.
 These include, but are not limited to, surface and
 benthic boundary turbulence and internal-wave generation by mesoscale eddies
 negotiating
 bottom topography \citep[see ][their figure 1, and references therein]{nagai_etal2015}.
-But roughly half of the energy flux out of the ocean mesoscales remains unaccounted for
+But roughly half of the energy flux out of the mesoscales remains unaccounted for
 \citep{ferrari_wunsch2009,nagai_etal2015}.
 
 % 2) Stimulated imbalance: a newish mechanism
@@ -129,11 +130,11 @@ Recent research has suggested that the interaction
 of geostrophic flows with externally-forced internal waves serves
 as a major sink of mesoscale energy en route to viscous dissipation
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016}.
-The emphasis on interactions of geostrophic flow with existing internal waves---
+The emphasis on interactions of geostrophic flow with \textit{existing} internal waves---
 here denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
 \cite{wagner_young2016}, we define
 \textit{stimulated imbalance} as wave-mean interactions that transfer energy from
-geostrophic motions (the mean flow) to existing internal
+geostrophic motions (the mean flow) to \textit{existing} internal
 waves. This definition contrasts with the nomenclature employed by
 \cite{barkan_etal2016}, who term stimulated imbalance a process by which
 internal waves trigger a forward cascade from mesoscale to submesoscale subinertial flows.}---
@@ -154,9 +155,16 @@ evolution of near-inertial waves (NIWs) with quasigeostrophic (QG) flow. The
 focus on this specific class of wave-mean interactions is justified:  geostrophic
 eddies account for the bulk of the oceanic eddy kinetic energy \cite[$90\%$,][]{ferrari_wunsch2009} and
 near-inertial waves contain most of the oceanic high-frequency variability
-\citep{alford_etal2016}. The minimal coupled model \eqref{macroturb}-\eqref{waves}
-reveals the physics of quasi-inviscid stimulated imbalance associated
-with vertical vorticity and lateral strain.
+\citep{alford_etal2016}.
+
+The main analytical result of this paper, an equation for the wave potential
+energy \eqref{Pw}, enlightens the physics of quasi-inviscid stimulated imbalance
+associated with vertical vorticity and lateral strain. Numerical solutions of
+initial-value problems confirm our interpretation of \eqref{Pw}. And the solution
+diagnostics reveal that geostrophic straining is the main source of wave potential
+energy---and sink of geostrophic kinetic energy. In this quasi-inviscid limit,
+wave dispersion is the only mechanism that stops the energy conversion by moving
+the waves out of the strainning regions.
 
 \section{The physics of NIW energy extraction from a barotropic QG flow}
 
@@ -228,13 +236,13 @@ D_q = -\kappa_e \lap^2 q\com
 \eeq
 is sufficient to extend the spectral resolution compared to Laplacian diffusion, while avoiding
 obscure physical effects of higher-order diffusion or spectral
-filter \citep{mcwilliams1984}.
-In practice, we choose the diffusivity that place the 35$\%$ highest
+filter.
+In practice, we choose the diffusivity that places the 35$\%$ highest
 modes in the dissipation range, so that aliased wavenumbers are strongly damped.
 
 \subsection{Power integrals and energy conversion}
 
-From \eqref{waves}, the near-inertial kinetic energy density $\half |\phi|^2$
+From \eqref{waves}, we deduce that the near-inertial kinetic energy density $\half |\phi|^2$
 satisfies
 \beq
 \label{action_density}
@@ -289,11 +297,13 @@ $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 \Big\ra}_{\defn\Gamma_{r}} +
 \underbrace{\tfrac{\lambda^2}{2}\, \Big\la\half\psi\left[\sJ(\phi,\lap\phis)
 + \sJ(\phis,\lap\phi)\right]\Big\ra}_{\defn\Gamma_a}
-\, +\,\, \chi_\phi \per
+\, +\,\, \chi_\phi \com
 \end{align}
+where $\chi_\phi$ is the dissipation of wave potential energy (see appendix B
+for explicit expressions).
 
-Finally, we form an equation for the geostrophic kinetic energy, $K_e$: $-\la\psi\times
-\eqref{macroturb}\ra$, with \eqref{qgpv}, \eqref{action_density},
+And from \eqref{macroturb}, we deduce an equation for the geostrophic kinetic energy,
+$K_e$: $-\la\psi\times\eqref{macroturb}\ra$, with \eqref{qgpv}, \eqref{action_density},
 \eqref{waves}, and multiple integration by parts, give
 \beq
 \label{Ke}
@@ -302,9 +312,10 @@ Finally, we form an equation for the geostrophic kinetic energy, $K_e$: $-\la\ps
 \eeq
 where $\Xi$ is a source of geostrophic kinetic energy due to
 wave dissipation and $\varepsilon_q$ is the rate of dissipation of geostrophic
-kinetic energy (see appendix B for explicit expressions). In the inviscid limit,
-$\Xi\to 0$ and $\varepsilon_q \to 0$, the coupled model
-  \eqref{macroturb}-\eqref{waves} conserves the energy \citep{xie_vanneste2015}
+kinetic energy (see appendix B for explicit expressions).
+
+In the inviscid limit, $\chi_\phi\to 0$ and $\Xi\to 0$ and $\varepsilon_q \to 0$,
+the coupled model \eqref{macroturb}-\eqref{waves} conserves the energy \citep{xie_vanneste2015}
 \beq
 \label{E}
 E \defn K_e + P_w\per
@@ -316,7 +327,7 @@ The term $\Gamma_r$   stems from refraction and is easy to
 interpret: the convergence, $\nabla\cdot\Ff_w < 0$, of the wave flux of kinetic energy density
  into anticyclones, $\lap\psi<0$, is a source of wave potential
 energy, $P_w$. The term $\Gamma_a$ stems from advection and resembles the source
-of variance of a passive scalar (tracer) gradient subject to lateral stirring
+of variance of a passive scalar (tracer) gradient subject to lateral advection
 \beq
 \label{c_t}
 c_t + \sJ(\psi,c) = 0.
@@ -353,7 +364,7 @@ a lateral scale much larger than
 the waves, this distortion of $\phi$ is akin to the wave capture
 mechanism of \cite{buhler_mcintyre2005}.
 
-The \cite{young_benjelloul1997} equation with barotropic geostrophic flow
+The standard \cite{young_benjelloul1997} equation with barotropic geostrophic flow
 also satisfies the potential energy equation \eqref{Pw}. But
 \cite{young_benjelloul1997} and subsequent studies overlooked the wave potential
 energy power integral, \eqref{Pw}, or its generalization to baroclinic quasigeostrophic flow.
@@ -363,14 +374,11 @@ vorticity equation, hence an increase in wave potential energy is not matched by
 decrease in geostrophic kinetic energy.
 
 \subsection{Averaged equations and loss of coherence}
-The domain-averaged potential vorticity $\la q \ra$ is invariant as a consequence of
-the material invariance of $q$, or the invariance of the average of each
-individual term in \eqref{qgpv}. The spatially-averaged (coherent) wave amplitude
-satisfies
+The spatially-averaged (coherent) wave amplitude satisfies
 \beq
 \label{phi_ave}
-\frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra = -\nu_w
-\lap^2 \la\phi\ra\per
+\frac{\dd}{\dd t}\la \phi \ra + \ii \left\la\half\phi\lap\psi \right\ra =
+D_{\la\phi\ra}\per
 \eeq
 Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have
 \beq
@@ -379,7 +387,7 @@ Introducing the decomposition $\phi = \la\phi\ra+\phi'$, we have
 \underbrace{\half\la|\phi'|^2\ra}_{\defn K^i_w}\com
 \eeq
 Thus, the kinetic energy of horizontally incoherent, $\phi'$, and coherent,
- $\la\phi\ra$, wave velocities satisfy
+ $\la\phi\ra$, waves satisfy
 \beq
 \label{Kiw}
 \dot{K}_w^i = \Pi + \varepsilon_{\la\phi\ra}\com
@@ -400,12 +408,13 @@ and \eqref{Kcw}, $\varepsilon_{\la\phi\ra}$ and $\varepsilon_{\phi'}$ are the di
 of kinetic energy of incoherent and coherent waves, respectively.
 
 \subsection{Relevant parameters}
-Using the scaling
-\beq
+Consider the scaling
+\beq\label{scaling}
 \psi \sim U_e k_e^{-1} \com\qquad \text{and} \qquad \phi \sim U_w\com
 \eeq
 with characteristic QG and NIW velocity scales $U_e$ and $U_w$, and the
-characteristic horizontal length scale $k_e^{-1}$ and time scale $(U_e k_e)^{-1}$,
+characteristic horizontal length scale $k_e^{-1}$ and time scale $(U_e k_e)^{-1}$.
+Using \eqref{scaling} in \eqref{macroturb}-\eqref{waves}
 reveals that there are two dynamically relevant parameters of the QG-NIW problem
 described by \eqref{macroturb}-\eqref{waves}. First, the `wave amplitude'
 \beq
@@ -426,9 +435,8 @@ effects of advection and refraction.
 The two conversion terms, $\Gamma_r$ and $\Gamma_a$,
 scale with the same non-dimensional parameter: $\alpha\times \hslash$. But this
 does not imply that the energy conversion scales linearly with both wave amplitude
-and dispersivity because the scales developed by the wave velocity $\phi$ and the
- correlations in $\Gamma$ depend on $\alpha$ and $\hslash$. Hence, the scaling of
- the lateral derivatives also depend on $\alpha$ and $\hslash$.
+and dispersivity because the scales developed by $\phi$ and its gradients also
+depend on $\alpha$ and $\hslash$.
 
 
 \subsection{Summary}
