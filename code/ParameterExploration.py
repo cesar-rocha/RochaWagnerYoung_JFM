@@ -63,16 +63,19 @@ def Run_CoupledModel(lambdaz=400):
     tmax = 150*Te
 
     # choose nu4w based on vertical wavelength
-    if lambdaz<200:
+
+    if lambdaz<=200:
         nu4w_ = nu4w/10
-    elif lambdaz<=285:
-        mu4w_ = nu4w/5.
+    if lambdaz<=285:
+        nu4w_ = nu4w/5.
     elif lambdaz<=400:
         nu4w_ = nu4w
     elif lambdaz<=600:
         nu4w_ = 5*nu4w
     elif lambdaz<=800:
         nu4w_ = 10*nu4w
+    else:
+        nu4w_ = nu4w
 
     model = CoupledModel.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                     m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
