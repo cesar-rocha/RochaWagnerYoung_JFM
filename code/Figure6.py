@@ -79,7 +79,14 @@ for lambdaz in [198.75,281.074945522, 397.5,562.149891043, 795.0]:
         CHI_PHI = chi_phi[...,np.newaxis]
         EP_PHI = ep_phi[...,np.newaxis]
 
-# ## plotting
+
+# calculate averages
+norm = KE_qg[0]/Te
+G1m, G2m = G1.mean(axis=0)/norm, G2.mean(axis=0)/norm
+imax = 2*801
+G1ms, G2ms = G1[:imax].mean(axis=0)/norm, G2[:imax].mean(axis=0)/norm
+
+## plotting
 fig = plt.figure(figsize=(8.5,6.))
 lw, alp = 3.,.5
 KE0 = KE_qg[0]
@@ -112,6 +119,7 @@ plt.ylabel(r"Wave-vorticity correlation [r]")
 plot_fig_label(ax, label="b")
 
 ax = fig.add_subplot(223)
+
 plt.plot(time/Te,Te*G1/KE_qg[0],label=r'$\Pi$',linewidth=lw,alpha=alp)
 #plt.ylim(-0.005,0.0125)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
@@ -119,12 +127,57 @@ plt.ylabel(r'Power $[\Gamma_r \times {2 k_e}/{U_e} ]$')
 plot_fig_label(ax, label="c")
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 
+# inset
+G = 1.e-3
+ax1 = plt.axes([.3, .345, .135, .1], facecolor='w')
+plt.plot(hslash,G1ms/G,'o',color='0.5',alpha=alp,label=r'$t_{max} = 20$')
+p2=plt.plot(hslash,G1m/G,'o',alpha=alp,)
+#plt.plot(0.25,.9,'o',color="0.5",alpha=alp)
+#plt.text(0.5,.8,r'$20$')
+#plt.plot(1.75,.9,'o',color=p2[0].get_color(),alpha=alp)
+#plt.text(2.,.8,r'$150$')
+#plt.text(.85,1.045,r'$t_{max}$')
+#plt.text(2.25,.285,r'$0.13\,\,\hslash$',rotation=15,alpha=alp)
+plt.xlim(0,4.25)
+plt.xticks([0,1,2,4])
+plt.ylim(-.1,1.1)
+plt.yticks([0.,0.5,1.])
+ax1.spines['right'].set_visible(False)
+ax1.spines['top'].set_visible(False)
+ax1.yaxis.set_ticks_position('left')
+ax1.xaxis.set_ticks_position('bottom')
+plt.xlabel(r'$\hslash$')
+plt.ylabel(r'$\overline{\Gamma}_r \times 10^3$')
+
 ax = fig.add_subplot(224)
 plt.plot(time/Te,Te*G2/KE_qg[0],label=r'$\Pi$',linewidth=lw,alpha=alp)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
 plt.ylabel(r'Power $[\Gamma_a \times {2 k_e}/{U_e} ]$')
 plot_fig_label(ax, label="d")
 plt.xlabel(r"Time [$t \times U_e k_e$]")
+
+G = 1.e-2
+ax1 = plt.axes([.75, .345, .135, .1], facecolor='w')
+plt.plot(hslash,G2ms/G,'o',color='0.5',alpha=alp,label=r'$t_{max} = 20$')
+p2=plt.plot(hslash,G2m/G,'o',alpha=alp,)
+plt.plot(1.45,.9,'o',color="0.5",alpha=alp)
+plt.text(1.9,.8,r'$20$')
+plt.plot(3.15,.9,'o',color=p2[0].get_color(),alpha=alp)
+plt.text(3.60,.8,r'$150$')
+plt.text(2.35,1.045,r'$t_{max}$')
+#plt.text(2.25,.285,r'$0.13\,\,\hslash$',rotation=15,alpha=alp)
+plt.xlim(0,4.25)
+plt.xticks([0,1,2,4])
+plt.ylim(-.1,1.1)
+plt.yticks([0.,0.5,1.])
+ax1.spines['right'].set_visible(False)
+ax1.spines['top'].set_visible(False)
+ax1.yaxis.set_ticks_position('left')
+ax1.xaxis.set_ticks_position('bottom')
+plt.xlabel(r'$\hslash$')
+plt.ylabel(r'$\overline{\Gamma}_a \times 10^2$')
+
+
 plt.savefig(patho+"fig5.pdf", bbox_inches='tight')
 
 
