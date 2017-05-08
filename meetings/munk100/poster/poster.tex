@@ -25,9 +25,9 @@
 \setlength{\paperwidth}{44in}
 \setlength{\paperheight}{38in}
 \setlength{\sepwid}{0.024\paperwidth}
-\setlength{\onecolwid}{0.225\paperwidth}
+\setlength{\onecolwid}{0.275\paperwidth}
 \setlength{\twocolwid}{0.575\paperwidth}
-\setlength{\threecolwid}{0.65\paperwidth}
+\setlength{\threecolwid}{0.6\paperwidth}
 \setlength{\topmargin}{-0.5in}
 \usepackage[]{moresize}
 \usetheme{confposter}
@@ -131,6 +131,7 @@
 \renewcommand{\N}{\mathsf{N}}
 \newcommand{\psiq}{\psi^q}
 \newcommand{\psiw}{\psi^w}
+\newcommand{\p}{\partial}
 
 \begin{frame}[t]
   \begin{columns}[t]												% the [t] option aligns the column's content at the top
@@ -143,54 +144,87 @@
 
 
       \vskip2ex
-      \begin{block}{Simplified solutions of the Xie \& Vanneste (2015) equations}
+      \begin{block}{The Xie \& Vanneste (2015) minimal model}
 
         With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
         uniform background buoyancy frequency, $N_0$, and
-        single-mode near-inertial vertical structure, $\ee^{\ii m z}$, the \cite{xie_vanneste2015}
-        coupled model (Appendix A) reduces to
+        single-mode near-inertial vertical structure, $u_w+\ii v_w  =
+        \ee^{\ii (m z - f_0 t)} \phi(x,y,t)$, the Xie \& Vanneste \cite{XV15}
+        coupled model reduces to
         \beq
         \label{macroturb}
         q_t + \sJ(\psi,q) = D_q\com
         \eeq
-        with the wave-averaged quasi-geostrophic potential vorticity
+        with the \textit{wave-averaged} quasi-geostrophic potential vorticity
+        (cf. \cite{WY15})
         \beq
         \label{qgpv}
         q = \lap \psi +
                          \tfrac{1}{f_0}\Big[ \tfrac{1}{4} \lap |\phi|^2 + \tfrac{\ii}{2}
-                         \sJ(\phi^\star,\phi)\Big]\per
+                         \sJ(\phi^\star,\phi)\Big]\com
         \eeq
-        Above, the streamfunction is defined so that the geostrophic velocity is
-        $(u_e, v_e) = (-\psi_y, \psi_x)$, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
-        Laplacian, $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, and $\phi$
-        is near-inertial back-rotated velocity,
-        \beq
-        \label{niw_velocity}
-        u_w+\ii v_w  =\ee^{\ii (m z - f_0 t)} \phi(x,y,t)\per
-        \eeq
-        Also in \eqref{qgpv}, the superscript star $^\star$ denotes complex conjugation.
-
-        The near-inertial back-rotated velocity, $\phi$, is governed by
+        and wave equation
         \beq
         \label{waves}
         \phi_t + \sJ(\psi,\phi) + \tfrac{\ii}{2}\phi\lap \psi - \tfrac{\ii}{2} f_0 \lambda^2 \lap \phi
          = D_\phi\com
         \eeq
-        where $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale.
-      \end{block}
+        Above, the streamfunction is defined so that the geostrophic velocity is
+        $(u_e, v_e) = (-\psi_y, \psi_x)$, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
+        Laplacian, $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, the
+        superscript star $^\star$ denotes complex conjugation,
+        $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale,
+        and the D-terms represents an \textit{ad hoc} dissipation.
 
-      \vskip2ex
-      \begin{block}{Power integrals and energy conversion}
-        The ``alert'' block environment looks like this. It also has justified text, but it has a border and a light background to make it stand out. You can create one like so:
-        \begin{semiverbatim}
-          {\color{red}\\begin}\{{\color{blue}alertblock}\}\{Title\}\newline
-          \hskip1ex.......\newline
-          {\color{red}\\end}\{{\color{blue}alertblock}\}
-        \end{semiverbatim}
-      \end{block}
+        \beq
+        \label{action_density}
+        \p_t \half |\phi|^2 + \sJ(\psi,\half|\phi|^2) + \diver \Ff_w = \text{dissipation}
+        \per
+        \eeq
 
+        Above, $\Ff_w$ is the wave flux of kinetic energy density:
+
+        \beq
+        \label{Fw2}
+        \Ff_w \defn \tfrac{\ii}{4}f_0\lambda^2\left(\phi\grad\phis-\phis\grad\phi\right) =
+        f_0 \lambda^2\grad\Theta \times
+        \half |\phi|^2\com
+        \eeq
+
+        where the equality above follows from use of a polar representation
+        $\phi = |\phi|\ee^{\ii\Theta}$.
+
+        \end{block}
       \vskip2ex
+
       \begin{alertblock}{The physics of stimulated imbalance}
+
+
+                From \eqref{waves}, we deduce an equation for the wave potential energy,
+                $P_w \defn \tfrac{1}{4}\lambda^2 \la|\nabla\phi|^2\ra$:
+
+                \begin{align}
+                \label{Pw}
+                 \dot P_w =
+                & \underbrace{\tfrac{1}{f_0}\Big\la\half\lap\psi\diver\Ff_w
+                \Big\ra}_{\defn\Gamma_{r}} +
+                \underbrace{\tfrac{\lambda^2}{2}\, \Big\la\half\psi\left[\sJ(\phi,\lap\phis)
+                + \sJ(\phis,\lap\phi)\right]\Big\ra}_{\defn\Gamma_a}
+                \, +\,\, \text{dissipation} \com
+                \end{align}
+                where $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
+                at the expenses of geostrophic kinetic energy, $K_e \defn \half \la|\nabla\psi|^2\ra$,
+                i.e.,
+                \beq
+                  \dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per
+                \eeq
+
+                \begin{figure}
+                  \includegraphics[width=0.5\textwidth]{figs/Gammaa.pdf}
+                  %\caption{...}
+                \end{figure}
+
+
       \end{alertblock}
 
 
@@ -234,45 +268,40 @@
             \begin{semiverbatim}
               {\color{red}\\setbeamercolor}\{block  body\}\newline \{fg=black,bg=white\}
             \end{semiverbatim}
-            The \emph{fg} colour sets the text colour and \emph{bg} sets the background colour.
-            For the normal blocks it makes no sense to use a background colour other than white. You \emph{can} change it, but it will look weird!
           \end{block}
         \end{column}
-        \hspace{-10em}
-        \begin{column}{\onecolwid}
-          \setbeamercolor{block alerted title}{fg=black,bg=norange}	% frame color
-          \setbeamercolor{block alerted body}{fg=black,bg=white}		% body color
-          \begin{alertblock}{Alert Block Colours}
-            You can similarly modify the colours for alert blocks (but try not to overdo it):\\
-            \begin{semiverbatim}
-              {\color{red}\\setbeamercolor}\{block title\}\newline \{fg=black,bg=norange\}
-            \end{semiverbatim}
-            \begin{semiverbatim}
-              {\color{red}\\setbeamercolor}\{block  body\}\newline \{fg=black,bg=white\}
-            \end{semiverbatim}
-          \end{alertblock}
-        \end{column}
-        \hspace{-10em}
+        % \hspace{-10em}
         % \begin{column}{\onecolwid}
-        %   \begin{block}{References}
-        %     Some references and a graphic to show you how it's done:
-        %
-		    %     \small{\begin{thebibliography}{99}
-		    %     \bibitem{KLPL06} D.~W. Kribs, R. Laflamme, D. Poulin, M. Lesosky,
-        %                      Quantum Inf. \& Comp. \textbf{6} (2006), 383-399.
-		    %     \bibitem{zanardi97} P. Zanardi, M. Rasetti, Phys. Rev. Lett. \textbf{79},
-        %                         3306 (1997).
-		    %     \end{thebibliography}}
-			  %     \vspace{0.75in}
-			  %     \begin{center}
-			  %       %\includegraphics[width=5in]{canada.jpg}
-			  %     \end{center}
-		    %   \end{block}
+        %   \setbeamercolor{block alerted title}{fg=black,bg=norange}	% frame color
+        %   \setbeamercolor{block alerted body}{fg=black,bg=white}		% body color
+        %   \begin{alertblock}{Alert Block Colours}
+        %     You can similarly modify the colours for alert blocks (but try not to overdo it):\\
+        %     \begin{semiverbatim}
+        %       {\color{red}\\setbeamercolor}\{block title\}\newline \{fg=black,bg=norange\}
+        %     \end{semiverbatim}
+        %     \begin{semiverbatim}
+        %       {\color{red}\\setbeamercolor}\{block  body\}\newline \{fg=black,bg=white\}
+        %     \end{semiverbatim}
+        %   \end{alertblock}
         % \end{column}
+        \hspace{-15em}
+        \begin{column}{\onecolwid}
+          \begin{block}{References}
+            Some references and a graphic to show you how it's done:
+
+		        \small{\begin{thebibliography}{99}
+		        \bibitem{XV15} J-H~ Xie and J. Vanneste (2015).
+            \bibitem{WY15} G. L.~ Wagner and W. R. Young (2015).
+		        \end{thebibliography}}
+			      \vspace{0.75in}
+			      \begin{center}
+			        %\includegraphics[width=5in]{canada.jpg}
+			      \end{center}
+		      \end{block}
+        \end{column}
       \end{columns}
       \vskip2.5ex
     \end{column}
-  \begin{column}{\sepwid}\end{column}			% empty spacer column
  \end{columns}
  \vspace{2.5cm}
 
