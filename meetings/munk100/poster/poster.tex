@@ -98,7 +98,6 @@
 
             \vspace{0.1in}
            }
-           \newcommand{\defn}{\ensuremath{\stackrel{\mathrm{def}}{=}}}
 
 
 %-----------------------------------------------------------
@@ -106,6 +105,33 @@
 %-----------------------------------------------------------
 
 \begin{document}
+
+
+\include{symbols}
+
+%\renewcommand{\sZ}{\mathsf{Z}}
+%\renewcommand{\sE}{\mathsf{E}}
+\newcommand{\iBu}{\left(\tfrac{f_0}{N}\right)^2}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\phis}{\phi^\star}
+\newcommand{\Ff}{\mathbf{F}}
+\newcommand{\Sf}{\mathbf{S}}
+\newcommand{\ut}{\mathbf{u}^\#}
+\newcommand{\cg}{\mathbf{c}_g}
+\newcommand{\Uf}{\mathbf{U}}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\div}{\nabla\cdot}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\dU}{\delta U}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cP}{\mathcal{P}}
+\renewcommand{\L}{\mathsf{L}}
+\renewcommand{\N}{\mathsf{N}}
+\newcommand{\psiq}{\psi^q}
+\newcommand{\psiw}{\psi^w}
+
 \begin{frame}[t]
   \begin{columns}[t]												% the [t] option aligns the column's content at the top
     \begin{column}{\sepwid}\end{column}			% empty spacer column
@@ -116,18 +142,42 @@
       \end{alertblock}
 
 
-      \begin{block}{Motivation: The flow of energy and information in the ocean}
-        The flow of energy and information in the ocean.
-        \vskip1ex
-      \end{block}
       \vskip2ex
       \begin{block}{Simplified solutions of the Xie \& Vanneste (2015) equations}
-        The standard block environment looks like this. It has justified text and a green title with an underline. You can create one like so:
-        \begin{semiverbatim}
-          {\color{red}\\begin}\{{\color{blue}block}\}\{Title\}\newline
-          \hskip1ex.......\newline
-          {\color{red}\\end}\{{\color{blue}block}\}
-        \end{semiverbatim}
+
+        With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
+        uniform background buoyancy frequency, $N_0$, and
+        single-mode near-inertial vertical structure, $\ee^{\ii m z}$, the \cite{xie_vanneste2015}
+        coupled model (Appendix A) reduces to
+        \beq
+        \label{macroturb}
+        q_t + \sJ(\psi,q) = D_q\com
+        \eeq
+        with the wave-averaged quasi-geostrophic potential vorticity
+        \beq
+        \label{qgpv}
+        q = \lap \psi +
+                         \tfrac{1}{f_0}\Big[ \tfrac{1}{4} \lap |\phi|^2 + \tfrac{\ii}{2}
+                         \sJ(\phi^\star,\phi)\Big]\per
+        \eeq
+        Above, the streamfunction is defined so that the geostrophic velocity is
+        $(u_e, v_e) = (-\psi_y, \psi_x)$, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
+        Laplacian, $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, and $\phi$
+        is near-inertial back-rotated velocity,
+        \beq
+        \label{niw_velocity}
+        u_w+\ii v_w  =\ee^{\ii (m z - f_0 t)} \phi(x,y,t)\per
+        \eeq
+        Also in \eqref{qgpv}, the superscript star $^\star$ denotes complex conjugation.
+
+        The near-inertial back-rotated velocity, $\phi$, is governed by
+        \beq
+        \label{waves}
+        \phi_t + \sJ(\psi,\phi) + \tfrac{\ii}{2}\phi\lap \psi - \tfrac{\ii}{2} f_0 \lambda^2 \lap \phi
+         = D_\phi\com
+        \eeq
+        where $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale.
+
       \end{block}
       \vskip2ex
       \begin{block}{Power integrals: The physics of stimulated imbalance}
