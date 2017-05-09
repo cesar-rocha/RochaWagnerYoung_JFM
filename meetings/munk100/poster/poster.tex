@@ -132,15 +132,16 @@
 \newcommand{\psiq}{\psi^q}
 \newcommand{\psiw}{\psi^w}
 \newcommand{\p}{\partial}
+\renewcommand{\defn}{\equiv}
 
 \begin{frame}[t]
   \begin{columns}[t]												% the [t] option aligns the column's content at the top
     \begin{column}{\sepwid}\end{column}			% empty spacer column
     \begin{column}{0.4\paperwidth}
 
-      \begin{alertblock}{Big picture and goal}
-
-      \end{alertblock}
+      % \begin{alertblock}{Big picture and goal}
+      %
+      % \end{alertblock}
 
 
       \vskip2ex
@@ -178,20 +179,12 @@
 
         \beq
         \label{action_density}
-        \p_t \half |\phi|^2 + \sJ(\psi,\half|\phi|^2) + \diver \Ff_w = \text{dissipation}
-        \per
+        \p_t \half |\phi|^2 + \sJ(\psi,\half|\phi|^2) + \diver \big(\underbrace{f_0
+        \lambda^2\grad\Theta\,\,\,\half |\phi|^2}_{\defn\Ff_w}\big) = \text{dissipation}
+        \com
         \eeq
 
-        Above, $\Ff_w$ is the wave flux of kinetic energy density:
-
-        \beq
-        \label{Fw2}
-        \Ff_w \defn \tfrac{\ii}{4}f_0\lambda^2\left(\phi\grad\phis-\phis\grad\phi\right) =
-        f_0 \lambda^2\grad\Theta \times
-        \half |\phi|^2\com
-        \eeq
-
-        where the equality above follows from use of a polar representation
+        where $\Ff_w$ is the wave flux of kinetic energy density and
         $\phi = |\phi|\ee^{\ii\Theta}$.
 
         \end{block}
@@ -214,17 +207,26 @@
                 \end{align}
                 where $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
                 at the expenses of geostrophic kinetic energy, $K_e \defn \half \la|\nabla\psi|^2\ra$,
-                i.e.,
-                \beq
-                  \dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per
-                \eeq
+                i.e., $\dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per$
 
-                \begin{figure}
-                  \includegraphics[width=0.15\textwidth]{figs/Gammaa.pdf}
-                  %\caption{...}
-                \end{figure}
+                \begin{columns}
+                  \begin{column}{.425\textwidth}
+                  \begin{figure}
+                    \includegraphics[width=0.9\textwidth]{figs/Gammar.pdf}
+                    \caption{An illustration of the refractive conversion,
+                              $\Gamma_r$.}
+                  \end{figure}
+                \end{column}
 
+                \begin{column}{0.425\textwidth}
+                  \begin{figure}
+                    \includegraphics[width=0.9\textwidth]{figs/Gammar.pdf}
+                    \caption{An illustration of the refractive conversion,
+                              $\Gamma_a$.}
+                  \end{figure}
+                \end{column}
 
+                \end{columns}
       \end{alertblock}
 
 
@@ -310,7 +312,7 @@
 
  \begin{flushleft}
 \hskip1.5cm  Internal Waves, Turbulence, and the Overturning Circulation of the Ocean---A
- symposium in honor of Walter Munk's Centennial\\ \vskip.25cm \hskip1.5cm
+ symposium in honor of Walter Munk's Centennial \hskip6.35cm
  Scripps Institution of Oceanography, La Jolla, CA, May 15--17, 2017
  \end{flushleft}
 
