@@ -44,7 +44,7 @@ alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
 dt = .0025*Te
-tmax = 0.5*Te
+tmax = 1.*Te
 
 ## setup model class
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
@@ -54,12 +54,13 @@ model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                 save_to_disk=True,tsave_snapshots=25, path=patho)
 
 # a quasi-straining flow
-psi = np.sin(2*np.pi*model.x/model.L)*np.sin(2*np.pi*model.y/model.L)
+psi = -np.sin(2*np.pi*model.x/model.L)*np.sin(2*np.pi*model.y/model.L)
 psi_hat = np.fft.fft2(psi)
 q = np.fft.ifft2(-model.wv2*psi_hat).real/(Ue*ke)
 
 # a wavepacket
-phi = Uw*ic.WavePacket(model, k=ke, l=ke, R=1.5*Le, x0=model.x.mean(), y0=model.x.mean())
+phi = Uw*ic.WavePacket(model, k=ke, l=ke, R=1.5*Le,
+                              x0=model.x.mean(), y0=model.x.mean())
 
 model.set_q(q)
 model.set_phi(phi)
@@ -127,7 +128,7 @@ ax1.spines['top'].set_visible(False)
 ax1.spines['bottom'].set_visible(False)
 ax1.spines['left'].set_visible(False)
 
-plt.text(-2.05,2.1,r"$t \times f_0/2\pi = 0$")
+plt.text(-2.05,2.01,r"$t \times \alpha/2\pi = 0$")
 
 ax2 = fig.add_subplot(122,aspect=1)
 plt.contour(x,y,psi,cp,colors='k')
@@ -143,7 +144,7 @@ ax2.spines['top'].set_visible(False)
 ax2.spines['bottom'].set_visible(False)
 ax2.spines['left'].set_visible(False)
 
-plt.text(-2.05,2.1,r"$t \times f_0/2\pi = 2$")
+plt.text(-2.05,2.01,r"$t \times \alpha/2\pi = 1$")
 
 plt.savefig("../meetings/munk100/poster/figs/Gamma_a.pdf",
             bbox_inches='tight',
