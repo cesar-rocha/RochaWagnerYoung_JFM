@@ -85,7 +85,7 @@
                \vskip1cm
               \end{column}
               \begin{column}{.4\linewidth}
-                \hspace{15.em}
+                \hspace{17.em}
                 \includegraphics[width=0.2\linewidth]{figs/dipole2art_1.png}\hspace{.5em}
                 %\includegraphics[width=0.2\linewidth]{figs/dipole2art_2.png}\hspace{1.5em}
                \includegraphics[width=0.25\linewidth]{figs/dipole2art_3.png}\hspace{-6.em}
@@ -157,9 +157,9 @@
       \begin{block}{The Xie \& Vanneste (2015) minimal model}
 
         With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
-        uniform background buoyancy frequency, $N_0$, and
+        uniform background buoyancy frequency, $N_0$,
         single-mode near-inertial vertical structure, $
-        \ee^{\ii m z}$, the Xie \& Vanneste$^1$ coupled model (cf. Wagner \& Young, 2016$^2$)
+        \ee^{\ii m z}$, and $\beta = 0$, the Xie \& Vanneste$^1$ coupled model (cf. Wagner \& Young, 2016$^2$)
          reduces to
         \beq
         \label{macroturb}
@@ -170,10 +170,11 @@
         \eeq
         where $q$ is the \textit{wave-averaged} quasi-geostrophic potential vorticity
         (cf. Wagner \& Young, 2015$^3$), and
-
         \beq
         \label{waves}
-        \phi_t + \sJ(\psi,\phi) + \tfrac{\ii}{2}\phi\lap \psi - \tfrac{\ii}{2} f_0 \lambda^2 \lap \phi
+        \phi_t + \underbrace{\sJ(\psi,\phi)}_{\text{Advection}} + \underbrace{\tfrac{\ii}{2}
+        \phi\lap \psi}_{\text{Refraction}} - \underbrace{\tfrac{\ii}{2} f_0 \lambda^2
+         \lap \phi}_{\text{Dispersion}}
          = D_\phi\qquad\text{with}\qquad u_w+\ii v_w  =
          \ee^{\ii (m z - f_0 t)} \phi(x,y,t)\com
         \eeq
@@ -215,7 +216,7 @@
                 \end{align}
                 where $\la\,\,\ra$ represents horizontal average, and $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
                 at the expenses of geostrophic kinetic energy, $K_e \defn \half \la|\nabla\psi|^2\ra$,
-                i.e., $\dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per$
+                i.e., $\dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}.$
 
                 \begin{columns}
                   \begin{column}{.425\textwidth}
@@ -282,7 +283,7 @@
               ~~~~~\textbf{Two parameters}:
                 \beq
                 \label{alpha}
-                \text{Amplitude}:\,\,\alpha \defn {\frac{U_e k_e}{f_0}} \times
+                \text{Amplitude:\,\,}\alpha \defn {\frac{U_e k_e}{f_0}} \times
                 {\left(\frac{U_w}{U_e}\right)^2}\,;\qquad\text{Dispersivity:\,\,}
                 \hslash \defn f_0 \lambda^2 \times \frac{k_e}{U_e}\per
                 \eeq
@@ -331,8 +332,8 @@
 
                           \begin{itemize}
                               \item The convergence of wave kinetic energy into
-                                    anticyclones and the straining of the wave field
-                                    by geostrophic flow are sources of wave potential
+                                    anticyclones and the geostrophic straining of
+                                    the wave field by are sources of wave potential
                                     energy---and sinks of geostrophic kinetic energy.
                               \item Geostrophic straining accounts for the bulk
                                     energy conversion in macroturbulence solutions.
@@ -374,7 +375,7 @@
  \hspace{1cm}
  \vspace{-1.5cm}
    \hspace{0.5in}\begin{beamercolorbox}[wd=46.15in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
-   \vspace{-.95cm}
+   \vspace{-.9cm}
  \begin{flushleft}
 \hskip1.92cm  Internal Waves, Turbulence, and the Overturning Circulation of the Ocean---A
  symposium in honor of Walter Munk's Centennial \hskip15.03cm
