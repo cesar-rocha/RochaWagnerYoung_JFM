@@ -178,7 +178,7 @@ plt.xlabel(r'$\hslash$')
 plt.ylabel(r'$\overline{\Gamma}_a \times 10^2$')
 
 
-plt.savefig(patho+"fig5.pdf", bbox_inches='tight')
+plt.savefig(patho+"fig6.pdf", bbox_inches='tight')
 
 
 #
