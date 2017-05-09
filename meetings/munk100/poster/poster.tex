@@ -137,7 +137,7 @@
 \begin{frame}[t]
   \begin{columns}[t]												% the [t] option aligns the column's content at the top
     \begin{column}{\sepwid}\end{column}			% empty spacer column
-    \begin{column}{0.4\paperwidth}
+    \begin{column}{0.5\paperwidth}
 
       % \begin{alertblock}{Big picture and goal}
       %
@@ -205,7 +205,7 @@
                 + \sJ(\phis,\lap\phi)\right]\Big\ra}_{\defn\Gamma_a}
                 \, +\,\, \text{dissipation} \com
                 \end{align}
-                where $\la\,\,\ra$ represents horizontal average and $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
+                where $\la\,\,\ra$ represents horizontal average, and $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
                 at the expenses of geostrophic kinetic energy, $K_e \defn \half \la|\nabla\psi|^2\ra$,
                 i.e., $\dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per$
 
@@ -238,28 +238,8 @@
 
 
     \begin{column}{\sepwid}\end{column}			% empty spacer column
-    \begin{column}{0.475\paperwidth}					  % create a three-column-wide column and then we will split it up later
-      \begin{block}{Altering Column Spans}
-        You can make columns that span multiple other columns relatively easily. Lengths are defined in the template that make columns look normal-ish if you want to use a four-column layout like this poster. If you want to use a different number of columns, you will have to modify those lengths accordingly at the top of the poster.tex file.
+    \begin{column}{0.5\paperwidth}					  % create a three-column-wide column and then we will split it up later
 
-        In particular, near the top of the TeX file you will see lines that look like:
-        \begin{semiverbatim}
-          \hskip1ex\\setlength\{\\sepwid\}\{0.024\\paperwidth\}
-
-          \hskip1ex\\setlength\{\\onecolwid\}\{0.22\\paperwidth\}
-
-          \hskip1ex\\setlength\{\\twocolwid\}\{0.464\\paperwidth\}
-
-          \hskip1ex\\setlength\{\\threecolwid\}\{0.708\\paperwidth\}
-        \end{semiverbatim}
-
-        Set ``sepwid'' to be some small length somewhere near 0.025 (this is the space between columns). Then if $n$ is the number of columns you want, you should set
-        \begin{align*}
-          \text{onecolwid} & = \frac{1}{n}(1-(n+1)\times\text{sepwid}), \\
-          \text{twocolwid} & = 2\times\text{onecolwid} + \text{sepwid}, \\
-          \text{threecolwid} & = 3\times\text{onecolwid} + 2\times\text{sepwid}.
-        \end{align*}
-      \end{block}
       \begin{columns}[t,totalwidth=\twocolwid]	% split up that three-column-wide column
         \begin{column}{\onecolwid}
           \setbeamercolor{block title}{fg=red,bg=white}%frame color
