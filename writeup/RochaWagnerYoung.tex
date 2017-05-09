@@ -43,19 +43,19 @@
         pdfstartview={FitH},
         pdfview={FitH 0},
         pdfauthor={Cesar B. Rocha},
-        pdftitle={NIWs extract energy from barotropic quasi-geostrophic flow},
+        pdftitle={Stimulated Imbalance},
  }
 
 
 %\shorttitle{ Extraction of  energy from barotropic turbulence by near-inertial waves}
-\shorttitle{Near-inertial waves extract energy from barotropic quasi-geostrophic flow}
+\shorttitle{Stimulated imbalance}
 
 \shortauthor{Cesar B. Rocha, Gregory L. Wagner, and William R Young}
 
-%\title{Extraction of energy from barotropic turbulence by near-inertial waves:
-%        freely-evolving flow}
+\title{Extraction of energy from quasi-gestrophic flow by near-inertial waves:\\
+        Stimulated imbalance}
 
-\title{Near-inertial waves extract energy from barotropic quasi-geostrophic flow}
+%\title{Near-inertial waves extract energy from barotropic quasi-geostrophic flow}
 \author{Cesar B. Rocha\aff{1}
   \corresp{\email{crocha@ucsd.edu}},
   Gregory L. Wagner\aff{2}
@@ -114,7 +114,7 @@
 % 1) The mesoscale energy conundrum: a recalcitrant problem
 Geostrophic turbulence, a main paradigm of ocean mesoscale flows,
 transfers energy towards large scales. The energy flux out of the mesoscales
-en route to viscous dissipation must, therefore, include higher-order, ageostrophic dynamics
+en route to viscous dissipation, therefore, must include ageostrophic flows
 \citep[e.g.,][]{mcwilliams2016}.
 Indeed, existing studies advance a panoply of mechanisms to account for the required
 forward flow of energy.
@@ -127,10 +127,10 @@ But roughly half of the energy flux out of the mesoscales remains unaccounted fo
 
 % 2) Stimulated imbalance: a newish mechanism
 Recent research has suggested that the interaction
-of geostrophic flows with externally-forced internal waves serves
+of geostrophic flows with existing internal waves serves
 as a major sink of mesoscale energy en route to viscous dissipation
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016}.
-The emphasis on interactions of geostrophic flow with \textit{existing} internal waves---
+The emphasis on the energy extraction by \textit{existing} internal waves---
 here denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
 \cite{wagner_young2016}, we define
 \textit{stimulated imbalance} as wave-mean interactions that transfer energy from
@@ -157,16 +157,19 @@ eddies account for the bulk of the oceanic eddy kinetic energy
 \cite[$90\%$,][]{ferrari_wunsch2009} and near-inertial waves contain most of the
 oceanic high-frequency variability \citep{alford_etal2016}.
 
-The main analytical result of this paper, an equation for the wave potential
+The main analytical result of this paper, an overlooked equation for the wave potential
 energy \eqref{Pw}, clarifies the physics of quasi-inviscid stimulated imbalance
-associated with vertical vorticity and lateral strain. Numerical solutions of
+associated with vertical vorticity and lateral strain. The convergence of wave
+kinetic energy into anti-cyclones and the geostrophic straining of the wave field
+represent sources of wave potential energy---and sinks of geostrophic kinetic energy.
+Numerical solutions of
 initial-value problems confirm our interpretation of \eqref{Pw}. And the solution
 diagnostics reveal that geostrophic straining is the main source of wave potential
 energy---and sink of geostrophic kinetic energy. In this quasi-inviscid limit,
 wave dispersion is the only mechanism that stops the energy conversion by moving
 the waves out of the straining regions.
 
-\section{The physics of NIW energy extraction from a barotropic QG flow}
+\section{The physics of stimulated imbalance}
 
 \subsection{The \cite{xie_vanneste2015} minimal QG-NIW model}
 
@@ -700,7 +703,7 @@ with \cite{fornberg1977}.
  \begin{figure}
  \label{stats_turb_various}
  \centering
- \includegraphics[width=1.\textwidth]{figs/fig5.pdf}
+ \includegraphics[width=1.\textwidth]{figs/fig6.pdf}
  \caption{Statistics of the decaying turbulence solution with $\alpha \approx 1$ and
          different dispersivities, $\hslash$. (a) Energy change about initial condition.
          (b) Coefficient of correlation between
