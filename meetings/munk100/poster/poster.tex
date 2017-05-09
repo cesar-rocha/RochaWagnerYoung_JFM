@@ -22,8 +22,8 @@
 \newlength{\onecolwid}
 \newlength{\twocolwid}
 \newlength{\threecolwid}
-\setlength{\paperwidth}{48in}
-\setlength{\paperheight}{44.5in}
+\setlength{\paperwidth}{44in}
+\setlength{\paperheight}{38in}
 \setlength{\sepwid}{0.024\paperwidth}
 \setlength{\onecolwid}{0.275\paperwidth}
 \setlength{\twocolwid}{0.575\paperwidth}
@@ -61,9 +61,9 @@
 % Name and authors of poster/paper/research
 %-----------------------------------------------------------
 
-\title{{\fontsize{111}{111}\selectfont Near-inertial waves} {extract energy}
-{\fontsize{75}{75}\selectfont from}\\ \hskip2.5cm {\fontsize{75}{75}\selectfont barotropic}
-        {\fontsize{111}{111}\selectfont quasi-geostrophic flow}$^\dagger$ }
+\title{{\fontsize{111}{111}\selectfont Near-inertial waves} \textit{extract energy}
+{\fontsize{75}{75}\selectfont from}\\ \hskip3.cm {\fontsize{75}{75}\selectfont barotropic}
+        {\fontsize{111}{111}\selectfont quasi-geostrophic flow} }
 \author{\textbf{Cesar B. Rocha} and Gregory L. Wagner and William R. Young}
 \institute{\hskip1.25cm crocha\textbf{@ucsd}.edu\hskip2.5cm
            \hskip3.75cm glwagner\textbf{@mit}.edu \hskip2.5cm
@@ -76,16 +76,16 @@
             \begin{columns}
               \begin{column}{.6\linewidth}
                \vskip1cm
-               \hskip2.cm
+               \hskip2.5cm
                \usebeamercolor{title in headline}{\color{jblue}\Huge{\textbf{\inserttitle}}\\[0.5ex]}
                \hskip2.5cm
                \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
-               \hskip2.cm
+               \hskip2.5cm
                \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
                \vskip1cm
               \end{column}
               \begin{column}{.4\linewidth}
-                \hspace{17.em}
+                \hspace{8.em}
                 \includegraphics[width=0.2\linewidth]{figs/dipole2art_1.png}\hspace{.5em}
                 %\includegraphics[width=0.2\linewidth]{figs/dipole2art_2.png}\hspace{1.5em}
                \includegraphics[width=0.25\linewidth]{figs/dipole2art_3.png}\hspace{-6.em}
@@ -93,8 +93,8 @@
               \end{column}
               \vspace{1cm}
              \end{columns}
-            \vspace{.2cm}
-            \hspace{0.5in}\begin{beamercolorbox}[wd=46in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
+            \vspace{0.5in}
+            \hspace{0.5in}\begin{beamercolorbox}[wd=43in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
 
             \vspace{0.1in}
            }
@@ -132,77 +132,75 @@
 \newcommand{\psiq}{\psi^q}
 \newcommand{\psiw}{\psi^w}
 \newcommand{\p}{\partial}
-\renewcommand{\defn}{\equiv}
 
 \begin{frame}[t]
-
-  \vspace{-1cm}
-
   \begin{columns}[t]												% the [t] option aligns the column's content at the top
     \begin{column}{\sepwid}\end{column}			% empty spacer column
+    \begin{column}{0.4\paperwidth}
 
-    %\hspace{-2cm}
-    \begin{column}{0.425\paperwidth}
+      \begin{alertblock}{Big picture and goal}
 
-      {
-      \begin{alertblock}{Goal: to illuminate the physics of stimulated imbalance}
-      Our goal is to understand the physics of stimulated imbalance---the transfer of energy
-      from quasi-geostrophic flow to \textit{existing} near-inertial waves---associated
-      with vertical vorticity and lateral strain.
       \end{alertblock}
-      }
 
-      \vskip1ex
 
+      \vskip2ex
       \begin{block}{The Xie \& Vanneste (2015) minimal model}
 
         With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
-        uniform background buoyancy frequency, $N_0$,
-        single-mode near-inertial vertical structure, $
-        \ee^{\ii m z}$, and $\beta = 0$, the Xie \& Vanneste$^1$ coupled model (cf. Wagner \& Young, 2016$^2$)
-         reduces to
+        uniform background buoyancy frequency, $N_0$, and
+        single-mode near-inertial vertical structure, $u_w+\ii v_w  =
+        \ee^{\ii (m z - f_0 t)} \phi(x,y,t)$, the Xie \& Vanneste \cite{XV15}
+        coupled model reduces to
         \beq
         \label{macroturb}
-        q_t + \sJ(\psi,q) = D_q\qquad\text{with}\qquad
+        q_t + \sJ(\psi,q) = D_q\com
+        \eeq
+        with the \textit{wave-averaged} quasi-geostrophic potential vorticity
+        (cf. \cite{WY15})
+        \beq
+        \label{qgpv}
         q = \lap \psi +
                          \tfrac{1}{f_0}\Big[ \tfrac{1}{4} \lap |\phi|^2 + \tfrac{\ii}{2}
                          \sJ(\phi^\star,\phi)\Big]\com
         \eeq
-        where $q$ is the \textit{wave-averaged} quasi-geostrophic potential vorticity
-        (cf. Wagner \& Young, 2015$^3$), and
+        and wave equation
         \beq
         \label{waves}
-        \phi_t + \underbrace{\sJ(\psi,\phi)}_{\text{Advection}} + \underbrace{\tfrac{\ii}{2}
-        \phi\lap \psi}_{\text{Refraction}} - \underbrace{\tfrac{\ii}{2} f_0 \lambda^2
-         \lap \phi}_{\text{Dispersion}}
-         = D_\phi\qquad\text{with}\qquad u_w+\ii v_w  =
-         \ee^{\ii (m z - f_0 t)} \phi(x,y,t)\com
+        \phi_t + \sJ(\psi,\phi) + \tfrac{\ii}{2}\phi\lap \psi - \tfrac{\ii}{2} f_0 \lambda^2 \lap \phi
+         = D_\phi\com
         \eeq
-
-        Above, $\psi$ is the streamfunction, $\lap \defn \p_x^2 + \p_y^2$,
-        $\sJ(f,g)=f_x g_y - f_y g_x$, $^\star$ denotes complex conjugation,
-        $\lambda = \tfrac{N_0}{f_0\, m}$, and the D-terms represent dissipation.
-        The wave kinetic energy density satisfies
+        Above, the streamfunction is defined so that the geostrophic velocity is
+        $(u_e, v_e) = (-\psi_y, \psi_x)$, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
+        Laplacian, $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, the
+        superscript star $^\star$ denotes complex conjugation,
+        $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale,
+        and the D-terms represents an \textit{ad hoc} dissipation.
 
         \beq
         \label{action_density}
-        \p_t \half |\phi|^2 + \sJ(\psi,\half|\phi|^2) + \diver \big(\underbrace{f_0
-        \lambda^2\grad\Theta\,\,\,\half |\phi|^2}_{\defn\Ff_w}\big) = \text{dissipation}
-        \com
+        \p_t \half |\phi|^2 + \sJ(\psi,\half|\phi|^2) + \diver \Ff_w = \text{dissipation}
+        \per
         \eeq
 
-        where $\Ff_w$ is the wave flux of kinetic energy density and
+        Above, $\Ff_w$ is the wave flux of kinetic energy density:
+
+        \beq
+        \label{Fw2}
+        \Ff_w \defn \tfrac{\ii}{4}f_0\lambda^2\left(\phi\grad\phis-\phis\grad\phi\right) =
+        f_0 \lambda^2\grad\Theta \times
+        \half |\phi|^2\com
+        \eeq
+
+        where the equality above follows from use of a polar representation
         $\phi = |\phi|\ee^{\ii\Theta}$.
 
         \end{block}
       \vskip2ex
 
-      {
-      \setbeamercolor{block alerted title}{fg=black,bg=ngreen} % Change the alert block title colors
-      \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
       \begin{alertblock}{The physics of stimulated imbalance}
 
-                From \eqref{waves}, we derive an equation for the wave potential energy,
+
+                From \eqref{waves}, we deduce an equation for the wave potential energy,
                 $P_w \defn \tfrac{1}{4}\lambda^2 \la|\nabla\phi|^2\ra$:
 
                 \begin{align}
@@ -214,171 +212,105 @@
                 + \sJ(\phis,\lap\phi)\right]\Big\ra}_{\defn\Gamma_a}
                 \, +\,\, \text{dissipation} \com
                 \end{align}
-                where $\la\,\,\ra$ represents horizontal average, and $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
+                where $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
                 at the expenses of geostrophic kinetic energy, $K_e \defn \half \la|\nabla\psi|^2\ra$,
-                i.e., $\dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}.$
+                i.e.,
+                \beq
+                  \dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per
+                \eeq
 
-                \begin{columns}
-                  \begin{column}{.425\textwidth}
-                  \begin{figure}
-                    \includegraphics[width=0.75\textwidth]{figs/Gamma_r.pdf}
-                    \caption{Snapshot of a solution of (1)-(2) with initially dipolar
-                              geostrophic flow and uniform wave velocity
-                              (cf. poster's art). Contours represents relative vorticity, $\lap\psi$,
-                              and vectors depict the wave flux, $\Ff_w$.
-                              \textbf{Refraction attracts (expels)
-                              wave kinetic energy to anti-cyclones (from cyclones),
-                              thereby generating wave potential energy at the expenses
-                              of geostrophic kinetic energy ($\Gamma_r>0$)}.
-                              }
-                  \end{figure}
-                \end{column}
+                \begin{figure}
+                  \includegraphics[width=0.15\textwidth]{figs/Gammaa.pdf}
+                  %\caption{...}
+                \end{figure}
 
-                \begin{column}{0.535\textwidth}
-                  \vskip1.75cm
-                  \begin{figure}
-                    \includegraphics[width=0.95\textwidth]{figs/Gamma_a.pdf}
-                    \caption{The distortion of a wave packet by an elongation flow,
-                    $\psi = -\alpha xy$.
-                    Black contours depict the
-                    streamfunction, $\psi$, and colors represent the zonal wave velocity,
-                    $u_w$.
-                              \textbf{Geostrophic straining enhances gradients of $\phi$,
-                              thereby generating wave potential energy at the expenses
-                              of geostrophic kinetic energy ($\Gamma_a>0$)}. The
-                              process is analogous to the generation tracer-gradient
-                              variance by lateral straining. In the WBK limit, this
-                              distortion resembles the `wave capture' mechanism of
-                              B{\"u}hler \& McIntyre (2005).$^4$}
-                  \end{figure}
-                \end{column}
 
-                \end{columns}
       \end{alertblock}
-      }
-      \vskip0.5cm
-      ~~~~~~~$\dagger$ A manuscrupit in preparation. (Preprint soon on our websites.)\\
-      ~~~~~~~~~Supported by NASA (NNX16AO5OH) and NSF (OCE1357047).
+
+
     \end{column}
 
 
-    %
-    % Second big column
-    %
-    \hspace{1.cm}
-
-    \begin{column}{0.55\textwidth}
-
-              \begin{block}{Macroturbulence solutions on a periodic domain}
-
-                ~~~~~\textbf{Initial conditions}: uniform wave speed (inertial oscillation), $U_w$, and
-                decaying barotropic turbulence flow emergent\\
-                ~~~~~from random field with energy-containing wavenumber $k_e$,
-                \beq
-                \label{psi_init}
-                |\hat{\psi}| = C \times \big\{|k|\,[1 + (|k|/k_e)^4]\big\}^{-1/2}
-                \qquad\text{with}\qquad\sum_{k,l}
-                 {|k|^2 |\hat{\psi}|^2} = \tfrac{1}{2}U_e^2\per
-                \eeq
-              ~~~~~\textbf{Two parameters}:
-                \beq
-                \label{alpha}
-                \text{Amplitude:\,\,}\alpha \defn {\frac{U_e k_e}{f_0}} \times
-                {\left(\frac{U_w}{U_e}\right)^2}\,;\qquad\text{Dispersivity:\,\,}
-                \hslash \defn f_0 \lambda^2 \times \frac{k_e}{U_e}\per
-                \eeq
-
-              \end{block}
-
-                      \begin{columns}
-                        \begin{column}{.475\textwidth}
-
-                        \begin{figure}
-                          \includegraphics[width=0.8\textwidth]{figs/snapshots_turbulence.png}
-                          \caption{Snapshots of solution with $\hslash \approx 1$
-                                  and $\alpha \approx 1$. Left panels: wave kinetic energy density.
-                                  Right panels: potential vorticity. These plots only show the bottom-left
-                                 $(1/2)^2$ of the simulation domain.}
-                        \end{figure}
-
-                        \begin{figure}
-                          \includegraphics[width=0.95\textwidth]{figs/hslash_dependence_turbulence.pdf}
-                          \caption{(a) Energy change about initial condition.
-                                  (b)  Correlation between
-                                  incoherent wave
-                                  kinetic energy and relative vorticity.$^4$ Wave potential
-                                  energy generation
-                                  due to geostrophic refraction, $\Gamma_a$ (c) and advection, $\Gamma_r$ (d).}
-                        \end{figure}
-
-                      \end{column}
-
-                      \hspace{0.cm}
-
-                      \begin{column}{0.475\textwidth}
-
-                        \begin{figure}
-                          \includegraphics[width=0.85\textwidth]{figs/pv-terms_turbulence.png}
-                          \caption{Snapshot of quasi-geostrophic potential vorticity
-                                   of the decaying turbulence solution with $\hslash \approx 1$
-                                   and $\alpha \approx 1$, at $t\times U_e k_e = 50$. The potential vorticity
-                                   , q, is decomposed into relative vorticity, $\lap\psi$,
-                                   and the two terms of the wave potential vorticity, $q^w_1$ and $q^w_2$.}
-                        \end{figure}
 
 
-                      {
-                      \begin{alertblock}{Main points}
+    \begin{column}{\sepwid}\end{column}			% empty spacer column
+    \begin{column}{0.475\paperwidth}					  % create a three-column-wide column and then we will split it up later
+      \begin{block}{Altering Column Spans}
+        You can make columns that span multiple other columns relatively easily. Lengths are defined in the template that make columns look normal-ish if you want to use a four-column layout like this poster. If you want to use a different number of columns, you will have to modify those lengths accordingly at the top of the poster.tex file.
 
-                          \begin{itemize}
-                              \item The convergence of wave kinetic energy into
-                                    anticyclones and the geostrophic straining of
-                                    the wave field by are sources of wave potential
-                                    energy---and sinks of geostrophic kinetic energy.
-                              \item Geostrophic straining accounts for the bulk
-                                    energy conversion in macroturbulence solutions.
-                              \item Refraction is fundamental to this problem with
-                                    with initially uniform wave field because
-                                    it creates the  eddy-scale gradients that are
-                                    enhanced by straining.
-                              \item Linear dispersion halts the conversion by moving
-                                    waves out of the straining regions.
-                          \end{itemize}
+        In particular, near the top of the TeX file you will see lines that look like:
+        \begin{semiverbatim}
+          \hskip1ex\\setlength\{\\sepwid\}\{0.024\\paperwidth\}
 
-                      \end{alertblock}
-                      }
+          \hskip1ex\\setlength\{\\onecolwid\}\{0.22\\paperwidth\}
 
-                          \begin{block}{}
-                            \small{\begin{thebibliography}{99}
-                            \bibitem{XV15} J-H~ Xie \& J. Vanneste (2015), JFM,
-                                            vol. 774, 143-169.
-                            \bibitem{WY15} G. L.~ Wagner \& W. R. Young (2016), JFM,
-                                            vol. 785, 401-424.
-                            \bibitem{WY16} G. L.~ Wagner \& W. R. Young (2015), JFM,
-                                            vol. 802, pp. 806-837.
-                            \bibitem{BM05} O.~ B{\"u}hler \& M. McIntyre (2005), JFM,
-                                            vol. 534, pp. 67-95.
+          \hskip1ex\\setlength\{\\twocolwid\}\{0.464\\paperwidth\}
 
-                            \end{thebibliography}}
-                            \vspace{.4cm}
-                            $[5]$\,\, $r=\la |\phi'|^2 \lap\psi \ra$
-                                     with $\phi' = \phi-\la\phi\ra$.
+          \hskip1ex\\setlength\{\\threecolwid\}\{0.708\\paperwidth\}
+        \end{semiverbatim}
 
-                          \end{block}
+        Set ``sepwid'' to be some small length somewhere near 0.025 (this is the space between columns). Then if $n$ is the number of columns you want, you should set
+        \begin{align*}
+          \text{onecolwid} & = \frac{1}{n}(1-(n+1)\times\text{sepwid}), \\
+          \text{twocolwid} & = 2\times\text{onecolwid} + \text{sepwid}, \\
+          \text{threecolwid} & = 3\times\text{onecolwid} + 2\times\text{sepwid}.
+        \end{align*}
+      \end{block}
+      \begin{columns}[t,totalwidth=\twocolwid]	% split up that three-column-wide column
+        \begin{column}{\onecolwid}
+          \setbeamercolor{block title}{fg=red,bg=white}%frame color
+          \setbeamercolor{block body}{fg=black,bg=white}%body color
+          \begin{block}{Block Colours}
+            For the standard blocks there are two colours; one for the title and one for the block body:\\
+            \begin{semiverbatim}
+              {\color{red}\\setbeamercolor}\{block title\}\newline \{fg=red,bg=white\}
+            \end{semiverbatim}
+            \begin{semiverbatim}
+              {\color{red}\\setbeamercolor}\{block  body\}\newline \{fg=black,bg=white\}
+            \end{semiverbatim}
+          \end{block}
+        \end{column}
+        % \hspace{-10em}
+        % \begin{column}{\onecolwid}
+        %   \setbeamercolor{block alerted title}{fg=black,bg=norange}	% frame color
+        %   \setbeamercolor{block alerted body}{fg=black,bg=white}		% body color
+        %   \begin{alertblock}{Alert Block Colours}
+        %     You can similarly modify the colours for alert blocks (but try not to overdo it):\\
+        %     \begin{semiverbatim}
+        %       {\color{red}\\setbeamercolor}\{block title\}\newline \{fg=black,bg=norange\}
+        %     \end{semiverbatim}
+        %     \begin{semiverbatim}
+        %       {\color{red}\\setbeamercolor}\{block  body\}\newline \{fg=black,bg=white\}
+        %     \end{semiverbatim}
+        %   \end{alertblock}
+        % \end{column}
+        \hspace{-15em}
+        \begin{column}{\onecolwid}
+          \begin{block}{References}
+            Some references and a graphic to show you how it's done:
 
-                      \end{column}
-
-                      \end{columns}
+		        \small{\begin{thebibliography}{99}
+		        \bibitem{XV15} J-H~ Xie and J. Vanneste (2015).
+            \bibitem{WY15} G. L.~ Wagner and W. R. Young (2015).
+		        \end{thebibliography}}
+			      \vspace{0.75in}
+			      \begin{center}
+			        %\includegraphics[width=5in]{canada.jpg}
+			      \end{center}
+		      \end{block}
+        \end{column}
+      \end{columns}
+      \vskip2.5ex
     \end{column}
  \end{columns}
+ \vspace{2.5cm}
 
- \hspace{1cm}
- \vspace{-1.5cm}
-   \hspace{0.5in}\begin{beamercolorbox}[wd=46.15in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
-   \vspace{-.9cm}
+   \vspace{0.5in}
+   \hspace{0.5in}\begin{beamercolorbox}[wd=42.5in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
+
  \begin{flushleft}
-\hskip1.92cm  Internal Waves, Turbulence, and the Overturning Circulation of the Ocean---A
- symposium in honor of Walter Munk's Centennial \hskip15.03cm
+\hskip1.5cm  Internal Waves, Turbulence, and the Overturning Circulation of the Ocean---A
+ symposium in honor of Walter Munk's Centennial\\ \vskip.25cm \hskip1.5cm
  Scripps Institution of Oceanography, La Jolla, CA, May 15--17, 2017
  \end{flushleft}
 
