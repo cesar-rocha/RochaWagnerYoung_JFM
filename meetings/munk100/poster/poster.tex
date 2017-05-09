@@ -149,33 +149,33 @@
 
         With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
         uniform background buoyancy frequency, $N_0$, and
-        single-mode near-inertial vertical structure, $u_w+\ii v_w  =
-        \ee^{\ii (m z - f_0 t)} \phi(x,y,t)$, the Xie \& Vanneste \cite{XV15}
+        single-mode near-inertial vertical structure, $
+        \ee^{\ii m z}$, the Xie \& Vanneste \cite{XV15}
         coupled model reduces to
+
         \beq
         \label{macroturb}
-        q_t + \sJ(\psi,q) = D_q\com
-        \eeq
-        with the \textit{wave-averaged} quasi-geostrophic potential vorticity
-        (cf. \cite{WY15})
-        \beq
-        \label{qgpv}
+        q_t + \sJ(\psi,q) = D_q\qquad\text{with}\qquad
         q = \lap \psi +
                          \tfrac{1}{f_0}\Big[ \tfrac{1}{4} \lap |\phi|^2 + \tfrac{\ii}{2}
                          \sJ(\phi^\star,\phi)\Big]\com
         \eeq
-        and wave equation
+        where $q$ is the \textit{wave-averaged} quasi-geostrophic potential vorticity
+        (cf. \cite{WY15}), and
+
         \beq
         \label{waves}
         \phi_t + \sJ(\psi,\phi) + \tfrac{\ii}{2}\phi\lap \psi - \tfrac{\ii}{2} f_0 \lambda^2 \lap \phi
-         = D_\phi\com
+         = D_\phi\qquad\text{with}\qquad u_w+\ii v_w  =
+         \ee^{\ii (m z - f_0 t)} \phi(x,y,t)\com
         \eeq
+
         Above, the streamfunction is defined so that the geostrophic velocity is
         $(u_e, v_e) = (-\psi_y, \psi_x)$, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
         Laplacian, $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, the
         superscript star $^\star$ denotes complex conjugation,
         $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale,
-        and the D-terms represents an \textit{ad hoc} dissipation.
+        and the D-terms represent dissipation.
 
         \beq
         \label{action_density}
@@ -205,7 +205,7 @@
                 + \sJ(\phis,\lap\phi)\right]\Big\ra}_{\defn\Gamma_a}
                 \, +\,\, \text{dissipation} \com
                 \end{align}
-                where $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
+                where $\la\,\,\ra$ represents horizontal average and $\Gamma_r+\Gamma_a$ is the wave-potential energy generation, which occurs
                 at the expenses of geostrophic kinetic energy, $K_e \defn \half \la|\nabla\psi|^2\ra$,
                 i.e., $\dot K_e = -(\Gamma_r+\Gamma_a) + \text{dissipative terms}\per$
 
@@ -214,7 +214,9 @@
                   \begin{figure}
                     \includegraphics[width=0.9\textwidth]{figs/Gammar.pdf}
                     \caption{An illustration of the refractive conversion,
-                              $\Gamma_r$.}
+                              $\Gamma_r$, from a solution with initially dipole
+                              geostrophic flow and uniform wave velocity
+                              (cf. poster's art).}
                   \end{figure}
                 \end{column}
 
