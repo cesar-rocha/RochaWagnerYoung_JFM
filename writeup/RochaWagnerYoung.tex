@@ -117,8 +117,8 @@
 % 1) The mesoscale energy conundrum: a recalcitrant problem
 Geostrophic turbulence, a main paradigm of ocean mesoscale flows,
 transfers energy towards large scales. The energy flux out of the mesoscales
-en route to viscous dissipation, therefore, must include ageostrophic flows
-\citep[e.g.,][]{mcwilliams2016}.
+en route to viscous dissipation, therefore, must be accomplished by
+ageostrophic dynamics.
 Indeed, existing studies advance a panoply of mechanisms to account for the required
 forward flow of energy.
 These include, but are not limited to, surface and
@@ -133,8 +133,8 @@ Recent research has suggested that the interaction
 of geostrophic flows with existing internal waves serves
 as a major sink of mesoscale energy en route to viscous dissipation
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016}.
-The emphasis on the energy extraction by \textit{existing} internal waves---
-here denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
+The emphasis on the energy extraction by \textit{existing} internal waves---here
+denoted stimulated imbalance\footnote{Following \cite{xie_vanneste2015} and
 \cite{wagner_young2016}, we define
 \textit{stimulated imbalance} as wave-mean interactions that transfer energy from
 geostrophic motions (the mean flow) to \textit{existing} internal
@@ -177,8 +177,9 @@ the waves out of the straining regions.
 \subsection{The \cite{xie_vanneste2015} minimal QG-NIW model}
 
 With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
-uniform background buoyancy frequency, $N_0$, and
-single-mode near-inertial vertical structure, $\ee^{\ii m z}$, the \cite{xie_vanneste2015}
+uniform background buoyancy frequency, $N_0$,
+single-mode near-inertial vertical structure, $\ee^{\ii m z}$, and
+ $\beta = 0$, the \cite{xie_vanneste2015}
 coupled model (Appendix A) reduces to
 \beq
 \label{macroturb}
@@ -231,8 +232,9 @@ potential, and the dispersivity, $f_0\lambda^2$, as Planck's constant
 \citep{danioux_etal2015}.
 
 The terms on the right of
-\eqref{macroturb}  and \eqref{waves}, $D_q$ and $D_\phi$,  represent small-scale dissipation. The
-introduction of these terms likely breaks the asymptotic ordering of the \cite{xie_vanneste2015}
+\eqref{macroturb}  and \eqref{waves}, $D_q$ and $D_\phi$, represent small-scale dissipation. The
+introduction of these terms is \textit{ad hoc}, likely breakingOn the modifications of near-inertial waves at fronts:
+Implications for energy transfer across scales the asymptotic ordering of the \cite{xie_vanneste2015}
 model. But small-scale dissipation is necessary to absorb the forward transfers
 of potential enstrophy and wave kinetic and potential energies in the numerical
 simulations reported below.
@@ -293,7 +295,7 @@ Also in \eqref{action}, $\varepsilon_\phi$ is the rate of dissipation of wave ki
 \eqref{macroturb}-\eqref{waves} conserves wave kinetic energy, $K_w$
 \citep{xie_vanneste2015}.
 
-Also from \eqref{waves}, we deduce an equation for the wave potential energy:
+Also from \eqref{waves}, we derive an equation for the wave potential energy:
 $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 \eqref{waves}^\star\ra$ yields
 \begin{align}
@@ -371,6 +373,7 @@ the waves, this distortion of $\phi$ is akin to the wave capture
 mechanism of \cite{buhler_mcintyre2005}.
 
 The standard \cite{young_benjelloul1997} equation with barotropic geostrophic flow
+and single-model near-inertial vertical structure
 also satisfies the potential energy equation \eqref{Pw}. But
 \cite{young_benjelloul1997} and subsequent studies overlooked the wave potential
 energy power integral, \eqref{Pw}, or its generalization to baroclinic quasi-geostrophic flow.
@@ -438,13 +441,6 @@ Second, the `wave dispersivity,'
 scales the importance of linear dispersion, which extenuates the unsmoothing
 effects of advection and refraction.
 
-The two conversion terms, $\Gamma_r$ and $\Gamma_a$,
-scale with the same non-dimensional parameter: $\alpha\times \hslash$. But this
-does not imply that the energy conversion scales linearly with both wave amplitude
-and dispersivity because the scales developed by $\phi$ and its gradients also
-depend on $\alpha$ and $\hslash$.
-
-
 \subsection{Summary}
 The following initial value problem that idealizes the oceanographic post-storm scenario
 illuminates the physics of stimulated imbalance. Stormy winds impart momentum
@@ -455,7 +451,7 @@ of this initially coherent inertial oscillation
  \citep{xie_vanneste2015}. Geostrophic refraction
 concentrates the waves in anticyclones. The eddy-scale gradients of $\phi$ then support
 geostrophic advection. Advection and refraction reduce the lateral coherence
-of the waves --- and wave dispersion counteracts this unsmoothing effect.
+of the waves---and wave dispersion counteracts this unsmoothing effect.
 
 The explicit expression for energy
 conversion on the right of \eqref{Pw} clarifies the mechanisms of wave-mean energy
@@ -466,7 +462,8 @@ processes generate wave potential energy at the expenses of geostrophic kinetic
 energy, thus motivating the nomenclature `refraction sink' ($-\Gamma_r$) and
 `advection sink' ($-\Gamma_a$)  of geostrophic kinetic energy.
 
-The remaining of this paper verifies this thought experiment by solving
+The remaining of this paper verifies this thought experiment and quantifies the
+energy conversion by solving
 numerically two problems in which an initially perfectly coherent near-inertial
 oscillation interacts with the Lamb-Chaplygin dipole (Section 3) and with a turbulent
 field emergent from random initial conditions (Section 4).
@@ -798,6 +795,15 @@ on the geostrophic kinetic energy budget --- via $\Xi$ --- also deserve further
 study. We plan
 to explore the role of wave dissipation using forced-dissipative solutions in a
 future study.
+
+
+% Perhaps pick this up in the discussion
+% Using the scaling above, we find that the two conversion terms, $\Gamma_r$ and $\Gamma_a$,
+% scale with the same non-dimensional parameter: $\alpha\times \hslash$. But this
+% does not imply that the energy conversion scales linearly with both wave amplitude
+% and dispersivity because the scales developed by $\phi$ and its gradients also
+% depend on $\alpha$ and $\hslash$.
+
 
 % the decay of laterally coherent wave
 The decay of a laterally coherent near-inertial oscillation due to refraction by
