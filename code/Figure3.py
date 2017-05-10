@@ -109,4 +109,6 @@ cbar_ax = fig.add_axes([0.5, .965, 0.275, 0.013])
 fig.colorbar(im2, cax=cbar_ax,label=r"Potential vorticity $[q \times (U_e k_e)^{-1}]$",
                 orientation='horizontal',ticks=np.arange(-5,5,1))
 
-plt.savefig(patho+"fig3.png", bbox_inches='tight')
+plt.savefig(patho+"fig3.png", transparent=True,
+            pad_inches=0,
+            bbox_inches='tight')

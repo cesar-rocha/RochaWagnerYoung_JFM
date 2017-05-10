@@ -105,7 +105,7 @@ plt.xlabel(r"$x\times k_e/2\pi$")
 plt.text(3.05, 5.1, r"$q^w_2 = \frac{\mathrm{i}}{2 f_0}J(\phi^{\star},\phi)$",)
 
 fig.subplots_adjust(top=0.9)
-cbar_ax = fig.add_axes([0.41, 1., 0.275, 0.02])
+cbar_ax = fig.add_axes([0.41, 1., 0.275, 0.017])
 fig.colorbar(im2, cax=cbar_ax,label=r"Potential vorticity $[q \times (U_e k_e)^{-1}]$",
                 orientation='horizontal',ticks=np.arange(-5,5,1))
 plt.savefig(patho+"fig5.png",  transparent=True,
