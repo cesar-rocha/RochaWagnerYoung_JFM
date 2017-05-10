@@ -102,7 +102,13 @@ Gamma_a = lam2*((J_phi_lapphi)).real
 
 x, y = model.x-model.x.mean(),model.y-model.y.mean()
 x, y = x/Le, y/Le
+
+psih = np.fft.fft2(psi)
+u, v = np.fft.ifft2(-model.il*psih).real, np.fft.ifft2(model.ik*psih).real
+
 psi = psi/psi.max()
+u, v = u/u.max(),v/v.max()
+
 
 phi_2 = model.phi
 
@@ -117,6 +123,8 @@ fig = plt.figure(figsize=(5,3))
 ax1 = fig.add_subplot(121,aspect=1)
 
 plt.contour(x,y,psi,cp,colors='k')
+#plt.streamplot(x,y, u, v, density=2.,color='k', linewidth=2)
+
 plt.contourf(x,y,phi.real/phi.real.max(),cq,cmap=cmocean.cm.curl,extend='both')
 
 plt.xlim(-2,2)
@@ -134,6 +142,9 @@ ax2 = fig.add_subplot(122,aspect=1)
 plt.contour(x,y,psi,cp,colors='k')
 plt.contourf(x,y,phi_2.real/phi.real.max(),cq,cmap=cmocean.cm.curl,
                 extend='both')
+
+#plt.streamplot(x,y, u, v, density=2.,color='k', linewidth=2)
+
 
 plt.xlim(-2,2)
 plt.ylim(-2,2)
