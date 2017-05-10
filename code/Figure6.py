@@ -178,8 +178,9 @@ plt.xlabel(r'$\hslash$')
 plt.ylabel(r'$\overline{\Gamma}_a \times 10^2$')
 
 
-plt.savefig(patho+"fig6.pdf", bbox_inches='tight')
-
+plt.savefig(patho+"fig6.pdf",transparent=True,
+            pad_inches=0,
+            bbox_inches='tight')
 
 #
 # ax = fig.add_subplot(223)

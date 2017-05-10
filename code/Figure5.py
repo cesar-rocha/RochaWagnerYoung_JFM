@@ -72,7 +72,7 @@ fig.subplots_adjust(wspace=.165)
 fig.subplots_adjust(hspace=.05)
 
 plt.text(2.9, 5.1, r"$q = \Delta \psi + q^w_1 + q^w_2$",)
-plt.text(.25,6.8,r'$t \times U_e k_e$ ='+ str(int(round(t))))
+plt.text(.25,6.5,r'$t \times U_e k_e$ ='+ str(int(round(t))))
 
 plt.subplot(222, aspect=1)
 plt.contourf(x,y,qpsi,cq, vmin=cq.min(), vmax=cq.max(),
@@ -105,7 +105,9 @@ plt.xlabel(r"$x\times k_e/2\pi$")
 plt.text(3.05, 5.1, r"$q^w_2 = \frac{\mathrm{i}}{2 f_0}J(\phi^{\star},\phi)$",)
 
 fig.subplots_adjust(top=0.9)
-cbar_ax = fig.add_axes([0.41, 1., 0.275, 0.013])
+cbar_ax = fig.add_axes([0.41, 1., 0.275, 0.02])
 fig.colorbar(im2, cax=cbar_ax,label=r"Potential vorticity $[q \times (U_e k_e)^{-1}]$",
                 orientation='horizontal',ticks=np.arange(-5,5,1))
-plt.savefig(patho+"fig5.png", bbox_inches='tight')
+plt.savefig(patho+"fig5.png",  transparent=True,
+            pad_inches=0,
+            bbox_inches='tight')
