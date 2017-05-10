@@ -44,7 +44,7 @@ alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
 dt = .0025*Te
-tmax = 1.*Te
+tmax = 0.75*Te
 
 ## setup model class
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
@@ -144,7 +144,7 @@ ax2.spines['top'].set_visible(False)
 ax2.spines['bottom'].set_visible(False)
 ax2.spines['left'].set_visible(False)
 
-plt.text(-2.05,2.01,r"$t \times \alpha/2\pi = 1$")
+plt.text(-2.05,2.01,r"$t \times \alpha/2\pi = 0.75$")
 
 plt.savefig("../meetings/munk100/poster/figs/Gamma_a.pdf",
             bbox_inches='tight',
