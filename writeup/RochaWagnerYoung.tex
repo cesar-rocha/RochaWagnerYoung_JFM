@@ -54,7 +54,7 @@
 
 %\title{Extraction of energy from quasi-gestrophic flow by near-inertial waves:\\
 %        Stimulated imbalance}
-\title{Stimulated imbalance: the energy transfer from quasi-geostrophic flow to
+\title{Stimulated imbalance: the transfer of energy from quasi-geostrophic flow to
        existing near-inertial waves}
 
 
@@ -117,7 +117,7 @@
 % 1) The mesoscale energy conundrum: a recalcitrant problem
 Geostrophic turbulence, a main paradigm of ocean mesoscale flows,
 transfers energy towards large scales. The energy flux out of the mesoscales
-en route to viscous dissipation, therefore, must be accomplished by
+en route to viscous dissipation, therefore, must involve
 ageostrophic dynamics.
 Indeed, existing studies advance a panoply of mechanisms to account for the required
 forward flow of energy.
@@ -468,7 +468,7 @@ numerically two problems in which an initially perfectly coherent near-inertial
 oscillation interacts with the Lamb-Chaplygin dipole (Section 3) and with a turbulent
 field emergent from random initial conditions (Section 4).
 
-\section{The Lamb-Chaplygin dipole}
+\section{An idealized solution: the Lamb-Chaplygin dipole}
 As a preamble to our discussion of the QG-NIW energy transfers in freely-evolving
 turbulence, we consider a simpler example in which the initial quasi-geostrophic flow
 is given the the Lamb-Chaplygin dipole. This dipole is an exact solution of the Euler
@@ -538,10 +538,10 @@ quantifies the wave concentration in regions positive or negative vorticity;
 negative correlation, $r<0$, indicates wave concentration in anticyclones
 \citep{danioux_etal2015}. Starting form the uniform wave initial condition,
 vorticity and incoherent wave kinetic energy density
-quickly becomes negatively correlated ($r=-0.75$ at $t\times U_e k_e$ = 2;
+quickly become negatively correlated ($r=-0.75$ at $t\times U_e k_e$ = 2;
 Figure \ref{stats_lamb}d). This initial wave focusing in anticyclones is associated
 with a rapid increase in incoherent wave kinetic energy (Figure \ref{stats_lamb}c)
-and generation of wave potential energy (Figure \ref{stats_lamb}b). The gain of
+and a rapid increase of wave potential energy (Figure \ref{stats_lamb}b). The gain of
 wave potential energy, ininitially dominated by the conversion due to refraction,
 $\Gamma_r$,
  occurs at the expenses of geostrophic kinetic energy
@@ -601,7 +601,7 @@ The energy conversion nearly halts at $t\times U_e k_e \approx 20$.
 
 Because the advective conversion, $\Gamma_a$, remains positive for the duration
 of the simulation, $\Gamma_a$ accounts for the bulk conversion of energy from
-geostrophic flow to waves. Indeed, the time-integrated $\Gamma_a$ represents $77.5\%$
+geostrophic flow to waves. Indeed, the time-integrated $\Gamma_a$ accounts for $77.5\%$
 of total geostrophic kinetic energy change (Table \ref{table1}); the time-integrated
 refraction conversion, $\Gamma_r$, represents $22.7\%$ of the geostrophic kinetic
 energy changes. And direct dissipation and wave-dissipation source
@@ -612,10 +612,10 @@ energy changes. And direct dissipation and wave-dissipation source
 \input{table1}
 
 \clearpage
-\section{Decaying Macroturbulence}
+\section{Macroturbulence solutions: decaying barotropic flow}
 
-To study the energy exchanges between near-inertial waves and quasi-geostrophic flow
-in regime relevant to the ocean, we consider a barotropic turbulence flow that emerges from
+To study the energy exchange between near-inertial waves and quasi-geostrophic flow
+in a turbulent regime relevant to the ocean, we consider a barotropic flow that emerges from
 random initial conditions integrated for 20 eddy turnover time units.
 In other words, we first integrate the initial condition
 \beq
@@ -745,7 +745,8 @@ on a strongly stratified upper ocean, $N_0/f_0 = 100$, yields a dispersivity
 
 \subsection{Solutions for $\hslash = 1$ and $\alpha = 0.1$}
 
-The decaying turbulence experiment qualitatively resembles the Lamb-Chaplygin solution.
+The decaying turbulence experiment with $\hslash = 1$ and $\alpha = 0.1$
+qualitatively resembles the Lamb-Chaplygin solution.
 Starting from a uniform wave field, refraction quickly concentrates the waves into
 anticyclones. By
 $t\times U_e k_e \approx 2$ there is a four-fold modulation of the wave kinetic
@@ -760,9 +761,9 @@ wave dispersion. Indeed, the advective conversion, $\Gamma_a$, quicks off once
 refraction imprints eddy scales on the wave field. Both advection and wave dispersion
 reduce the wave concentration in anticyclones, and the refraction conversion,
 $\Gamma_r$, decreases dramatically, reducing by half  at $t\times U_e k_e \approx 3$.
-(Figure \ref{stats_turb}d). At this point, the $\Gamma_a$ takes over the total energy conversion. At later
-evolution, $t\times U_e k_e > 5$ , the refraction conversion is small
-in magnitude and oscillates about zero (Figure \ref{stats_turb}b).
+(Figure \ref{stats_turb}d). At this point, the $\Gamma_a$ takes over the total energy conversion.
+At later time, $t\times U_e k_e > 5$, the refraction conversion is small
+in amplitude and oscillates about zero (Figure \ref{stats_turb}b).
 But the large $\Gamma_a$ sustains the positive total energy conversion. The long-term
 wave field has scales smaller than the eddies and no wave concentration into anticyclones
 (Figure \ref{snaps_turb}).
@@ -770,31 +771,119 @@ wave field has scales smaller than the eddies and no wave concentration into ant
 Wave potential energy accounts for about $18\%$ of the bulk changes of geostrophic
 kinetic energy (Table \ref{table2}). Advective conversion accounts for most of the
 energy change, representing about 98$\%$ of the bulk energy conversion. Direct
-dissipation accounts for about $11\%$ of the loss of geostrophic kinetic energy.
-And the wave-dissipation source is significant: $\Xi_r$ contributes about $16\%$
+dissipation accounts for about $6\%$ of the loss of geostrophic kinetic energy.
+And the wave-dissipation source is significant: $\Xi_r$ contributes about $7\%$
 of geostrophic kinetic energy gain.
 
+This solution dissipates much more geostrophic kinetic energy
+than a waveless QG solution with the same parameters (Appendix B),
+in which direct dissipation, $\varepsilon_\psi$, is about than $2\%$. This is because,
+with waves, the quasi-geostrophic flow develops finer scales. The relative vorticity
+is still populated by large coherent vortices that form via vortex-merger. But
+$\lap\psi$ has more texture than than waveless QG relative vorticity,
+particularly outside the core of the vortices (Figure \eqref{pv-terms_turb}b).
+The wave terms of the potential vorticity  are dominated by small scales and
+smaller than $\lap\psi$ (Figure \eqref{pv-terms_turb}c-d). Interestingly, much
+of the roughness in $\lap\psi$ is canceled by the small-scale structures in the
+wave potential vorticity, yielding a
+smoother---but rougher than waveless QG---potential vorticity (Figure \eqref{pv-terms_turb}a).
+
+\subsection{Varying dispersivity}
+The energy exchange is strongly on dispersivity. Figure \ref{stats_turb_various}
+summarizes results for the vertical wavelength $2\pi/m$ from 200 to 800 m,
+which yield dispersivities from 0.25 to 4. (All other parameters are fixed.)
+The initial conversion due to refraction, $\Gamma_r(t \times U_e k_e < 20)$,
+increases slowly with $\hslash$ (Figure \ref{stats_turb_various}).
+
+The advective conversion, $\Gamma_a$, dominates the total conversion for all
+parameters. This terms is largest for the weakest dispersivity regime and
+decays approximately exponentially with increasing dispersivity. Indeed, the initial
+wave potential energy growth is sharper for weaker dispersivity. For $\hslash = 0.25$,
+the wave potential energy peaks at $t\times U_e k_e\approx 25$, and then decays
+(see blue curve in figure \ref{stats_turb_various}b).
+In this case, dispersion is ineffective in counteracting the generation of small
+scales by advection. And small-scale dissipation eventually damps this small scales.
+The fine scales created by geostrophic advection also implies strong dissipation
+of geostrophic kinetic energy.
+
+The initial strong negative wave-vorticity correlation, a consequence of refraction, is equal
+in all case. But reduction of this negative correlation, and eventual sign change,
+occurs faster with decreasing dispersivity. The strong dispersion simulation
+$\hslash> 1$ experience much slower decrease of correlation, which still
+negativa at $t\times U_e k_e = 150$.
+
 \section{Discussion}
+Points to emphasize and discuss:\\
+
+
+\begin{itemize}
+  \item The wave potential energy equation clarifies the physics of stimulated
+        imbalance. But it conceals the role of linear dispersion, which is responsible
+        for eventually halting the energy conversion by moving the waves out of
+        straining regions---even at $\hslash=0.25$, there is no true cascade of
+        wave kinetic energy density $\half |\phi|^2$. (Perhaps remark that the
+        analytical solution for the elongation flow, $\psi=-\alpha x y$, is too
+        idealize because of the strong assumption of \textit{uniform} rate of
+        strain---regardless of the dispersivity, the waves always experience the
+        same straining.)
+  \item The energy transfer is significant in all examples considered (5-50$\%$
+        of initial geostrophic kinetic energy). While our examples are too idealized,
+        this is somewhat suggestive that stimulated imbalance associated with lateral
+        strain and vertical vorticity may be relevant to closing the oceanic energy
+        budget. There's an important limitation to our figures, which were diagnosed
+        from initial value problems.
+  \item Geostrophic straining accounts for the bulk energy conversion but refraction
+        is fundamental to this problem with initially large-scale waves. (Perhaps
+        conjecture that, in general, lateral straining may be the most important mechanism
+        of energy extraction away from sharp baroclinic fronts where vertical straining
+        may dominate \citep{shakespeare_hogg2017}.)
+  \item The positive wave-vorticity correlation at large time is a striking result.
+        Compared to previous studies
+        there are two ingredients to the loss of negative correlation, and eventual
+        creation of positive correlation: the unsteadiness of the geostrophic flow
+        plus the wave feedback. Unsteadiness partially explains the loss of negative
+        wave-vorticity correlation and its strong dependence, as conjectured by \cite{danioux_etal2015}.
+        The coupling of waves and quasi-geostrophic flow accounts for the creation of
+        positive wave-vorticity correlations, particularly when there's vigorous
+        energy transfer (moderate to weak dispersion): refraction initially focus the waves
+        into anticyclones where most of the initial energy extraction occurs.
+        (Perhaps remark that stimulated imbalance could contribute to
+        the vorticity skewness observed in the upper ocean.)
+  \item Besides energy transfer form geostrophic flow to waves, the coupling induces
+        more direct dissipation of geostrophic kinetic energy (compared with waveless
+        solutions). This is because in the weak dispersion limit, the fine vorticity
+        structures are removed by small-scale diffusion, which is a limitation of
+        finite resolution. But small-scale diffusion could also be interpreted as
+        a poor-scientist's parameterization for ageostrophic submesoscale flows,
+        thus making an oblique connection with \cite{barkan_etal2016}.
+  \item The decay of a laterally coherent near-inertial oscillation due to refraction by
+        geostrophic flow is relevant for mixed-layer slab models used to estimate the work
+        imparted by wind into the near-inertial wave field \citep[e.g., ][]{alford2001}.
+        These models solve for the coherent velocity $\la\phi\ra$ and parameterize
+        the loss of coherence, $\Pi$, with linear friction, $-r |\la\phi\ra|^2$.
+        Our results suggest that this parameterization is inaccurate. (Of course, one
+        should properly test this in equilibrated forced-dissipative solutions.)
+\end{itemize}
 
 % the advection sink rules
-Both examples suggest that the advective conversion accounts for the bulk of geostrophic
-kinetic energy sink --- and wave potential energy gain. But refraction is vital
-to this problem with initially laterally coherent wave because it creates the
-initial gradients of wave velocity that are then enhanced by geostrophic straining.
-In more general problems, in which the waves initially have eddy scales, it's
-likely that refraction catalyzes the geostrophic energy sink.
+% Both examples suggest that the advective conversion accounts for the bulk of geostrophic
+% kinetic energy sink --- and wave potential energy gain. But refraction is vital
+% to this problem with initially laterally coherent wave because it creates the
+% initial gradients of wave velocity that are then enhanced by geostrophic straining.
+% In more general problems, in which the waves initially have eddy scales, it's
+% likely that refraction catalyzes the geostrophic energy sink.
 
 % concentration in anticyclones decreases with time
 
 % we have focus
-We have focused on the quasi-inviscid QG-NIW energy exchanges . Here, the small
-small-scale dissipation contributes less than $10\%$ of the energy tendencies. But
-increasing the wave dissipation changes the long-term, $t\times U_e k_e > 10$,
-results qualitatively. The direct effects of wave dissipation
-on the geostrophic kinetic energy budget --- via $\Xi$ --- also deserve further
-study. We plan
-to explore the role of wave dissipation using forced-dissipative solutions in a
-future study.
+% We have focused on the quasi-inviscid QG-NIW energy exchanges . Here, the small
+% small-scale dissipation contributes less than $10\%$ of the energy tendencies. But
+% increasing the wave dissipation changes the long-term, $t\times U_e k_e > 10$,
+% results qualitatively. The direct effects of wave dissipation
+% on the geostrophic kinetic energy budget --- via $\Xi$ --- also deserve further
+% study. We plan
+% to explore the role of wave dissipation using forced-dissipative solutions in a
+% future study.
 
 
 % Perhaps pick this up in the discussion
@@ -806,14 +895,14 @@ future study.
 
 
 % the decay of laterally coherent wave
-The decay of a laterally coherent near-inertial oscillation due to refraction by
-geostrophic flow is relevant for mixed-layer slab models used to estimate the work
-imparted by wind into the near-inertial wave field \citep[e.g., ][]{alford2001}. Without further
-assumptions, it is unclear if the effect of refraction is sign definite. If the
-NIWs have initial larger scales than the geostrophic field, then refraction
-generates eddy-scale perturbations, implying a reduction of lateral coherence
-($\Pi > 0$). But it remains unclear if this transfer can be parameterized as a linear
-damping.
+% The decay of a laterally coherent near-inertial oscillation due to refraction by
+% geostrophic flow is relevant for mixed-layer slab models used to estimate the work
+% imparted by wind into the near-inertial wave field \citep[e.g., ][]{alford2001}. Without further
+% assumptions, it is unclear if the effect of refraction is sign definite. If the
+% NIWs have initial larger scales than the geostrophic field, then refraction
+% generates eddy-scale perturbations, implying a reduction of lateral coherence
+% ($\Pi > 0$). But it remains unclear if this transfer can be parameterized as a linear
+% damping.
 
 
 %
@@ -821,7 +910,7 @@ damping.
 %
 \vspace{1.cm}
 This study was supported by the National Aeronautics and Space Administration
-and the National Science Foundation financially via grants NNX16AO5OH and NSFXXX.
+and the National Science Foundation via grants NNX16AO5OH and OCE1357047.
 
 %
 % Appendix
