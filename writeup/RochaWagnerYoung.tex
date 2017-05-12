@@ -801,24 +801,32 @@ summarizes results from a set of solutions with varying the vertical wavelength
 $2\pi\,m^{-1}$ from 200 to 800 m, yielding dispersivities ranging from 0.25 to 4.
 (All other parameters are fixed.)
 The initial conversion due to refraction, $\Gamma_r(t \times U_e k_e < 20)$,
-increases slowly with $\hslash$ (Figure \ref{stats_turb_various}).
-
-The advective conversion, $\Gamma_a$, dominates the total conversion for all
-parameters. This terms is largest for the weakest dispersivity regime and
+increases slowly with $\hslash$ (Figure \ref{stats_turb_various}c). The advective
+conversion, $\Gamma_a$, dominates the total conversion in all solutions. This term
+is largest for the weakest dispersivity regime and
 decays approximately exponentially with increasing dispersivity. Indeed, the initial
-wave potential energy growth is sharper for weaker dispersivity. For $\hslash = 0.25$,
+wave potential energy growth sharpens with decreasing dispersivity.
+For the smallest dispersivity considered here, $\hslash = 0.25$,
 the wave potential energy peaks at $t\times U_e k_e\approx 25$, and then decays
-(see blue curve in figure \ref{stats_turb_various}b).
-In this case, dispersion is ineffective in counteracting the generation of small
-scales by advection. And small-scale dissipation eventually damps this small scales.
-The fine scales created by geostrophic advection also implies strong dissipation
-of geostrophic kinetic energy.
+(see blue curve in figure \ref{stats_turb_various}a).
+This due to strong dissipation of wave potential energy because weak dispersion is
+ineffective in extenuating the generation of small scales by advection;
+ the small scales created by geostrophic advection also implies strong direct
+dissipation of geostrophic kinetic energy. In other words, the quasi-inviscid
+weak-dispersion limit is inaccessible with fixed small-scale dissipation (fixed
+resolution) because geostrophic straining creates ever-finer scales of the wave
+field. \textcolor{cesar}{(I'm running a simulation with double resolution to
+estimate how much energy transfer is curtailed by the strong dissipation in
+this simulation.)}
 
-The initial strong negative wave-vorticity correlation, a consequence of refraction, is equal
-in all case. But reduction of this negative correlation, and eventual sign change,
-occurs faster with decreasing dispersivity. The strong dispersion simulation
-$\hslash> 1$ experience much slower decrease of correlation, which still
-negative at $t\times U_e k_e = 150$.
+The initial strong negative wave-vorticity correlation, caused by refraction, is equal
+in all case. But the reduction of this negative correlation, and eventual sign change,
+occurs faster with decreasing dispersivity. This is because, after the initial
+eddy-scale gradients are created, weakly dispersive
+waves extract much energy from the geostrophic flow via advective conversion,
+$\Gamma_a$ (Figure \ref{stats_turb_various}d). The
+moderate to strong dispersion solutions,  $\hslash> 1$ experience much slower
+decrease of correlation, and remains negative even after $t\times U_e k_e = 150$.
 
 \section{Discussion}
 Points to emphasize and discuss:\\
@@ -1138,25 +1146,44 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
 \end{table}
 
 
-%\begin{table}
-%  \begin{center}
-%    \label{parameters_description}
-%    \caption{Description of parameters of numerical simulations.}
-%    \begin{tabular}{ c | c | c }
-%       Parameter & Description & Value \\ \hline
-%       $\mathsf{N}$   & Number of modes &  512 \\
-%       $L_d$ & Domain size & $2\pi\times 200$ km \\
-%       $2\pi k_e^{-1}$ & Centroid wavelength & $2\pi\times 50$ km \\
-%       $U_e$ & RMS velocity & $0.1$ m s$^{-1}$ \\
-%       $U_w$ & NIW speed & $0.07 - 0.32$ m s$^{-1}$ \\
-%       $N_0$ & Buoyancy frequency & 10$^{-2}$ s$^{-1}$\\
-%       $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
-%       $2\pi$m$^{-1}$ & NIW vertical wavelength & $222 - 888$ m \\
-%       $\kappa_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$ m$^4$ s$^{-1}$\\
-%       $\nu_w$ & NIW biharmonic viscosity & $ 1 \times 10^{6}$ m$^4$ s$^{-1}$\\
-%    \end{tabular}
-%  \end{center}
-%\end{table}
+\begin{table}
+ \begin{center}
+   \label{parameters_description}
+   \caption{Description of parameters of numerical simulations.}
+   \begin{tabular}{ c | c | c }
+      Parameter & Description & Value \\ \hline
+      $\mathsf{N}$   & Number of modes &  512 \\
+      $L_d$ & Domain size & $2\pi\times 200$ km \\
+      $2\pi k_e^{-1}$ & Centroid wavelength & $2\pi\times 50$ km \\
+      $U_e$ & RMS velocity & $0.1$ m s$^{-1}$ \\
+      $U_w$ & NIW speed & $0.07 - 0.32$ m s$^{-1}$ \\
+      $N_0$ & Buoyancy frequency & 10$^{-2}$ s$^{-1}$\\
+      $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
+      $2\pi$m$^{-1}$ & NIW vertical wavelength & $200 - 800$ m \\
+      $\kappa_e$ & QGPV biharmonic viscosity & $5\times 10^{7}$ m$^4$ s$^{-1}$\\
+      $\nu_w$ & NIW biharmonic viscosity & $ 1 \times 10^{6}$ m$^4$ s$^{-1}$\\
+   \end{tabular}
+ \end{center}
+\end{table}
+
+\subsection{Reference waveless solution}
+
+\begin{figure}
+\label{figc1}
+\centering
+\includegraphics[width=1.\textwidth]{figs/figc1.png}
+\caption{Snapshots of vorticity $\lap\psi$ of a waveless macroturbulence reference solution
+          (standard barotropic QG dynamics). The contours are the same as those of the
+          figures in the main text.}
+\end{figure}
+
+\begin{figure}
+\label{figc2}
+\centering
+\includegraphics[width=1.\textwidth]{figs/figc2.pdf}
+\caption{(a) The kinetic energy fractional change about initial condition and
+         (b) the energy budget of the waveless macroturbulence reference solution.}
+\end{figure}
 
 \subsection{Code and data}
 Our python code that solves \eqref{macroturb}-\eqref{waves} on a doubly periodic domain
