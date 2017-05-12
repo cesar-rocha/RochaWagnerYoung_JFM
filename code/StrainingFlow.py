@@ -161,3 +161,51 @@ plt.savefig("../meetings/munk100/poster/figs/Gamma_a.pdf",
             bbox_inches='tight',
             transparent=True,
             pad_inches=0)
+
+#
+# # figure for presentation
+# plt.style.use('dark_background')
+#
+#
+# fig = plt.figure(figsize=(5,3))
+#
+# ax1 = fig.add_subplot(121,aspect=1)
+#
+# plt.contour(x,y,psi,cp,colors='w')
+# #plt.streamplot(x,y, u, v, density=2.,color='k', linewidth=2)
+# phi = np.ma.masked_array(phi,np.abs(phi.real)<1e-2)
+# plt.contourf(x,y,phi.real/phi.real.max(),cq,cmap=cmocean.cm.curl,extend='both')
+#
+# plt.xlim(-2,2)
+# plt.ylim(-2,2)
+# plt.xticks([])
+# plt.yticks([])
+# ax1.spines['right'].set_visible(False)
+# ax1.spines['top'].set_visible(False)
+# ax1.spines['bottom'].set_visible(False)
+# ax1.spines['left'].set_visible(False)
+#
+# plt.text(-2.05,2.01,r"$t \times \alpha/2\pi = 0$")
+#
+# ax2 = fig.add_subplot(122,aspect=1)
+# plt.contour(x,y,psi,cp,colors='k')
+# plt.contourf(x,y,phi_2.real/phi.real.max(),cq,cmap=cmocean.cm.curl,
+#                 extend='both')
+#
+# #plt.streamplot(x,y, u, v, density=2.,color='k', linewidth=2)
+#
+#
+# plt.xlim(-2,2)
+# plt.ylim(-2,2)
+# plt.xticks([])
+# plt.yticks([])
+# ax2.spines['right'].set_visible(False)
+# ax2.spines['top'].set_visible(False)
+# ax2.spines['bottom'].set_visible(False)
+# ax2.spines['left'].set_visible(False)
+#
+# plt.text(-2.05,2.01,r"$t \times \alpha/2\pi = 0.75$")
+#
+# plt.savefig("../meetings/munk100/poster/figs/Gamma_a_black.pdf",
+#             bbox_inches='tight',
+#             pad_inches=0)
