@@ -177,42 +177,55 @@ the waves out of the straining regions.
 \section{The physics of stimulated generation}
 
 \subsection{The \cite{xie_vanneste2015} minimal QG-NIW model}
+The \cite{xie_vanneste2015} minimal model (Appendix A) assumes
+barotropic balanced flow, $\psi=\psi(x,y,t)$,
+uniform background buoyancy frequency, $N_0$, $\beta=0$, and a single propagating
+wave mode in the vertical, $\ee^{\ii m z}$, so that the dynamical fields are
+\begin{align}
+\label{horizontal_velocity}
+u + \ii v  &= \ee^{\ii (m z - f_0 t)}\,\phi -(\p_y-\ii\p_x)\psi\com\\
+  \label{vertical_velocity}
+  w &= \tfrac{1}{2 m} (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi  + \text{cc}  \com\\
+\label{pressure}
+p &= \half f_0\lambda^2 (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi
++\text{cc} + f_0 \psi \com\\
+\label{buoyancy}
+b &=  \tfrac{m}{2} f_0\lambda^2 (\p_x-\ii\p_y)\ee^{\ii (m z - f_0 t)}\phi + \text{cc} +
+f_0 \psi_z  \per
+\end{align}
+Above $\phi = \phi(x,y,t)$ is a complex near-inertial back-rotated velocity,
+$\lambda = \tfrac{N_0}{f_0\, m}$ is an intrinsic horizontal scale, and cc denotes
+complex conjugate.
 
-With barotropic quasi-geostrophic flow, $\psi=\psi(x,y,t)$,
-uniform background buoyancy frequency, $N_0$,
-single-mode near-inertial vertical structure, $\ee^{\ii m z}$, and
- $\beta = 0$, the \cite{xie_vanneste2015}
-coupled model (Appendix A) reduces to
-\beq
-\label{macroturb}
-q_t + \sJ(\psi,q) = D_q\com
-\eeq
-with the wave-averaged quasi-geostrophic potential vorticity
+The balanced flow,
+with streamfunction $\psi$, satisfies the wave-averaged inversion relationship
+\citep[cf. ][]{wagner_young2015}:
 \beq
 \label{qgpv}
 q = \lap \psi +
                  \tfrac{1}{f_0}\Big[ \tfrac{1}{4} \lap |\phi|^2 + \tfrac{\ii}{2}
-                 \sJ(\phi^\star,\phi)\Big]\per
+                 \sJ(\phi^\star,\phi)\Big]\com
 \eeq
-Above, the streamfunction is defined so that the geostrophic velocity is
-$(u_e, v_e) = (-\psi_y, \psi_x)$, $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
-Laplacian, $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, and $\phi$
-is near-inertial back-rotated velocity,
-\beq
-\label{niw_velocity}
-u_w+\ii v_w  =\ee^{\ii (m z - f_0 t)} \phi(x,y,t)\per
-\eeq
-Also in \eqref{qgpv}, the superscript star $^\star$ denotes complex conjugation.
+where $\lap \defn \p_x^2 + \p_y^2$ is the horizontal
+Laplacian and $\sJ(f,g)=f_x g_y - f_y g_x$ is the lateral Jacobian, and
+the superscript star $^\star$ denotes complex conjugation.
 
-The near-inertial back-rotated velocity, $\phi$, is governed by
+The balanced flow follows quasi-geostrophic potential-vorticity dynamics,
+\beq
+\label{macroturb}
+q_t + \sJ(\psi,q) = D_q\com
+\eeq
+and the wave velocity satisfies
 \beq
 \label{waves}
 \phi_t + \sJ(\psi,\phi) + \tfrac{\ii}{2}\phi\lap \psi - \tfrac{\ii}{2} f_0 \lambda^2 \lap \phi
  = D_\phi\com
 \eeq
-where $\lambda = \tfrac{N_0}{f_0\, m}$  is an intrinsic horizontal scale.
-Similarly to the \cite{young_benjelloul1997} model, the wave velocity, $\phi$,
-evolves through dispersion ---the last term in \eqref{waves}---and
+where   is an intrinsic horizontal scale.
+
+The wave model is similar to the \cite{young_benjelloul1997} equation. In other words,
+the back-rotated wave velocity
+evolves through dispersion---the last term in \eqref{waves}---and
 advection and refraction by the geostrophic flow---the second and third terms in
 \eqref{waves}. But the wave equation \eqref{waves} is non-linear owing to the
 quadratic wave terms in the quasi-geostrophic potential vorticity \eqref{qgpv}. In other
@@ -235,8 +248,7 @@ potential, and the dispersivity, $f_0\lambda^2$, as Planck's constant
 
 The terms on the right of
 \eqref{macroturb}  and \eqref{waves}, $D_q$ and $D_\phi$, represent small-scale dissipation. The
-introduction of these terms is \textit{ad hoc}, likely breakingOn the modifications of near-inertial waves at fronts:
-Implications for energy transfer across scales the asymptotic ordering of the \cite{xie_vanneste2015}
+introduction of these terms is \textit{ad hoc}, likely breaking the asymptotic ordering of the \cite{xie_vanneste2015}
 model. But small-scale dissipation is necessary to absorb the forward transfers
 of potential enstrophy and wave kinetic and potential energies in the numerical
 simulations reported below.
@@ -947,10 +959,10 @@ NIW velocity in complex form
 u_w + \ii v_w = M_z \ee^{-\ii f_0 t}\per
 \eeq
 Their derivation recovers the wave equation that governs the
-evolution of the NIW complex amplitude $M_z$,
+evolution of the NIW complex amplitude $\chi = \ii M/f_0$,
 \beq
-M_{zzt} + \p_z \sJ(\psi,M_{z}) + \tfrac{\ii}{2}\left[\left(\frac{N^2}{f_0}+\psi_{zz}
-\right)\lap M - 2 \nabla\psi_z\cdot\nabla M_z + M_{zz}(\lap\psi + 2 \beta y) \right] = 0 \com
+\chi_{zzt} + \p_z \sJ(\psi,\chi_{z}) + \tfrac{\ii}{2}\left[\left(\frac{N^2}{f_0}+\psi_{zz}
+\right)\lap \chi - 2 \nabla\psi_z\cdot\nabla \chi_z + \chi_{zz}(\lap\psi + 2 \beta y) \right] = 0 \com
 \eeq
 with the QG streamfunction $\psi(x,y,z,t)$. The QG flow evolves through stirring of QGPV
 \beq
@@ -960,8 +972,8 @@ A fundamental difference to \cite{young_benjelloul1997} is that the QGPV in the
 \cite{xie_vanneste2015} model contains quadratic wave terms
 \beq
 q = \nabla \psi + \left(\tfrac{f_0^2}{N^2}\psi_z\right)_z + \beta y +
-    \tfrac{\ii}{2 f_0}\sJ(M_z^\star,M_z) + \tfrac{1}{4f_0}\left(
-    2 |\nabla M_z|^2 - M_{zz}^\star\nabla M - M_{zz}\nabla M^\star\right)\com
+    \tfrac{\ii}{2 f_0}\sJ(\chi_z^\star,\chi_z) + \tfrac{1}{4f_0}\left(
+    2 |\nabla \chi_z|^2 - \chi_{zz}^\star\nabla \chi - \chi_{zz}\nabla \chi^\star\right)\com
 \eeq
 thus NIWs affect the QG flow.
 The model of \cite{xie_vanneste2015}, with the potential vorticity that includes
