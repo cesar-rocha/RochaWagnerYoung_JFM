@@ -293,38 +293,42 @@ to $\psi$ is quadratic in $\phi$ (cf. \eqref{qgpv}). Thus, the non-linear wave
 dynamics in   \eqref{waves} is cubic in $\phi$.
 To study these non-linear wave effects, we linearize the QG-NIW equations  about
  the exact solution
-$\phi = \Phi = \text{constant}$ and $\psi = 0$, so that $q=0$. The QGPV
+$\phi = U_w = \text{real constant}$ and $\psi = 0$, so that $q=0$. (Reality of
+$\Phi$ is assumed for algebraic simplicity below. But the final result is
+essentially unchanged
+with complex $\Phi = U_w + \ii V_w$---$U_w^2$ is changed to $|\Phi|^2$.) The potential-vorticity
 equation \eqref{macroturb} linearized about this state is trivial: $q_t = 0$,
  thus $q$ remains zero. Also,
 \beq
 \label{lin_q}
- \lap \psi = -\tfrac{\Phi}{2f_0}\lap\half(\phi + \phis)\com
+ \lap \psi = -\tfrac{U_w}{2f_0}\lap\half(\phi + \phis)\com
 \eeq
-where $\phi$ represents the small departure about the constant $\Phi$, so that
+where $\phi$ represents the small departure about $U_w$, so that
 the linearized wave equation becomes
 \beq
-\phi_t = \tfrac{\ii}{2}\left[\tfrac{\Phi^2}{2f_0}\lap\half(\phi+\phis) +
+\phi_t = \tfrac{\ii}{2}\left[\tfrac{U_w^2}{2f_0}\lap\half(\phi+\phis) +
 f_0\lambda^2\lap\phi\right] \per
 \eeq
 Recalling that the wave velocity is $u_w + \ii v_w = \ee^{\ii (mz -f_0 t)}\phi(x,y,t)$,
-we recast the wave equation:
+the wave equation is recast:
 \beq
 \left[\p_t^2 - \tfrac{1}{4}f_0\lambda^2\left(f_0\lambda^2+
-\frac{\Phi^2}{2f_0}\right)\lap^2\right] v_w = 0\com
+\frac{U_w^2}{2f_0}\right)\lap^2\right] v_w = 0\com
 \eeq
-where $\lap^2 = (\p_x^2 + \p_y^2)^2$. Hence, plane-wave solutions yield the
+where $\lap^2 = (\p_x^2 + \p_y^2)^2$. Plane-wave solutions yield the
 dispersion relation
 \beq
-\tfrac{\omg}{f_0} = \half \lambda^2|\kb|^2\left[1+\half\tfrac{\Phi^2}{f_0^2\lambda^2}
+\tfrac{\omg}{f_0} = \half \lambda^2|\kb|^2\left[1+\half\tfrac{U_w^2}{f_0^2\lambda^2}
 \right]^{1/2}\com
 \eeq
 and we conclude that the wave self-interaction shifts the frequency by
 \beq
-\left[1+\half\tfrac{\Phi^2}{f_0^2\lambda^2}\right]^{1/2}-1\per
+\left[1+\half\tfrac{U_w^2}{f_0^2\lambda^2}\right]^{1/2}-1\per
 \eeq
-The frequency shift is positive definite and depends on the initial kinetic
-energy of inertial oscillation $\Phi^2$. If the wave kinetic energy is small,
-then the frequency shift is  $\approx  \Phi^2/(4 f_0^2\lambda^2)$.
+The frequency shift is positive definite and depends on the square of the ratio
+of the radius of the inertial circle $U_w/f_0$ to the intrinsic scale $\lambda$.
+If that
+ratio is small, then the frequency shift is  $\approx  U_w^2/(4 f_0^2\lambda^2)$.
 
 \section{The physics of stimulated generation}
 
@@ -1034,7 +1038,7 @@ with the QG streamfunction $\psi(x,y,z,t)$. The QG flow evolves through stirring
 \beq
 q_t + \sJ(\psi,q) = 0\per
 \eeq
-A fundamental difference to \cite{young_benjelloul1997} is that the QGPV in the
+A fundamental difference to \cite{young_benjelloul1997} is that the potential vorticity in the
 \cite{xie_vanneste2015} model contains quadratic wave terms
 \beq
 q = \nabla \psi + \left(\tfrac{f_0^2}{N^2}\psi_z\right)_z + \beta y +
