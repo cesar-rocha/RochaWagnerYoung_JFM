@@ -99,7 +99,10 @@
 \newcommand{\psiw}{\psi^w}
 %\newcommand{\tfrac}{\frac}
 %\newcommand{\eqref}{\ref}
-
+\newcommand{\kb}{\mathbf{k}}
+\newcommand{\xb}{\mathbf{x}}
+\newcommand{\zhb}{\hat{\mathbf{z}}}
+\newcommand{\omg}{\delta\omega}
 
 
 \maketitle
@@ -153,7 +156,7 @@ ocean and in the interior \citep[e.g., ][]{xie_vanneste2015}.
 
 % 3) A minimal model of stimulated generation
 To illuminate the physical mechanisms of energy extraction from
-barotropic flow by existing internal waves, we here analyze a
+barotropic flow by existing internal waves, we analyze a
 simple model of stimulated generation. This minimal model is a special
 family of solutions of the \cite{xie_vanneste2015} equations, which couple the
 evolution of near-inertial waves (NIWs) with quasi-geostrophic (QG) flow. The
@@ -174,31 +177,33 @@ energy---and sink of geostrophic kinetic energy. In this quasi-inviscid limit,
 wave dispersion is the only mechanism that stops the energy conversion by moving
 the waves out of the straining regions.
 
-\section{The physics of stimulated generation}
-
-\subsection{The \cite{xie_vanneste2015} minimal QG-NIW model}
+\section{The \cite{xie_vanneste2015} minimal QG-NIW model}
 The \cite{xie_vanneste2015} minimal model (Appendix A) assumes
 barotropic balanced flow, $\psi=\psi(x,y,t)$,
 uniform background buoyancy frequency, $N_0$, $\beta=0$, and a single propagating
-wave mode in the vertical, $\ee^{\ii m z}$, so that the dynamical fields are
+wave mode in the vertical, $\ee^{\ii m z}$, so that the dynamical fields are:
 \begin{align}
 \label{horizontal_velocity}
-u + \ii v  &= \ee^{\ii (m z - f_0 t)}\,\phi -(\p_y-\ii\p_x)\psi\com\\
+\text{Horizontal velocity:}&\qquad u + \ii v  = \ee^{\ii (m z - f_0 t)}\,\phi -(\p_y-\ii\p_x)\psi\,;\\
   \label{vertical_velocity}
-  w &= \tfrac{1}{2 m} (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi  + \text{cc}  \com\\
+\text{Vertical velocity:}&\qquad  w = \tfrac{1}{2 m} (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi  + \text{cc}  \,;\\
 \label{pressure}
-p &= \half f_0\lambda^2 (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi
-+\text{cc} + f_0 \psi \com\\
+\text{Pressure:}&\qquad p = \half f_0\lambda^2 (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi
++\text{cc} + f_0 \psi \,;\\
 \label{buoyancy}
-b &=  \tfrac{m}{2} f_0\lambda^2 (\p_x-\ii\p_y)\ee^{\ii (m z - f_0 t)}\phi + \text{cc} +
-f_0 \psi_z  \per
+\text{Buoyancy:}&\qquad b =  \tfrac{m}{2} f_0\lambda^2 (\p_x+\ii\p_y)\ee^{\ii (m z - f_0 t)}\phi + \text{cc}
+  \per
 \end{align}
-Above $\phi = \phi(x,y,t)$ is a complex near-inertial back-rotated velocity,
-$\lambda = \tfrac{N_0}{f_0\, m}$ is an intrinsic horizontal scale, and cc denotes
-complex conjugate.
+Above $\lambda = \tfrac{N_0}{f_0\, m}$ is an intrinsic horizontal scale and cc denotes
+complex conjugate. And $\phi = \phi(x,y,t)$ is a complex near-inertial back-rotated velocity,
+which determines all wave fields in \eqref{horizontal_velocity}--\eqref{buoyancy}.
+In other words, with $\psi=0$, \eqref{horizontal_velocity}--\eqref{buoyancy}
+are wave polarization relations.
 
 The balanced flow,
-with streamfunction $\psi$, satisfies the wave-averaged inversion relationship
+whose streamfunction $\psi$ determines all balanced fields in
+\eqref{horizontal_velocity}--\eqref{buoyancy}, satisfies the
+wave-averaged inversion relationship
 \citep[cf. ][]{wagner_young2015}:
 \beq
 \label{qgpv}
@@ -223,8 +228,8 @@ and the wave velocity satisfies
 \eeq
 where   is an intrinsic horizontal scale.
 
-The wave model is similar to the \cite{young_benjelloul1997} equation. In other words,
-the back-rotated wave velocity
+The wave model is similar to the \cite{young_benjelloul1997} equation.
+The back-rotated wave velocity
 evolves through dispersion---the last term in \eqref{waves}---and
 advection and refraction by the geostrophic flow---the second and third terms in
 \eqref{waves}. But the wave equation \eqref{waves} is non-linear owing to the
@@ -262,8 +267,68 @@ filter.
 In practice, we choose the diffusivity that places the 35$\%$ highest
 modes in the dissipation range, so that aliased wavenumbers are strongly damped.
 
-\subsection{Power integrals and energy conversion}
+\subsection{The WKB limit}
+An important feature of the wave equation \eqref{waves} is that no horizontal scale
+separation of scales between waves and balanced flow is assumed. In other words,
+the wave equation \eqref{waves} isn't host to the WKB approximation
+\citep[e.g., ][]{young_benjelloul1997}. But the WKB limit can be easily recovered.
+In this limit, plane-wave solutions, $\phi \sim \ee^{\kb \cdot \xb -  \omg t}$,
+yield the dispersion relationship
+\beq\label{disp1}
+\tfrac{\omg}{f_0} = \half \lambda^2 |\kb|^2 + \tfrac{1}{f_0}\zhb\cdot(\kb\times\grad\psi)
+ + \tfrac{1}{2f_0}\lap\psi\com
+\eeq
+where $\omega = f_0 + \omg$ is the wave frequency, $\kb = (k,l)$ is the horizontal
+wavevector, and $\zhb$ is the vertical unit vector. The first term on the right
+of \eqref{disp1} is a linear approximation to the fractional change of the wave
+frequency about $f_0$. The second term represents Doppler shift by large-scale
+geostrophic advection. And the last term is a frequency shift due to geostrophic
+vorticity \citep{kunze1985,young_benjelloul1997}.
 
+
+\subsection{Wave self-interaction and frequency shift}
+The the wave equation \eqref{waves} is non-linear because both $q$ and $\phi$
+determine the flow $\psi$, which advects and refracts $\phi$. The wave contribution
+to $\psi$ is quadratic in $\phi$ (cf. \eqref{qgpv}). Thus, the non-linear wave
+dynamics in   \eqref{waves} is cubic in $\phi$.
+To study these non-linear wave effects, we linearize the QG-NIW equations  about
+ the exact solution
+$\phi = \Phi = \text{constant}$ and $\psi = 0$, so that $q=0$. The QGPV
+equation \eqref{macroturb} linearized about this state is trivial: $q_t = 0$,
+ thus $q$ remains zero. Also,
+\beq
+\label{lin_q}
+ \lap \psi = -\tfrac{\Phi}{2f_0}\lap\half(\phi + \phis)\com
+\eeq
+where $\phi$ represents the small departure about the constant $\Phi$, so that
+the linearized wave equation becomes
+\beq
+\phi_t = \tfrac{\ii}{2}\left[\tfrac{\Phi^2}{2f_0}\lap\half(\phi+\phis) +
+f_0\lambda^2\lap\phi\right] \per
+\eeq
+Recalling that the wave velocity is $u_w + \ii v_w = \ee^{\ii (mz -f_0 t)}\phi(x,y,t)$,
+we recast the wave equation:
+\beq
+\left[\p_t^2 - \tfrac{1}{4}f_0\lambda^2\left(f_0\lambda^2+
+\frac{\Phi^2}{2f_0}\right)\lap^2\right] v_w = 0\com
+\eeq
+where $\lap^2 = (\p_x^2 + \p_y^2)^2$. Hence, plane-wave solutions yield the
+dispersion relation
+\beq
+\tfrac{\omg}{f_0} = \half \lambda^2|\kb|^2\left[1+\half\tfrac{\Phi^2}{f_0^2\lambda^2}
+\right]^{1/2}\com
+\eeq
+and we conclude that the wave self-interaction shifts the frequency by
+\beq
+\left[1+\half\tfrac{\Phi^2}{f_0^2\lambda^2}\right]^{1/2}-1\per
+\eeq
+The frequency shift is positive definite and depends on the initial kinetic
+energy of inertial oscillation $\Phi^2$. If the wave kinetic energy is small,
+then the frequency shift is  $\approx  \Phi^2/(4 f_0^2\lambda^2)$.
+
+\section{The physics of stimulated generation}
+
+\subsection{Power integrals and energy conversion}
 From \eqref{waves}, we deduce that the near-inertial kinetic energy density $\half |\phi|^2$
 satisfies
 \beq
@@ -286,7 +351,7 @@ unpack the wave flux:
 f_0 \lambda^2\grad\Theta \times
 \half |\phi|^2\com
 \eeq
-where $\half|\phi|^2$: $f_0\lambda^2\grad\Theta
+where $f_0\lambda^2\grad\Theta
 = \tfrac{N^2_0}{f_0 m^2}\grad\Theta$ is the generalized group
 velocity of hydrostatic near-inertial waves, which can be quickly verified under
 the plane-wave assumption, $\Theta = kx + ly$.
@@ -309,12 +374,13 @@ Also in \eqref{action}, $\varepsilon_\phi$ is the rate of dissipation of wave ki
 \eqref{macroturb}-\eqref{waves} conserves wave kinetic energy, $K_w$
 \citep{xie_vanneste2015}.
 
-Also from \eqref{waves}, we derive an equation for the wave potential energy:
-$\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
+Also from \eqref{waves}, we derive an equation for the wave potential energy
+$P_w \defn \half \la b^2 \ra/N_0^2 = \tfrac{\lambda^2}{4}\la|\grad\phi|^2\ra$:
+$\tfrac{\lambda^2}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 \eqref{waves}^\star\ra$ yields
 \begin{align}
 \label{Pw}
-\frac{\dd}{\dd t}\underbrace{\la\tfrac{\lambda^2}{4}|\grad \phi|^2\ra}_{\defn P_w} =
+\dot P_w =
 & \underbrace{\tfrac{1}{f_0}\Big\la\half\lap\psi\diver\Ff_w
 \Big\ra}_{\defn\Gamma_{r}} +
 \underbrace{\tfrac{\lambda^2}{2}\, \Big\la\half\psi\left[\sJ(\phi,\lap\phis)
@@ -324,12 +390,12 @@ $\tfrac{\lambda^4}{4}\la\lap\phis\times\eqref{waves}$ + $\lap\phi\times
 where $\chi_\phi$ is the dissipation of wave potential energy (see appendix B
 for explicit expressions).
 
-And from \eqref{macroturb}, we deduce an equation for the geostrophic kinetic energy,
-$K_e$: $-\la\psi\times\eqref{macroturb}\ra$, with \eqref{qgpv}, \eqref{action_density},
+And from \eqref{macroturb}, we form an equation for the geostrophic kinetic energy
+$K_e\defn \half \la|\grad\psi|^2\ra$: $-\la\psi\times\eqref{macroturb}\ra$, with \eqref{qgpv}, \eqref{action_density},
 \eqref{waves}, and multiple integration by parts, give
 \beq
 \label{Ke}
-\frac{\dd}{\dd t}\underbrace{\la\half |\grad \psi|^2\ra}_{\defn K_e} =
+\dot K_e =
  - (\Gamma_r + \Gamma_a) + \Xi +  \varepsilon_q \com
 \eeq
 where $\Xi$ is a source of geostrophic kinetic energy due to
@@ -379,8 +445,8 @@ where $\Sf$ is the symmetric part of the geostrophic velocity gradient matrix,
     \half(\psi_{xx}-\psi_{yy}) & \psi_{xy}
 \end{bmatrix}\,\com
 \eeq
-whose sum of the elements squared (the Frobenius norm) is the
-square of the geostrophic rate of strain. Hence, geostrophic straining enhances gradients
+whose sum of the elements squared (the Frobenius norm) is the variance of
+the geostrophic rate of strain. Hence, geostrophic straining enhances gradients
 of $\phi$, thereby generating wave potential energy, $P_w$. When the geostrophic flow has
 a lateral scale much larger than
 the waves, this distortion of $\phi$ is akin to the wave capture
@@ -462,7 +528,7 @@ into the ocean, thereby generating near-inertial oscillations with a lateral
 decorrelation scale larger than the mesoscale eddies. The coupled model
 \eqref{macroturb}--\eqref{waves} describes the post-storm evolution
 of this initially coherent inertial oscillation
- \citep{xie_vanneste2015}. Geostrophic refraction
+ \citep{xie_vanneste2015,wagner_young2016}. Geostrophic refraction
 concentrates the waves in anticyclones. The eddy-scale gradients of $\phi$ then support
 geostrophic advection. Advection and refraction reduce the lateral coherence
 of the waves---and wave dispersion counteracts this unsmoothing effect.
@@ -988,7 +1054,7 @@ stratification, and single vertical mode NIW, $M_z = \ee^{\ii m z}\,\phi(x,y)$,
 yields the reduced set of equations \eqref{macroturb}-\eqref{waves} used
 in this paper.
 
-\subsection{Wave self-interaction and frequency shift}
+
 % To gain further insight into the dynamics, we decompose the balanced flow
 % into `vorticity-induced' and `wave-induced' fields, $\psi = \psiq + \psiw$, where
 % \beq
@@ -1030,41 +1096,7 @@ in this paper.
 % is an intermediate model between the uncoupled QG-YBJ model ($\psi^w=0$)
 % and the non-linear coupled QG-NIW model.
 
-The the wave equation \eqref{waves} is non-linear because both $q$ and $\phi$
-determine the flow $\psi$, which advects and refracts $\phi$. The wave contribution
-to $\psi$ is quadratic in $\phi$ (cf. \eqref{qgpv}). Thus, the non-linear wave
-dynamics in   \eqref{waves} is cubic in $\phi$.
-To study these non-linear wave effects, we linearize the QG-NIW equations  about
- the exact solution
-$\phi = \Phi = \text{constant}$ and $\psi = 0$, so that $q=0$. The QGPV
-equation \eqref{macroturb} linearized about this state is trivial: $q_t = 0$,
- thus $q$ remains zero. Also,
-\beq
-\label{lin_q}
- \lap \psi = -\tfrac{\Phi}{2f_0}\lap\half(\phi + \phis)\com
-\eeq
-where $\phi$ represents the small departure about the constant $\Phi$, so that
-the linearized wave equation becomes
-\beq
-\phi_t = \tfrac{\ii}{2}\left[\tfrac{\Phi^2}{2f_0}\lap\half(\phi+\phis) +
-f_0\lambda^2\lap\phi\right] \per
-\eeq
-Recalling that $u_w + \ii v_w = \phi \ee^{\ii (mz -f_0 t)}$, we recast the wave
-equation:
-\beq
-\left[\p_t^2 - \tfrac{1}{4}f_0\lambda^2\left(f_0\lambda^2+
-\frac{\Phi^2}{2f_0}\right)\lap^2\right] v_w = 0\com
-\eeq
-where $\lap^2 = (\p_x^2 + \p_y^2)^2$. Hence, plane-wave solutions yield the
-dispersion relation
-\beq
-\omega = \half f_0\lambda^2(k^2+l^2)\left[1+\half\tfrac{\Phi^2}{f_0^2\lambda^2}
-\right]^{1/2}\com
-\eeq
-and we conclude that the wave self-interaction shifts the frequency by
-\beq
-\left[1+\half\tfrac{\Phi^2}{f_0^2\lambda^2}\right]^{1/2}-1\per
-\eeq
+
 
 
 \section{Details of the initial value problems}
