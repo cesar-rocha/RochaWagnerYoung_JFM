@@ -134,7 +134,7 @@ But roughly half of the energy flux out of the mesoscales remains unaccounted fo
 % 2) stimulated generation: a newish mechanism
 Recent research has suggested that the interaction
 of geostrophic flows with existing internal waves serves
-as a major sink of mesoscale energy en route to viscous dissipation
+as a major sink of mesoscale energy
 \citep{xie_vanneste2015,taylor_straub2016,wagner_young2016,barkan_etal2016,shakespeare_hogg2017}.
 The emphasis on the energy extraction by \textit{existing} internal waves---here
 denoted stimulated generation---
@@ -161,8 +161,8 @@ simple model of stimulated generation. This minimal model is a special
 family of solutions of the \cite{xie_vanneste2015} equations, which couple the
 evolution of near-inertial waves (NIWs) with quasi-geostrophic (QG) flow. The
 focus on this specific class of wave-mean interactions is justified:  geostrophic
-eddies account for the bulk of the oceanic eddy kinetic energy
-\cite[$90\%$,][]{ferrari_wunsch2009} and near-inertial waves contain most of the
+eddies are largely barotropic account for the bulk of the oceanic eddy kinetic energy
+\cite[$90\%$,][]{ferrari_wunsch2009}, and near-inertial waves contain most of the
 oceanic high-frequency variability \citep{alford_etal2016}.
 
 The main analytical result of this paper, an overlooked equation for the wave potential
@@ -180,18 +180,19 @@ the waves out of the straining regions.
 \section{The \cite{xie_vanneste2015} minimal QG-NIW model}
 The \cite{xie_vanneste2015} minimal model (Appendix A) assumes
 barotropic balanced flow, $\psi=\psi(x,y,t)$,
-uniform background buoyancy frequency, $N_0$, $\beta=0$, and a single propagating
-wave mode in the vertical, $\ee^{\ii m z}$, so that the dynamical fields are:
+uniform background buoyancy frequency, $N_0$, f--plane, $\beta=0$, and a single
+propagating wave mode in the vertical, $\ee^{\ii m z}$, so that the
+total velocity $(u,v,w)$, pressure $p$, and buoyancy $b$ are given by:
 \begin{align}
 \label{horizontal_velocity}
-\text{Horizontal velocity:}&\qquad u + \ii v  = \ee^{\ii (m z - f_0 t)}\,\phi -(\p_y-\ii\p_x)\psi\,;\\
+u + \ii v  &= \ee^{\ii (m z - f_0 t)}\,\phi -\psi_y + \ii\psi_x\,;\\
   \label{vertical_velocity}
-\text{Vertical velocity:}&\qquad  w = \tfrac{1}{2 m} (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi  + \text{cc}  \,;\\
+  w &= \tfrac{1}{2 m}\ee^{\ii (m z - f_0 t)}(\phi_y-\ii\phi_x)  + \text{cc}  \,;\\
 \label{pressure}
-\text{Pressure:}&\qquad p = \half f_0\lambda^2 (\p_y-\ii\p_x)\ee^{\ii (m z - f_0 t)}\phi
+\qquad p &= \half f_0\lambda^2\ee^{\ii (m z - f_0 t)}(\phi_y-\ii\phi_x)
 +\text{cc} + f_0 \psi \,;\\
 \label{buoyancy}
-\text{Buoyancy:}&\qquad b =  \tfrac{m}{2} f_0\lambda^2 (\p_x+\ii\p_y)\ee^{\ii (m z - f_0 t)}\phi + \text{cc}
+b &=  \tfrac{m}{2} f_0\lambda^2\ee^{\ii (m z - f_0 t)}(\phi_x+\ii\phi_y) + \text{cc}
   \per
 \end{align}
 Above $\lambda = \tfrac{N_0}{f_0\, m}$ is an intrinsic horizontal scale and cc denotes
@@ -228,7 +229,7 @@ and the wave velocity satisfies
 \eeq
 where   is an intrinsic horizontal scale.
 
-The wave model is similar to the \cite{young_benjelloul1997} equation.
+The wave equation \eqref{waves} is similar to the \cite{young_benjelloul1997} model.
 The back-rotated wave velocity
 evolves through dispersion---the last term in \eqref{waves}---and
 advection and refraction by the geostrophic flow---the second and third terms in
@@ -253,7 +254,7 @@ potential, and the dispersivity, $f_0\lambda^2$, as Planck's constant
 
 The terms on the right of
 \eqref{macroturb}  and \eqref{waves}, $D_q$ and $D_\phi$, represent small-scale dissipation. The
-introduction of these terms is \textit{ad hoc}, likely breaking the asymptotic ordering of the \cite{xie_vanneste2015}
+\textit{ad hoc} introduction of these terms likely breaks the asymptotic ordering of the \cite{xie_vanneste2015}
 model. But small-scale dissipation is necessary to absorb the forward transfers
 of potential enstrophy and wave kinetic and potential energies in the numerical
 simulations reported below.
@@ -268,8 +269,8 @@ In practice, we choose the diffusivity that places the 35$\%$ highest
 modes in the dissipation range, so that aliased wavenumbers are strongly damped.
 
 \subsection{The WKB limit}
-An important feature of the wave equation \eqref{waves} is that no horizontal scale
-separation of scales between waves and balanced flow is assumed. In other words,
+An important feature of the wave equation \eqref{waves} is that wave and balanced
+flow share the horizontal scales. In other words,
 the wave equation \eqref{waves} isn't host to the WKB approximation
 \citep[e.g., ][]{young_benjelloul1997}. But the WKB limit can be easily recovered.
 In this limit, plane-wave solutions, $\phi \sim \ee^{\kb \cdot \xb -  \omg t}$,
@@ -287,7 +288,7 @@ vorticity \citep{kunze1985,young_benjelloul1997}.
 
 
 \subsection{Wave self-interaction and frequency shift}
-The the wave equation \eqref{waves} is non-linear because both $q$ and $\phi$
+As remarked above, the the wave equation \eqref{waves} is non-linear because both $q$ and $\phi$
 determine the flow $\psi$, which advects and refracts $\phi$. The wave contribution
 to $\psi$ is quadratic in $\phi$ (cf. \eqref{qgpv}). Thus, the non-linear wave
 dynamics in   \eqref{waves} is cubic in $\phi$.
@@ -319,9 +320,9 @@ where $\lap^2 = (\p_x^2 + \p_y^2)^2$. Plane-wave solutions yield the
 dispersion relation
 \beq
 \tfrac{\omg}{f_0} = \half \lambda^2|\kb|^2\left[1+\half\tfrac{U_w^2}{f_0^2\lambda^2}
-\right]^{1/2}\com
+\right]^{1/2}\per
 \eeq
-and we conclude that the wave self-interaction shifts the frequency by
+ Thus, the wave self-interaction shifts the linear near-inertial frequency by
 \beq
 \left[1+\half\tfrac{U_w^2}{f_0^2\lambda^2}\right]^{1/2}-1\per
 \eeq
@@ -330,7 +331,7 @@ of the radius of the inertial circle $U_w/f_0$ to the intrinsic scale $\lambda$.
 If that
 ratio is small, then the frequency shift is  $\approx  U_w^2/(4 f_0^2\lambda^2)$.
 
-\section{The physics of stimulated generation}
+\section{The physics of stimulated generation}\label{physics}
 
 \subsection{Power integrals and energy conversion}
 From \eqref{waves}, we deduce that the near-inertial kinetic energy density $\half |\phi|^2$
@@ -416,10 +417,11 @@ In \eqref{Ke},
 $\Gamma_r + \Gamma_a$ is the conversion between geostrophic kinetic energy and
 wave potential energy.
 The term $\Gamma_r$   stems from refraction and is easy to
-interpret: the convergence, $\nabla\cdot\Ff_w < 0$, of the wave flux of kinetic energy density
- into anticyclones, $\lap\psi<0$, is a source of wave potential
-energy, $P_w$. The term $\Gamma_a$ stems from advection and resembles the source
-of variance of a passive scalar (tracer) gradient subject to lateral advection
+interpret: the convergence of the wave flux of kinetic energy density,
+$\nabla\cdot\Ff_w < 0$, into anticyclones, $\lap\psi<0$, is a source of wave
+potential energy, $P_w$. The term $\Gamma_a$ stems from advection and resembles
+the source of variance of a passive scalar (tracer) gradient subject to lateral
+advection
 \beq
 \label{c_t}
 c_t + \sJ(\psi,c) = 0.
@@ -427,7 +429,7 @@ c_t + \sJ(\psi,c) = 0.
 From \eqref{c_t}, we deduce that $\la\lap c \sJ(\psi,c)\ra$ is the
  production of tracer-gradient variance, $\la |\grad c|^2\ra$.
 Analogously, $\Gamma_a$ is the source of wave potential energy due to geostrophic
-stirring.  After multiple
+straining.  After multiple
 integration by parts, we rewrite this term as
 \beq
 \label{gradphi}
@@ -457,7 +459,7 @@ the waves, this distortion of $\phi$ is akin to the wave capture
 mechanism of \cite{buhler_mcintyre2005}.
 
 The standard \cite{young_benjelloul1997} equation with barotropic geostrophic flow
-and single-model near-inertial vertical structure
+and single propagating vertical mode near-inertial
 also satisfies the potential energy equation \eqref{Pw}. But
 \cite{young_benjelloul1997} and subsequent studies overlooked the wave potential
 energy power integral, \eqref{Pw}, or its generalization to baroclinic quasi-geostrophic flow.
@@ -552,7 +554,8 @@ numerically two problems in which an initially perfectly coherent near-inertial
 oscillation interacts with the Lamb-Chaplygin dipole (Section 3) and with a turbulent
 field emergent from random initial conditions (Section 4).
 
-\section{An idealized solution: the Lamb-Chaplygin dipole}
+\section{An idealized solution: the Lamb-Chaplygin dipole}\label{dipole}
+
 As a preamble to our discussion of the QG-NIW energy transfers in freely-evolving
 turbulence, we consider a simpler example in which the initial quasi-geostrophic flow
 is given the the Lamb-Chaplygin dipole. This dipole is an exact solution of the Euler
@@ -571,7 +574,7 @@ a frame moving at uniform zonal velocity $U_e$, is
 where $r^2 = (x-x_c)^2+(y-y_c)^2$ is the radial distance about the dipole's center
 $(x_c,y_c)$, $\tan \theta = (y-y_c)/(x-x_c)$, and $J_n$ is the n'th order Bessel
 function of first kind. The matching condition at $r=R$, $J_1(\kappa R)=0$, determines
-$\kappa$. The dipole is the first eigensolution, with eigenvalue $\kappa R \approx
+$\kappa$; the dipole is the first eigensolution, with eigenvalue $\kappa R \approx
 3.8287$.  If the wave potential vorticity is zero, then the dipole \eqref{lambd_q} is a
 solution of \eqref{macroturb}. This is the case when a uniform $\phi$ is used as
 initial condition (Sections 3 and 4).
@@ -695,8 +698,7 @@ energy changes. And direct dissipation and wave-dissipation source
 % This is preferable, on reproducibility grounds, than adding values manually.
 \input{table1}
 
-\clearpage
-\section{Macroturbulence solutions: decaying barotropic flow}
+\section{Macroturbulence solutions: decaying barotropic flow}\label{turbulence}
 
 To study the energy exchange between near-inertial waves and quasi-geostrophic flow
 in a turbulent regime relevant to the ocean, we consider a barotropic flow that emerges from
@@ -912,58 +914,121 @@ $\Gamma_a$ (Figure \ref{stats_turb_various}d). The
 moderate to strong dispersion solutions,  $\hslash> 1$ experience much slower
 decrease of correlation, and remains negative even after $t\times U_e k_e = 150$.
 
-\section{Discussion}
-Points to emphasize and discuss:\\
+\section{Discussion}\label{discussion}
+The explicit expression for the energy conversion in \eqref{Pw} illuminates the
+physics of stimulated generation: both convergence of wave kinetic energy density
+in anticyclones and geostrophic straining are sources of wave potential
+energy and sinks of geostrophic kinetic energy. But this energy description
+of stimulated generation disguises the role of wave dispersion---waves can
+propagate out of the vorticity or straining regions, thereby reducing the
+correlations of the energy conversion in \eqref{Pw}.
+
+Indeed, wave dispersion is the only mechanism that upsets stimulated generation
+in the quasi-inviscid solutions described in sections \ref{dipole} and
+\ref{turbulence}. In all solutions, after an initial conversion due to refraction,
+geostrophic straining accounts for most of the energy conversion. But even in the
+weak dispersion solution, the waves not behave as a passive scalar. This is
+because geostrophic advection can only strain the near-inertial wave field so much.
+The near-inertial generalized group velocity is $f_0\lambda^2\grad\Theta$
+(cf. section \ref{physics}), where $\Theta$ is the phase of the near-inertial
+back-rotated velocity: $\phi = |\phi|\ee^{\ii\Theta}$. With fixed dispersivity,
+$f_0\lambda^2$, the very geostrophic straining, enhances the gradients $\grad\Theta$,
+thereby increasing the near-inertial group velocity: the waves scape the straining
+region. Thus, the mechanism of wave capture \citep{buhler_mcintyre2005} does not
+occur in the solutions described above. Wave capture could occur if the flow lateral
+scale is much larger than the wave field. An extreme example is the elongation flow,
+$\psi=-\alpha x y$, in which the rate of strain is uniform.
+
+While the geostrophic straining accounts for bulk energy transfers in the examples
+consider in \ref{dipole} and \ref{turbulence}, which represent a sink of
+$5-50\%$ of the initial geostrophic kinetic energy, refraction plays a fundamental role
+in these solutions with uniform (laterally coherent) initial wave velocity.
+ This initial condition idealized the
+generation of upper-ocean inertial oscillations by storms
+\citep[e.g., ][]{alford_etal2016}. And the rapid after storm loss of lateral
+coherence is a form of inertial pumping
+ \citep{young_benjelloul1997,klein_etal2004}, which
+ is accompanied by an extraction of energy from the balanced flow by the waves.
+Once refraction reduced the lateral coherence of the waves, geostrophic advection
+begins to strain the wave field, thus starting the second stage of the energy
+extraction.
+
+A secondary result of the analysis of the solutions in \ref{dipole} and \ref{turbulence}
+is the strong time-dependence of the correlation between incoherent waves and
+the relative vorticity, which is a measure of the concentration of waves in cyclones or
+anticyclones \citep{danioux_etal2015}. Refraction attracts waves to anticyclones
+and expel them from cyclones, thereby generating a strong negative correlation.
+The subsequent decay of the negative correlation is partially accounted
+for by the unsteady advection, as conjectured by \cite{danioux_etal2015}. Unsteady
+advection is compounded by the QG-NIW coupling: most of the initial energy
+extraction takes place in negative vorticity regions, which in turn weakens the
+anticyclones. For moderate to small dispersivity, the energy extraction is strong
+and the relative vorticity develops a positive skewness, thereby creating a positive
+wave-vorticity correlation.
+
+There are numerous caveats to the application of our results to the complex
+after-storm oceanographic problem. Notably, the lack of geostrophic
+vertical shear suppresses important mechanisms of vertical refraction and
+straining, which introduce interesting modifications of the near-inertial wave
+physics (e.g., \textcolor{red}{Thomas 2017}) and can account for copious amounts
+of energy extraction by near-inertial waves \citep{shakespeare_hogg2017}. Also,
+the focus on quasi-inviscid initial value problems undermines the role of
+dissipation---in forced-dissipative solutions, wave dissipation is likely to control
+the strength of stimulated generation. We plan to
+study the energy transfer associated with vertical shear and the role of
+forcing and dissipation in future studies.
 
 
-\begin{itemize}
-  \item The wave potential energy equation clarifies the physics of stimulated
-        imbalance. But it conceals the role of linear dispersion, which is responsible
-        for eventually halting the energy conversion by moving the waves out of
-        straining regions---even at $\hslash=0.25$, there is no true cascade of
-        wave kinetic energy density $\half |\phi|^2$. (Perhaps remark that the
-        analytical solution for the elongation flow, $\psi=-\alpha x y$, is too
-        idealize because of the strong assumption of \textit{uniform} rate of
-        strain---regardless of the dispersivity, the waves always experience the
-        same straining.)
-  \item The energy transfer is significant in all examples considered (5-50$\%$
-        of initial geostrophic kinetic energy). While our examples are too idealized,
-        this is somewhat suggestive that stimulated generation associated with lateral
-        strain and vertical vorticity may be relevant to closing the oceanic energy
-        budget. There's an important limitation to our figures, which were diagnosed
-        from initial value problems.
-  \item Geostrophic straining accounts for the bulk energy conversion but refraction
-        is fundamental to this problem with initially large-scale waves. (Perhaps
-        conjecture that, in general, lateral straining may be the most important mechanism
-        of energy extraction away from sharp baroclinic fronts where vertical straining
-        may dominate \citep{shakespeare_hogg2017}.)
-  \item The positive wave-vorticity correlation at large time is a striking result.
-        Compared to previous studies
-        there are two ingredients to the loss of negative correlation, and eventual
-        creation of positive correlation: the unsteadiness of the geostrophic flow
-        plus the wave feedback. Unsteadiness partially explains the loss of negative
-        wave-vorticity correlation and its strong dependence, as conjectured by \cite{danioux_etal2015}.
-        The coupling of waves and quasi-geostrophic flow accounts for the creation of
-        positive wave-vorticity correlations, particularly when there's vigorous
-        energy transfer (moderate to weak dispersion): refraction initially focus the waves
-        into anticyclones where most of the initial energy extraction occurs.
-        (Perhaps remark that stimulated imbalance could contribute to
-        the vorticity skewness observed in the upper ocean.)
-  \item Besides energy transfer form geostrophic flow to waves, the coupling induces
-        more direct dissipation of geostrophic kinetic energy (compared with waveless
-        solutions). This is because in the weak dispersion limit, the fine vorticity
-        structures are removed by small-scale diffusion, which is a limitation of
-        finite resolution. But small-scale diffusion could also be interpreted as
-        a poor-scientist's parameterization for ageostrophic submesoscale flows,
-        thus making an oblique connection with \cite{barkan_etal2016}.
-  \item The decay of a laterally coherent near-inertial oscillation due to refraction by
-        geostrophic flow is relevant for mixed-layer slab models used to estimate the work
-        imparted by wind into the near-inertial wave field \citep[e.g., ][]{alford2001}.
-        These models solve for the coherent velocity $\la\phi\ra$ and parameterize
-        the loss of coherence, $\Pi$, with linear friction, $-r |\la\phi\ra|^2$.
-        Our results suggest that this parameterization is inaccurate. (Of course, one
-        should properly test this in equilibrated forced-dissipative solutions.)
-\end{itemize}
+
+
+% \begin{itemize}
+%   \item The wave potential energy equation clarifies the physics of stimulated
+%         imbalance. But it conceals the role of linear dispersion, which is responsible
+%         for eventually halting the energy conversion by moving the waves out of
+%         straining regions---even at $\hslash=0.25$, there is no true cascade of
+%         wave kinetic energy density $\half |\phi|^2$. (Perhaps remark that the
+%         analytical solution for the elongation flow, $\psi=-\alpha x y$, is too
+%         idealize because of the strong assumption of \textit{uniform} rate of
+%         strain---regardless of the dispersivity, the waves always experience the
+%         same straining.)
+%   \item The energy transfer is significant in all examples considered (5-50$\%$
+%         of initial geostrophic kinetic energy). While our examples are too idealized,
+%         this is somewhat suggestive that stimulated generation associated with lateral
+%         strain and vertical vorticity may be relevant to closing the oceanic energy
+%         budget. There's an important limitation to our figures, which were diagnosed
+%         from initial value problems.
+%   \item Geostrophic straining accounts for the bulk energy conversion but refraction
+%         is fundamental to this problem with initially large-scale waves. (Perhaps
+%         conjecture that, in general, lateral straining may be the most important mechanism
+%         of energy extraction away from sharp baroclinic fronts where vertical straining
+%         may dominate \citep{shakespeare_hogg2017}.)
+%   \item The positive wave-vorticity correlation at large time is a striking result.
+%         Compared to previous studies
+%         there are two ingredients to the loss of negative correlation, and eventual
+%         creation of positive correlation: the unsteadiness of the geostrophic flow
+%         plus the wave feedback. Unsteadiness partially explains the loss of negative
+%         wave-vorticity correlation and its strong dependence, as conjectured by \cite{danioux_etal2015}.
+%         The coupling of waves and quasi-geostrophic flow accounts for the creation of
+%         positive wave-vorticity correlations, particularly when there's vigorous
+%         energy transfer (moderate to weak dispersion): refraction initially focus the waves
+%         into anticyclones where most of the initial energy extraction occurs.
+%         (Perhaps remark that stimulated imbalance could contribute to
+%         the vorticity skewness observed in the upper ocean.)
+%   \item Besides energy transfer form geostrophic flow to waves, the coupling induces
+%         more direct dissipation of geostrophic kinetic energy (compared with waveless
+%         solutions). This is because in the weak dispersion limit, the fine vorticity
+%         structures are removed by small-scale diffusion, which is a limitation of
+%         finite resolution. But small-scale diffusion could also be interpreted as
+%         a poor-scientist's parameterization for ageostrophic submesoscale flows,
+%         thus making an oblique connection with \cite{barkan_etal2016}.
+%   \item The decay of a laterally coherent near-inertial oscillation due to refraction by
+%         geostrophic flow is relevant for mixed-layer slab models used to estimate the work
+%         imparted by wind into the near-inertial wave field \citep[e.g., ][]{alford2001}.
+%         These models solve for the coherent velocity $\la\phi\ra$ and parameterize
+%         the loss of coherence, $\Pi$, with linear friction, $-r |\la\phi\ra|^2$.
+%         Our results suggest that this parameterization is inaccurate. (Of course, one
+%         should properly test this in equilibrated forced-dissipative solutions.)
+% \end{itemize}
 
 % the advection sink rules
 % Both examples suggest that the advective conversion accounts for the bulk of geostrophic
@@ -1206,7 +1271,7 @@ using an exponential time differencing method with a fourth order Runge-Kutta sc
       $L_d$ & Domain size & $2\pi\times 200$ km \\
       $2\pi k_e^{-1}$ & Centroid wavelength & $2\pi\times 50$ km \\
       $U_e$ & RMS velocity & $0.1$ m s$^{-1}$ \\
-      $U_w$ & NIW speed & $0.07 - 0.32$ m s$^{-1}$ \\
+      $U_w$ & NIW speed & $ 0.14$ m s$^{-1}$ \\
       $N_0$ & Buoyancy frequency & 10$^{-2}$ s$^{-1}$\\
       $f_0$ & Colioris frequency & 10$^{-4}$ s$^{-1}$\\
       $2\pi$m$^{-1}$ & NIW vertical wavelength & $200 - 800$ m \\
