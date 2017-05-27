@@ -4,6 +4,7 @@
 #
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 def save_parameters(model):
     """ Save simulation parameters """
@@ -38,3 +39,37 @@ def plot_fig_label(ax, xc=.95, yc=0.075 ,label="a",boxstyle='circle',
                                                     facecolor=facecolor,
                                                     edgecolor=edgecolor,
                                                     alpha=alpha))
+
+def wave_fields(phi,f0,lam2,t,k,l,m,z=0):
+    """ Calculate near-inertial fields """
+    
+    phase = m*z - f0*t 
+    phih = np.fft.fft2(phi)
+    phi_phase = phi*np.exp(1j*phase)
+
+    phix, phiy = np.fft.ifft2(1j*k*phih), np.fft.ifft2(1j*l*phih)
+
+    dphi = phix+1j*phiy
+
+    u, v = phi_phase.real, phi_phase.imag
+    b = np.real(m*f0*lam2*dphi*np.exp(1j*phase))
+    p = np.real(1j*f0*lam2*dphi*np.exp(1j*phase))
+    w = np.real(1j*dphi*np.exp(1j*phase)/m)
+
+    return u, v, w, p ,b
+
+
+def balanced_fields(q,k,l,f0):
+    """ Calculates balanced fields """
+    wv2 = k**2 + l**2
+    wv2i = wv2**-1
+    wv2i[0,0] = 0.
+
+    qh = np.fft.fft2(q)
+    ph  = -wv2i*qh
+    u,v = np.fft.ifft2(-1j*l*ph).real, np.fft.ifft2(1j*k*ph).real
+    p = f0*np.fft.ifft2(ph).real
+
+    return u, v, p
+
+
