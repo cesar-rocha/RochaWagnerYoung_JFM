@@ -53,15 +53,15 @@ def plot_snapshot(fig, snap, panel = 1):
     ax = fig.add_subplot(2,3,panel,aspect=1)
     fig.subplots_adjust(wspace=.045)
     fig.subplots_adjust(hspace=.1)
-    pc1 = ax.pcolor(x,y, phi2,vmin=cphi.min(),vmax=cphi.max(),
-                     cmap = cmocean.cm.ice_r)
+    pc1 = ax.pcolormesh(x,y, phi2,vmin=cphi.min(),vmax=cphi.max(),
+                     cmap = cmocean.cm.ice_r, shading='flat')
     ax.contour(x,y, q, cq,colors='k')
     ax.set_xlim(xlim[0],xlim[1])
     ax.set_ylim(xlim[0],xlim[1])
 
     ax2 = fig.add_subplot(2,3,panel+3,aspect=1)
-    pc2 = ax2.pcolor(x,y, bw/Uw/m/(f0*lam2)/ke,vmin=cb.min(),vmax=cb.max(),
-                     cmap = cmocean.cm.balance)
+    pc2 = ax2.pcolormesh(x,y, bw/Uw/m/(f0*lam2)/ke,vmin=cb.min(),vmax=cb.max(),
+                     cmap = cmocean.cm.balance, shading='flat')
     ax2.contour(x,y, q, cq,colors='k')
     ax2.set_xlim(xlim[0],xlim[1])
     ax2.set_ylim(xlim[0],xlim[1])
@@ -112,5 +112,5 @@ fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/(k_e m f_0 \lambda^2)]$"
 
 
 plt.savefig(patho+"fig1.png", pad_inces=0, bbox_inches='tight')
-plt.savefig(patho+"fig1.eps", pad_inces=0, bbox_inches='tight')
-plt.savefig(patho+"fig1.pdf", pad_inces=0, bbox_inches='tight')
+#plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
+plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
