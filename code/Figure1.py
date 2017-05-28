@@ -106,11 +106,11 @@ cbar_ax = fig.add_axes([0.2, 1.01, 0.28, 0.0275])
 fig.colorbar(im1, cax=cbar_ax,label=r"Wave kinetic energy density $[|\phi|^2/U_w^2]$",
                     orientation='horizontal', ticks=[0.,2.,4.],extend='max')
 cbar_ax = fig.add_axes([0.55, 1.01, 0.28, 0.0275])
-fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/(k_e m U_w f_0 \lambda^2)]$",
+fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
                     orientation='horizontal',ticks=[-.85,0.,.85],
                     extend='both')
 
 
 plt.savefig(patho+"fig1.png", pad_inces=0, bbox_inches='tight')
 #plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
-plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
+#plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
