@@ -79,18 +79,16 @@ gradphi2 = np.abs(phix)**2 + np.abs(phiy)**2
 a, b = -pxy, 0.5*(pxx-pyy)
 Ga =  a*( np.abs(phiy)**2 - np.abs(phix)**2 ) + 2*b*np.real(np.conj(phiy)*phix)
 
-
-
 qw1 = np.fft.ifft2(-wv2*phi2h).real/(4*f0)
 qw2 = (1j*J_phic_phi).real/(2*f0)
 qw = qw1+qw2
 qpsi = q-qw
 
 Fscale = 1e-5
-Fwx, Fwy = (0.5*h*np.conj(phi)*phix).imag/Fscale,  (0.5*h*np.conj(phi)*phiy).imag/Fscale
-
-
-Fwx, Fwy = np.ma.masked_array(Fwx,np.abs(Fwx)<1.5e-3), np.ma.masked_array(Fwy,np.abs(Fwx)<1.5e-3)
+Fwx, Fwy = (0.5*h*np.conj(phi)*phix).imag/Fscale,\
+                        (0.5*h*np.conj(phi)*phiy).imag/Fscale
+Fwx, Fwy = np.ma.masked_array(Fwx,np.abs(Fwx)<1.5e-3),\
+                        np.ma.masked_array(Fwy,np.abs(Fwx)<1.5e-3)
 
 OW =  alpha**2 - qpsi**2
 uw, vw, ww, pw, bw = wave_fields(phi,f0,lam2,snap['t'][()],k,l,m)
@@ -121,7 +119,7 @@ plt.contourf(x,y,Ga/Ga.max(),cga,vmin=-.75,vmax=.75,
                 cmap=cmocean.cm.balance,extend='both')
 
 a = np.ma.masked_where(OW < 0.0, OW)
-plt.contour(x,y,a,colors='k')
+plt.contour(x,y,np.fft.ifft2(ph),colors='k')
 plt.xlim(xlim)
 plt.ylim(xlim)
 
