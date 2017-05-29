@@ -80,7 +80,7 @@ plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\dot P_w$',linewidth=lw,alpha=alp)
 plt.legend(loc=1,ncol=1)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.ylim(-0.02,0.08)
-plt.ylabel(r'Power $[\dot P_w \times {2 k_e}/{U_e} ]$')
+plt.ylabel(r'Power $[\dot P_w \times {2 k_e}/{U_e}^2 ]$')
 plot_fig_label(ax, label="b",xc=0.05,yc = 0.05)
 plt.xticks([0,10,20,30])
 
