@@ -41,6 +41,7 @@ y -= y.mean()
 
 files = ['000000000300000.h5','000000005200000.h5']
 files = ['000000000300000.h5','000000002666667.h5', '000000005200000.h5']
+files = ['000000000300000.h5','000000002000000.h5', '000000005200000.h5']
 
 #plot_fig_label(ax, xc =0.775, yc=1.03, label= r"$t \times U_e k_e$ = "+
 #                    str(int(round(t))), facecolor="1.0",boxstyle=None,alpha=0.)
@@ -120,6 +121,8 @@ plt.contourf(x,y,Ga/Ga.max(),cga,vmin=-.75,vmax=.75,
 
 a = np.ma.masked_where(OW < 0.0, OW)
 plt.contour(x,y,np.fft.ifft2(ph),colors='k')
+#plt.contour(x,y,a,colors='k')
+
 plt.xlim(xlim)
 plt.ylim(xlim)
 
