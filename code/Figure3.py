@@ -134,7 +134,7 @@ for fni in files:
 
 # colorbar
 fig.subplots_adjust(right=0.8)
-cbar_ax = fig.add_axes([0.81, .385, 0.013,0.22])
+cbar_ax = fig.add_axes([0.81, .387, 0.013,0.22])
 fig.colorbar(imphi, cax=cbar_ax,label=r"Wave KE density $[|\phi|^2/U_w^2]$",
                 orientation='vertical',ticks=np.arange(0,7,1))
 
@@ -144,7 +144,7 @@ fig.colorbar(imq, cax=cbar_ax,label=r"QGPV $[q/(U_e k_e)]$",
                 orientation='vertical',ticks=np.arange(-5,5,1))
 
 fig.subplots_adjust(right=0.8)
-cbar_ax = fig.add_axes([.81, .1125, 0.013, 0.22])
+cbar_ax = fig.add_axes([.81, .1155, 0.013, 0.22])
 fig.colorbar(imb, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
                 orientation='vertical',ticks=np.arange(-5,5,1))
 
