@@ -61,8 +61,8 @@ def plot_snapshot(fig, snap, panel = 1, frac = 2):
     nmax = nx//2
 
     ax2 = fig.add_subplot(3,3,panel,aspect=1)
-    fig.subplots_adjust(wspace=.025)
-    fig.subplots_adjust(hspace=.145)
+    fig.subplots_adjust(wspace=.01)
+    fig.subplots_adjust(hspace=.155)
     
     pc_q = ax2.contourf(x[:nmax,:nmax],y[:nmax,:nmax], q[:nmax,:nmax],
                             cq, vmin=cq.min(), vmax=cq.max(),
@@ -114,7 +114,7 @@ def plot_snapshot(fig, snap, panel = 1, frac = 2):
     else:
         pass
 
-    plot_fig_label(ax2, xc =0.75, yc=1.05, label= r"$t \times U_e k_e$ = "+
+    plot_fig_label(ax2, xc =0.7, yc=1.05, label= r"$t \times U_e k_e$ = "+
                     str(int(round(t))), facecolor="1.0",boxstyle=None,alpha=0.)
 
     return pc_phi, pc_q, pc_b
@@ -124,7 +124,7 @@ cq   = np.arange(-2.5,2.6,.1)
 cb   = np.arange(-2.5,2.6,.1)
 
 xlim = [0,5]
-fig = plt.figure(figsize=(8.5,7.))
+fig = plt.figure(figsize=(8.5,7.25))
 
 panel = 1
 for fni in files:
@@ -150,4 +150,4 @@ fig.colorbar(imb, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
 
 plt.savefig(patho+"fig3.png", transparent=True,
             pad_inches=0,
-            bbox_inches='tight')
+            bbox_inches='tight',dpi=400)
