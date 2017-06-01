@@ -74,9 +74,9 @@ fig.subplots_adjust(wspace=.075)
 ax2 = fig.add_subplot(132)
 fig.subplots_adjust(wspace=.075)
 ax3 = fig.add_subplot(133)
-#ax3.plot([kbatch/ke]*2,[0,0.2],linewidth=1.5,color='0.75')
+ax3.plot([kbatch/ke]*2,[0,0.2],linewidth=1.5,color='0.75')
 #ax3.plot([kdisp2/ke]*2,[0,0.2],linewidth=1.5,color='0.75')
-#ax3.text(kbatch/ke,0.1435,r'$k_{diss}$',rotation=90,color='0.75')
+ax3.text(kbatch/ke,0.1435,r'$k_{diss}$',rotation=90,color='0.75')
 #ax3.text(kdisp2/ke,0.1435,r'$k_{disp}$',rotation=90,color='0.75')
 
 dir = pathi[:-6]
