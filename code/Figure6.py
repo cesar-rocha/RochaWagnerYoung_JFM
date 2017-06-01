@@ -109,8 +109,8 @@ plot_fig_label(ax, label="a",xc=0.075)
 
 plt.plot([1, 5],[0.21]*2,'k--',linewidth=2)
 plt.plot([7, 11],[0.21]*2,'k-',linewidth=2)
-plt.text(2.5,0.22,r'$P_w$')
-plt.text(8.5,0.22,r'$K_e$')
+plt.text(2.5,0.22,r'$K_e$')
+plt.text(8.5,0.22,r'$P_w$')
 
 
 
