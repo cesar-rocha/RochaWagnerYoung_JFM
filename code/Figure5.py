@@ -122,7 +122,7 @@ def plot_pvterms(pathi,fig, panel=0):
 
     if panel == 0:
         plt.text(5.5,2.5,r'$\hslash = 0.5$')
-    elif panel == 2:
+    elif panel == 1:
         plt.text(5.5,2.5,r'$\hslash = 1.0$')
     else:
         plt.text(5.5,2.5,r'$\hslash = 2.0$')
