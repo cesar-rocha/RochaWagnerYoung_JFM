@@ -77,11 +77,11 @@ plt.plot(time/Te,Te*g2/KE0,label=r'$\Gamma_a$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\chi_\phi$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+\chi_\phi$',
                         linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\dot \mathcal{P}$',linewidth=lw,alpha=alp)
+plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\mathrm{d}\mathcal{P}\,/\,\mathrm{d}t$',linewidth=lw,alpha=alp)
 plt.legend(loc=(0.5,0.675),ncol=1)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.ylim(-0.02,0.08)
-plt.ylabel(r'Power $[\dot P_w \times {2 k_e}/{U_e}^2 ]$')
+plt.ylabel(r'Power $[\dot P \times {2 k_e^{-1}}/{U_e}^{-3} ]$')
 plot_fig_label(ax, label="b",xc=0.05,yc = 0.05)
 plt.xticks([0,10,20,30])
 
