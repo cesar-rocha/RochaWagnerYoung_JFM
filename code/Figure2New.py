@@ -74,6 +74,7 @@ for i in range(2):
 
     phi = snap['phi'] #/Uw**2
     phih = np.fft.fft2(phi)
+    lapphi = np.fft.ifft2(-wv2*phih)
     phi2 = np.abs(snap['phi'])**2 #/Uw**2
     phi2h = np.fft.fft2(phi2)
     phix, phiy = np.fft.ifft2(1j*k*phih), np.fft.ifft2(1j*l*phih)
@@ -83,6 +84,8 @@ for i in range(2):
 
     a, b = -pxy, 0.5*(pxx-pyy)
     Ga =  a*( np.abs(phiy)**2 - np.abs(phix)**2 ) + 2*b*np.real(np.conj(phiy)*phix)
+
+    Gx, Gy = 2*np.real(phix*np.conj(lapphi)), 2*np.real(phiy*np.conj(lapphi))
 
     qw1 = np.fft.ifft2(-wv2*phi2h).real/(4*f0)
     qw2 = (1j*J_phic_phi).real/(2*f0)
@@ -95,9 +98,14 @@ for i in range(2):
     Fwx, Fwy = np.ma.masked_array(Fwx,np.abs(Fwx)<1.5e-3),\
                             np.ma.masked_array(Fwy,np.abs(Fwx)<1.5e-3)
 
+    Gscale = 1e-15
+    Gx, Gy = Gx/Gscale, Gy/Gscale
+
+    Gx, Gy = np.ma.masked_array(Gx,np.abs(Gy)>100.), np.ma.masked_array(Gy,np.abs(Gy)>100.)
+
+
     OW =  alpha**2 - qpsi**2
     uw, vw, ww, pw, bw = wave_fields(phi,f0,lam2,snap['t'][()],k,l,m)
-
 
     phix_r, phiy_r =  np.real(phix), np.real(phiy)
     # calculate unaveraged Gamma_a
@@ -106,7 +114,7 @@ for i in range(2):
     p = np.fft.ifft2(ph).real
 
     ax = fig.add_subplot(1,2,i+1,aspect=1)
-    fig.subplots_adjust(wspace=.045)
+    fig.subplots_adjust(wspace=.085)
 
     if i == 1:
         plt.contour(x,y,p/(Ue/ke),cp[2:],colors='k')
@@ -114,6 +122,9 @@ for i in range(2):
         cga = np.arange(-.85,.9,.05)
         pc = plt.contourf(x,y,Ga/2.5e-15,cga,vmin=-.75,vmax=.75,
                     cmap=cmocean.cm.balance,extend='both')
+        #Q1 = plt.quiver(x[::dec,::dec],y[::dec,::dec],Gx[::dec,::dec],Gy[::dec,::dec],
+        #                scale=500,width=0.006)
+        
     else:
         plt.contour(x,y,qpsi/(Ue*ke),cq0[2:],colors='k')
         plt.contour(x,y,qpsi/(Ue*ke),cq0[:2],colors='k')
