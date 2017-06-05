@@ -133,15 +133,15 @@ for i in range(2):
                     cmap=cmocean.cm.balance,extend='both')
         #Q1 = plt.quiver(x[::dec,::dec],y[::dec,::dec],Gx[::dec,::dec],Gy[::dec,::dec],
         #                scale=500,width=0.006)
-        
+        plot_fig_label(ax, xc =0.95, yc=.05, label= "b")
     else:
         plt.contour(x,y,qpsi/(Ue*ke),cq0[2:],colors='k')
         plt.contour(x,y,qpsi/(Ue*ke),cq0[:2],colors='k')
         Q = plt.quiver(x[::dec,::dec],y[::dec,::dec],Fwx[::dec,::dec],Fwy[::dec,::dec],
                         scale=5e-2,width=0.006)
-        qk = plt.quiverkey(Q, 0.175,.835, 5e-3, r'$5\times10^{-3}\times\,\,{\mathcal{{\bf F}}}/F$', labelpos='E',
+        qk = plt.quiverkey(Q, 0.175,.8285, 5e-3, r'$5\times10^{-3}\times\,\,{\mathcal{{\bf F}}}/F$', labelpos='E',
                        coordinates='figure')
-
+        plot_fig_label(ax, xc =0.95, yc=.05, label= "a")
     plt.xlim(xlim)
     plt.ylim(xlim)
     ax.set_xlabel(r"$x\times k_e/2\pi$")
