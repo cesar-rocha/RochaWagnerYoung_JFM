@@ -82,8 +82,8 @@ for i in range(2):
 
     gradphi2 = np.abs(phix)**2 + np.abs(phiy)**2
 
-    a, b = -pxy, 0.5*(pxx-pyy)
-    Ga =  a*( np.abs(phiy)**2 - np.abs(phix)**2 ) + 2*b*np.real(np.conj(phiy)*phix)
+    a, b = -pxy, (pxx-pyy)
+    Ga =  (2*a*( np.abs(phiy)**2 - np.abs(phix)**2 ) + b*np.real(np.conj(phiy)*phix))
 
     
 

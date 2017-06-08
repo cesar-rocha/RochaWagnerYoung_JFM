@@ -150,4 +150,4 @@ fig.colorbar(imb, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
 
 plt.savefig(patho+"fig3.png", transparent=True,
             pad_inches=0,
-            bbox_inches='tight',dpi=400)
+            bbox_inches='tight',)#dpi=400)
