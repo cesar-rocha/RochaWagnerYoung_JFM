@@ -18,20 +18,21 @@ from niwqg import InitialConditions as ic
 
 plt.close('all')
 
-patho = "outputs/sinxsiny"
+patho = "outputs/sinxsiny2"
 
 # parameters
 nx = 128
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
-λz = 4000
+λz = 1250
 m = 2*np.pi/λz
 nu4, nu4w = 1e2*5e7, 1e2*1.e7   # hyperviscosity
 
 # initial conditions
 Ue = 0.5
-Uw = 2*Ue
+#Uw = 2*Ue
+Uw = 2*np.sqrt(10)*Ue
 ke = 1*(2*np.pi/L)
 Le = 2*np.pi/ke
 
@@ -46,7 +47,7 @@ alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
 dt = .0025*Te
-dt = .0025*Te
+dt = .0025*Te/5
 tmax = 10*Te
 
 ## setup model class
