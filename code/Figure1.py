@@ -103,7 +103,7 @@ for fni in files:
 # colorbar
 #fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.2, 1.01, 0.28, 0.0275])
-fig.colorbar(im1, cax=cbar_ax,label=r"Wave action density $[\mathcal{A}/(2 f_0 U_w^2)]$",
+fig.colorbar(im1, cax=cbar_ax,label=r"Wave action density $[\mathcal{A} \times 2 f_0 /U_w^2]$",
                     orientation='horizontal', ticks=[0.,2.,4.],extend='max')
 cbar_ax = fig.add_axes([0.55, 1.01, 0.28, 0.0275])
 fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
