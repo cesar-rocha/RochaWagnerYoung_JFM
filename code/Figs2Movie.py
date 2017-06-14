@@ -47,32 +47,37 @@ files = glob.glob(pathi[:-1]+"/snapshots/*.h5")
 
 cb = np.arange(-5.,5.25,0.25)
 cp = np.arange(-5,5,.5)
+cq = np.arange(-2.5,2.75,.5)
 ticks = [0,0.5,1.]
 
-for fni in files[::3]:
+files = ['000000000000000.h5','000000020000000.h5','000000050000000.h5','000000120000000.h5']
+for fni in files:
 #fni = files[-1]
-    snap = h5py.File(fni)
+    snap = h5py.File(pathi+"snapshots/"+fni)
     t = snap['t'][()]/Te
     q = snap['q'][:]
     qh = np.fft.fft2(q)
     p = np.fft.ifft2(-wv2i*qh).real
     p = p*ke/Ue
+    q = q/(Ue*ke)
     phi2 = np.abs(snap['phi'])**2/Uw**2
     #phi2 = np.abs(snap['c'])**2/Uw**2 # passive scalar
     #bw = snap['c'] # passive scalar
     uw, vw, ww, pw, bw = wave_fields(snap['phi'][:],f0,lam2,snap['t'][()],k,l,m)
 
-
+    plt.figure()
     plt.contourf(x,y, bw/Uw/m/(f0*lam2)/ke,cb,vmin=cb.min(),vmax=cb.max(),
                          cmap = cmocean.cm.balance, shading='flat',extend='both')
     #plt.contourf(x,y, bw,cb,vmin=cb.min(),vmax=cb.max(),
     #                     cmap = cmocean.cm.balance, shading='flat',extend='both')
     plt.contour(x,y,p,cp,colors='k')
+    #plt.contour(x,y,q,cq,colors='k')
+
     plt.xticks(ticks)
     plt.yticks(ticks)
     plt.ylabel(r"$y\times k_e/2\pi$")
     plt.xlabel(r"$x\times k_e/2\pi$")
     tit = r"$t\times U_e k_e = %3.2f $" %(t)
     plt.title(tit)
-    plt.savefig(patho+fni[-18:]+".png",dpi=100)
-    plt.close('all')
+    #plt.savefig(patho+"pb"+fni[-18:]+".png",dpi=100)
+    #plt.close('all')
