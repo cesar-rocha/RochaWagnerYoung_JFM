@@ -11,8 +11,8 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/sinxsiny/"
-patho = "figs2movie_passive/"
+pathi = "outputs/sinxsiny2/"
+patho = "figs2movie/"
 
 ## get params
 params = h5py.File(pathi+"parameters.h5","r")
@@ -42,15 +42,14 @@ wv2i[fnz] = 1./wv2[fnz]
 
 #files = ['000000000016667.h5','000000002666667.h5', '000000008000000.h5']
 files = ['000000000300000.h5','000000002666667.h5', '000000005200000.h5']
-files = glob.glob(pathi[:-1]+"_passive/snapshots/*.h5")
+files = glob.glob(pathi[:-1]+"/snapshots/*.h5")
 
 
-
-cb = np.arange(-5.,5.25,0.25)/4
+cb = np.arange(-5.,5.25,0.25)
 cp = np.arange(-5,5,.5)
 ticks = [0,0.5,1.]
 
-for fni in files:
+for fni in files[::3]:
 #fni = files[-1]
     snap = h5py.File(fni)
     t = snap['t'][()]/Te
@@ -58,16 +57,16 @@ for fni in files:
     qh = np.fft.fft2(q)
     p = np.fft.ifft2(-wv2i*qh).real
     p = p*ke/Ue
-    #phi2 = np.abs(snap['phi'])**2/Uw**2
+    phi2 = np.abs(snap['phi'])**2/Uw**2
     #phi2 = np.abs(snap['c'])**2/Uw**2 # passive scalar
-    bw = snap['c'] # passive scalar
-    #uw, vw, ww, pw, bw = wave_fields(snap['phi'][:],f0,lam2,snap['t'][()],k,l,m)
+    #bw = snap['c'] # passive scalar
+    uw, vw, ww, pw, bw = wave_fields(snap['phi'][:],f0,lam2,snap['t'][()],k,l,m)
 
 
-    #plt.contourf(x,y, bw/Uw/m/(f0*lam2)/ke,cb,vmin=cb.min(),vmax=cb.max(),
-    #                     cmap = cmocean.cm.balance, shading='flat',extend='both')
-    plt.contourf(x,y, bw,cb,vmin=cb.min(),vmax=cb.max(),
+    plt.contourf(x,y, bw/Uw/m/(f0*lam2)/ke,cb,vmin=cb.min(),vmax=cb.max(),
                          cmap = cmocean.cm.balance, shading='flat',extend='both')
+    #plt.contourf(x,y, bw,cb,vmin=cb.min(),vmax=cb.max(),
+    #                     cmap = cmocean.cm.balance, shading='flat',extend='both')
     plt.contour(x,y,p,cp,colors='k')
     plt.xticks(ticks)
     plt.yticks(ticks)
