@@ -21,19 +21,20 @@ plt.close('all')
 
 patho = "outputs/sinxsiny_wavepacket"
 # parameters
-nx = 256
+nx = 256*4
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
-λz = 2000
+#λz = 2000
 #λz = 4000
-#λz = 400
+λz = 225
 
 m = 2*np.pi/λz
-nu4, nu4w = 2.5e11, 7.5e10   # hyperviscosity
+#nu4, nu4w = 1e10, 3.5e9   # hyperviscosity
+nu4, nu4w = 1e7, 1e7 # hyperviscosity
 
 # initial conditions
-Ue = 0.5
+Ue = 0.05
 Uw = 6.3*Ue
 ke = 1*(2*np.pi/L)
 Le = 2*np.pi/ke
@@ -55,9 +56,9 @@ tmax = 10*Te
 ## setup model class
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                  m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                 nu4=nu4,nu4w=nu4w,nu=0,nuw=0, mu=0,muw=0,use_filter=False,
-                 U =0, tdiags=25,
-                 save_to_disk=True,tsave_snapshots=10, path=patho)
+                 nu4=nu4*0,nu4w=nu4w*0,nu=0,nuw=0, mu=0,muw=0,use_filter=True,
+                 U =0, tdiags=10,
+                 save_to_disk=True,tsave_snapshots=100, path=patho)
 
 #model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
 #                twrite=int(0.1*Te/dt),
