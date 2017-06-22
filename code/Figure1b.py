@@ -98,10 +98,10 @@ ax2.set_xlabel(r"$x\times k_e/2\pi$")
 
 # colorbar
 #fig.subplots_adjust(right=0.8)
-cbar_ax = fig.add_axes([0.2, 1.01, 0.28, 0.0275])
+cbar_ax = fig.add_axes([0.18, .915, 0.28, 0.0275])
 fig.colorbar(pc1, cax=cbar_ax,label=r"Wave action density $[\mathcal{A} \times 2 f_0 /U_w^2]$",
                     orientation='horizontal', ticks=[0.,2.,4.],extend='max')
-cbar_ax = fig.add_axes([0.55, 1.01, 0.28, 0.0275])
+cbar_ax = fig.add_axes([0.58, .915, 0.28, 0.0275])
 fig.colorbar(pc2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
                     orientation='horizontal',ticks=[-.85,0.,.85],
                     extend='both')

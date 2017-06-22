@@ -3,8 +3,8 @@
     coupled with SinxSiny flow
 
  Notes:
-
 """
+
 import timeit
 start = timeit.default_timer()
 
@@ -21,21 +21,21 @@ plt.close('all')
 
 patho = "outputs/sinxsiny_wavepacket"
 # parameters
-nx = 256*4
+nx = 512
 f0 = 1.e-4
 N = 0.005
 L = 2*np.pi*200e3
 #λz = 2000
 #λz = 4000
-λz = 225
+λz = 500
 
 m = 2*np.pi/λz
 #nu4, nu4w = 1e10, 3.5e9   # hyperviscosity
-nu4, nu4w = 1e7, 1e7 # hyperviscosity
+nu4, nu4w = 1e7, 1.e6 # hyperviscosity
 
 # initial conditions
 Ue = 0.05
-Uw = 6.3*Ue
+Uw = 4*Ue
 ke = 1*(2*np.pi/L)
 Le = 2*np.pi/ke
 
@@ -50,15 +50,15 @@ alpha = Ro*( (Uw/Ue)**2 )
 
 # simulation parameters
 #dt = .0025*Te
-dt = .0025*Te/4
+dt = .001*Te
 tmax = 10*Te
 
 ## setup model class
 model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
                  m=m,N=N,f=f0, twrite=int(0.1*Te/dt),
-                 nu4=nu4*0,nu4w=nu4w*0,nu=0,nuw=0, mu=0,muw=0,use_filter=True,
+                 nu4=nu4,nu4w=nu4w,nu=0,nuw=0, mu=0,muw=0,use_filter=False,
                  U =0, tdiags=10,
-                 save_to_disk=True,tsave_snapshots=100, path=patho)
+                 save_to_disk=True,tsave_snapshots=100, path=patho,use_mkl=True,nthreads=2)
 
 #model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
 #                twrite=int(0.1*Te/dt),
@@ -72,9 +72,9 @@ model = Model.Model(L=L,nx=nx, tmax = tmax,dt = dt,
 p = (Ue/ke)*( np.sin(ke*model.x) + np.sin(ke*model.y) )
 q = -(ke**2)*p
 phi = (np.ones_like(q) + 1j)*Uw/np.sqrt(2)
-phi1 = Uw*ic.WavePacket(model, k=10*ke, l=0*ke, R=L/8,
+phi1 = Uw*ic.WavePacket(model, k=14*ke, l=0*ke, R=L/16,
                               x0=model.x.mean()+L/4, y0=model.x.mean()-L/4)
-phi = phi1
+phi = phi1/np.sqrt(2)
 
 model.set_q(q)
 model.set_phi(phi)
