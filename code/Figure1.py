@@ -34,7 +34,7 @@ y -= y.mean()
 
 k, l = setup['grid/k'][:], setup['grid/l'][:]
 k, l = np.meshgrid(k,l)
-
+wv2 = k**2 + l**2
 #files = ['000000000016667.h5', '000000000900000.h5',
 #            '000000002666667.h5', '000000008000000.h5']
 
@@ -49,6 +49,17 @@ def plot_snapshot(fig, snap, panel = 1):
     q = snap['q'][:]/(Ue*ke)
     phi2 = np.abs(snap['phi'])**2/Uw**2
     uw, vw, ww, pw, bw = wave_fields(snap['phi'][:],f0,lam2,snap['t'][()],k,l,m)
+
+    phih = np.fft.fft2(snap['phi'][:])
+    phi2h = np.fft.fft2(snap['phi'][:]**2)
+    phix, phiy = np.fft.ifft2(1j*k*phih), np.fft.ifft2(1j*l*phih)
+    J_phic_phi = np.conj(phix)*phiy - np.conj(phiy)*phix
+
+    qw1 = np.fft.ifft2(-wv2*phi2h).real/(4*f0)
+    qw2 = (1j*J_phic_phi).real/(2*f0)
+    qw = qw1+qw2
+    qpsi = snap['q'][:]-qw
+    qpsi = qpsi/(Ue*ke)
 
     ax = fig.add_subplot(2,3,panel,aspect=1)
     fig.subplots_adjust(wspace=.045)
@@ -72,7 +83,7 @@ def plot_snapshot(fig, snap, panel = 1):
         ax.set_ylabel(r"$y\times k_e/2\pi$")
         ax2.set_yticks([-2,0,2])
         ax2.set_ylabel(r"$x\times k_e/2\pi$")
-        ax2.set_xlabel(r"$y\times k_e/2\pi$")
+        ax2.set_xlabel(r"$x\times k_e/2\pi$")
     elif panel == 2 or panel == 3:
         ax.set_xticks([])
         ax.set_yticks([])
