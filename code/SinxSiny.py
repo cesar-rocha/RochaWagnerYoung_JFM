@@ -27,7 +27,7 @@ N = 0.005
 L = 2*np.pi*200e3
 #λz = 2000
 #λz = 4000
-λz = 500
+λz = 375
 
 m = 2*np.pi/λz
 #nu4, nu4w = 1e10, 3.5e9   # hyperviscosity

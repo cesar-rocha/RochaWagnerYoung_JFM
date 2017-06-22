@@ -106,6 +106,6 @@ plt.ylabel(r"Grad. variance [$\langle |\nabla\phi|^2\rangle]$")
 plt.legend()
 plot_fig_label(ax2, label="e")
 
-plt.savefig(patho+"figesc.png", transparent=True,
+plt.savefig(patho+"figesc.png",
             pad_inches=0,
             bbox_inches='tight',)#dpi=400)
