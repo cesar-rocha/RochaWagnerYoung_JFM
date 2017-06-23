@@ -95,7 +95,8 @@ ax.plot(diags_passive['time'][:]/Te,diags_passive['C2'][:]/diags_passive['C2'][0
 plt.xlabel(r"Time $[t \times U_e k_e]$")
 plt.ylabel(r"Variance [$\langle |\phi|^2\rangle]$")
 plot_fig_label(ax, label="d")
-
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
 fig.subplots_adjust(wspace=.3)
 
 ax2 = fig.add_subplot(2,2,4,)
@@ -105,7 +106,8 @@ plt.xlabel(r"Time $[t \times U_e k_e]$")
 plt.ylabel(r"Grad. variance [$\langle |\nabla\phi|^2\rangle]$")
 plt.legend()
 plot_fig_label(ax2, label="e")
-
+ax2.spines['right'].set_visible(False)
+ax2.spines['top'].set_visible(False)
 plt.savefig(patho+"figesc.png",
             pad_inches=0,
             bbox_inches='tight',)#dpi=400)
