@@ -61,7 +61,7 @@ qpsi = qpsi/(Ue*ke)
 
 cphi = np.arange(0.,4.1,0.1)
 cb = np.arange(-.85,.95,0.1)
-cq   = np.array([-1.5,-0.5,0.5,1.5])
+cq   = np.array([-2.5,-1.5,-0.5,0.5,1.5,2.5])
 xlim = [-2,1]
 ylim = [-1,2]
 
@@ -106,6 +106,21 @@ fig.colorbar(pc2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
                     orientation='horizontal',ticks=[-.85,0.,.85],
                     extend='both')
 
+
+
+fig = plt.figure(figsize=(5.5,4.5))
+
+ax = fig.add_subplot(111,aspect=1)
+
+pc1 = ax.contourf(x,y, q,cq,vmin=cq.min(),vmax=cq.max(),
+                 cmap = cmocean.cm.curl, extend='both')
+ax.contour(x,y, qpsi, cq,colors='k')
+ax.set_xlim(xlim[0],xlim[1])
+ax.set_ylim(ylim[0],ylim[1])
+ax.set_yticks([0,1,2])
+ax.set_xticks([-2,-1,0,1])
+ax.set_ylabel(r"$y\times k_e/2\pi$")
+ax.set_xlabel(r"$x\times k_e/2\pi$")
 
 plt.savefig(patho+"fig1b.png", pad_inces=0, bbox_inches='tight')
 #plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
