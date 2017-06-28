@@ -58,6 +58,7 @@ qw2 = (1j*J_phic_phi).real/(2*f0)
 qw = qw1+qw2
 qpsi = snap['q'][:]-qw
 qpsi = qpsi/(Ue*ke)
+qw = qw/(Ue*ke)
 
 cphi = np.arange(0.,4.1,0.1)
 cb = np.arange(-.85,.95,0.1)
@@ -108,19 +109,37 @@ fig.colorbar(pc2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
 
 
 
-fig = plt.figure(figsize=(5.5,4.5))
+fig = plt.figure(figsize=(8.5,4.5))
 
-ax = fig.add_subplot(111,aspect=1)
-
+ax = fig.add_subplot(121,aspect=1)
+fig.subplots_adjust(wspace=.075)
 pc1 = ax.contourf(x,y, q,cq,vmin=cq.min(),vmax=cq.max(),
                  cmap = cmocean.cm.curl, extend='both')
 ax.contour(x,y, qpsi, cq,colors='k')
-ax.set_xlim(xlim[0],xlim[1])
-ax.set_ylim(ylim[0],ylim[1])
+
+plot_fig_label(ax, xc=0.955, yc=.05, label='a')
+
+
+ax2 = fig.add_subplot(122,aspect=1)
+
+pc2 = ax2.contourf(x,y, q,cq,vmin=cq.min(),vmax=cq.max(),
+                 cmap = cmocean.cm.curl, extend='both')
+ax2.contour(x,y, qw, cq,colors='k')
 ax.set_yticks([0,1,2])
 ax.set_xticks([-2,-1,0,1])
 ax.set_ylabel(r"$y\times k_e/2\pi$")
 ax.set_xlabel(r"$x\times k_e/2\pi$")
+ax2.set_yticks([])
+ax2.set_xticks([-2,-1,0,1])
+ax2.set_xlabel(r"$x\times k_e/2\pi$")
+
+ax.set_xlim(xlim[0],xlim[1])
+ax.set_ylim(ylim[0],ylim[1])
+ax2.set_xlim(xlim[0],xlim[1])
+ax2.set_ylim(ylim[0],ylim[1])
+
+plot_fig_label(ax2, xc=0.955, yc=.05, label='b')
+
 
 plt.savefig(patho+"fig1b.png", pad_inces=0, bbox_inches='tight')
 #plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
