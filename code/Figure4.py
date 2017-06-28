@@ -60,11 +60,16 @@ tmax = time[-1]
 
 ax = fig.add_subplot(121)
 fig.subplots_adjust(wspace=.55)
-plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$K_e$",linewidth=lw,alpha=alp)
-plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$P_w$',linewidth=lw,alpha=alp)
+#plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$K_e$",linewidth=lw,alpha=alp)
+#plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$P_w$',linewidth=lw,alpha=alp)
+plt.plot(time/Te,(KE_niw-KE_niw[0])/KE_niw[0],label=r"$\Delta\langle\mathcal{A}\rangle/\langle\mathcal{A}\rangle(0)$",linewidth=lw,alpha=alp)
+plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$\Delta\langle\mathcal{K}\rangle/\langle\mathcal{K}\rangle(0)$",linewidth=lw,alpha=alp)
+plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$\Delta\langle\mathcal{P}\rangle/\langle\mathcal{K}\rangle(0)$',linewidth=lw,alpha=alp)
+
+
 plt.ylim(-0.15,0.15)
-plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
-plt.legend(loc=2)
+plt.ylabel(r'Energy change about $t=0$')
+plt.legend(loc=(0.05,0.9))
 plt.plot([0,tmax/Te],[0]*2,'-',linewidth=1,color="0.5")
 plot_fig_label(ax, label="a",xc=0.05,yc = 0.05)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
@@ -75,9 +80,10 @@ ax = fig.add_subplot(122)
 fig.subplots_adjust(wspace=.45)
 plt.plot(time/Te,Te*g1/KE0,label=r'$\Gamma_r$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,Te*g2/KE0,label=r'$\Gamma_a$',linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\chi_\phi$',linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+\chi_\phi$',
+plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\varepsilon_\mathcal{P}$',linewidth=lw,alpha=alp)
+plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+ \varepsilon_\mathcal{P}$',
                         linewidth=lw,alpha=alp)
+
 plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\dot P_w$',linewidth=lw,alpha=alp)
 plt.legend(loc=1,ncol=1)
 plt.xlabel(r"Time [$t \times U_e k_e$]")

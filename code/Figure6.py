@@ -100,7 +100,7 @@ for i in range(hslash.size):
     plt.plot(time/Te,dKe[:,i],'--',color=color,linewidth=lw,alpha=alp)
 
 plt.ylim(-0.45,0.45)
-plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
+plt.ylabel(r'Energy  change $t=0$')
 plt.legend(loc=(0.6,1.1),ncol=5)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
 plt.ylim(-.25,.25)
@@ -109,8 +109,8 @@ plot_fig_label(ax, label="a",xc=0.075)
 
 plt.plot([1, 5],[0.21]*2,'k--',linewidth=2)
 plt.plot([7, 11],[0.21]*2,'k-',linewidth=2)
-plt.text(2.5,0.22,r'$K_e$')
-plt.text(8.5,0.22,r'$P_w$')
+plt.text(2.5,0.22,r'$\mathcal{K}$')
+plt.text(8.5,0.22,r'$\mathcal{P}$')
 
 
 
