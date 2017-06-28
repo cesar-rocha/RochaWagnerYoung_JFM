@@ -63,7 +63,7 @@ plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$\Delta\langle\mathcal{K}\rangle/\
 plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$\Delta\langle\mathcal{P}\rangle/\langle\mathcal{K}\rangle(0)$',linewidth=lw,alpha=alp)
 plt.ylim(-0.6,0.6)
 plt.ylabel(r'Energy change about $t=0$')
-plt.legend(loc=(0.05,0.95))
+plt.legend(loc=(0.05,0.9))
 plt.plot([0,tmax/Te],[0]*2,'-',linewidth=1,color="0.5")
 plot_fig_label(ax, label="a",xc=0.05,yc = 0.05)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
