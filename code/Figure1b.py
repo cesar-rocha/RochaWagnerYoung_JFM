@@ -107,24 +107,22 @@ fig.colorbar(pc2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
                     orientation='horizontal',ticks=[-.85,0.,.85],
                     extend='both')
 
-
-
 fig = plt.figure(figsize=(8.5,4.5))
 
 ax = fig.add_subplot(121,aspect=1)
 fig.subplots_adjust(wspace=.075)
-pc1 = ax.contourf(x,y, q,cq,vmin=cq.min(),vmax=cq.max(),
+pc1 = ax.contourf(x,y, qpsi,cq,vmin=cq.min(),vmax=cq.max(),
                  cmap = cmocean.cm.curl, extend='both')
-ax.contour(x,y, qpsi, cq,colors='k')
+ax.contour(x,y, q, cq,colors='k')
 
 plot_fig_label(ax, xc=0.955, yc=.05, label='a')
 
 
 ax2 = fig.add_subplot(122,aspect=1)
 
-pc2 = ax2.contourf(x,y, q,cq,vmin=cq.min(),vmax=cq.max(),
+pc2 = ax2.contourf(x,y, qw,cq,vmin=cq.min(),vmax=cq.max(),
                  cmap = cmocean.cm.curl, extend='both')
-ax2.contour(x,y, qw, cq,colors='k')
+ax2.contour(x,y, q, cq,colors='k')
 ax.set_yticks([0,1,2])
 ax.set_xticks([-2,-1,0,1])
 ax.set_ylabel(r"$y\times k_e/2\pi$")
