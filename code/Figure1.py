@@ -123,5 +123,5 @@ fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
 
 
 #plt.savefig(patho+"fig1.png", pad_inces=0, bbox_inches='tight')
-plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
-#plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
+#plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
+plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
