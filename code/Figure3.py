@@ -1,6 +1,6 @@
 """
-    Plots figure 1: snapshots vorticity and near-inertial
-                    kinetic energy density of the Lamb-Chapygin dipole solution.
+    Plots figure 5: snapshots vorticity and near-inertial
+                    kinetic energy density of reference turbulence simulation.
 """
 
 import h5py
@@ -135,7 +135,7 @@ for fni in files:
 # colorbar
 fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.81, .387, 0.013,0.22])
-fig.colorbar(imphi, cax=cbar_ax,label=r"Wave KE density $[|\phi|^2/U_w^2]$",
+fig.colorbar(imphi, cax=cbar_ax,label=r"Wave action density" "\n" r"$[\mathcal{A} \times 2 f_0 /U_w^2]$",
                 orientation='vertical',ticks=np.arange(0,7,1))
 
 fig.subplots_adjust(right=0.8)
@@ -150,4 +150,4 @@ fig.colorbar(imb, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
 
 plt.savefig(patho+"fig3.png", transparent=True,
             pad_inches=0,
-            bbox_inches='tight',)#dpi=400)
+            bbox_inches='tight',dpi=300)
