@@ -200,4 +200,4 @@ fig.colorbar(im2, cax=cbar_ax,label=r"Potential vorticity $[q \times (U_e k_e)^{
 
 plt.savefig(patho+"fig5.png",  transparent=True,
             pad_inches=0,
-            bbox_inches='tight',) #dpi = 400)
+            bbox_inches='tight', dpi = 300)
