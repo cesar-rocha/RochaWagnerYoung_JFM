@@ -50,7 +50,7 @@ fig = plt.figure(figsize=(8.5,5))
 for i in range(2):
 
     cphi = np.arange(0.,5.,0.1)
-    cp   = np.array([-4,-2.,0.,2.,4])
+    cp   = np.array([-8,-4,-2.,0.,2.,4,8])
     cq0 = np.array([-1.5,-.5,.5,1.5])
     cq = np.hstack([np.arange(-2.,0,.25), np.arange(.25,2.25,.25)])
     xlim = [-1.5,1.5]
@@ -74,6 +74,7 @@ for i in range(2):
 
     phi = snap['phi'] #/Uw**2
     phih = np.fft.fft2(phi)
+    lapphi = np.fft.ifft2(-wv2*phih)
     phi2 = np.abs(snap['phi'])**2 #/Uw**2
     phi2h = np.fft.fft2(phi2)
     phix, phiy = np.fft.ifft2(1j*k*phih), np.fft.ifft2(1j*l*phih)
@@ -81,47 +82,66 @@ for i in range(2):
 
     gradphi2 = np.abs(phix)**2 + np.abs(phiy)**2
 
-    a, b = -pxy, 0.5*(pxx-pyy)
-    Ga =  a*( np.abs(phiy)**2 - np.abs(phix)**2 ) + 2*b*np.real(np.conj(phiy)*phix)
+    a, b = -pxy, (pxx-pyy)
+    Ga =  (2*a*( np.abs(phiy)**2 - np.abs(phix)**2 ) + b*np.real(np.conj(phiy)*phix))
+
+    
+
+    Gx, Gy = 2*np.imag(phix*np.conj(lapphi)), 2*np.imag(phiy*np.conj(lapphi))
 
     qw1 = np.fft.ifft2(-wv2*phi2h).real/(4*f0)
     qw2 = (1j*J_phic_phi).real/(2*f0)
     qw = qw1+qw2
     qpsi = q-qw
 
-    Fscale = 1e-5
+    Fscale = f0*lam2*ke*(Uw**2)
     Fwx, Fwy = (0.5*h*np.conj(phi)*phix).imag/Fscale,\
                             (0.5*h*np.conj(phi)*phiy).imag/Fscale
-    Fwx, Fwy = np.ma.masked_array(Fwx,np.abs(Fwx)<1.5e-3),\
-                            np.ma.masked_array(Fwy,np.abs(Fwx)<1.5e-3)
+    #Fwx, Fwy = np.ma.masked_array(Fwx,np.abs(Fwx)<1.5e-3),\
+    #                        np.ma.masked_array(Fwy,np.abs(Fwx)<1.5e-3)
+
+
+
+    Gscale = 1e-15
+    Gx, Gy = Gx/Gscale, Gy/Gscale
+
+    Gx, Gy = np.ma.masked_array(Gx,np.abs(Gy)>100.), np.ma.masked_array(Gy,np.abs(Gy)>100.)
+
 
     OW =  alpha**2 - qpsi**2
     uw, vw, ww, pw, bw = wave_fields(phi,f0,lam2,snap['t'][()],k,l,m)
-
 
     phix_r, phiy_r =  np.real(phix), np.real(phiy)
     # calculate unaveraged Gamma_a
     dec = 6
 
+    KE0 = Ue**2/2
+    Te = 1./(Ue*ke)
+
+    Gascale = 1e-6*KE0/Te
+
     p = np.fft.ifft2(ph).real
 
     ax = fig.add_subplot(1,2,i+1,aspect=1)
-    fig.subplots_adjust(wspace=.045)
+    fig.subplots_adjust(wspace=.085)
 
     if i == 1:
-        plt.contour(x,y,p/(Ue/ke),cp[2:],colors='k')
-        plt.contour(x,y,p/(Ue/ke),cp[:2],colors='k')
-        cga = np.arange(-.85,.9,.05)
-        pc = plt.contourf(x,y,Ga/2.5e-15,cga,vmin=-.75,vmax=.75,
+        plt.contour(x,y,p/(Ue/ke),cp,colors='k')
+        #plt.contour(x,y,p/(Ue/ke),cp[:2],colors='k')
+        cga = np.arange(-.5,.55,.05)
+        pc = plt.contourf(x,y,Ga/Gascale,cga,vmin=-.5,vmax=.5,
                     cmap=cmocean.cm.balance,extend='both')
+        #Q1 = plt.quiver(x[::dec,::dec],y[::dec,::dec],Gx[::dec,::dec],Gy[::dec,::dec],
+        #                scale=500,width=0.006)
+        plot_fig_label(ax, xc =0.95, yc=.05, label= "b")
     else:
         plt.contour(x,y,qpsi/(Ue*ke),cq0[2:],colors='k')
         plt.contour(x,y,qpsi/(Ue*ke),cq0[:2],colors='k')
         Q = plt.quiver(x[::dec,::dec],y[::dec,::dec],Fwx[::dec,::dec],Fwy[::dec,::dec],
-                        scale=50,width=0.006)
-        qk = plt.quiverkey(Q, 0.175,.835, 4, r'$\mathbf{F}_w$', labelpos='E',
+                        scale=5e-2,width=0.006)
+        qk = plt.quiverkey(Q, 0.175,.8285, 5e-3, r'$5\times10^{-3}\times\,\,{\mathcal{{\bf F}}}/F$', labelpos='E',
                        coordinates='figure')
-
+        plot_fig_label(ax, xc =0.95, yc=.05, label= "a")
     plt.xlim(xlim)
     plt.ylim(xlim)
     ax.set_xlabel(r"$x\times k_e/2\pi$")
@@ -139,11 +159,10 @@ for i in range(2):
                     str(int(round(t))), facecolor="1.0",boxstyle=None,alpha=0.)
 
 cbar_ax = fig.add_axes([.925, 0.2,  0.0275,0.58,])
-fig.colorbar(pc, cax=cbar_ax,label=r"Advective conversion \
-                        ${\nabla\phi}^T\mathbf{S}\nabla\phi^\star$",
-                    orientation='vertical',ticks=[-.85,0.,.85],
+fig.colorbar(pc, cax=cbar_ax,label=r"Local advective conversion [$10^6\,{\nabla\phi}^T\mathbf{S}\nabla\phi^*/\,G$]",
+                    orientation='vertical',ticks=[-.5,-.25,0.,0.25,.5],
                     extend='both')
-plt.savefig(patho+"perhapsfig2.png", pad_inces=0, bbox_inches='tight')
+plt.savefig(patho+"ConversionIllustration.png", pad_inces=0, bbox_inches='tight')
 
 # ax = fig.add_subplot(122,aspect=1)
 #

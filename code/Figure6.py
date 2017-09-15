@@ -14,12 +14,13 @@ plt.close('all')
 
 #path = "outputs/decaying_turbulence/coupled_new/Uw10/lambdaz"
 #path = "outputs/decaying_turbulence/parameter_exploration_new/Uw0.1/lambdaz"
-path = "outputs/decaying_turbulence/parameter_exploration_newest/Uw0.1/lambdaz"
+path = "outputs/high_res/decaying_turbulence/parameter_exploration/Uw0.1/lambdaz"
+
 patho = "../writeup/figs/"
 
 #for lambdaz in [198.75, 400.0]:
 #for lambdaz in [562.149891043]:
-for lambdaz in [198.75,281.074945522, 397.5,562.149891043, 795.0]:
+for lambdaz in [281.074945522, 397.5,562.149891043]:
 
     pathi = path+str(lambdaz)+"/"
     params = h5py.File(pathi+"parameters.h5","r")
@@ -87,95 +88,98 @@ imax = 2*801
 G1ms, G2ms = G1[:imax].mean(axis=0)/norm, G2[:imax].mean(axis=0)/norm
 
 ## plotting
-fig = plt.figure(figsize=(8.5,6.))
-lw, alp = 3.,.5
+fig = plt.figure(figsize=(8.5,4.))
+lw, alp = 2.,1.
 KE0 = KE_qg[0]
 tmax = time[-1]
-
-ax = fig.add_subplot(221)
-
+ax = fig.add_subplot(121)
 for i in range(hslash.size):
     p = plt.plot(time/Te,dPw[:,i],label="$\hslash = $"+str(round(hslash[i]*100)/100),\
                     linewidth=lw,alpha=alp)
     color = p[0].get_color()
     plt.plot(time/Te,dKe[:,i],'--',color=color,linewidth=lw,alpha=alp)
 
-plt.xticks([])
 plt.ylim(-0.45,0.45)
-plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
-plt.legend(loc=(0.135,1.1),ncol=5)
+plt.ylabel(r'Energy  change $t=0$')
+plt.legend(loc=(0.6,1.1),ncol=5)
 plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.ylim(-.25,.25)
 fig.subplots_adjust(wspace=.4)
-plot_fig_label(ax, label="a")
+plot_fig_label(ax, label="a",xc=0.075)
 
-#
-ax = fig.add_subplot(222)
+plt.plot([1, 5],[0.21]*2,'k--',linewidth=2)
+plt.plot([7, 11],[0.21]*2,'k-',linewidth=2)
+plt.text(2.5,0.22,r'$\mathcal{K}$')
+plt.text(8.5,0.22,r'$\mathcal{P}$')
 
-plt.xticks([])
-#plt.ylim(-0.005,0.0125)
-plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-plt.plot(time/Te,Conc,label=r'$\Pi$',linewidth=lw,alpha=alp)
-plt.ylabel(r"Wave-vorticity correlation [r]")
-plot_fig_label(ax, label="b")
 
-ax = fig.add_subplot(223)
 
-plt.plot(time/Te,Te*G1/KE_qg[0],label=r'$\Pi$',linewidth=lw,alpha=alp)
-#plt.ylim(-0.005,0.0125)
-plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-plt.ylabel(r'Power $[\Gamma_r \times {2 k_e}/{U_e} ]$')
-plot_fig_label(ax, label="c")
 plt.xlabel(r"Time [$t \times U_e k_e$]")
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax = fig.add_subplot(122)
+fig.subplots_adjust(wspace=.5)
 
+for i in range(hslash.size):
+    p = plt.plot(time/Te,Te*G1[:,i]/KE_qg[0],linewidth=lw,alpha=alp)
+    plt.plot(time/Te,Te*G2[:,i]/KE_qg[0],'--',color=p[0].get_color(),linewidth=lw,alpha=alp)
+
+
+plt.plot([17, 21],[0.0175]*2,'k--',linewidth=2)
+plt.plot([10, 14],[0.0175]*2,'k-',linewidth=2)
+plt.text(11.5,0.018,r'$\Gamma_r$')
+plt.text(18.5,0.018,r'$\Gamma_a$')
+
+plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.ylabel(r'Power $[\Gamma \times {2 k_e}/{U_e} ]$')
+plot_fig_label(ax, label="b", xc=0.075)
+plt.xlabel(r"Time [$t \times U_e k_e$]")
+plt.ylim([-0.005,0.02])
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
 # inset
-G = 1.e-3
-ax1 = plt.axes([.3, .345, .135, .1], facecolor='w')
-plt.plot(hslash,G1ms/G,'o',color='0.5',alpha=alp,label=r'$t_{max} = 20$')
-p2=plt.plot(hslash,G1m/G,'o',alpha=alp,)
-#plt.plot(0.25,.9,'o',color="0.5",alpha=alp)
-#plt.text(0.5,.8,r'$20$')
-#plt.plot(1.75,.9,'o',color=p2[0].get_color(),alpha=alp)
-#plt.text(2.,.8,r'$150$')
-#plt.text(.85,1.045,r'$t_{max}$')
-#plt.text(2.25,.285,r'$0.13\,\,\hslash$',rotation=15,alpha=alp)
-plt.xlim(0,4.25)
-plt.xticks([0,1,2,4])
-plt.ylim(-.1,1.1)
-plt.yticks([0.,0.5,1.])
-ax1.spines['right'].set_visible(False)
-ax1.spines['top'].set_visible(False)
-ax1.yaxis.set_ticks_position('left')
-ax1.xaxis.set_ticks_position('bottom')
-plt.xlabel(r'$\hslash$')
-plt.ylabel(r'$\overline{\Gamma}_r \times 10^3$')
+#G = 1.e-3
+#ax1 = plt.axes([.3, .345, .135, .1], facecolor='w')
+#plt.plot(hslash,G1ms/G,'o',color='0.5',alpha=alp,label=r'$t_{max} = 20$')
+#p2=plt.plot(hslash,G1m/G,'o',alpha=alp,)
+##plt.plot(0.25,.9,'o',color="0.5",alpha=alp)
+##plt.text(0.5,.8,r'$20$')
+##plt.plot(1.75,.9,'o',color=p2[0].get_color(),alpha=alp)
+##plt.text(2.,.8,r'$150$')
+##plt.text(.85,1.045,r'$t_{max}$')
+##plt.text(2.25,.285,r'$0.13\,\,\hslash$',rotation=15,alpha=alp)
+#plt.xlim(0,4.25)
+#plt.xticks([0,1,2,4])
+#plt.ylim(-.1,1.1)
+#plt.yticks([0.,0.5,1.])
+#ax1.spines['right'].set_visible(False)
+#ax1.spines['top'].set_visible(False)
+#ax1.yaxis.set_ticks_position('left')
+#ax1.xaxis.set_ticks_position('bottom')
+#plt.xlabel(r'$\hslash$')
+#plt.ylabel(r'$\overline{\Gamma}_r \times 10^3$')
 
-ax = fig.add_subplot(224)
-plt.plot(time/Te,Te*G2/KE_qg[0],label=r'$\Pi$',linewidth=lw,alpha=alp)
-plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-plt.ylabel(r'Power $[\Gamma_a \times {2 k_e}/{U_e} ]$')
-plot_fig_label(ax, label="d")
-plt.xlabel(r"Time [$t \times U_e k_e$]")
-
-G = 1.e-2
-ax1 = plt.axes([.75, .345, .135, .1], facecolor='w')
-plt.plot(hslash,G2ms/G,'o',color='0.5',alpha=alp,label=r'$t_{max} = 20$')
-p2=plt.plot(hslash,G2m/G,'o',alpha=alp,)
-plt.plot(1.45,.9,'o',color="0.5",alpha=alp)
-plt.text(1.9,.8,r'$20$')
-plt.plot(3.15,.9,'o',color=p2[0].get_color(),alpha=alp)
-plt.text(3.60,.8,r'$150$')
-plt.text(2.35,1.045,r'$t_{max}$')
-#plt.text(2.25,.285,r'$0.13\,\,\hslash$',rotation=15,alpha=alp)
-plt.xlim(0,4.25)
-plt.xticks([0,1,2,4])
-plt.ylim(-.1,1.1)
-plt.yticks([0.,0.5,1.])
-ax1.spines['right'].set_visible(False)
-ax1.spines['top'].set_visible(False)
-ax1.yaxis.set_ticks_position('left')
-ax1.xaxis.set_ticks_position('bottom')
-plt.xlabel(r'$\hslash$')
-plt.ylabel(r'$\overline{\Gamma}_a \times 10^2$')
+#G = 1.e-2
+#ax1 = plt.axes([.75, .345, .135, .1], facecolor='w')
+#plt.plot(hslash,G2ms/G,'o',color='0.5',alpha=alp,label=r'$t_{max} = 20$')
+#p2=plt.plot(hslash,G2m/G,'o',alpha=alp,)
+#plt.plot(1.45,.9,'o',color="0.5",alpha=alp)
+#plt.text(1.9,.8,r'$20$')
+#plt.plot(3.15,.9,'o',color=p2[0].get_color(),alpha=alp)
+#plt.text(3.60,.8,r'$150$')
+#plt.text(2.35,1.045,r'$t_{max}$')
+##plt.text(2.25,.285,r'$0.13\,\,\hslash$',rotation=15,alpha=alp)
+#plt.xlim(0,4.25)
+#plt.xticks([0,1,2,4])
+#plt.ylim(-.1,1.1)
+#plt.yticks([0.,0.5,1.])
+#ax1.spines['right'].set_visible(False)
+#ax1.spines['top'].set_visible(False)
+#ax1.yaxis.set_ticks_position('left')
+#ax1.xaxis.set_ticks_position('bottom')
+#plt.xlabel(r'$\hslash$')
+#plt.ylabel(r'$\overline{\Gamma}_a \times 10^2$')
 
 
 plt.savefig(patho+"fig6.pdf",transparent=True,

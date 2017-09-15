@@ -34,7 +34,7 @@ y -= y.mean()
 
 k, l = setup['grid/k'][:], setup['grid/l'][:]
 k, l = np.meshgrid(k,l)
-
+wv2 = k**2 + l**2
 #files = ['000000000016667.h5', '000000000900000.h5',
 #            '000000002666667.h5', '000000008000000.h5']
 
@@ -49,6 +49,17 @@ def plot_snapshot(fig, snap, panel = 1):
     q = snap['q'][:]/(Ue*ke)
     phi2 = np.abs(snap['phi'])**2/Uw**2
     uw, vw, ww, pw, bw = wave_fields(snap['phi'][:],f0,lam2,snap['t'][()],k,l,m)
+
+    phih = np.fft.fft2(snap['phi'][:])
+    phi2h = np.fft.fft2(snap['phi'][:]**2)
+    phix, phiy = np.fft.ifft2(1j*k*phih), np.fft.ifft2(1j*l*phih)
+    J_phic_phi = np.conj(phix)*phiy - np.conj(phiy)*phix
+
+    qw1 = np.fft.ifft2(-wv2*phi2h).real/(4*f0)
+    qw2 = (1j*J_phic_phi).real/(2*f0)
+    qw = qw1+qw2
+    qpsi = snap['q'][:]-qw
+    qpsi = qpsi/(Ue*ke)
 
     ax = fig.add_subplot(2,3,panel,aspect=1)
     fig.subplots_adjust(wspace=.045)
@@ -103,7 +114,7 @@ for fni in files:
 # colorbar
 #fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.2, 1.01, 0.28, 0.0275])
-fig.colorbar(im1, cax=cbar_ax,label=r"Wave kinetic energy density $[|\phi|^2/U_w^2]$",
+fig.colorbar(im1, cax=cbar_ax,label=r"Wave action density $[\mathcal{A} \times 2 f_0 /U_w^2]$",
                     orientation='horizontal', ticks=[0.,2.,4.],extend='max')
 cbar_ax = fig.add_axes([0.55, 1.01, 0.28, 0.0275])
 fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
@@ -111,6 +122,6 @@ fig.colorbar(im2, cax=cbar_ax,label=r"Wave buoyancy $[b/B]$",
                     extend='both')
 
 
-plt.savefig(patho+"fig1.png", pad_inces=0, bbox_inches='tight')
+plt.savefig(patho+"fig1.png", pad_inces=0, bbox_inches='tight', dpi=300)
 #plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
-#plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
+#plt.savefig(patho+"fig1.pdf",dpi=50, pad_inces=0, bbox_inches='tight')

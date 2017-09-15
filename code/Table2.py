@@ -15,10 +15,11 @@ from Utils import *
 
 plt.close('all')
 
-pathi = "outputs/decaying_turbulence/reference/coupled/"
+pathi = "outputs/high_res/decaying_turbulence/parameter_exploration/Uw0.1/lambdaz397.5/"
+
 patho = "../writeup/figs/"
 
-params = h5py.File(pathi+"../parameters.h5","r")
+params = h5py.File(pathi+"parameters.h5","r")
 diags = h5py.File(pathi+"diagnostics.h5")
 
 ## get params
