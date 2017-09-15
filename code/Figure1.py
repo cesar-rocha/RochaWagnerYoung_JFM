@@ -71,8 +71,8 @@ def plot_snapshot(fig, snap, panel = 1):
         ax.set_yticks([-2,0,2])
         ax.set_ylabel(r"$y\times k_e/2\pi$")
         ax2.set_yticks([-2,0,2])
-        ax2.set_ylabel(r"$x\times k_e/2\pi$")
-        ax2.set_xlabel(r"$y\times k_e/2\pi$")
+        ax2.set_xlabel(r"$x\times k_e/2\pi$")
+        ax2.set_ylabel(r"$y\times k_e/2\pi$")
     elif panel == 2 or panel == 3:
         ax.set_xticks([])
         ax.set_yticks([])
