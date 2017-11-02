@@ -106,7 +106,7 @@ if plot_fig2notes:
 
     ax = fig.add_subplot(142,aspect=1)
     plt.contour(x/R,y/R,psi,cp,colors='k')
-    plt.contourf(x/R,y/R,phi(2).real,cu,cmap=cmocean.cm.balance,extend="both")
+    plt.contourf(x/R,y/R,phi(1.5).real,cu,cmap=cmocean.cm.balance,extend="both")
     plt.xlabel(r"$x/R$")
     plt.yticks([])
     plt.title(r"$t\,\alpha = %3.2f$" %(2*alpha))
@@ -114,14 +114,14 @@ if plot_fig2notes:
 
     ax = fig.add_subplot(143,aspect=1)
     plt.contour(x/R,y/R,psi,cp,colors='k')
-    plt.contourf(x/R,y/R,phi(3).real,cu,cmap=cmocean.cm.balance,extend="both")
+    plt.contourf(x/R,y/R,phi(2.5).real,cu,cmap=cmocean.cm.balance,extend="both")
     plt.xlabel(r"$x/R$")
     plt.yticks([])
     plt.title(r"$t\,\alpha = %3.2f$" %(3*alpha))
 
     ax = fig.add_subplot(144,aspect=1)
     plt.contour(x/R,y/R,psi,cp,colors='k')
-    plt.contourf(x/R,y/R,phi(5).real,cu,cmap=cmocean.cm.balance,extend="both")
+    plt.contourf(x/R,y/R,phi(4).real,cu,cmap=cmocean.cm.balance,extend="both")
     plt.xlabel(r"$x/R$")
     plt.yticks([])
     #plt.ylabel(r"$y/R$")
