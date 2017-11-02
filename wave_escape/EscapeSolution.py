@@ -69,11 +69,11 @@ cu = np.hstack([np.arange(-12,0,1), np.arange(1,13,1)])
 cp = np.array([-8,-4,-1.-.5,-.25])
 cp = np.hstack([cp,-np.flipud(cp)])
 
-t = 1.
+tmax = 6
 fig = plt.figure(figsize=(6.5,6.5))
 ax = fig.add_subplot(aspect=1)
 
-for t in np.arange(0,4,.025):
+for t in np.arange(0,6,.025):
 
     plt.clf()
     plt.contour(x/R,y/R,psi,cp,colors='k')
