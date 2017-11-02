@@ -127,4 +127,4 @@ if plot_fig2notes:
     #plt.ylabel(r"$y/R$")
     plt.title(r"$t\,\alpha = %3.2f$" %(5*alpha))
 
-    plt.savefig("figs/WaveEscape.png")
+    plt.savefig("figs/GaussianEscape.pdf", pad_inces=0,bbox_inches='tight')
