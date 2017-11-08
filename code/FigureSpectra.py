@@ -79,7 +79,6 @@ ax3.plot([kdisp2/ke]*2,[0,0.2],linewidth=1.5,color='0.75')
 ax3.text(kbatch/ke,0.1435,r'$k_{diss}$',rotation=90,color='0.75')
 ax3.text(kdisp2/ke,0.1435,r'$k_{disp}$',rotation=90,color='0.75')
 
-
 for i in range(np.array(files).size):
 
     fni = pathi+"snapshots/"+files[i]
@@ -127,5 +126,28 @@ ax3.spines['left'].set_visible(False)
 plt.savefig(patho+"FigSpectra.pdf",pad_inches=0,
             bbox_inches='tight')
 
+# now plot balanced kinetic energy spectrum
+fig = plt.figure(figsize=(5.5,4.25))
+ax = fig.add_subplot(111)
 
+ax.loglog(ki/ke,Kei_McW/Kei_McW.sum(),'--',color='0.65')
+
+
+# first nowaves
+fni_nowave = 'outputs/high_res/decaying_turbulence/reference/nowaves/snapshots/000000040000000.h5'
+ki, Kesi, Kwsi, Pwsi,t = calc_spec(h5py.File(fni))
+ax.semilogx(ki/ke,Kesi/Kesi.sum(),label=str(int(t/Te)))
+
+
+for i in range(np.array(files).size):
+    fni = pathi+"snapshots/"+files[i]
+    ki, Kesi, Kwsi, Pwsi,t = calc_spec(h5py.File(fni))
+    ax.semilogx(ki/ke,Kesi/Kesi.sum(),label=str(int(t/Te)))
+
+plt.ylim(1e-9,5e1)
+
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+#ax1.spines['left'].set_smart_bounds(True)
+#ax.spines['left'].set_position(('axes', -0.1))
 

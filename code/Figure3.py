@@ -1,3 +1,4 @@
+
 """
     Plots figure 5: snapshots vorticity and near-inertial
                     kinetic energy density of reference turbulence simulation.

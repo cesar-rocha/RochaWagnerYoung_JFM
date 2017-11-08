@@ -66,7 +66,9 @@ plt.plot(time/Te,(KE_niw-KE_niw[0])/KE_niw[0],label=r"$\Delta\langle\mathcal{A}\
 plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$\Delta\langle\mathcal{K}\rangle/\langle\mathcal{K}\rangle(0)$",linewidth=lw,alpha=alp)
 plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$\Delta\langle\mathcal{P}\rangle/\langle\mathcal{K}\rangle(0)$',linewidth=lw,alpha=alp)
 
-
+plt.plot(time/Te,(PE_niw-PE_niw[0]+KE_qg-KE_qg[0])/KE0,'--',
+        label=r'$(\Delta\langle\mathcal{P}\rangle+\Delta\langle\mathcal{K}\rangle)/\langle\mathcal{K}\rangle(0)$',
+        linewidth=lw,alpha=alp)
 plt.ylim(-0.15,0.15)
 plt.ylabel(r'Energy change about $t=0$')
 plt.legend(loc=(0.05,0.9))

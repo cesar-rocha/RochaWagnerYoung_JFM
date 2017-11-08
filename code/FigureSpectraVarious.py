@@ -49,18 +49,54 @@ def calc_spec(snap):
     q = snap['q'][:]
     phi = snap['phi'][:]
     qh, phih = np.fft.fft2(q), np.fft.fft2(phi)
-    ph = -wv2i*qh
+
+    phi = snap['phi'][:]
+    phih = np.fft.fft2(phi)
+    phi2h = np.fft.fft2(np.abs(phi)**2)
+    q = snap['q'][:]
+
+    phix, phiy = np.fft.ifft2(1j*k*phih), np.fft.ifft2(1j*l*phih)
+    J_phic_phi = np.conj(phix)*phiy - np.conj(phiy)*phix
+
+    qw1 = np.fft.ifft2(-wv2*phi2h).real/(4*f0)
+    qw2 = (1j*J_phic_phi).real/(2*f0)
+    qw = qw1+qw2
+    qpsi = q-qw
+    qpsih = np.fft.fft2(qpsi)
+
+    # not really...
+    ph = -wv2i*qpsih
     ug, vg = np.fft.ifft2(-1j*l*ph).real, np.fft.ifft2(1j*k*ph).real
     
     Kes = np.abs(wv*ph)**2
     Pws = (lam2/4)*np.abs(wv*phih)**2
     Kws = np.abs(phih)**2
     
+    Ees = np.abs(wv2*ph)**2
+
     ki, Kesi = spectrum.calc_ispec(k,l,Kes)
     _, Pwsi = spectrum.calc_ispec(k,l,Pws)
     _, Kwsi = spectrum.calc_ispec(k,l,Kws)
+    _, Eesi = spectrum.calc_ispec(k,l,Ees)
+    return ki, Kesi, Kwsi, Pwsi, Eesi, t 
 
-    return ki, Kesi, Kwsi, Pwsi, t 
+def calc_spec_psi(snap):
+
+    k,l, = setup['grid/k'][:], setup['grid/l'][:]
+    t = snap['t'][()]
+    q = snap['q'][:]
+    qh = np.fft.fft2(q)
+    ph = -wv2i*qh
+    ug, vg = np.fft.ifft2(-1j*l*ph).real, np.fft.ifft2(1j*k*ph).real
+    
+    Kes = np.abs(wv*ph)**2
+    
+    Ees = np.abs(wv2*ph)**2
+
+    ki, Kesi = spectrum.calc_ispec(k,l,Kes)
+    _, Eesi = spectrum.calc_ispec(k,l,Ees)
+
+    return ki, Kesi, Eesi,  t 
 
 
 # calculate the batchelor-like scale
@@ -84,7 +120,7 @@ dir = pathi[:-6]
 for lambdaz in ['281.074945522', '397.5','562.149891043']:
 
     fni = dir+lambdaz+"/snapshots/"+files[-1]
-    ki, Kesi, Kwsi, Pwsi,t = calc_spec(h5py.File(fni))
+    ki, Kesi, Kwsi, Pwsi, Eesi,t = calc_spec(h5py.File(fni))
 
 
     if lambdaz == '281.074945522':
@@ -104,7 +140,7 @@ KE = Ke_McW.sum()/(Ke_McW.size**2)
 Ke_McW *= ((Ue**2)/2)/KE
 
 fni = dir+lambdaz+"/snapshots/000000000000000.h5"
-ki, Kesi0, Kwsi0, Pwsi0,t0 = calc_spec(h5py.File(fni))
+ki, Kesi0, Kwsi0, Pwsi0,Eesi, t0 = calc_spec(h5py.File(fni))
 
 
 _, Kei_McW = spectrum.calc_ispec(k,l,Ke_McW)
@@ -141,5 +177,83 @@ ax3.spines['left'].set_visible(False)
 plt.savefig(patho+"FigSpectraVarious.pdf",pad_inches=0,
             bbox_inches='tight')
 
+
+# now plot balanced kinetic energy spectrum
+fig = plt.figure(figsize=(4.5,4.25))
+ax = fig.add_subplot(111)
+
+ax.loglog(ki/ke,Kei_McW/Kei_McW.sum(),'--',color='0.65')
+
+
+# first nowaves
+fni_nowave = 'outputs/high_res/decaying_turbulence/reference/nowaves/snapshots/000000018000000.h5'
+ki, Kesi,Eesi, t = calc_spec_psi(h5py.File(fni_nowave))
+ax.semilogx(ki/ke,Kesi/Kesi.sum(),label='No waves')
+
+for lambdaz in ['281.074945522', '397.5','562.149891043']:
+
+    fni = dir+lambdaz+"/snapshots/"+files[-1]
+    ki, Kesi, Kwsi, Pwsi,Eesi,t = calc_spec(h5py.File(fni))
+
+
+    if lambdaz == '281.074945522':
+        label = '0.5'
+    elif lambdaz == '397.5':
+        label = '1.0'
+    elif lambdaz == '562.149891043':
+        label = '2.0'
+
+    ax.semilogx(ki/ke,Kesi/Kesi.sum(),label=r"$\hslash = $"+ label)
+
+
+plt.ylim(1e-9,5e1)
+plt.legend()
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+#ax1.spines['left'].set_smart_bounds(True)
+#ax.spines['left'].set_position(('axes', -0.1))
+ax.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
+ax.set_ylabel(r'Balanced kinetic energy density')
+plt.savefig("/home/crocha/Desktop/balanced_ke_spectrum")
+
+
+# now plot balanced enstrophy energy spectrum
+fig = plt.figure(figsize=(4.5,4.25))
+ax = fig.add_subplot(111)
+
+ki2 = ki**2
+ax.loglog(ki/ke,ki2*Kei_McW/Kei_McW.sum(),'--',color='0.65')
+
+
+# first nowaves
+fni_nowave = 'outputs/high_res/decaying_turbulence/reference/nowaves/snapshots/000000018000000.h5'
+ki, Kesi, Eesi,t = calc_spec_psi(h5py.File(fni_nowave))
+ax.semilogx(ki/ke,Eesi/Eesi.sum(),label='No waves')
+
+for lambdaz in ['281.074945522', '397.5','562.149891043']:
+
+    fni = dir+lambdaz+"/snapshots/"+files[-1]
+    ki, Kesi, Kwsi, Pwsi,Eesi,t = calc_spec(h5py.File(fni))
+
+
+    if lambdaz == '281.074945522':
+        label = '0.5'
+    elif lambdaz == '397.5':
+        label = '1.0'
+    elif lambdaz == '562.149891043':
+        label = '2.0'
+
+    ax.semilogx(ki/ke,Eesi/Eesi.sum(),label=r"$\hslash = $"+ label)
+
+
+plt.ylim(1e-3,0.5e0)
+plt.legend()
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+#ax1.spines['left'].set_smart_bounds(True)
+#ax.spines['left'].set_position(('axes', -0.1))
+ax.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
+ax.set_ylabel(r'Balanced enstrophy density')
+plt.savefig("/home/crocha/Desktop/relative_enstrophy_spectrum")
 
 
