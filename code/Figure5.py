@@ -122,11 +122,13 @@ def plot_pvterms(pathi,fig, panel=0):
 
     if panel == 0:
         plt.text(5.5,2.5,r'$\hslash = 0.5$')
+        plt.text(5.5,1.75,r'$(\lambda k_e)^2 = 0.0125$')
     elif panel == 1:
         plt.text(5.5,2.5,r'$\hslash = 1.0$')
+        plt.text(5.5,1.75,r'$(\lambda k_e)^2 = 0.0250$')
     else:
         plt.text(5.5,2.5,r'$\hslash = 2.0$')
-
+        plt.text(5.5,1.75,r'$(\lambda k_e)^2 = 0.0500$')
     return im2
 
 fig = plt.figure(figsize=(8.5,8))
