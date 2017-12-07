@@ -110,7 +110,7 @@ plot_fig_label(ax, label="a",xc=0.075)
 plt.plot([1, 9],[0.21]*2,'k--',linewidth=2)
 plt.plot([11, 19],[0.21]*2,'k-',linewidth=2)
 plt.text(1,0.22,r'$\Delta\langle\mathcal{K}\rangle / \langle\mathcal{K}\rangle(0)$')
-plt.text(11,0.22,r'$\Delta\mathcal{P}\rangle/ \langle  \mathcal{K}\rangle(0)$')
+plt.text(11,0.22,r'$\Delta\langle\mathcal{P}\rangle/ \langle  \mathcal{K}\rangle(0)$')
 
 
 

@@ -141,7 +141,7 @@ fig.colorbar(imphi, cax=cbar_ax,label=r"Wave action density" "\n" r"$[\mathcal{A
 
 fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([.81, .65, 0.013, 0.22])
-fig.colorbar(imq, cax=cbar_ax,label=r"QGPV $[q/(U_e k_e)]$",
+fig.colorbar(imq, cax=cbar_ax,label=r"PV $[q/(U_e k_e)]$",
                 orientation='vertical',ticks=np.arange(-5,5,1))
 
 fig.subplots_adjust(right=0.8)
