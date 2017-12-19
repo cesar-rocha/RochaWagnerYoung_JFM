@@ -18,6 +18,8 @@ path = "outputs/high_res/decaying_turbulence/parameter_exploration/Uw0.1/lambdaz
 
 patho = "../writeup/figs/"
 
+Psharp = []
+
 #for lambdaz in [198.75, 400.0]:
 #for lambdaz in [562.149891043]:
 for lambdaz in [281.074945522, 397.5,562.149891043]:
@@ -30,6 +32,14 @@ for lambdaz in [281.074945522, 397.5,562.149891043]:
     Ue, ke = params['dimensional/Ue'][()], params['dimensional/ke'][()]
     Te = params['dimensional/Te'][()]
     Uw = params['dimensional/Uw'][()]
+    f0 = params['dimensional/f0'][()]
+    m = params['dimensional/m'][()]
+    N0 = params['dimensional/N'][()]
+    lam2  = (N0/f0/m)**2
+    lam  = np.sqrt(lam2)
+
+    ## estimate params
+    Psharp.append( ((lam*ke)**2) * ((Uw/Ue)**2) / 2)
 
     ## get diagnostics
     time = diags['time'][:]
@@ -80,6 +90,8 @@ for lambdaz in [281.074945522, 397.5,562.149891043]:
         CHI_PHI = chi_phi[...,np.newaxis]
         EP_PHI = ep_phi[...,np.newaxis]
 
+Psharp = np.array(Psharp)
+Pwlast = dPw[-1,:]
 
 # calculate averages
 norm = KE_qg[0]/Te
