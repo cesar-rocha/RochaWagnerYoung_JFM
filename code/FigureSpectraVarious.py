@@ -110,12 +110,22 @@ fig.subplots_adjust(wspace=.075)
 ax2 = fig.add_subplot(132)
 fig.subplots_adjust(wspace=.075)
 ax3 = fig.add_subplot(133)
-ax3.loglog([kbatch/ke]*2,[1e-6,0.2],linewidth=1.5,color='0.75')
+ax3.semilogx([kbatch/ke]*2,[1e-6,0.2],linewidth=1.5,color='0.75')
 #ax3.plot([kdisp2/ke]*2,[0,0.2],linewidth=1.5,color='0.75')
 ax3.text(kbatch/ke,0.1435,r'$k_{diss}$',rotation=90,color='0.75')
 #ax3.text(kdisp2/ke,0.1435,r'$k_{disp}$',rotation=90,color='0.75')
 
 dir = pathi[:-6]
+
+# calculate the eddy spectrum at t = 0
+Ke_McW = wv/( ( 1 + (wv/ke)**4 ))
+KE = Ke_McW.sum()/(Ke_McW.size**2)
+Ke_McW *= ((Ue**2)/2)/KE
+
+fni = dir+"397.5/snapshots/000000000000000.h5"
+ki, Kesi0, Kwsi0, Pwsi0,Eesi, t0 = calc_spec(h5py.File(fni))
+_, Kei_McW = spectrum.calc_ispec(k,l,Ke_McW)
+
 
 for lambdaz in ['281.074945522', '397.5','562.149891043']:
 
@@ -130,44 +140,33 @@ for lambdaz in ['281.074945522', '397.5','562.149891043']:
     elif lambdaz == '562.149891043':
         label = '2.0'
 
-    #ax1.semilogx(ki/ke,ki*Kesi/Kesi.sum()/ke,label=r"$\hslash = $"+ label)
-    #ax2.semilogx(ki/ke,ki*Kwsi/Kwsi.sum()/ke ,label=r"$\hslash = $"+ label)
-    #ax3.semilogx(ki/ke,ki*Pwsi/Pwsi.sum()/ke ,label=r"$\hslash = $"+ label)
-    ax1.loglog(ki/ke,ki*Kesi/Kesi.sum()/ke,label=r"$\hslash = $"+ label)
-    ax2.loglog(ki/ke,ki*Kwsi/Kwsi.sum()/ke ,label=r"$\hslash = $"+ label)
-    ax3.loglog(ki/ke,ki*Pwsi/Pwsi.sum()/ke ,label=r"$\hslash = $"+ label)
-
-
-
-# calculate the eddy spectrum at t = 0
-Ke_McW = wv/( ( 1 + (wv/ke)**4 ))
-KE = Ke_McW.sum()/(Ke_McW.size**2)
-Ke_McW *= ((Ue**2)/2)/KE
-
-fni = dir+lambdaz+"/snapshots/000000000000000.h5"
-ki, Kesi0, Kwsi0, Pwsi0,Eesi, t0 = calc_spec(h5py.File(fni))
-
-_, Kei_McW = spectrum.calc_ispec(k,l,Ke_McW)
+    ax1.semilogx(ki/ke,ki*Kesi/Kesi.sum()/ke,label=r"$\hslash = $"+ label)
+    ax2.semilogx(ki/ke,ki*Kwsi/Kwsi.sum()/ke ,label=r"$\hslash = $"+ label)
+    ax3.semilogx(ki/ke,ki*Pwsi/Pwsi.sum()/ke ,label=r"$\hslash = $"+ label)
+    #ax1.loglog(ki/ke,ki*Kesi/Kesi0.sum()/ke,label=r"$\hslash = $"+ label)
+    #ax2.loglog(ki/ke,ki*Kwsi/Kwsi.sum()/ke ,label=r"$\hslash = $"+ label)
+    #ax3.loglog(ki/ke,ki*Pwsi/Pwsi.sum()/ke ,label=r"$\hslash = $"+ label)
+    #print(Kesi.sum())
 
 ax1.semilogx(ki/ke,ki*Kesi0/Kesi0.sum()/ke,'--',color='0.65')
 ax1.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
 ax1.set_ylabel(r'Energy-preserving spectrum')
 plot_fig_label(ax1, label="a" ,xc=.95,yc=0.05)
 ax1.set_ylim(0.,0.15)
-ax1.set_ylim(1.e-5,0.15)
+#ax1.set_ylim(1.e-5,0.15)
 ax2.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
 #ax2.set_ylabel(r'Energy-preserving spectrum [$|\mathbf{k}|\mathcal{K}_w \times U_w^{-2}$]')
 plot_fig_label(ax2, label="b",xc=.95,yc=0.05)
 ax2.set_yticks([])
 ax2.set_ylim(0.,0.15)
-ax2.set_ylim(1.e-5,0.15)
+#ax2.set_ylim(1.e-5,0.15)
 ax3.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
 ax2.legend(loc=(-0.28,1.),ncol=3)
 #ax3.set_ylabel(r'Energy-preserving spectrum [$|\mathbf{k}|\mathcal{P}_w \times U_e^{-2}$]')
 plot_fig_label(ax3, label="c" ,xc=.95,yc=0.05)
 ax3.set_yticks([])
 ax3.set_ylim(0.,0.15)
-ax3.set_ylim(1.e-5,0.15)
+#ax3.set_ylim(1.e-5,0.15)
 
 ax1.spines['right'].set_visible(False)
 ax1.spines['top'].set_visible(False)
