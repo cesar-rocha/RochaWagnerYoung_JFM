@@ -73,7 +73,7 @@ tmax = 6
 fig = plt.figure(figsize=(6.5,6.5))
 ax = fig.add_subplot(aspect=1)
 
-plot_figs2movie = True
+plot_figs2movie = False
 
 Xc = np.array([0])
 Yc = np.array([0])
@@ -109,11 +109,20 @@ if plot_figs2movie:
         plt.pause(0.01)
 
 
-plot_fig2notes = False
+plot_fig2notes = True
 
 if plot_fig2notes:
 
-    cu = np.hstack([np.arange(-6,0,1), np.arange(1,7,1)])
+    for t in [1.5,2.5,4.]:
+        Ac = np.abs(phi(t))**2
+        xc = (x*Ac).mean()/Ac.mean()
+        yc = (y*Ac).mean()/Ac.mean()
+
+        Xc = np.vstack([Xc,xc])
+        Yc = np.vstack([Yc,yc])
+
+
+    cu = np.hstack([np.arange(-6,0,.5), np.arange(.5,6.5,.5)])
 
     fig = plt.figure(figsize=(8.5,4.5))
     ax = fig.add_subplot(141,aspect=1)
@@ -121,15 +130,23 @@ if plot_fig2notes:
     plt.contourf(x/R,y/R,phi(0).real,cu,cmap=cmocean.cm.balance,extend="both")
     plt.xlabel(r"$x/\mu$")
     plt.ylabel(r"$y/\mu$")
+    plt.plot(Xc[:1]/R,Yc[:1]/R,color='k',alpha=0.5)
+    plt.plot(Xc[0]/R,Yc[0]/R,'ko')
     plt.title(r"$t\,\alpha = %3.2f$" %(0*alpha))
+    plt.xlim([-4,4])
+    plt.ylim([-4,4])
+
 
     ax = fig.add_subplot(142,aspect=1)
     plt.contour(x/R,y/R,psi,cp,colors='k')
     plt.contourf(x/R,y/R,phi(1.5).real,cu,cmap=cmocean.cm.balance,extend="both")
+    plt.plot(Xc[:2]/R,Yc[:2]/R,color='k',alpha=0.5)
+    plt.plot(Xc[1]/R,Yc[1]/R,'ko')
     plt.xlabel(r"$x/\mu$")
     plt.yticks([])
     plt.title(r"$t\,\alpha = %3.2f$" %(2*alpha))
-
+    plt.xlim([-4,4])
+    plt.ylim([-4,4])
 
     ax = fig.add_subplot(143,aspect=1)
     plt.contour(x/R,y/R,psi,cp,colors='k')
@@ -137,13 +154,23 @@ if plot_fig2notes:
     plt.xlabel(r"$x/\mu$")
     plt.yticks([])
     plt.title(r"$t\,\alpha = %3.2f$" %(3*alpha))
+    plt.plot(Xc[:3]/R,Yc[:3]/R,color='k',alpha=0.5)
+    plt.plot(Xc[2]/R,Yc[2]/R,'ko')
+    plt.xlim([-4,4])
+    plt.ylim([-4,4])
 
     ax = fig.add_subplot(144,aspect=1)
     plt.contour(x/R,y/R,psi,cp,colors='k')
     plt.contourf(x/R,y/R,phi(4).real,cu,cmap=cmocean.cm.balance,extend="both")
+    plt.plot(Xc[:]/R,Yc[:]/R,color='k',alpha=0.5)
+    plt.plot(Xc[3]/R,Yc[3]/R,'ko')
     plt.xlabel(r"$x/\mu$")
     plt.yticks([])
     #plt.ylabel(r"$y/R$")
     plt.title(r"$t\,\alpha = %3.2f$" %(5*alpha))
+    plt.xlim([-4,4])
+    plt.ylim([-4,4])
+
+
 
     plt.savefig("figs/GaussianEscape.pdf", pad_inces=0,bbox_inches='tight')
