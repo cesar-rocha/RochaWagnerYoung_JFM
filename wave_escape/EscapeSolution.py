@@ -9,8 +9,8 @@ plt.close("all")
 #
 
 # grid
-N = 256
-L = 2*pi
+N = 1024
+L = 2*pi*10
 dx = L/N
 x = np.arange(-L/2,L/2,dx)
 y = x.copy()
@@ -65,7 +65,7 @@ phi = lambda t: C(t)*exp(-0.5*(A(t)+B(t)))
 #
 # plot the solution
 #
-cu = np.hstack([np.arange(-12,0,1), np.arange(1,13,1)])
+cu = np.hstack([np.arange(-12,0.,0.25), np.arange(0.25,12.5,0.25)])
 cp = np.array([-8,-4,-1.-.5,-.25])
 cp = np.hstack([cp,-np.flipud(cp)])
 
@@ -73,16 +73,35 @@ tmax = 6
 fig = plt.figure(figsize=(6.5,6.5))
 ax = fig.add_subplot(aspect=1)
 
-plot_figs2movie = False
+plot_figs2movie = True
+
+Xc = np.array([0])
+Yc = np.array([0])
+
 
 if plot_figs2movie:
+    #for t in np.arange(0,6,.025):
     for t in np.arange(0,6,.025):
 
         plt.clf()
-        plt.contour(x/R,y/R,psi,cp,colors='k')
-        plt.contourf(x/R,y/R,phi(t).real,cu,cmap=cmocean.cm.balance)
-        plt.xlabel(r"$x/R$")
-        plt.ylabel(r"$y/R$")
+        plt.contour(x[256:640,256:640]/R,y[256:640,256:640]/R,psi[256:640,256:640],cp,colors='k')
+        plt.contourf(x[256:640,256:640]/R,y[256:640,256:640]/R,phi(t).real[256:640,256:640],cu,cmap=cmocean.cm.balance)
+
+        Ac = np.abs(phi(t))**2
+        xc = (x*Ac).mean()/Ac.mean()
+        yc = (y*Ac).mean()/Ac.mean()
+
+        Xc = np.vstack([Xc,xc])
+        Yc = np.vstack([Yc,yc])
+
+        plt.plot(Xc/R,Yc/R,color='k',alpha=0.5)
+        plt.plot(xc/R,yc/R,'ko')
+
+        plt.xlim([-4,4])
+        plt.ylim([-4,4])
+
+        plt.xlabel(r"$x/\mu$")
+        plt.ylabel(r"$y/\mu$")
         plt.title(r"$t\,\alpha = %3.2f$" %(t*alpha))
         plt.draw()
         tit = "%3.2f" %(t*alpha)
@@ -90,7 +109,7 @@ if plot_figs2movie:
         plt.pause(0.01)
 
 
-plot_fig2notes = True
+plot_fig2notes = False
 
 if plot_fig2notes:
 
