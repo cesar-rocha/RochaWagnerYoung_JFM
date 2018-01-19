@@ -9,7 +9,7 @@ plt.close("all")
 #
 
 # grid
-N = 1024
+N = 1024*2
 L = 2*pi*10
 dx = L/N
 x = np.arange(-L/2,L/2,dx)
