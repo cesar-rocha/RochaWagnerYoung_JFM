@@ -60,6 +60,8 @@ tmax = time[-1]
 
 ax = fig.add_subplot(121)
 fig.subplots_adjust(wspace=.55)
+plt.plot([-5,35],[0,0],'k-',linewidth=0.85)
+
 #plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$K_e$",linewidth=lw,alpha=alp)
 #plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$P_w$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,(KE_niw-KE_niw[0])/KE_niw[0],label=r"$\Delta\langle\mathcal{A}\rangle/\langle\mathcal{A}\rangle(0)$",linewidth=lw,alpha=alp)
@@ -71,81 +73,47 @@ plt.plot(time/Te,(PE_niw-PE_niw[0]+KE_qg-KE_qg[0])/KE0,'--',
         linewidth=lw,alpha=alp)
 plt.ylim(-0.15,0.15)
 plt.ylabel(r'Energy change about $t=0$')
-plt.legend(loc=(0.05,0.9))
-plt.plot([0,tmax/Te],[0]*2,'-',linewidth=1,color="0.5")
+#plt.legend(loc=(0.05,0.9))
+#plt.plot([0,tmax/Te],[0]*2,'-',linewidth=1,color="0.5")
+plt.xlim(-1,25)
+
 plot_fig_label(ax, label="a",xc=0.05,yc = 0.05)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
-plt.xticks([0,10,20,30])
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
+
+
+plt.text(10,.09,r"$\Delta\langle \mathcal{P} \rangle$")
+plt.text(10,-.105,r"$\Delta\langle \mathcal{K} \rangle$")
+plt.text(10,.0025,r"$\Delta\langle \mathcal{A} \rangle$")
+plt.text(20,-.025,r"$\Delta\langle \mathcal{P} + \mathcal{K} \rangle$")
+
 ax = fig.add_subplot(122)
 fig.subplots_adjust(wspace=.45)
+plt.xticks([0,10,20,30])
+plt.plot([-5,35],[0,0],'k-',linewidth=0.85)
+
 plt.plot(time/Te,Te*g1/KE0,label=r'$\Gamma_r$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,Te*g2/KE0,label=r'$\Gamma_a$',linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\varepsilon_\mathcal{P}$',linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+ \varepsilon_\mathcal{P}$',
-                        linewidth=lw,alpha=alp)
+#plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\varepsilon_\mathcal{P}$',linewidth=lw,alpha=alp)
+#plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+ \varepsilon_\mathcal{P}$',
+#                        linewidth=lw,alpha=alp)
 
-plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\mathrm{d}\langle\mathcal{P}\rangle/\mathrm{d}t$',linewidth=lw,alpha=alp)
+plt.xlim(-1,25)
 
-plt.legend(loc=1,ncol=1)
+plt.plot(time/Te,Te*dPE/KE0,label=r'$\mathrm{d}\langle\mathcal{P}\rangle/\mathrm{d}t$',linewidth=lw,alpha=alp)
+
+#plt.legend(loc=1,ncol=1)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.ylim(-0.01/2,0.0225)
-plt.ylabel(r'Power $[\dot P_w \times {2 k_e}/{U_e}^2 ]$')
+plt.ylabel(r'Power $[\langle \dot \mathcal{P} \rangle \times {2 k_e}/{U_e}^2 ]$')
 plot_fig_label(ax, label="b",xc=0.05,yc = 0.05)
-plt.xticks([0,10,20,30])
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
-#fig = plt.figure(figsize=(8.5,6.))
-#lw, alp = 3.,.5
-#KE0 = KE_qg[0]
-#tmax = time[-1]
-#
-#ax = fig.add_subplot(221)
-#plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$K_e$",linewidth=lw,alpha=alp)
-#plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$P_w$',linewidth=lw,alpha=alp)
-#plt.xticks([])
-#plt.ylim(-0.32,0.32)
-#plt.ylabel(r'Energy  change $[(E-E_0) \times {2}/{U_e^2} ]$')
-#plt.legend(loc=3)
-#plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-#fig.subplots_adjust(wspace=.4)
-#plot_fig_label(ax, label="a")
-#
-#ax = fig.add_subplot(222)
-#plt.plot(time/Te,Te*g1/KE0,label=r'$\Gamma_r$',linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*g2/KE0,label=r'$\Gamma_a$',linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\chi_\phi$',linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+\chi_\phi$',
-#                        linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\dot P_w$',linewidth=lw,alpha=alp)
-#plt.legend(loc=1,ncol=2)
-#plt.xticks([])
-#plt.ylim(-0.005,0.0125)
-#plt.ylabel(r'Power $[\dot E \times {2 k_e}/{U_e} ]$')
-#plot_fig_label(ax, label="b")
-#
-#ax = fig.add_subplot(223)
-#plt.plot(time/Te,Te*pi/KE0,label=r'$\Pi$',linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*ep_psi/KE0,label=r'$\epsilon_\phi$',linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*(pi+ep_phi)/KE0,label=r'$\Pi+\epsilon_\phi$',linewidth=lw,alpha=alp)
-#plt.plot(time/Te,Te*diKE_niw/KE0,'k--',label=r'$\dot K_w^i$'
-#                ,linewidth=lw,alpha=alp)
-#plt.xlabel(r"Time [$t \times U_e k_e$]")
-#plt.ylabel(r'Power $[\dot E \times {2 k_e}/{U_e} ]$')
-#plt.legend(loc=1,ncol=2)
-#plot_fig_label(ax, label="c")
-#
-#fig.subplots_adjust(hspace=.125)
-#
-#ax = fig.add_subplot(224)
-#p1 = ax.plot(time/Te,conc_niw,linewidth=lw,alpha=alp,label='NIW concentration, $C$')
-#plt.ylabel(r"Wave-vorticity correlation [r]")
-#plt.xlabel(r"Time [$t \times U_e k_e$]")
-#plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-#plt.ylim(-0.8,0.4)
-#plot_fig_label(ax, label="d")
-#
+plt.text(10,-.0038,r"$\Gamma_r$")
+plt.text(5,.008,r"$\Gamma_a$")
+plt.text(2.1,.013,r"$\partial_t \langle \mathcal{P} \rangle $")
+
 plt.savefig(patho+"fig4.pdf", bbox_inches='tight')
