@@ -66,10 +66,15 @@ plt.plot(time/Te,(PE_niw-PE_niw[0]+KE_qg-KE_qg[0])/KE0,'--',
         label=r'$(\Delta\langle\mathcal{P}\rangle+\Delta\langle\mathcal{K}\rangle)/\langle\mathcal{K}\rangle(0)$',
         linewidth=lw,alpha=alp)
 
+plt.text(10,.43,r"$\Delta\langle\mathcal{P}\rangle$")
+plt.text(10,-.45,r"$\Delta\langle\mathcal{K}\rangle$")
+plt.text(15,0.025,r"$\Delta\langle\mathcal{A}\rangle$")
+
+
 
 plt.ylim(-0.6,0.6)
 plt.ylabel(r'Energy change about $t=0$')
-plt.legend(loc=(0.05,0.9))
+#plt.legend(loc=(0.05,0.9))
 #plt.plot([0,tmax/Te],[0]*2,'-',linewidth=1,color="0.5")
 plot_fig_label(ax, label="a",xc=0.05,yc = 0.05)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
@@ -80,17 +85,20 @@ ax = fig.add_subplot(122)
 fig.subplots_adjust(wspace=.45)
 plt.plot(time/Te,Te*g1/KE0,label=r'$\Gamma_r$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,Te*g2/KE0,label=r'$\Gamma_a$',linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\varepsilon_\mathcal{P}$',linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+ \varepsilon_\mathcal{P}$',
-                        linewidth=lw,alpha=alp)
-plt.plot(time/Te,Te*dPE/KE0,'k--',label=r'$\mathrm{d}\langle\mathcal{P}\rangle/\mathrm{d}t$',linewidth=lw,alpha=alp)
-plt.legend(loc=(0.5,0.75),ncol=1)
+#plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\varepsilon_\mathcal{P}$',linewidth=lw,alpha=alp)
+#plt.plot(time/Te,Te*(g1+g2+chi_phi)/KE0,label=r'$\Gamma_r+\Gamma_a+ \varepsilon_\mathcal{P}$',
+ #                       linewidth=lw,alpha=alp)
+plt.plot(time/Te,Te*dPE/KE0,label=r'$\mathrm{d}\langle\mathcal{P}\rangle/\mathrm{d}t$',linewidth=lw,alpha=alp)
+#plt.legend(loc=(0.5,0.75),ncol=1)
 plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.ylim(-0.02,0.08)
 plt.ylabel(r'Power $[\dot P \times {2 k_e^{-1}}/{U_e}^{-3} ]$')
 plot_fig_label(ax, label="b",xc=0.05,yc = 0.05)
 plt.xticks([0,10,20,30])
-
+plt.text(13.25,-0.0135,r"$\Gamma_r$")
+plt.text(14.5,0.025,r"$\Gamma_a$")
+#plt.text(4.25,0.06,r"$\Gamma_r+\Gamma_a-\varepsilon_{\mathcal{P}}$")
+plt.text(3.5,0.06,r"$\partial_t \langle \mathcal{P} \rangle$")
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
