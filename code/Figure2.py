@@ -58,6 +58,8 @@ tmax = time[-1]
 
 ax = fig.add_subplot(121)
 fig.subplots_adjust(wspace=.55)
+plt.plot([-5,35],[0,0],'k-',linewidth=0.85)
+
 plt.plot(time/Te,(KE_niw-KE_niw[0])/KE_niw[0],label=r"$\Delta\langle\mathcal{A}\rangle/\langle\mathcal{A}\rangle(0)$",linewidth=lw,alpha=alp)
 plt.plot(time/Te,(KE_qg-KE_qg[0])/KE0,label=r"$\Delta\langle\mathcal{K}\rangle/\langle\mathcal{K}\rangle(0)$",linewidth=lw,alpha=alp)
 plt.plot(time/Te,(PE_niw-PE_niw[0])/KE0,label=r'$\Delta\langle\mathcal{P}\rangle/\langle\mathcal{K}\rangle(0)$',linewidth=lw,alpha=alp)
@@ -70,6 +72,7 @@ plt.text(10,.43,r"$\Delta\langle\mathcal{P}\rangle$")
 plt.text(10,-.45,r"$\Delta\langle\mathcal{K}\rangle$")
 plt.text(15,0.025,r"$\Delta\langle\mathcal{A}\rangle$")
 
+plt.xlim(0,30)
 
 
 plt.ylim(-0.6,0.6)
@@ -83,6 +86,8 @@ ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax = fig.add_subplot(122)
 fig.subplots_adjust(wspace=.45)
+plt.plot([-5,35],[0,0],'k-',linewidth=0.85)
+
 plt.plot(time/Te,Te*g1/KE0,label=r'$\Gamma_r$',linewidth=lw,alpha=alp)
 plt.plot(time/Te,Te*g2/KE0,label=r'$\Gamma_a$',linewidth=lw,alpha=alp)
 #plt.plot(time/Te,Te*chi_phi/KE0,label=r'$\varepsilon_\mathcal{P}$',linewidth=lw,alpha=alp)
@@ -101,6 +106,8 @@ plt.text(14.5,0.025,r"$\Gamma_a$")
 plt.text(3.5,0.06,r"$\partial_t \langle \mathcal{P} \rangle$")
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
+
+plt.xlim(0,30)
 
 # ax = fig.add_subplot(223)
 # plt.plot(time/Te,Te*pi/KE0,label=r'$\Pi$',linewidth=lw,alpha=alp)
