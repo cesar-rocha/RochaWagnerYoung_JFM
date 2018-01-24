@@ -1,6 +1,5 @@
 """
-    Plots figure 1: snapshots vorticity and near-inertial
-                    kinetic energy density of the Lamb-Chapygin dipole solution.
+   Plot figure wave escaping. 
 """
 
 import h5py
@@ -95,6 +94,10 @@ ax.plot(diags_passive['time'][:]/Te,diags_passive['C2'][:]/diags_passive['C2'][0
 plt.xlabel(r"Time $[t \times U_e k_e]$")
 plt.ylabel(r"Variance [$\langle |\phi|^2\rangle]$")
 plot_fig_label(ax, label="d")
+
+ax.text(7,.99,"waves")
+ax.text(1.52,.9,"passive scalar",rotation=-73)
+
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 fig.subplots_adjust(wspace=.3)
@@ -104,10 +107,14 @@ ax2.plot(diags['time'][:]/Te,diags['Pw'][:]/diags['Pw'][0],label='waves')
 ax2.plot(diags_passive['time'][:]/Te,diags_passive['gradC2'][:]/diags_passive['gradC2'][0],label='passive scalar')
 plt.xlabel(r"Time $[t \times U_e k_e]$")
 plt.ylabel(r"Grad. variance [$\langle |\nabla\phi|^2\rangle]$")
-plt.legend()
+#plt.legend()
 plot_fig_label(ax2, label="e")
 ax2.spines['right'].set_visible(False)
 ax2.spines['top'].set_visible(False)
+
+ax2.text(2,3.75,"waves")
+ax2.text(1.1,25,"passive scalar",rotation=80)
+
 plt.savefig(patho+"figesc.png",
             pad_inches=0,
             bbox_inches='tight',)#dpi=400)
