@@ -151,19 +151,19 @@ for lambdaz in ['281.074945522', '397.5','562.149891043']:
 ax1.semilogx(ki/ke,ki*Kesi0/Kesi0.sum()/ke,'--',color='0.65')
 ax1.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
 ax1.set_ylabel(r'Energy-preserving spectrum')
-plot_fig_label(ax1, label="a" ,xc=.95,yc=0.05)
+plot_fig_label(ax1, label=r"$\mathcal{K}$" ,xc=.95,yc=0.05)
 ax1.set_ylim(0.,0.15)
 #ax1.set_ylim(1.e-5,0.15)
 ax2.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
 #ax2.set_ylabel(r'Energy-preserving spectrum [$|\mathbf{k}|\mathcal{K}_w \times U_w^{-2}$]')
-plot_fig_label(ax2, label="b",xc=.95,yc=0.05)
+plot_fig_label(ax2, label=r"$\mathcal{A}$",xc=.95,yc=0.05)
 ax2.set_yticks([])
 ax2.set_ylim(0.,0.15)
 #ax2.set_ylim(1.e-5,0.15)
 ax3.set_xlabel(r'Wavenumber [$|\mathbf{k}|/k_e$]')
 ax2.legend(loc=(-0.28,1.),ncol=3)
 #ax3.set_ylabel(r'Energy-preserving spectrum [$|\mathbf{k}|\mathcal{P}_w \times U_e^{-2}$]')
-plot_fig_label(ax3, label="c" ,xc=.95,yc=0.05)
+plot_fig_label(ax3, label=r"$\mathcal{P}$" ,xc=.95,yc=0.05)
 ax3.set_yticks([])
 ax3.set_ylim(0.,0.15)
 #ax3.set_ylim(1.e-5,0.15)
@@ -182,9 +182,6 @@ ax2.tick_params(left='off',)
 ax3.tick_params(left='off',)
 plt.savefig(patho+"FigSpectraVarious.pdf",pad_inches=0,
             bbox_inches='tight')
-
-
-STOP
 
 
 # now plot balanced kinetic energy spectrum
