@@ -1,7 +1,7 @@
 """"
-    Plots figure 6: energy time series, budgets,
+    Plots figure 8: energy time series, budgets,
                     wave-vorticity correlation
-                    for varying dispersivities.
+                    for varying dispersivities
 """
 
 import h5py
@@ -100,11 +100,11 @@ imax = 2*801
 G1ms, G2ms = G1[:imax].mean(axis=0)/norm, G2[:imax].mean(axis=0)/norm
 
 ## plotting
-fig = plt.figure(figsize=(8.5,4.))
+fig = plt.figure(figsize=(8.5,8.))
 lw, alp = 2.,1.
 KE0 = KE_qg[0]
 tmax = time[-1]
-ax = fig.add_subplot(121)
+ax = fig.add_subplot(221)
 for i in range(hslash.size):
     p = plt.plot(time/Te,dPw[:,i],label="$\hslash = $"+str(round(hslash[i]*100)/100),\
                     linewidth=lw,alpha=alp)
@@ -114,7 +114,7 @@ for i in range(hslash.size):
 plt.ylim(-0.45,0.45)
 plt.ylabel(r'Energy  change $t=0$')
 plt.legend(loc=(0.6,1.1),ncol=5)
-plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.plot([0,tmax/Te],[0]*2,'-',color="k",linewidth=1)
 plt.ylim(-.25,.25)
 fig.subplots_adjust(wspace=.4)
 plot_fig_label(ax, label="a",xc=0.075)
@@ -124,12 +124,15 @@ plt.plot([11, 19],[0.21]*2,'k-',linewidth=2)
 plt.text(1,0.22,r'$\Delta\langle\mathcal{K}\rangle / \langle\mathcal{K}\rangle(0)$')
 plt.text(11,0.22,r'$\Delta\langle\mathcal{P}\rangle/ \langle  \mathcal{K}\rangle(0)$')
 
+ax.spines['bottom'].set_visible(False)
+plt.xticks([])
 
 
-plt.xlabel(r"Time [$t \times U_e k_e$]")
+
+#plt.xlabel(r"Time [$t \times U_e k_e$]")
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-ax = fig.add_subplot(122)
+ax = fig.add_subplot(222)
 fig.subplots_adjust(wspace=.5)
 
 for i in range(hslash.size):
@@ -142,14 +145,16 @@ plt.plot([10, 14],[0.0175]*2,'k-',linewidth=2)
 plt.text(11.5,0.018,r'$\Gamma_r$')
 plt.text(18.5,0.018,r'$\Gamma_a$')
 
-plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
-plt.plot([0,tmax/Te],[0]*2,'--',color="0.5")
+plt.plot([0,tmax/Te],[0]*2,'k-',linewidth=1)
 plt.ylabel(r'Power $[\Gamma \times {2 k_e}/{U_e} ]$')
 plot_fig_label(ax, label="b", xc=0.075)
-plt.xlabel(r"Time [$t \times U_e k_e$]")
+#plt.xlabel(r"Time [$t \times U_e k_e$]")
 plt.ylim([-0.005,0.02])
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
+ax.spines['bottom'].set_visible(False)
+plt.xticks([])
+
 # inset
 #G = 1.e-3
 #ax1 = plt.axes([.3, .345, .135, .1], facecolor='w')
@@ -193,8 +198,37 @@ ax.spines['top'].set_visible(False)
 #plt.xlabel(r'$\hslash$')
 #plt.ylabel(r'$\overline{\Gamma}_a \times 10^2$')
 
+ax = fig.add_subplot(223)
+fig.subplots_adjust(hspace=.05)
+for i in range(hslash.size):
+    p = plt.plot(time/Te,Conc[:,i],label="$\hslash = $"+str(round(hslash[i]*100)/100),\
+                    linewidth=lw,alpha=alp)
 
-plt.savefig(patho+"fig6.pdf",transparent=True,
+plt.ylim(-0.45,0.45)
+plt.ylabel(r'Wave-vorticity correlation, r')
+plt.plot([0,tmax/Te],[0]*2,'-',color="k",linewidth=1)
+plt.ylim(-.9,.25)
+fig.subplots_adjust(wspace=.4)
+plot_fig_label(ax, label="c",xc=0.065)
+
+plt.xlabel(r"Time [$t \times U_e k_e$]")
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax = fig.add_subplot(224)
+fig.subplots_adjust(wspace=.5)
+
+for i in range(hslash.size):
+    p = plt.plot(time/Te,Skew[:,i],linewidth=lw,alpha=alp)
+
+plt.plot([0,tmax/Te],[0]*2,'-',color="k",linewidth=1)
+plt.ylabel(r'Vorticity skewness')
+plot_fig_label(ax, label="d", xc=0.065)
+plt.xlabel(r"Time [$t \times U_e k_e$]")
+#plt.ylim([-0.005,0.02])
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+plt.savefig(patho+"fig8_new.pdf",transparent=True,
             pad_inches=0,
             bbox_inches='tight')
 
