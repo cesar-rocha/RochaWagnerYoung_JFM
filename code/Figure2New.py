@@ -163,7 +163,7 @@ fig.colorbar(pc, cax=cbar_ax,label=r"Local advective conversion [$10^6\,{\nabla\
                     orientation='vertical',ticks=[-.5,-.25,0.,0.25,.5],
                     extend='both')
 plt.savefig(patho+"ConversionIllustration.png", pad_inces=0, bbox_inches='tight')
-plt.savefig(patho+"fig2.tiff", pad_inces=0, bbox_inches='tight')
+plt.savefig(patho+"fig3.tiff", pad_inces=0, bbox_inches='tight')
 
 # ax = fig.add_subplot(122,aspect=1)
 #

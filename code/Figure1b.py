@@ -140,5 +140,6 @@ plot_fig_label(ax2, xc=0.955, yc=.05, label='b')
 
 
 plt.savefig(patho+"fig1b.png", pad_inces=0, bbox_inches='tight')
+plt.savefig(patho+"fig2.tiff", pad_inces=0, bbox_inches='tight')
 #plt.savefig(patho+"fig1.eps",dpi=200, pad_inces=0, bbox_inches='tight')
 #plt.savefig(patho+"fig1.pdf",dpi=100, pad_inces=0, bbox_inches='tight')
