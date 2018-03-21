@@ -257,8 +257,8 @@ ax1.text(1.65,1.6,r"$\psi$",fontsize=14)
 ax2.text(1.55,1.6,r"$\psi^E$",fontsize=14)
 ax3.text(1.3,1.6,r"$-\mathcal{A}$",fontsize=14)
 
-plt.savefig("figs/DipoleStreamfunction.pdf",pad_inches=0, bbox_inches='tight')
-
+plt.savefig("../writeup/figs/DipoleStreamfunction.pdf",pad_inches=0, bbox_inches='tight')
+plt.savefig("../writeup/figs/fig12.tiff",pad_inches=0, bbox_inches='tight')
 
 
 
