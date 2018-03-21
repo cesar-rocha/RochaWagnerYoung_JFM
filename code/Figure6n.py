@@ -119,3 +119,5 @@ plt.text(2.1,.013,r"$\partial_t \langle \mathcal{P} \rangle $")
 plt.xticks([0,5,10,15,20,25])
 
 plt.savefig(patho+"fig4.pdf", bbox_inches='tight')
+plt.savefig(patho+"fig6.tiff", bbox_inches='tight')
+
