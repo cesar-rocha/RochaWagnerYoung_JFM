@@ -166,6 +166,11 @@ plt.savefig(patho+"fig7.pdf",transparent=True,
             pad_inches=0,
             bbox_inches='tight')
 
+plt.savefig(patho+"fig8.tiff",transparent=True,
+            pad_inches=0,
+            bbox_inches='tight')
+
+
 #
 # ax = fig.add_subplot(223)
 # plt.plot(time/Te,Te*pi/KE0,label=r'$\Pi$',linewidth=lw,alpha=alp)
