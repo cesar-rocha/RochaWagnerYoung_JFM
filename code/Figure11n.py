@@ -118,3 +118,8 @@ ax2.text(1.1,25,"passive scalar",rotation=80)
 plt.savefig(patho+"figesc.png",
             pad_inches=0,
             bbox_inches='tight',)#dpi=400)
+
+plt.savefig(patho+"fig11.tiff",
+            pad_inches=0,
+            bbox_inches='tight', dpi=400)
+
