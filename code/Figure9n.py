@@ -182,6 +182,9 @@ ax2.tick_params(left='off',)
 ax3.tick_params(left='off',)
 plt.savefig(patho+"FigSpectraVarious.pdf",pad_inches=0,
             bbox_inches='tight')
+plt.savefig(patho+"fig9.tiff",pad_inches=0,
+            bbox_inches='tight')
+
 
 
 # now plot balanced kinetic energy spectrum
