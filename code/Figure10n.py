@@ -174,5 +174,5 @@ if plot_fig2notes:
 
 
     plt.savefig("../writeup/figs/GaussianEscape.pdf", pad_inces=0,bbox_inches='tight')
-    plt.savefig("../writeup/figs/fig10.tiff",dpi=300, pad_inces=0,bbox_inches='tight')
+    plt.savefig("../writeup/figs/fig10.tiff",dpi=400, pad_inces=0,bbox_inches='tight')
 
