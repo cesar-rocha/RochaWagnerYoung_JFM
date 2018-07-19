@@ -1,2 +1,2 @@
 # RochaWagnerYoung_JFM
-A manuscript published in JFM.
+Code for a manuscript published in JFM.
